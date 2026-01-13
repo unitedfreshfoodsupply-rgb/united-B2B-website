@@ -66,13 +66,13 @@ export function ProductCategoriesSection() {
             viewport={{ once: true }}
             className="max-w-2xl"
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-uniteda-emerald/5 text-uniteda-emerald text-[10px] font-black uppercase tracking-widest mb-4">
-              <div className="w-1.5 h-1.5 rounded-full bg-uniteda-emerald animate-pulse" />
-              Inventory Logic
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/5 text-primary text-[10px] font-black uppercase tracking-widest mb-4">
+              <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+              Product Catalog
             </div>
-            <h2 className="text-5xl md:text-6xl font-black text-uniteda-emerald-dark tracking-tighter">
+            <h2 className="text-5xl md:text-6xl font-black text-primary tracking-tighter">
               Product Intelligence <br />
-              <span className="text-uniteda-gold">Portfolio</span>
+              <span className="text-accent">Portfolio</span>
             </h2>
           </motion.div>
 
@@ -96,7 +96,7 @@ export function ProductCategoriesSection() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
               className={cn(
-                "group relative rounded-[2rem] overflow-hidden glass-panel border border-black/5 hover:shadow-2xl hover:shadow-uniteda-emerald/10 transition-all duration-500",
+                "group relative rounded-[2rem] overflow-hidden bg-card border border-border hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500",
                 cat.size === "large" ? "md:col-span-2 lg:col-span-3 md:row-span-2" : "",
                 cat.size === "medium" ? "md:col-span-2 lg:col-span-2 md:row-span-2" : "",
                 cat.size === "small" ? "md:col-span-1 lg:col-span-1" : ""
@@ -113,7 +113,7 @@ export function ProductCategoriesSection() {
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-2xl font-black tracking-tighter text-uniteda-emerald-dark group-hover:text-uniteda-emerald transition-colors">
+                  <h3 className="text-2xl font-black tracking-tighter text-primary group-hover:text-primary/80 transition-colors">
                     {cat.name}
                   </h3>
                   {cat.size !== "small" && (
@@ -121,7 +121,7 @@ export function ProductCategoriesSection() {
                       {cat.description}
                     </p>
                   )}
-                  <div className="flex items-center gap-2 text-uniteda-gold text-xs font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
+                  <div className="flex items-center gap-2 text-accent text-xs font-black uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all transform translate-y-2 group-hover:translate-y-0">
                     Access Specs <ArrowRight size={14} />
                   </div>
                 </div>
@@ -138,15 +138,15 @@ export function ProductCategoriesSection() {
 
           {/* Inquiry Hub Bento Tile */}
           <motion.div
-            className="md:col-span-2 lg:col-span-2 bg-uniteda-emerald rounded-[2rem] p-10 flex flex-col justify-between text-white shadow-2xl shadow-uniteda-emerald/20"
+            className="md:col-span-2 lg:col-span-2 bg-primary rounded-[2rem] p-10 flex flex-col justify-between text-primary-foreground shadow-2xl shadow-primary/20"
             whileHover={{ scale: 0.98 }}
           >
             <div>
-              <Info className="w-10 h-10 mb-4 text-uniteda-gold" />
+              <Info className="w-10 h-10 mb-4 text-accent" />
               <h3 className="text-3xl font-black tracking-tighter">Business Inquiry Hub</h3>
-              <p className="text-white/70 font-medium mt-2">Generate structured RFQs for regional logistics hubs.</p>
+              <p className="text-primary-foreground/70 font-medium mt-2">Generate structured RFQs for regional logistics hubs.</p>
             </div>
-            <Button className="w-full rounded-2xl bg-white text-uniteda-emerald font-black py-6 mt-4 hover:bg-uniteda-gold hover:text-white transition-colors">
+            <Button className="w-full rounded-2xl bg-accent text-accent-foreground font-black py-6 mt-4 hover:bg-accent/90 transition-colors">
               <Link to="/rfq">Open inquiry engine</Link>
             </Button>
           </motion.div>
