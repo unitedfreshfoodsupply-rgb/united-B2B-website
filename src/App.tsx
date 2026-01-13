@@ -8,6 +8,8 @@ import Products from "./pages/Products";
 import RFQ from "./pages/RFQ";
 import Operations from "./pages/Operations";
 import Seasonal from "./pages/Seasonal";
+import Contact from "./pages/Contact";
+import FeatureStandby from "./pages/FeatureStandby";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -24,6 +26,18 @@ const App = () => (
           <Route path="/rfq" element={<RFQ />} />
           <Route path="/operations" element={<Operations />} />
           <Route path="/seasonal" element={<Seasonal />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/standby" element={<FeatureStandby />} />
+          <Route path="/about" element={<FeatureStandby />} />
+          <Route path="/quality" element={<FeatureStandby />} />
+          <Route path="/network" element={<FeatureStandby />} />
+          <Route path="/careers" element={<FeatureStandby />} />
+          <Route path="/solutions" element={<FeatureStandby />} />
+          <Route path="/programs" element={<FeatureStandby />} />
+          <Route path="/portal" element={<FeatureStandby />} />
+          <Route path="/faq" element={<FeatureStandby />} />
+          <Route path="/privacy" element={<FeatureStandby />} />
+          <Route path="/terms" element={<FeatureStandby />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

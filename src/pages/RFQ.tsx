@@ -302,8 +302,8 @@ export default function RFQPage() {
                   For urgent inquiries, reach our sales team directly:
                 </p>
                 <div className="space-y-2 text-sm">
-                  <p className="font-medium">Egypt: +20 2 XXXX XXXX</p>
-                  <p className="font-medium">UAE: +971 4 XXX XXXX</p>
+                  <p className="font-medium">Egypt: +20 10 2202 3344</p>
+                  <p className="font-medium">UAE: +971 4 454 2200</p>
                   <p className="text-muted-foreground">sales@uniteda.com</p>
                 </div>
               </div>

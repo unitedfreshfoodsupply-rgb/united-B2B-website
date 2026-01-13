@@ -28,15 +28,15 @@ const footerLinks = {
 const regions = [
   {
     name: "Egypt Hub",
-    address: "Cairo, Egypt",
-    phone: "+20 2 XXXX XXXX",
+    address: "New Cairo HQ, Logistics Zone",
+    phone: "+20 10 2202 3344",
     email: "egypt@uniteda.com",
     flag: "🇪🇬"
   },
   {
     name: "UAE Hub",
-    address: "Dubai, UAE",
-    phone: "+971 4 XXX XXXX",
+    address: "Business Bay, Dubai",
+    phone: "+971 4 454 2200",
     email: "uae@uniteda.com",
     flag: "🇦🇪"
   },

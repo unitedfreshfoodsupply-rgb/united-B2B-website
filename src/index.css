@@ -1,8 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
-
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 /* UNITEDA Design System - Enterprise Agricultural Supply Platform */
 
@@ -115,7 +113,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
 
   html {
@@ -123,7 +121,10 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
     font-family: 'Inter', system-ui, sans-serif;
   }
 
@@ -134,42 +135,104 @@
   h5,
   h6 {
     font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
-    @apply font-bold tracking-tight;
+    font-weight: 700;
+    letter-spacing: -0.025em;
   }
 }
 
 @layer components {
   .container-wide {
-    @apply max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-wide {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-wide {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
   }
 
   .section-padding {
-    @apply py-16 md:py-24 lg:py-32;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+
+  @media (min-width: 768px) {
+    .section-padding {
+      padding-top: 6rem;
+      padding-bottom: 6rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .section-padding {
+      padding-top: 8rem;
+      padding-bottom: 8rem;
+    }
   }
 
   .text-gradient {
-    @apply bg-clip-text text-transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
     background-image: var(--gradient-hero);
   }
 
   .glass-panel {
-    @apply bg-white/40 backdrop-blur-xl border border-white/20 shadow-xl;
+    background-color: rgb(255 255 255 / 0.4);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgb(255 255 255 / 0.2);
+    box-shadow: var(--shadow-xl);
   }
 
   .glass-header {
-    @apply bg-white/60 backdrop-blur-md border-b border-white/10 transition-all duration-300;
+    background-color: rgb(255 255 255 / 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgb(255 255 255 / 0.1);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .glass-header.scrolled {
-    @apply bg-white/80 py-2 shadow-lg;
+    background-color: rgb(255 255 255 / 0.8);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    box-shadow: var(--shadow-lg);
   }
 
   .bento-grid {
-    @apply grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4;
+    display: grid;
+    gap: 1rem;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+
+  @media (min-width: 768px) {
+    .bento-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .bento-grid {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
   }
 
   .bento-item {
-    @apply p-6 rounded-3xl glass-panel hover-lift;
+    padding: 1.5rem;
+    border-radius: 1.5rem;
   }
 }
 
@@ -264,25 +327,39 @@
   }
 
   .hud-border {
-    @apply border border-primary/10 relative;
+    border: 1px solid hsl(var(--primary) / 0.1);
+    position: relative;
 
     &::before,
     &::after {
       content: '';
-      @apply absolute w-2 h-2 border-primary/40;
+      position: absolute;
+      width: 0.5rem;
+      height: 0.5rem;
+      border-color: hsl(var(--primary) / 0.4);
     }
 
     &::before {
-      @apply top-0 left-0 border-t border-l;
+      top: 0;
+      left: 0;
+      border-top-width: 1px;
+      border-left-width: 1px;
     }
 
     &::after {
-      @apply bottom-0 right-0 border-b border-r;
+      bottom: 0;
+      right: 0;
+      border-bottom-width: 1px;
+      border-right-width: 1px;
     }
   }
 
   .text-infra {
-    @apply font-mono text-[10px] tracking-widest uppercase opacity-50;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.5;
   }
 
   .scanline {
