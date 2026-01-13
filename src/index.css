@@ -255,4 +255,72 @@
   .stagger-5 {
     animation-delay: 0.5s;
   }
+
+  .neural-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--primary) / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--primary) / 0.05) 1px, transparent 1px);
+    background-size: 32px 32px;
+  }
+
+  .hud-border {
+    @apply border border-primary/10 relative;
+
+    &::before,
+    &::after {
+      content: '';
+      @apply absolute w-2 h-2 border-primary/40;
+    }
+
+    &::before {
+      @apply top-0 left-0 border-t border-l;
+    }
+
+    &::after {
+      @apply bottom-0 right-0 border-b border-r;
+    }
+  }
+
+  .text-infra {
+    @apply font-mono text-[10px] tracking-widest uppercase opacity-50;
+  }
+
+  .scanline {
+    width: 100%;
+    height: 100px;
+    z-index: 10;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0) 0%, hsl(var(--accent) / 0.05) 50%, rgba(0, 0, 0, 0) 100%);
+    opacity: 0.1;
+    position: absolute;
+    bottom: 100%;
+    animation: scanline 8s linear infinite;
+  }
+
+  @keyframes scanline {
+    0% {
+      bottom: 100%;
+    }
+
+    100% {
+      bottom: -100px;
+    }
+  }
+
+  .glow-pulse {
+    animation: glowPulse 4s ease-in-out infinite;
+  }
+
+  @keyframes glowPulse {
+
+    0%,
+    100% {
+      opacity: 0.3;
+      filter: blur(20px);
+    }
+
+    50% {
+      opacity: 0.6;
+      filter: blur(40px);
+    }
+  }
 }
