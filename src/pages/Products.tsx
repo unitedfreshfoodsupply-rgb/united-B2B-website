@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { 
+import {
   Select,
   SelectContent,
   SelectItem,
@@ -141,7 +141,7 @@ export default function ProductsPage() {
               Product Catalog
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl">
-              Browse our comprehensive catalog of 200+ premium products with complete 
+              Browse our comprehensive catalog of 200+ premium products with complete
               specifications, seasonal availability, and quality grades.
             </p>
           </motion.div>
@@ -182,19 +182,17 @@ export default function ProductsPage() {
                       <button
                         key={cat.id}
                         onClick={() => setActiveCategory(cat.id)}
-                        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm transition-colors ${
-                          activeCategory === cat.id
-                            ? "bg-primary text-primary-foreground"
-                            : "text-muted-foreground hover:bg-muted hover:text-foreground"
-                        }`}
+                        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-lg text-sm transition-colors ${activeCategory === cat.id
+                          ? "bg-primary text-primary-foreground"
+                          : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                          }`}
                       >
                         <span className="flex items-center gap-2">
                           <cat.icon className="w-4 h-4" />
                           {cat.name}
                         </span>
-                        <span className={`text-xs ${
-                          activeCategory === cat.id ? "text-primary-foreground/80" : "text-muted-foreground"
-                        }`}>
+                        <span className={`text-xs ${activeCategory === cat.id ? "text-primary-foreground/80" : "text-muted-foreground"
+                          }`}>
                           {cat.count}
                         </span>
                       </button>
@@ -284,9 +282,8 @@ export default function ProductsPage() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.3, delay: index * 0.05 }}
-                    className={`group p-5 rounded-2xl bg-card border border-border hover:border-primary/20 hover:shadow-elevated transition-all duration-300 ${
-                      viewMode === "list" ? "flex items-center gap-6" : ""
-                    }`}
+                    className={`group p-5 rounded-2xl bg-card border border-border hover:border-primary/20 hover:shadow-elevated transition-all duration-300 ${viewMode === "list" ? "flex items-center gap-6" : ""
+                      }`}
                   >
                     <div className={`${viewMode === "list" ? "w-20 h-20" : "w-full aspect-square mb-4"} rounded-xl bg-muted flex items-center justify-center text-5xl`}>
                       {product.image}
@@ -296,13 +293,12 @@ export default function ProductsPage() {
                         <h3 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors">
                           {product.name}
                         </h3>
-                        <span className={`px-2 py-0.5 rounded text-xs font-medium ${
-                          product.season === "Peak" 
-                            ? "bg-accent/10 text-accent" 
-                            : product.season === "Starting"
+                        <span className={`px-2 py-0.5 rounded text-xs font-medium ${product.season === "Peak"
+                          ? "bg-accent/10 text-accent"
+                          : product.season === "Starting"
                             ? "bg-amber-500/10 text-amber-600"
                             : "bg-muted text-muted-foreground"
-                        }`}>
+                          }`}>
                           {product.season}
                         </span>
                       </div>

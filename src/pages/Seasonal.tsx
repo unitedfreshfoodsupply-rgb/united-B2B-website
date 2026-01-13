@@ -100,7 +100,7 @@ export default function SeasonalPage() {
               Seasonal Availability Calendar
             </h1>
             <p className="text-muted-foreground text-lg">
-              Plan your supply needs with our real-time seasonal availability data. 
+              Plan your supply needs with our real-time seasonal availability data.
               Know what's in peak, what's available, and plan ahead for optimal sourcing.
             </p>
           </motion.div>
@@ -167,8 +167,8 @@ export default function SeasonalPage() {
                     <th className="text-left py-3 px-4 font-semibold text-foreground">Product</th>
                     <th className="text-left py-3 px-2 text-muted-foreground text-sm">Category</th>
                     {months.map((month, i) => (
-                      <th 
-                        key={month} 
+                      <th
+                        key={month}
                         className={`py-3 px-2 text-center text-sm ${i === currentMonth ? "text-accent font-bold" : "text-muted-foreground"}`}
                       >
                         {month}
@@ -183,7 +183,7 @@ export default function SeasonalPage() {
                       <td className="py-3 px-2 text-sm text-muted-foreground">{product.category}</td>
                       {product.egypt.map((value, i) => (
                         <td key={i} className="py-3 px-2 text-center">
-                          <div 
+                          <div
                             className={`w-8 h-8 mx-auto rounded-lg ${getAvailabilityColor(value)} ${i === currentMonth ? "ring-2 ring-accent ring-offset-2" : ""}`}
                             title={getAvailabilityLabel(value)}
                           />
@@ -212,8 +212,8 @@ export default function SeasonalPage() {
                     <th className="text-left py-3 px-4 font-semibold text-foreground">Product</th>
                     <th className="text-left py-3 px-2 text-muted-foreground text-sm">Category</th>
                     {months.map((month, i) => (
-                      <th 
-                        key={month} 
+                      <th
+                        key={month}
                         className={`py-3 px-2 text-center text-sm ${i === currentMonth ? "text-accent font-bold" : "text-muted-foreground"}`}
                       >
                         {month}
@@ -228,7 +228,7 @@ export default function SeasonalPage() {
                       <td className="py-3 px-2 text-sm text-muted-foreground">{product.category}</td>
                       {product.uae.map((value, i) => (
                         <td key={i} className="py-3 px-2 text-center">
-                          <div 
+                          <div
                             className={`w-8 h-8 mx-auto rounded-lg ${getAvailabilityColor(value)} ${i === currentMonth ? "ring-2 ring-accent ring-offset-2" : ""}`}
                             title={getAvailabilityLabel(value)}
                           />
@@ -254,8 +254,8 @@ export default function SeasonalPage() {
               <div>
                 <h3 className="font-semibold text-foreground mb-2">Planning Your Supply</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  Seasonal availability may vary based on weather conditions and farm yields. 
-                  For off-season items, we can source through our import network. 
+                  Seasonal availability may vary based on weather conditions and farm yields.
+                  For off-season items, we can source through our import network.
                   Contact our sales team for custom supply programs and volume commitments.
                 </p>
               </div>
@@ -277,7 +277,7 @@ export default function SeasonalPage() {
               Need Custom Supply Programs?
             </h2>
             <p className="text-primary-foreground/80 mb-8 max-w-xl mx-auto">
-              We can design year-round supply programs with import alternatives 
+              We can design year-round supply programs with import alternatives
               for off-season periods.
             </p>
             <Button variant="accent" size="xl" asChild>

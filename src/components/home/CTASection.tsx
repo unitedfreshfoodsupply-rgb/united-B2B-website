@@ -1,87 +1,72 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { ArrowRight, FileText, Clock, CheckCircle } from "lucide-react";
+import { ArrowRight, Globe2, Rocket, BarChart3, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function CTASection() {
   return (
-    <section className="section-padding bg-gradient-hero text-primary-foreground relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-0 left-0 w-96 h-96 rounded-full bg-accent blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 rounded-full bg-primary-foreground blur-3xl" />
-      </div>
+    <section className="py-24 bg-uniteda-emerald-dark relative overflow-hidden">
+      {/* Immersive Background */}
+      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-uniteda-emerald/20 rounded-full blur-[120px] -mr-96 -mt-96" />
+      <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-uniteda-gold/10 rounded-full blur-[100px] -ml-48 -mb-48" />
 
       <div className="container-wide relative z-10">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-accent/20 text-accent text-sm font-medium mb-6">
-              Start Your Partnership
-            </span>
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold mb-6">
-              Ready to Elevate Your
-              <br />
-              Supply Chain?
-            </h2>
-            <p className="text-primary-foreground/80 text-lg max-w-2xl mx-auto mb-10">
-              Submit a structured business request and our team will provide 
-              a comprehensive supply proposal tailored to your operational needs.
-            </p>
-          </motion.div>
-
-          {/* Process Steps */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="grid sm:grid-cols-3 gap-6 mb-10"
-          >
-            {[
-              { icon: FileText, title: "Submit Request", desc: "Complete our structured RFQ form" },
-              { icon: Clock, title: "Get Response", desc: "Receive proposal within 24-48 hours" },
-              { icon: CheckCircle, title: "Start Supply", desc: "Begin your partnership" },
-            ].map((step, index) => (
-              <div
-                key={step.title}
-                className="p-6 rounded-2xl bg-primary-foreground/10 border border-primary-foreground/10"
-              >
-                <div className="w-12 h-12 rounded-xl bg-accent/20 flex items-center justify-center mx-auto mb-4">
-                  <step.icon className="w-6 h-6 text-accent" />
-                </div>
-                <div className="flex items-center justify-center gap-2 mb-2">
-                  <span className="w-6 h-6 rounded-full bg-accent text-accent-foreground text-sm font-bold flex items-center justify-center">
-                    {index + 1}
-                  </span>
-                  <h3 className="font-semibold">{step.title}</h3>
-                </div>
-                <p className="text-sm text-primary-foreground/70">{step.desc}</p>
+        <div className="glass-panel border-white/10 p-12 lg:p-24 rounded-[4rem] bg-white/5 backdrop-blur-3xl overflow-hidden relative">
+          <div className="max-w-4xl mx-auto text-center space-y-12">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="space-y-6"
+            >
+              <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full bg-uniteda-gold text-uniteda-emerald-dark text-[10px] font-black uppercase tracking-[0.3em]">
+                Partner with UNITEDA
               </div>
-            ))}
-          </motion.div>
+              <h2 className="text-6xl md:text-7xl lg:text-8xl font-black text-white tracking-tighter leading-[0.9]">
+                Architecting the Future <br />
+                <span className="text-uniteda-gold">of Agricultural Supply</span>
+              </h2>
+              <p className="text-xl text-white/60 font-medium max-w-2xl mx-auto leading-relaxed">
+                Unlock 100% supply transparency and regional logistics synchronization for your enterprise.
+              </p>
+            </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.3 }}
-            className="flex flex-wrap justify-center gap-4"
-          >
-            <Button variant="accent" size="xl" asChild>
-              <Link to="/rfq">
-                Request Quote
-                <ArrowRight className="w-5 h-5 ml-1" />
-              </Link>
-            </Button>
-            <Button variant="outline-light" size="xl" asChild>
-              <Link to="/contact">Contact Sales Team</Link>
-            </Button>
-          </motion.div>
+            {/* Quick Stats/Features Bento for CTA */}
+            <div className="grid md:grid-cols-3 gap-6 pt-12 border-t border-white/10">
+              {[
+                { icon: Globe2, label: "Multi-Hub Sync", sub: "Egypt & UAE Unified" },
+                { icon: BarChart3, label: "Live RFQ Logic", sub: "48h Response SLA" },
+                { icon: ShieldCheck, label: "Audit-Ready", sub: "Global Standards" },
+              ].map((item, i) => (
+                <div key={i} className="flex flex-col items-center text-center space-y-3">
+                  <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center text-uniteda-gold">
+                    <item.icon size={24} />
+                  </div>
+                  <div>
+                    <p className="text-white font-black tracking-tight">{item.label}</p>
+                    <p className="text-white/40 text-xs font-bold uppercase tracking-widest">{item.sub}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="flex flex-wrap justify-center gap-6 pt-12"
+            >
+              <Button size="xl" className="rounded-full bg-uniteda-gold hover:bg-uniteda-gold/80 text-uniteda-emerald-dark px-12 py-10 text-xl font-black shadow-2xl shadow-uniteda-gold/20 transition-all hover:scale-105">
+                <Link to="/rfq" className="flex items-center gap-3">
+                  Launch Inquiry Engine
+                  <Rocket size={24} />
+                </Link>
+              </Button>
+              <Button variant="outline" size="xl" className="rounded-full border-2 border-white/20 text-white hover:bg-white/5 px-12 py-10 text-xl font-black transition-all">
+                <Link to="/contact">Contact Enterprise Sales</Link>
+              </Button>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

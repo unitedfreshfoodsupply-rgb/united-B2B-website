@@ -4,7 +4,7 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { 
+import {
   Select,
   SelectContent,
   SelectItem,
@@ -55,8 +55,8 @@ export default function RFQPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleCategoryToggle = (category: string) => {
-    setSelectedCategories(prev => 
-      prev.includes(category) 
+    setSelectedCategories(prev =>
+      prev.includes(category)
         ? prev.filter(c => c !== category)
         : [...prev, category]
     );
@@ -65,14 +65,14 @@ export default function RFQPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     // Simulate submission
     await new Promise(resolve => setTimeout(resolve, 1500));
-    
+
     toast.success("Request submitted successfully!", {
       description: "Our team will review your request and respond within 24-48 hours.",
     });
-    
+
     setIsSubmitting(false);
   };
 
@@ -94,7 +94,7 @@ export default function RFQPage() {
               Request a Quote
             </h1>
             <p className="text-muted-foreground text-lg">
-              Complete the form below to submit a structured business request. 
+              Complete the form below to submit a structured business request.
               Our sales team will prepare a comprehensive proposal tailored to your needs.
             </p>
           </motion.div>

@@ -1,8 +1,11 @@
-import type { Config } from "tailwindcss";
+import { Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
-  content: ["./pages/**/*.{ts,tsx}", "./components/**/*.{ts,tsx}", "./app/**/*.{ts,tsx}", "./src/**/*.{ts,tsx}"],
+  content: [
+    "./index.html",
+    "./src/**/*.{ts,tsx}",
+  ],
   prefix: "",
   theme: {
     container: {
@@ -23,6 +26,18 @@ export default {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        uniteda: {
+          emerald: {
+            DEFAULT: '#064E3B',
+            dark: '#022C22',
+            light: '#065F46',
+          },
+          gold: {
+            DEFAULT: '#D97706',
+            dark: '#B45309',
+            light: '#F59E0B',
+          }
+        },
         primary: {
           DEFAULT: "hsl(var(--primary))",
           foreground: "hsl(var(--primary-foreground))",

@@ -1,14 +1,14 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { Menu, X, ChevronDown, Globe, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const navigation = [
   { name: "Home", href: "/" },
-  { 
-    name: "Products", 
+  {
+    name: "Products",
     href: "/products",
     children: [
       { name: "Fresh Fruits", href: "/products?category=fruits" },
@@ -20,147 +20,189 @@ const navigation = [
   },
   { name: "Seasonal", href: "/seasonal" },
   { name: "Operations", href: "/operations" },
-  { name: "About", href: "/about" },
+  { name: "Inquiry Hub", href: "/rfq" },
 ];
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const [region, setRegion] = useState<"EG" | "UAE">("EG");
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
-  return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border/50">
-      <nav className="container-wide flex items-center justify-between h-18 lg:h-20">
-        {/* Logo */}
-        <Link to="/" className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-xl bg-gradient-hero flex items-center justify-center">
-            <span className="text-primary-foreground font-display font-bold text-lg">U</span>
-          </div>
-          <div className="flex flex-col">
-            <span className="font-display font-bold text-xl text-foreground tracking-tight">UNITEDA</span>
-            <span className="text-[10px] text-muted-foreground tracking-widest uppercase">Agricultural Supply</span>
-          </div>
-        </Link>
+  const { scrollY } = useScroll();
+  const headerPadding = useTransform(scrollY, [0, 50], ["1.5rem", "0.75rem"]);
+  const headerBg = useTransform(scrollY, [0, 50], ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.8)"]);
 
-        {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-1">
-          {navigation.map((item) => (
-            <div 
-              key={item.name} 
-              className="relative"
-              onMouseEnter={() => item.children && setActiveDropdown(item.name)}
-              onMouseLeave={() => setActiveDropdown(null)}
+  useEffect(() => {
+    const updateHeader = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", updateHeader);
+    return () => window.removeEventListener("scroll", updateHeader);
+  }, []);
+
+  return (
+    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none">
+      <motion.nav
+        style={{
+          marginTop: isScrolled ? "1rem" : "0px",
+          width: isScrolled ? "90%" : "100%",
+          paddingTop: headerPadding,
+          paddingBottom: headerPadding,
+        }}
+        className={cn(
+          "pointer-events-auto transition-all duration-500 ease-in-out",
+          isScrolled
+            ? "glass-panel rounded-full px-8 max-w-[1280px]"
+            : "bg-transparent border-b border-transparent px-6 w-full"
+        )}
+      >
+        <div className="flex items-center justify-between mx-auto">
+          {/* Logo */}
+          <Link to="/" className="flex items-center gap-2 group">
+            <motion.div
+              whileHover={{ rotate: 5, scale: 1.05 }}
+              className="w-10 h-10 rounded-xl bg-uniteda-emerald flex items-center justify-center shadow-lg group-hover:shadow-uniteda-emerald/20"
             >
-              <Link
-                to={item.href}
+              <span className="text-white font-bold text-lg">U</span>
+            </motion.div>
+            <div className="flex flex-col">
+              <span className="font-bold text-xl text-uniteda-emerald-dark tracking-tight leading-none">UNITEDA</span>
+              <span className="text-[9px] text-uniteda-gold font-semibold tracking-[0.2em] uppercase">Supply Intelligence</span>
+            </div>
+          </Link>
+
+          {/* Desktop Navigation */}
+          <div className="hidden lg:flex items-center bg-muted/30 p-1 rounded-full border border-black/5">
+            {navigation.map((item) => (
+              <div
+                key={item.name}
+                className="relative"
+                onMouseEnter={() => item.children && setActiveDropdown(item.name)}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                <Link
+                  to={item.href}
+                  className={cn(
+                    "relative px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300",
+                    location.pathname === item.href
+                      ? "text-uniteda-emerald-dark"
+                      : "text-muted-foreground hover:text-uniteda-emerald"
+                  )}
+                >
+                  {location.pathname === item.href && (
+                    <motion.div
+                      layoutId="nav-pill"
+                      className="absolute inset-0 bg-white rounded-full shadow-sm -z-10"
+                    />
+                  )}
+                  {item.name}
+                </Link>
+
+                {/* Dropdown */}
+                <AnimatePresence>
+                  {item.children && activeDropdown === item.name && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                      animate={{ opacity: 1, scale: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.95, y: 10 }}
+                      className="absolute top-full left-0 mt-4 w-64 glass-panel rounded-3xl p-3 border border-white/20 origin-top"
+                    >
+                      <div className="grid gap-1">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.name}
+                            to={child.href}
+                            className="flex items-center px-4 py-3 rounded-2xl text-sm font-medium text-muted-foreground hover:text-uniteda-emerald hover:bg-uniteda-emerald/5 transition-all"
+                          >
+                            {child.name}
+                          </Link>
+                        ))}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ))}
+          </div>
+
+          {/* Region Switcher & CTA */}
+          <div className="flex items-center gap-4">
+            <div className="hidden md:flex items-center gap-1 bg-muted/30 p-1 rounded-full border border-black/5">
+              <button
+                onClick={() => setRegion("EG")}
                 className={cn(
-                  "flex items-center gap-1 px-4 py-2 rounded-lg text-sm font-medium transition-colors",
-                  location.pathname === item.href
-                    ? "text-primary bg-primary/5"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                  "px-3 py-1 rounded-full text-[11px] font-bold transition-all",
+                  region === "EG" ? "bg-uniteda-emerald text-white shadow-sm" : "text-muted-foreground"
                 )}
               >
-                {item.name}
-                {item.children && <ChevronDown className="w-4 h-4" />}
-              </Link>
-
-              {/* Dropdown */}
-              <AnimatePresence>
-                {item.children && activeDropdown === item.name && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 10 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute top-full left-0 mt-1 w-56 bg-card rounded-xl shadow-elevated border border-border p-2"
-                  >
-                    {item.children.map((child) => (
-                      <Link
-                        key={child.name}
-                        to={child.href}
-                        className="block px-4 py-2.5 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
-                      >
-                        {child.name}
-                      </Link>
-                    ))}
-                  </motion.div>
+                EG
+              </button>
+              <button
+                onClick={() => setRegion("UAE")}
+                className={cn(
+                  "px-3 py-1 rounded-full text-[11px] font-bold transition-all",
+                  region === "UAE" ? "bg-uniteda-gold text-white shadow-sm" : "text-muted-foreground"
                 )}
-              </AnimatePresence>
+              >
+                UAE
+              </button>
             </div>
-          ))}
+
+            <Button size="sm" className="hidden lg:flex rounded-full px-6 bg-uniteda-emerald hover:bg-uniteda-emerald-dark shadow-lg shadow-uniteda-emerald/20 transition-all font-bold group">
+              <Link to="/contact" className="flex items-center gap-2">
+                Partner with us
+                <motion.span animate={{ x: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>→</motion.span>
+              </Link>
+            </Button>
+
+            {/* Mobile menu button */}
+            <button
+              className="lg:hidden w-10 h-10 flex items-center justify-center rounded-full bg-muted/50 text-uniteda-emerald transition-colors"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </div>
 
-        {/* CTA Buttons */}
-        <div className="hidden lg:flex items-center gap-3">
-          <Button variant="ghost" size="sm" asChild>
-            <Link to="/contact">Contact</Link>
-          </Button>
-          <Button variant="hero" size="default" asChild>
-            <Link to="/rfq">Request Quote</Link>
-          </Button>
-        </div>
-
-        {/* Mobile menu button */}
-        <button
-          className="lg:hidden p-2 rounded-lg hover:bg-muted/50 transition-colors"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
-      </nav>
-
-      {/* Mobile Navigation */}
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="lg:hidden bg-background border-b border-border"
-          >
-            <div className="container-wide py-4 space-y-2">
-              {navigation.map((item) => (
-                <div key={item.name}>
+        {/* Mobile Navigation */}
+        <AnimatePresence>
+          {mobileMenuOpen && (
+            <motion.div
+              initial={{ opacity: 0, y: -20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.95 }}
+              className="lg:hidden absolute top-full left-0 right-0 mt-4 mx-4 glass-panel rounded-[2rem] overflow-hidden"
+            >
+              <div className="p-6 space-y-4">
+                {navigation.map((item) => (
                   <Link
+                    key={item.name}
                     to={item.href}
                     onClick={() => setMobileMenuOpen(false)}
                     className={cn(
-                      "block px-4 py-3 rounded-lg text-base font-medium transition-colors",
+                      "block px-4 py-3 rounded-2xl text-lg font-semibold transition-all",
                       location.pathname === item.href
-                        ? "text-primary bg-primary/5"
-                        : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                        ? "text-uniteda-emerald bg-uniteda-emerald/5"
+                        : "text-muted-foreground"
                     )}
                   >
                     {item.name}
                   </Link>
-                  {item.children && (
-                    <div className="ml-4 mt-1 space-y-1">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.name}
-                          to={child.href}
-                          onClick={() => setMobileMenuOpen(false)}
-                          className="block px-4 py-2 rounded-lg text-sm text-muted-foreground hover:text-foreground hover:bg-muted/50 transition-colors"
-                        >
-                          {child.name}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
+                ))}
+                <div className="pt-4 flex flex-col gap-3">
+                  <Button variant="outline" className="rounded-2xl border-uniteda-emerald text-uniteda-emerald font-bold" asChild>
+                    <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>Talk to Sales</Link>
+                  </Button>
+                  <Button className="rounded-2xl bg-uniteda-emerald hover:bg-uniteda-emerald-dark font-bold text-white" asChild>
+                    <Link to="/rfq" onClick={() => setMobileMenuOpen(false)}>Inquiry Hub</Link>
+                  </Button>
                 </div>
-              ))}
-              <div className="pt-4 space-y-2">
-                <Button variant="outline" className="w-full" asChild>
-                  <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>Contact Us</Link>
-                </Button>
-                <Button variant="hero" className="w-full" asChild>
-                  <Link to="/rfq" onClick={() => setMobileMenuOpen(false)}>Request Quote</Link>
-                </Button>
               </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.nav>
     </header>
   );
 }

@@ -1,10 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* UNITEDA Design System - Enterprise Agricultural Supply Platform */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 @layer base {
   :root {
@@ -47,24 +47,24 @@
     --forest: 152 45% 22%;
     --forest-light: 150 35% 35%;
     --forest-dark: 152 50% 14%;
-    
+
     --earth: 35 35% 65%;
     --earth-light: 38 40% 85%;
     --earth-dark: 32 30% 45%;
-    
+
     --lime: 85 55% 45%;
     --lime-light: 85 50% 65%;
     --lime-dark: 85 60% 35%;
-    
+
     --cream: 40 30% 96%;
     --ivory: 45 25% 92%;
-    
+
     /* Shadows */
     --shadow-sm: 0 1px 2px 0 hsl(150 25% 12% / 0.04);
     --shadow-md: 0 4px 12px -2px hsl(150 25% 12% / 0.08), 0 2px 4px -2px hsl(150 25% 12% / 0.04);
     --shadow-lg: 0 12px 32px -4px hsl(150 25% 12% / 0.1), 0 4px 8px -2px hsl(150 25% 12% / 0.04);
     --shadow-xl: 0 24px 48px -8px hsl(150 25% 12% / 0.12), 0 8px 16px -4px hsl(150 25% 12% / 0.06);
-    
+
     /* Gradients */
     --gradient-hero: linear-gradient(135deg, hsl(152 45% 22%) 0%, hsl(150 35% 28%) 50%, hsl(85 55% 40%) 100%);
     --gradient-subtle: linear-gradient(180deg, hsl(40 20% 98%) 0%, hsl(140 15% 96%) 100%);
@@ -127,7 +127,12 @@
     font-family: 'Inter', system-ui, sans-serif;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     font-family: 'Plus Jakarta Sans', 'Inter', sans-serif;
     @apply font-bold tracking-tight;
   }
@@ -147,18 +152,24 @@
     background-image: var(--gradient-hero);
   }
 
-  .glass-card {
-    @apply bg-white/80 backdrop-blur-md border border-white/20;
-    box-shadow: var(--shadow-lg);
+  .glass-panel {
+    @apply bg-white/40 backdrop-blur-xl border border-white/20 shadow-xl;
   }
 
-  .hover-lift {
-    @apply transition-all duration-300 ease-out;
+  .glass-header {
+    @apply bg-white/60 backdrop-blur-md border-b border-white/10 transition-all duration-300;
   }
 
-  .hover-lift:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-xl);
+  .glass-header.scrolled {
+    @apply bg-white/80 py-2 shadow-lg;
+  }
+
+  .bento-grid {
+    @apply grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-4;
+  }
+
+  .bento-item {
+    @apply p-6 rounded-3xl glass-panel hover-lift;
   }
 }
 
@@ -180,46 +191,68 @@
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
   }
 
   @keyframes slideUp {
-    from { 
-      opacity: 0; 
-      transform: translateY(20px); 
+    from {
+      opacity: 0;
+      transform: translateY(20px);
     }
-    to { 
-      opacity: 1; 
-      transform: translateY(0); 
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
   }
 
   @keyframes slideInLeft {
-    from { 
-      opacity: 0; 
-      transform: translateX(-20px); 
+    from {
+      opacity: 0;
+      transform: translateX(-20px);
     }
-    to { 
-      opacity: 1; 
-      transform: translateX(0); 
+
+    to {
+      opacity: 1;
+      transform: translateX(0);
     }
   }
 
   @keyframes scaleIn {
-    from { 
-      opacity: 0; 
-      transform: scale(0.95); 
+    from {
+      opacity: 0;
+      transform: scale(0.95);
     }
-    to { 
-      opacity: 1; 
-      transform: scale(1); 
+
+    to {
+      opacity: 1;
+      transform: scale(1);
     }
   }
 
-  .stagger-1 { animation-delay: 0.1s; }
-  .stagger-2 { animation-delay: 0.2s; }
-  .stagger-3 { animation-delay: 0.3s; }
-  .stagger-4 { animation-delay: 0.4s; }
-  .stagger-5 { animation-delay: 0.5s; }
+  .stagger-1 {
+    animation-delay: 0.1s;
+  }
+
+  .stagger-2 {
+    animation-delay: 0.2s;
+  }
+
+  .stagger-3 {
+    animation-delay: 0.3s;
+  }
+
+  .stagger-4 {
+    animation-delay: 0.4s;
+  }
+
+  .stagger-5 {
+    animation-delay: 0.5s;
+  }
 }
