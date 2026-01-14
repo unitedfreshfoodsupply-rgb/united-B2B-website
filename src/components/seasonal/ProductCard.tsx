@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
 import { SeasonalArc } from "./SeasonalArc";
-import { TrendingUp, Calendar, Apple, Citrus, Grape, Carrot, Salad, Leaf, Sprout } from "lucide-react";
+import { TrendingUp, Calendar } from "lucide-react";
 
 interface SeasonalProduct {
     name: string;
     category: string;
     egypt: number[];
     uae: number[];
+    image?: string; // Optional image URL
 }
 
 interface ProductCardProps {
@@ -35,76 +36,6 @@ const getAvailabilityStatus = (data: number[], currentMonth: number) => {
     return { status: "Off-Season", color: "text-muted-foreground", bg: "bg-muted" };
 };
 
-// Product-specific icon mapping with VERIFIED lucide-react icons only
-const getProductIcon = (productName: string) => {
-    const name = productName.toLowerCase();
-
-    // Specific product mappings - using only icons that exist in lucide-react
-    if (name.includes("strawberr")) {
-        return {
-            Icon: Apple,
-            iconColor: "text-red-600",
-            bgGradient: "bg-gradient-to-br from-red-100 to-pink-50"
-        };
-    }
-    if (name.includes("mango")) {
-        return {
-            Icon: Apple,
-            iconColor: "text-amber-600",
-            bgGradient: "bg-gradient-to-br from-amber-100 to-yellow-50"
-        };
-    }
-    if (name.includes("orange")) {
-        return {
-            Icon: Citrus,
-            iconColor: "text-orange-500",
-            bgGradient: "bg-gradient-to-br from-orange-100 to-yellow-50"
-        };
-    }
-    if (name.includes("pomegranate")) {
-        return {
-            Icon: Grape,
-            iconColor: "text-rose-700",
-            bgGradient: "bg-gradient-to-br from-rose-100 to-pink-50"
-        };
-    }
-    if (name.includes("tomato")) {
-        return {
-            Icon: Apple,
-            iconColor: "text-red-600",
-            bgGradient: "bg-gradient-to-br from-red-100 to-orange-50"
-        };
-    }
-    if (name.includes("pepper")) {
-        return {
-            Icon: Carrot, // Using Carrot as vegetable icon
-            iconColor: "text-emerald-600",
-            bgGradient: "bg-gradient-to-br from-emerald-100 to-green-50"
-        };
-    }
-    if (name.includes("asparagus")) {
-        return {
-            Icon: Sprout,
-            iconColor: "text-green-600",
-            bgGradient: "bg-gradient-to-br from-green-100 to-emerald-50"
-        };
-    }
-    if (name.includes("basil")) {
-        return {
-            Icon: Leaf,
-            iconColor: "text-green-700",
-            bgGradient: "bg-gradient-to-br from-green-100 to-lime-50"
-        };
-    }
-
-    // Category fallbacks
-    return {
-        Icon: Apple,
-        iconColor: "text-primary",
-        bgGradient: "bg-gradient-to-br from-primary/10 to-primary/5"
-    };
-};
-
 export function ProductCard({ product, region, currentMonth, onClick }: ProductCardProps) {
     // Handle 'both' region by combining Egypt and UAE data
     const egyptData = product.egypt;
@@ -119,9 +50,6 @@ export function ProductCard({ product, region, currentMonth, onClick }: ProductC
     const peakMonths = data.filter(v => v === 2).length;
     const isPeakNow = data[currentMonth] === 2;
 
-    // Get product-specific icon
-    const { Icon: ProductIcon, iconColor, bgGradient } = getProductIcon(product.name);
-
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -129,7 +57,7 @@ export function ProductCard({ product, region, currentMonth, onClick }: ProductC
             whileHover={{ y: -4, scale: 1.02 }}
             onClick={onClick}
             className={`
-        group relative p-6 rounded-2xl border cursor-pointer transition-all duration-300
+        group relative p-6 rounded-2xl border cursor-pointer transition-all duration-300 overflow-hidden
         ${isPeakNow ? "bg-accent/5 border-accent/20 shadow-lg shadow-accent/10" : "bg-card border-border hover:border-primary/20"}
       `}
         >
@@ -140,10 +68,21 @@ export function ProductCard({ product, region, currentMonth, onClick }: ProductC
                     {status}
                 </span>
 
-                {/* Product Icon with gradient background */}
-                <div className={`w-12 h-12 rounded-xl ${bgGradient} flex items-center justify-center shadow-sm border border-border/50`}>
-                    <ProductIcon className={`w-6 h-6 ${iconColor}`} strokeWidth={2.5} />
-                </div>
+                {/* Product Image */}
+                {product.image ? (
+                    <div className="w-16 h-16 rounded-xl overflow-hidden shadow-md border border-border/50 bg-gradient-to-br from-muted/50 to-background">
+                        <img
+                            src={product.image}
+                            alt={product.name}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                        />
+                    </div>
+                ) : (
+                    // Fallback: Category emoji if no image
+                    <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary/10 to-accent/5 flex items-center justify-center text-3xl border border-border/50">
+                        {product.category === "Fruits" ? "🍎" : product.category === "Vegetables" ? "🥬" : "🌿"}
+                    </div>
+                )}
             </div>
 
             {/* Product Info */}

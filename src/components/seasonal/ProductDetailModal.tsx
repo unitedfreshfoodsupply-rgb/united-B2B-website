@@ -8,6 +8,7 @@ interface SeasonalProduct {
     category: string;
     egypt: number[];
     uae: number[];
+    image?: string; // Optional image URL
 }
 
 interface ProductDetailModalProps {
@@ -38,6 +39,19 @@ const getBestMonths = (data: number[]) => {
         .map(item => item.month);
 };
 
+const getCategoryIcon = (category: string) => {
+    switch (category.toLowerCase()) {
+        case "fruits":
+            return "🍎";
+        case "vegetables":
+            return "🥬";
+        case "herbs":
+            return "🌿";
+        default:
+            return "🌱";
+    }
+};
+
 export function ProductDetailModal({ product, isOpen, onClose, currentMonth }: ProductDetailModalProps) {
     if (!product) return null;
 
@@ -48,16 +62,33 @@ export function ProductDetailModal({ product, isOpen, onClose, currentMonth }: P
         <Dialog open={isOpen} onOpenChange={onClose}>
             <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
                 <DialogHeader>
-                    <DialogTitle className="text-2xl font-display font-bold flex items-center gap-3">
-                        <span className="text-3xl">
-                            {product.category === "Fruits" ? "🍎" : product.category === "Vegetables" ? "🥬" : "🌿"}
-                        </span>
-                        {product.name}
-                    </DialogTitle>
-                    <p className="text-muted-foreground">{product.category}</p>
+                    <div className="flex items-start gap-4">
+                        {/* Product Image */}
+                        {product.image ? (
+                            <div className="w-24 h-24 rounded-2xl overflow-hidden shadow-lg border-2 border-border bg-white shrink-0">
+                                <img
+                                    src={product.image}
+                                    alt={product.name}
+                                    className="w-full h-full object-cover"
+                                />
+                            </div>
+                        ) : (
+                            <div className="w-24 h-24 rounded-2xl bg-gradient-to-br from-primary/10 to-accent/5 flex items-center justify-center text-5xl border-2 border-border shrink-0">
+                                {getCategoryIcon(product.category)}
+                            </div>
+                        )}
+
+                        {/* Title and Category */}
+                        <div className="flex-1">
+                            <DialogTitle className="text-2xl font-display font-bold text-foreground mb-2">
+                                {product.name}
+                            </DialogTitle>
+                            <p className="text-muted-foreground text-lg">{product.category}</p>
+                        </div>
+                    </div>
                 </DialogHeader>
 
-                <div className="space-y-6 mt-4">
+                <div className="space-y-6 mt-6">
                     {/* Quick Stats */}
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                         <div className="p-4 rounded-xl bg-muted/50">

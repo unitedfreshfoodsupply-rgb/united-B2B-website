@@ -8,6 +8,7 @@ interface SeasonalProduct {
     category: string;
     egypt: number[];
     uae: number[];
+    image?: string; // Optional image URL
 }
 
 interface InSeasonNowProps {
@@ -81,8 +82,18 @@ export function InSeasonNow({ products, region, currentMonth }: InSeasonNowProps
                                 </div>
                             </div>
 
-                            {/* Icon */}
-                            <div className="text-4xl mb-3">{getCategoryIcon(product.category)}</div>
+                            {/* Product Image or Icon */}
+                            {product.image ? (
+                                <div className="w-16 h-16 rounded-xl overflow-hidden shadow-md border border-border/50 bg-white mb-3">
+                                    <img
+                                        src={product.image}
+                                        alt={product.name}
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                                    />
+                                </div>
+                            ) : (
+                                <div className="text-4xl mb-3">{getCategoryIcon(product.category)}</div>
+                            )}
 
                             {/* Product name */}
                             <h3 className="font-bold text-lg text-foreground mb-2 group-hover:text-accent transition-colors">
