@@ -60,10 +60,30 @@
     },
     "products": {
         "header": {
-            "badge": "Catalog V2.0",
-            "title": "Premium Product",
-            "title_highlight": "Catalog",
-            "description": "Explore our comprehensive portfolio of premium Egyptian produce and international specialties."
+            "badge": "Product Collection",
+            "title": "Global",
+            "title_highlight": "Collection",
+            "description": "Explore our comprehensive portfolio of premium Egyptian produce and international specialties.",
+            "stats": {
+                "active_skus": "Active SKUs",
+                "global_sourcing": "Global Sourcing",
+                "quality_index": "Quality Index",
+                "live_track": "Live Origin Track"
+            }
+        },
+        "ticker": {
+            "new": "NEW",
+            "imported": "IMPORTED",
+            "sourced_via": "Sourced via {{origin}}",
+            "items": {
+                "saffron_microgreens": "Saffron Microgreens",
+                "dragon_fruit": "Dragon Fruit",
+                "purple_carrots": "Purple Carrots",
+                "starfruit": "Starfruit",
+                "organic_kale": "Organic Kale",
+                "thai_mangoes": "Thai Mangoes",
+                "edible_flowers": "Edible Flowers"
+            }
         },
         "filters": {
             "search_placeholder": "Search catalog...",

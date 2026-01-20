@@ -64,10 +64,30 @@
     },
     "products": {
         "header": {
-            "badge": "الكتالوج V2.0",
-            "title": "كتالوج المنتجات",
-            "title_highlight": "المتميزة",
-            "description": "استكشف محفظتنا الشاملة من المنتجات المصرية المتميزة والتخصصات العالمية."
+            "badge": "مجموعة المنتجات",
+            "title": "المجموعة",
+            "title_highlight": "العالمية",
+            "description": "استكشف محفظتنا الشاملة من المنتجات المصرية المتميزة والتخصصات العالمية.",
+            "stats": {
+                "active_skus": "أصناف نشطة",
+                "global_sourcing": "توريد عالمي",
+                "quality_index": "مؤشر الجودة",
+                "live_track": "تتبع المنشأ المباشر"
+            }
+        },
+        "ticker": {
+            "new": "جديد",
+            "imported": "مستورد",
+            "sourced_via": "تم التوريد عبر {{origin}}",
+            "items": {
+                "saffron_microgreens": "نباتات الزعفران الصغيرة",
+                "dragon_fruit": "فاكهة التنين",
+                "purple_carrots": "جزر أرجواني",
+                "starfruit": "فاكهة النجمة",
+                "organic_kale": "كيل عضوي",
+                "thai_mangoes": "مانجو تايلاندي",
+                "edible_flowers": "زهور صالحة للأكل"
+            }
         },
         "filters": {
             "search_placeholder": "بحث في الكتالوج...",
