@@ -1,4 +1,5 @@
 import { useState, useMemo } from "react";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
@@ -8,10 +9,6 @@ import { ProductCard } from "@/components/seasonal/ProductCard";
 import { InSeasonNow } from "@/components/seasonal/InSeasonNow";
 import { ProductDetailModal } from "@/components/seasonal/ProductDetailModal";
 
-const months = [
-  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
-  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
-];
 
 const seasonalProducts = [
   {
@@ -80,28 +77,31 @@ const getAvailabilityColor = (value: number) => {
   return "bg-muted";
 };
 
-const getAvailabilityLabel = (value: number) => {
-  if (value === 2) return "Peak";
-  if (value === 1) return "Available";
-  return "Off-season";
+const getAvailabilityLabelKey = (value: number) => {
+  if (value === 2) return "seasonal.legend.peak";
+  if (value === 1) return "seasonal.legend.available";
+  return "seasonal.legend.off_season";
 };
 
 const seasons = [
-  { name: "Spring", icon: Leaf, months: "Mar - May", color: "text-green-500" },
-  { name: "Summer", icon: Sun, months: "Jun - Aug", color: "text-amber-500" },
-  { name: "Autumn", icon: Droplets, months: "Sep - Nov", color: "text-orange-500" },
-  { name: "Winter", icon: Snowflake, months: "Dec - Feb", color: "text-blue-500" },
+  { name: "seasonal.seasons.spring", icon: Leaf, months: "Mar - May", color: "text-green-500" },
+  { name: "seasonal.seasons.summer", icon: Sun, months: "Jun - Aug", color: "text-amber-500" },
+  { name: "seasonal.seasons.autumn", icon: Droplets, months: "Sep - Nov", color: "text-orange-500" },
+  { name: "seasonal.seasons.winter", icon: Snowflake, months: "Dec - Feb", color: "text-blue-500" },
 ];
 
 type ViewMode = "grid" | "table";
 type Region = "egypt" | "uae" | "both";
 
 export default function SeasonalPage() {
+  const { t } = useTranslation('pages');
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [selectedRegion, setSelectedRegion] = useState<Region>("both");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<typeof seasonalProducts[0] | null>(null);
   const [showModal, setShowModal] = useState(false);
+
+  const months = t('seasonal.months', { returnObjects: true }) as string[];
 
   // Filter products
   const filteredProducts = useMemo(() => {
@@ -115,7 +115,11 @@ export default function SeasonalPage() {
     setShowModal(true);
   };
 
-  const categories = ["Fruits", "Vegetables", "Herbs"];
+  const categories = [
+    { id: "Fruits", label: t('products.catalog.categories.fruits') },
+    { id: "Vegetables", label: t('products.catalog.categories.vegetables') },
+    { id: "Herbs", label: t('products.catalog.categories.herbs') },
+  ];
 
   return (
     <Layout>
@@ -137,7 +141,7 @@ export default function SeasonalPage() {
               <div className="flex items-center gap-3 mb-6">
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-bold border border-primary/20">
                   <Calendar size={14} />
-                  Seasonal Intelligence
+                  {t('seasonal.header.badge')}
                 </span>
                 <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 text-accent text-xs font-medium">
                   <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
@@ -147,16 +151,15 @@ export default function SeasonalPage() {
 
               {/* Title */}
               <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-foreground mb-6 tracking-tight leading-[1.1]">
-                Seasonal Availability
+                {t('seasonal.header.title')}
                 <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mt-2">
-                  Calendar
+                  {t('seasonal.header.title_highlight')}
                 </span>
               </h1>
 
               {/* Description */}
               <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl mb-6">
-                Plan your supply needs with our real-time seasonal availability data.
-                Know what's in peak, what's available, and plan ahead for optimal sourcing.
+                {t('seasonal.header.description')}
               </p>
 
               {/* Quick stats */}
@@ -164,19 +167,19 @@ export default function SeasonalPage() {
                 <div className="flex items-center gap-2 text-sm">
                   <div className="w-2 h-2 rounded-full bg-accent" />
                   <span className="text-muted-foreground">
-                    <span className="font-bold text-foreground">{seasonalProducts.filter(p => p.egypt[currentMonth] === 2 || p.uae[currentMonth] === 2).length}</span> products at peak
+                    <span className="font-bold text-foreground">{seasonalProducts.filter(p => p.egypt[currentMonth] === 2 || p.uae[currentMonth] === 2).length}</span> {t('seasonal.stats.peak_products')}
                   </span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
                   <div className="w-2 h-2 rounded-full bg-primary" />
                   <span className="text-muted-foreground">
-                    <span className="font-bold text-foreground">2</span> regions tracked
+                    <span className="font-bold text-foreground">2</span> {t('seasonal.stats.regions_tracked')}
                   </span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
                   <div className="w-2 h-2 rounded-full bg-blue-500" />
                   <span className="text-muted-foreground">
-                    <span className="font-bold text-foreground">12</span> months coverage
+                    <span className="font-bold text-foreground">12</span> {t('seasonal.stats.months_coverage')}
                   </span>
                 </div>
               </div>
@@ -195,16 +198,16 @@ export default function SeasonalPage() {
                     <Download size={20} className="text-accent" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-foreground text-sm">Export Data</h3>
-                    <p className="text-xs text-muted-foreground">Download calendar</p>
+                    <h3 className="font-bold text-foreground text-sm">{t('seasonal.controls.buttons.export')}</h3>
+                    <p className="text-xs text-muted-foreground">{t('seasonal.controls.buttons.download')}</p>
                   </div>
                 </div>
                 <Button className="w-full rounded-xl bg-accent hover:bg-accent/90 text-accent-foreground font-bold shadow-lg shadow-accent/20">
                   <Download size={16} className="mr-2" />
-                  Export Calendar
+                  {t('seasonal.controls.buttons.export')}
                 </Button>
                 <p className="text-xs text-muted-foreground mt-3 text-center">
-                  CSV & PDF formats available
+                  {t('seasonal.controls.export_note')}
                 </p>
               </div>
             </motion.div>
@@ -225,7 +228,7 @@ export default function SeasonalPage() {
                   : "text-muted-foreground hover:text-foreground"
                   }`}
               >
-                🇪🇬 Egypt
+                🇪🇬 {t('seasonal.controls.region.egypt')}
               </button>
               <button
                 onClick={() => setSelectedRegion("uae")}
@@ -234,7 +237,7 @@ export default function SeasonalPage() {
                   : "text-muted-foreground hover:text-foreground"
                   }`}
               >
-                🇦🇪 UAE
+                🇦🇪 {t('seasonal.controls.region.uae')}
               </button>
               <button
                 onClick={() => setSelectedRegion("both")}
@@ -243,7 +246,7 @@ export default function SeasonalPage() {
                   : "text-muted-foreground hover:text-foreground"
                   }`}
               >
-                Both
+                {t('seasonal.controls.region.both')}
               </button>
             </div>
 
@@ -256,18 +259,18 @@ export default function SeasonalPage() {
                   : "bg-muted text-muted-foreground hover:text-foreground"
                   }`}
               >
-                All
+                {t('products.catalog.categories.all')}
               </button>
               {categories.map(category => (
                 <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${selectedCategory === category
+                  key={category.id}
+                  onClick={() => setSelectedCategory(category.id)}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${selectedCategory === category.id
                     ? "bg-accent text-accent-foreground"
                     : "bg-muted text-muted-foreground hover:text-foreground"
                     }`}
                 >
-                  {category}
+                  {category.label}
                 </button>
               ))}
             </div>
@@ -280,7 +283,7 @@ export default function SeasonalPage() {
                   ? "bg-background text-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground"
                   }`}
-                title="Grid View"
+                title={t('seasonal.controls.view_mode.grid')}
               >
                 <Grid3x3 size={18} />
               </button>
@@ -290,7 +293,7 @@ export default function SeasonalPage() {
                   ? "bg-background text-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground"
                   }`}
-                title="Table View"
+                title={t('seasonal.controls.view_mode.table')}
               >
                 <Table2 size={18} />
               </button>
@@ -304,7 +307,11 @@ export default function SeasonalPage() {
         <div className="container-wide">
           {/* In Season Now */}
           <InSeasonNow
-            products={filteredProducts}
+            products={filteredProducts.map(p => ({
+              ...p,
+              name: t(`seasonal.products.${p.name}`),
+              category: t(`products.catalog.categories.${p.category.toLowerCase()}`)
+            }))}
             region={selectedRegion}
             currentMonth={currentMonth}
           />
@@ -313,16 +320,24 @@ export default function SeasonalPage() {
           {viewMode === "grid" && (
             <div>
               <h2 className="font-display text-2xl font-bold text-foreground mb-6">
-                All Products
+                {t('products.catalog.categories.all')}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
                 {filteredProducts.map((product, index) => (
                   <ProductCard
                     key={product.name}
-                    product={product}
+                    product={{
+                      ...product,
+                      name: t(`seasonal.products.${product.name}`),
+                      category: t(`products.catalog.categories.${product.category.toLowerCase()}`)
+                    }}
                     region={selectedRegion}
                     currentMonth={currentMonth}
-                    onClick={() => handleProductClick(product)}
+                    onClick={() => handleProductClick({
+                      ...product,
+                      name: t(`seasonal.products.${product.name}`),
+                      category: t(`products.catalog.categories.${product.category.toLowerCase()}`)
+                    })}
                   />
                 ))}
               </div>
@@ -336,15 +351,15 @@ export default function SeasonalPage() {
               <div className="flex flex-wrap items-center gap-6">
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded bg-accent" />
-                  <span className="text-sm text-muted-foreground">Peak Season</span>
+                  <span className="text-sm text-muted-foreground">{t('seasonal.legend.peak')}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded bg-accent/40" />
-                  <span className="text-sm text-muted-foreground">Available</span>
+                  <span className="text-sm text-muted-foreground">{t('seasonal.legend.available')}</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded bg-muted" />
-                  <span className="text-sm text-muted-foreground">Off-season</span>
+                  <span className="text-sm text-muted-foreground">{t('seasonal.legend.off_season')}</span>
                 </div>
               </div>
 
@@ -356,14 +371,14 @@ export default function SeasonalPage() {
                   transition={{ duration: 0.5 }}
                 >
                   <h2 className="font-display text-2xl font-bold text-foreground mb-4 flex items-center gap-2">
-                    <span>🇪🇬</span> Egypt Availability
+                    <span>🇪🇬</span> {t('seasonal.table.egypt_title')}
                   </h2>
                   <div className="overflow-x-auto">
                     <table className="w-full min-w-[800px]">
                       <thead>
                         <tr className="border-b border-border">
-                          <th className="text-left py-3 px-4 font-semibold text-foreground">Product</th>
-                          <th className="text-left py-3 px-2 text-muted-foreground text-sm">Category</th>
+                          <th className="text-left py-3 px-4 font-semibold text-foreground">{t('seasonal.table.columns.product')}</th>
+                          <th className="text-left py-3 px-2 text-muted-foreground text-sm">{t('seasonal.table.columns.category')}</th>
                           {months.map((month, i) => (
                             <th
                               key={month}
@@ -377,13 +392,13 @@ export default function SeasonalPage() {
                       <tbody>
                         {filteredProducts.map((product) => (
                           <tr key={product.name} className="border-b border-border/50 hover:bg-muted/30">
-                            <td className="py-3 px-4 font-medium text-foreground">{product.name}</td>
-                            <td className="py-3 px-2 text-sm text-muted-foreground">{product.category}</td>
+                            <td className="py-3 px-4 font-medium text-foreground">{t(`seasonal.products.${product.name}`)}</td>
+                            <td className="py-3 px-2 text-sm text-muted-foreground">{t(`products.catalog.categories.${product.category.toLowerCase()}`)}</td>
                             {product.egypt.map((value, i) => (
                               <td key={i} className="py-3 px-2 text-center">
                                 <div
                                   className={`w-8 h-8 mx-auto rounded-lg ${getAvailabilityColor(value)} ${i === currentMonth ? "ring-2 ring-accent ring-offset-2" : ""}`}
-                                  title={getAvailabilityLabel(value)}
+                                  title={t(getAvailabilityLabelKey(value))}
                                 />
                               </td>
                             ))}
@@ -403,14 +418,14 @@ export default function SeasonalPage() {
                   transition={{ duration: 0.5, delay: 0.1 }}
                 >
                   <h2 className="font-display text-2xl font-bold text-foreground mb-4 flex items-center gap-2">
-                    <span>🇦🇪</span> UAE Availability
+                    <span>🇦🇪</span> {t('seasonal.table.uae_title')}
                   </h2>
                   <div className="overflow-x-auto">
                     <table className="w-full min-w-[800px]">
                       <thead>
                         <tr className="border-b border-border">
-                          <th className="text-left py-3 px-4 font-semibold text-foreground">Product</th>
-                          <th className="text-left py-3 px-2 text-muted-foreground text-sm">Category</th>
+                          <th className="text-left py-3 px-4 font-semibold text-foreground">{t('seasonal.table.columns.product')}</th>
+                          <th className="text-left py-3 px-2 text-muted-foreground text-sm">{t('seasonal.table.columns.category')}</th>
                           {months.map((month, i) => (
                             <th
                               key={month}
@@ -424,13 +439,13 @@ export default function SeasonalPage() {
                       <tbody>
                         {filteredProducts.map((product) => (
                           <tr key={product.name} className="border-b border-border/50 hover:bg-muted/30">
-                            <td className="py-3 px-4 font-medium text-foreground">{product.name}</td>
-                            <td className="py-3 px-2 text-sm text-muted-foreground">{product.category}</td>
+                            <td className="py-3 px-4 font-medium text-foreground">{t(`seasonal.products.${product.name}`)}</td>
+                            <td className="py-3 px-2 text-sm text-muted-foreground">{t(`products.catalog.categories.${product.category.toLowerCase()}`)}</td>
                             {product.uae.map((value, i) => (
                               <td key={i} className="py-3 px-2 text-center">
                                 <div
                                   className={`w-8 h-8 mx-auto rounded-lg ${getAvailabilityColor(value)} ${i === currentMonth ? "ring-2 ring-accent ring-offset-2" : ""}`}
-                                  title={getAvailabilityLabel(value)}
+                                  title={t(getAvailabilityLabelKey(value))}
                                 />
                               </td>
                             ))}
@@ -455,11 +470,9 @@ export default function SeasonalPage() {
             <div className="flex gap-4">
               <Info className="w-6 h-6 text-primary shrink-0 mt-1" />
               <div>
-                <h3 className="font-semibold text-foreground mb-2">Planning Your Supply</h3>
+                <h3 className="font-semibold text-foreground mb-2">{t('seasonal.info.title')}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">
-                  Seasonal availability may vary based on weather conditions and farm yields.
-                  For off-season items, we can source through our import network.
-                  Contact our sales team for custom supply programs and volume commitments.
+                  {t('seasonal.info.description')}
                 </p>
               </div>
             </div>
@@ -477,15 +490,14 @@ export default function SeasonalPage() {
             transition={{ duration: 0.5 }}
           >
             <h2 className="font-display text-3xl font-bold mb-4">
-              Need Custom Supply Programs?
+              {t('seasonal.cta.title')}
             </h2>
             <p className="text-primary-foreground/80 mb-8 max-w-xl mx-auto">
-              We can design year-round supply programs with import alternatives
-              for off-season periods.
+              {t('seasonal.cta.description')}
             </p>
             <Button variant="accent" size="xl" asChild>
               <Link to="/rfq">
-                Request Quote
+                {t('seasonal.controls.buttons.request_access')}
                 <ArrowRight className="w-5 h-5 ml-1" />
               </Link>
             </Button>

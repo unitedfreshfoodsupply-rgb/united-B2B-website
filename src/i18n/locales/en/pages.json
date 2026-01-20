@@ -1,0 +1,494 @@
+{
+    "contact": {
+        "label": "Section_01 // Global_Reach",
+        "title_prefix": "CONNECT WITH",
+        "title_highlight": "INTELLIGENCE",
+        "description": "Initialize communication with our regional hubs. We provide institutional support and supply architecture for global partners.",
+        "items": {
+            "egypt": {
+                "title": "Egypt Regional HQ",
+                "detail": "Cairo Hub, Logistics Zone A",
+                "infra": "HUB_ID: EG_NORTH_01"
+            },
+            "uae": {
+                "title": "UAE Strategic Hub",
+                "detail": "Dubai Business Bay, Level 42",
+                "infra": "HUB_ID: UAE_GULF_CORE"
+            },
+            "email": {
+                "title": "Electronic Inquiry",
+                "detail": "strategic@uniteda.com",
+                "infra": "SSL_ENCRYPTED_STREAM"
+            }
+        },
+        "status": "Status: SECURE_ENTRY_ACTIVE",
+        "form": {
+            "entity_name": "Entity_Name",
+            "entity_placeholder": "COMPANY CORP",
+            "access_mail": "Access_Mail",
+            "mail_placeholder": "PARTNER@PROTOCOL.COM",
+            "subject": "Transmission_Subject",
+            "subject_placeholder": "SYSTEM INTEGRATION REQUEST",
+            "payload": "Payload_Data",
+            "payload_placeholder": "DETAILS OF STRATEGIC PARTNERSHIP...",
+            "submit": "INITIALIZE UPLINK"
+        }
+    },
+    "not_found": {
+        "error_code": "ERROR_CODE // PATH_INVALID",
+        "media_label": "UNAUTHORIZED",
+        "media_highlight": "TRAJECTORY",
+        "description": "The requested pathway <path>{{path}}</path> does not exist within the UNITEDA supply architecture.",
+        "reset_btn": "RESET TO HOME",
+        "syslog": "SYSLOG_REPORTED"
+    },
+    "feature_standby": {
+        "badge": "STBY",
+        "label": "SYSTEM_MODULE // PENDING",
+        "title_prefix": "LAYER UNDER",
+        "title_highlight": "CONFIGURATION",
+        "description": "This operational module is currently undergoing architectural refinement. Our system intelligence is initializing this data layer for upcoming deployment.",
+        "protection": {
+            "label": "Protection",
+            "value": "Encrypted Stream"
+        },
+        "status": {
+            "label": "Status",
+            "value": "Sync In-Progress"
+        },
+        "return_btn": "RETURN TO SYSTEM CORE"
+    },
+    "products": {
+        "header": {
+            "badge": "Catalog V2.0",
+            "title": "Premium Product",
+            "title_highlight": "Catalog",
+            "description": "Explore our comprehensive portfolio of premium Egyptian produce and international specialties."
+        },
+        "filters": {
+            "search_placeholder": "Search catalog...",
+            "categories_title": "Categories",
+            "quick_filters_title": "Quick Filter",
+            "region": {
+                "label": "Region",
+                "all": "All Regions",
+                "egypt": "Egypt",
+                "uae": "UAE"
+            },
+            "season": {
+                "label": "Season",
+                "all": "All Seasons",
+                "peak": "Peak Season",
+                "available": "Available",
+                "starting": "Just Starting"
+            },
+            "industry": {
+                "label": "Industry",
+                "all": "All Industries",
+                "hotel": "Hotel Supplies",
+                "restaurant": "Restaurant",
+                "airline": "Airline Catering",
+                "retail": "Retail Retail"
+            }
+        },
+        "catalog": {
+            "showing": "Showing",
+            "products_suffix": "products",
+            "categories": {
+                "all": "All Categories",
+                "fruits": "Fresh Fruits",
+                "vegetables": "Fresh Vegetables",
+                "herbs": "Herbs & Greens",
+                "microgreens": "Microgreens",
+                "exotic": "Exotic Produce",
+                "specialty": "Specialty Items"
+            },
+            "grades": {
+                "premium": "Premium",
+                "standard": "Standard",
+                "export": "Export Grade",
+                "hydroponic": "Hydroponic",
+                "organic": "Organic",
+                "baby_leaf": "Baby Leaf",
+                "microgreen": "Microgreen"
+            },
+            "items": {
+                "1": {
+                    "name": "Roma Tomatoes",
+                    "scientific_name": "Solanum lycopersicum",
+                    "origin": "Egypt",
+                    "season": "Peak",
+                    "availability": "Year-round"
+                },
+                "2": {
+                    "name": "Valencia Oranges",
+                    "scientific_name": "Citrus sinensis",
+                    "origin": "Egypt",
+                    "season": "Peak",
+                    "availability": "Winter"
+                },
+                "3": {
+                    "name": "Fresh Basil",
+                    "scientific_name": "Ocimum basilicum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "4": {
+                    "name": "Strawberries",
+                    "scientific_name": "Fragaria × ananassa",
+                    "origin": "Egypt",
+                    "season": "Starting",
+                    "availability": "Spring"
+                },
+                "5": {
+                    "name": "Baby Spinach",
+                    "scientific_name": "Spinacia oleracea",
+                    "origin": "UAE",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "6": {
+                    "name": "Dragon Fruit",
+                    "scientific_name": "Selenicereus undatus",
+                    "origin": "Imported",
+                    "season": "Available",
+                    "availability": "Summer"
+                },
+                "7": {
+                    "name": "Bell Peppers",
+                    "scientific_name": "Capsicum annuum",
+                    "origin": "Egypt",
+                    "season": "Peak",
+                    "availability": "Year-round"
+                },
+                "8": {
+                    "name": "Pea Shoots",
+                    "scientific_name": "Pisum sativum",
+                    "origin": "UAE",
+                    "season": "Available",
+                    "availability": "Year-round"
+                }
+            }
+        }
+    },
+    "seasonal": {
+        "header": {
+            "badge": "Seasonal Calendar",
+            "title": "Seasonal",
+            "title_highlight": "Availability",
+            "description": "Comprehensive tracking of produce availability across our operational regions. Data reflects historical patterns and current forecast models."
+        },
+        "stats": {
+            "peak_products": "Products in Peak",
+            "regions_tracked": "Regions Tracked",
+            "months_coverage": "Months Coverage"
+        },
+        "controls": {
+            "region": {
+                "egypt": "Egypt",
+                "uae": "UAE",
+                "both": "Both Regions"
+            },
+            "view_mode": {
+                "grid": "Grid View",
+                "table": "Table View"
+            },
+            "buttons": {
+                "export": "Export Report",
+                "download": "Download PDF",
+                "request_access": "Request Access"
+            },
+            "export_note": "Includes full seasonal analysis & forecasts"
+        },
+        "legend": {
+            "peak": "Peak Season",
+            "available": "Available",
+            "off_season": "Off Season"
+        },
+        "months": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+        ],
+        "seasons": {
+            "spring": "Spring",
+            "summer": "Summer",
+            "autumn": "Autumn",
+            "winter": "Winter"
+        },
+        "table": {
+            "egypt_title": "Egypt Availability Pattern",
+            "uae_title": "UAE Availability Pattern",
+            "columns": {
+                "product": "Product",
+                "category": "Category"
+            }
+        },
+        "info": {
+            "title": "Operational Intelligence",
+            "description": "Our seasonal tracking system utilizes real-time agricultural data and historical yield patterns to forecast optimal sourcing windows. Peak season indicates maximum availability and highest quality metrics."
+        },
+        "cta": {
+            "title": "Secure Your Seasonal Supply",
+            "description": "Don't leave your supply chain to chance. Pre-book your seasonal requirements with our guaranteed allocation programs."
+        },
+        "products": {
+            "Strawberries": "Strawberries",
+            "Mangoes": "Mangoes",
+            "Valencia Oranges": "Valencia Oranges",
+            "Pomegranates": "Pomegranates",
+            "Tomatoes": "Tomatoes",
+            "Bell Peppers": "Bell Peppers",
+            "Asparagus": "Asparagus",
+            "Fresh Basil": "Fresh Basil"
+        },
+        "status": {
+            "peak_now": "Peak Now",
+            "ending_soon": "Ending Soon",
+            "coming_soon": "Coming Soon",
+            "available": "Available",
+            "off_season": "Off-Season"
+        },
+        "in_season": {
+            "title": "In Season Now",
+            "subtitle": "Peak availability this month - order now for best quality and pricing",
+            "quick_quote": "Quick Quote"
+        },
+        "modal": {
+            "peak_months": "months",
+            "current_status": "Current Status",
+            "best_windows": "Best Ordering Windows",
+            "monthly_availability": "Monthly Availability",
+            "limited_availability": "Limited availability",
+            "close": "Close",
+            "request_quote": "Request Quote"
+        }
+    },
+    "operations": {
+        "hero": {
+            "status": "SYSTEM: ONLINE",
+            "terminal": "TERMINAL_01 // MAIN_FEED",
+            "infra_overview": "INFRASTRUCTURE OVERVIEW",
+            "title_prefix": "OPERATIONAL",
+            "title_highlight": "EXCELLENCE",
+            "description": "Our integrated supply chain infrastructure ensures peak performance across all regional hubs. Monitoring thermal integrity, logistics velocity, and quality assurance in real-time.",
+            "cta": "INITIATE PROCUREMENT",
+            "deco": "SYSTEM_ID: UNT-882<br/>SECURE_LINK: ESTABLISHED<br/>LATENCY: 12ms"
+        },
+        "stats": {
+            "facility": {
+                "value": "24/7",
+                "label": "FACILITY UPTIME"
+            },
+            "delivery": {
+                "value": "98.5%",
+                "label": "ON-TIME DELIVERY"
+            },
+            "varieties": {
+                "value": "150+",
+                "label": "PRODUCE VARIETIES"
+            },
+            "monitoring": {
+                "value": "100%",
+                "label": "ACTIVE MONITORING"
+            }
+        },
+        "anatomy": {
+            "label": "// SYSTEM_ANATOMY",
+            "title_prefix": "CORE",
+            "title_highlight": "SUBSYSTEMS",
+            "description": "Declassified breakdown of our proprietary supply chain architecture. Each layer operates autonomously while maintaining complete synchronization with the central core.",
+            "layer1": {
+                "id": "SYS_01",
+                "title": "Procurement Backbone",
+                "description": "Direct-from-source acquisition network ensuring premium quality entry points.",
+                "tags": [
+                    "SOURCE_DIRECT",
+                    "QUALITY_GATE",
+                    "CERTIFIED"
+                ]
+            },
+            "layer2": {
+                "id": "SYS_02",
+                "title": "Thermal Integrity",
+                "description": "Unbroken cold chain maintenance from harvest to final delivery vector.",
+                "monitoring": "TEMP_CHECK",
+                "flow": "OPTIMAL"
+            },
+            "layer3": {
+                "id": "SYS_03",
+                "title": "Precision Processing",
+                "description": "Automated sorting and packaging facilities with AI-driven quality control.",
+                "tags": [
+                    "AI_SORTING",
+                    "AUTO_PACK",
+                    "ISO_STD"
+                ]
+            },
+            "layer4": {
+                "id": "SYS_04",
+                "title": "Intelligent Logistics",
+                "description": "Smart routing algorithms optimizing fleet deployment and delivery windows.",
+                "tags": []
+            }
+        },
+        "compliance": {
+            "label": "// AUTHORITY_PROOF",
+            "title_prefix": "GLOBAL",
+            "title_highlight": "COMPLIANCE",
+            "description": "Our operations adhere to the strictest international standards for food safety and operational handling. We maintain active certification across all key regulatory frameworks.",
+            "verified": "VERIFIED_STATUS",
+            "hud": {
+                "subject": "SUBJECT: MICROGREENS_BATCH_Alpha",
+                "text": "Quality analysis complete. Purity levels exceed standard parameters. Ready for immediate deployment."
+            }
+        },
+        "certifications": {
+            "haccp": {
+                "name": "HACCP Certified",
+                "description": "Hazard Analysis Critical Control Point"
+            },
+            "iso": {
+                "name": "ISO 22000",
+                "description": "Food Safety Management"
+            },
+            "globalgap": {
+                "name": "Global G.A.P",
+                "description": "Good Agricultural Practices"
+            }
+        },
+        "partnerships": {
+            "label": "ALLIANCE_PROTOCOL",
+            "title_prefix": "STRATEGIC",
+            "title_highlight": "PARTNERSHIPS",
+            "description": "Join the network of elite institutions leveraging our supply architecture. Initialize a partnership query to access our dedicated logistical support.",
+            "cta_primary": "INITIALIZE PARTNERSHIP",
+            "cta_secondary": "CONTACT OPS_CENTER",
+            "footer": {
+                "system": "SYSTEM_VER: 4.2.0",
+                "access": "ACCESS_LEVEL: VISITOR"
+            }
+        }
+    },
+    "rfq": {
+        "header": {
+            "badge": "Procurement Portal",
+            "title": "Request for Quote",
+            "description": "Initialize a procurement request for your organization. Our team will structure a custom supply proposal based on your specifications."
+        },
+        "form": {
+            "sections": {
+                "business_info": "Business Information",
+                "supply_req": "Supply Requirements",
+                "contact_info": "Contact Protocol"
+            },
+            "fields": {
+                "company": {
+                    "label": "Entity Name",
+                    "placeholder": "Registered Company Name"
+                },
+                "business_type": {
+                    "label": "Business Type",
+                    "placeholder": "Select Entity Type"
+                },
+                "country": {
+                    "label": "Region",
+                    "placeholder": "Select Region"
+                },
+                "city": {
+                    "label": "City / Zone",
+                    "placeholder": "Operational Hub Location"
+                },
+                "categories": {
+                    "label": "Required Categories"
+                },
+                "volume": {
+                    "label": "Projected Volume",
+                    "placeholder": "Select Monthly Volume"
+                },
+                "frequency": {
+                    "label": "Supply Frequency",
+                    "placeholder": "Select Delivery Cadence"
+                },
+                "requirements": {
+                    "label": "Additional Specifications",
+                    "placeholder": "Specific varieties, grading requirements, or packaging protocols..."
+                },
+                "name": {
+                    "label": "Contact Person",
+                    "placeholder": "Full Name"
+                },
+                "position": {
+                    "label": "Position",
+                    "placeholder": "Job Title"
+                },
+                "email": {
+                    "label": "Business Email",
+                    "placeholder": "name@company.com"
+                },
+                "phone": {
+                    "label": "Direct Line",
+                    "placeholder": "+1 (555) 000-0000"
+                }
+            },
+            "options": {
+                "business_types": {
+                    "hotel": "Hotel / Resort",
+                    "restaurant": "Restaurant / Cafe",
+                    "airline": "Airline Catering",
+                    "supermarket": "Supermarket / Retail chain",
+                    "distributor": "Wholesale Distributor",
+                    "processor": "Food Processor",
+                    "other": "Other Institution"
+                },
+                "volume_ranges": {
+                    "small": "< 1 Ton / Month",
+                    "medium": "1 - 5 Tons / Month",
+                    "large": "5 - 20 Tons / Month",
+                    "enterprise": "> 20 Tons / Month"
+                },
+                "frequencies": {
+                    "daily": "Daily Delivery",
+                    "weekly_2": "2-3 Times / Weekly",
+                    "weekly": "Weekly",
+                    "biweekly": "Bi-Weekly",
+                    "monthly": "Monthly"
+                }
+            },
+            "submit": {
+                "button": "Orbit Request",
+                "submitting": "Transmitting...",
+                "note": "Response time estimate: < 24h"
+            },
+            "success": {
+                "title": "Request Transmitted",
+                "description": "Our procurement team has received your signal. Expect an encrypted proposal shortly."
+            }
+        },
+        "sidebar": {
+            "process": {
+                "title": "Procurement Protocol",
+                "steps": [
+                    "Submit requirements via secure form",
+                    "Receive custom proposal within 24h",
+                    "Account activation & logistics setup"
+                ]
+            },
+            "contact": {
+                "title": "Direct Uplink",
+                "description": "For urgent enterprise requirements or custom integrations, utilize direct lines."
+            },
+            "certifications": "Quality Certifications"
+        }
+    }
+}

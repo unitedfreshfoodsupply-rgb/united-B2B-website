@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -13,114 +14,100 @@ import {
 import { Search, Filter, Grid3X3, List, Apple, Carrot, Leaf, Sprout, Cherry, CircleDot } from "lucide-react";
 
 const categories = [
-  { id: "all", name: "All Products", icon: Grid3X3, count: 209 },
-  { id: "fruits", name: "Fresh Fruits", icon: Apple, count: 45 },
-  { id: "vegetables", name: "Fresh Vegetables", icon: Carrot, count: 62 },
-  { id: "herbs", name: "Herbs & Greens", icon: Leaf, count: 28 },
-  { id: "microgreens", name: "Microgreens", icon: Sprout, count: 18 },
-  { id: "exotic", name: "Exotic Produce", icon: Cherry, count: 34 },
-  { id: "specialty", name: "Specialty Items", icon: CircleDot, count: 22 },
+  { id: "all", nameKey: "products.catalog.categories.all", icon: Grid3X3, count: 209 },
+  { id: "fruits", nameKey: "products.catalog.categories.fruits", icon: Apple, count: 45 },
+  { id: "vegetables", nameKey: "products.catalog.categories.vegetables", icon: Carrot, count: 62 },
+  { id: "herbs", nameKey: "products.catalog.categories.herbs", icon: Leaf, count: 28 },
+  { id: "microgreens", nameKey: "products.catalog.categories.microgreens", icon: Sprout, count: 18 },
+  { id: "exotic", nameKey: "products.catalog.categories.exotic", icon: Cherry, count: 34 },
+  { id: "specialty", nameKey: "products.catalog.categories.specialty", icon: CircleDot, count: 22 },
 ];
 
 const sampleProducts = [
   {
     id: "1",
-    name: "Roma Tomatoes",
-    scientificName: "Solanum lycopersicum",
+    key: "1",
     category: "vegetables",
-    origin: "Egypt",
-    availability: "Year-round",
-    season: "Peak",
-    grades: ["Premium", "Standard"],
+    origin: "egypt",
+    season: "peak",
     image: "🍅",
+    grades: ["premium", "standard"]
   },
   {
     id: "2",
-    name: "Valencia Oranges",
-    scientificName: "Citrus sinensis",
+    key: "2",
     category: "fruits",
-    origin: "Egypt",
-    availability: "Winter",
-    season: "Peak",
-    grades: ["Export Grade", "Premium", "Standard"],
+    origin: "egypt",
+    season: "peak",
     image: "🍊",
+    grades: ["export", "premium", "standard"]
   },
   {
     id: "3",
-    name: "Fresh Basil",
-    scientificName: "Ocimum basilicum",
+    key: "3",
     category: "herbs",
-    origin: "Egypt",
-    availability: "Year-round",
-    season: "Available",
-    grades: ["Hydroponics", "Organic"],
+    origin: "egypt",
+    season: "available",
     image: "🌿",
+    grades: ["hydroponic", "organic"]
   },
   {
     id: "4",
-    name: "Strawberries",
-    scientificName: "Fragaria × ananassa",
+    key: "4",
     category: "fruits",
-    origin: "Egypt",
-    availability: "Spring",
-    season: "Starting",
-    grades: ["Premium", "Standard"],
+    origin: "egypt",
+    season: "starting",
     image: "🍓",
+    grades: ["premium", "standard"]
   },
   {
     id: "5",
-    name: "Baby Spinach",
-    scientificName: "Spinacia oleracea",
+    key: "5",
     category: "microgreens",
-    origin: "UAE",
-    availability: "Year-round",
-    season: "Available",
-    grades: ["Baby Leaf", "Microgreen"],
+    origin: "uae",
+    season: "available",
     image: "🥬",
+    grades: ["baby_leaf", "microgreen"]
   },
   {
     id: "6",
-    name: "Dragon Fruit",
-    scientificName: "Selenicereus undatus",
+    key: "6",
     category: "exotic",
-    origin: "Imported",
-    availability: "Summer",
-    season: "Available",
-    grades: ["Premium"],
+    origin: "imported",
+    season: "available",
     image: "🐉",
+    grades: ["premium"]
   },
   {
     id: "7",
-    name: "Bell Peppers",
-    scientificName: "Capsicum annuum",
+    key: "7",
     category: "vegetables",
-    origin: "Egypt",
-    availability: "Year-round",
-    season: "Peak",
-    grades: ["Premium", "Standard"],
+    origin: "egypt",
+    season: "peak",
     image: "🫑",
+    grades: ["premium", "standard"]
   },
   {
     id: "8",
-    name: "Pea Shoots",
-    scientificName: "Pisum sativum",
+    key: "8",
     category: "microgreens",
-    origin: "UAE",
-    availability: "Year-round",
-    season: "Available",
-    grades: ["Microgreen"],
+    origin: "uae",
+    season: "available",
     image: "🌱",
+    grades: ["microgreen"]
   },
 ];
 
 export default function ProductsPage() {
+  const { t } = useTranslation('pages');
   const [activeCategory, setActiveCategory] = useState("all");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [searchQuery, setSearchQuery] = useState("");
 
   const filteredProducts = sampleProducts.filter(product => {
+    const productName = t(`products.catalog.items.${product.key}.name`);
     const matchesCategory = activeCategory === "all" || product.category === activeCategory;
-    const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesSearch = productName.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
@@ -135,14 +122,13 @@ export default function ProductsPage() {
             transition={{ duration: 0.5 }}
           >
             <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-              Product Intelligence
+              {t('products.header.badge')}
             </span>
             <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-              Product Catalog
+              {t('products.header.title')}
             </h1>
             <p className="text-muted-foreground text-lg max-w-2xl">
-              Browse our comprehensive catalog of 200+ premium products with complete
-              specifications, seasonal availability, and quality grades.
+              {t('products.header.description')}
             </p>
           </motion.div>
         </div>
@@ -164,7 +150,7 @@ export default function ProductsPage() {
                 <div className="relative">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
                   <Input
-                    placeholder="Search products..."
+                    placeholder={t('products.filters.search_placeholder')}
                     className="pl-10"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
@@ -175,7 +161,7 @@ export default function ProductsPage() {
                 <div className="p-4 rounded-2xl bg-card border border-border">
                   <h3 className="font-display font-semibold text-foreground mb-4 flex items-center gap-2">
                     <Filter className="w-4 h-4" />
-                    Categories
+                    {t('products.filters.categories_title')}
                   </h3>
                   <div className="space-y-1">
                     {categories.map((cat) => (
@@ -189,7 +175,7 @@ export default function ProductsPage() {
                       >
                         <span className="flex items-center gap-2">
                           <cat.icon className="w-4 h-4" />
-                          {cat.name}
+                          {t(cat.nameKey)}
                         </span>
                         <span className={`text-xs ${activeCategory === cat.id ? "text-primary-foreground/80" : "text-muted-foreground"
                           }`}>
@@ -203,40 +189,40 @@ export default function ProductsPage() {
                 {/* Quick Filters */}
                 <div className="p-4 rounded-2xl bg-card border border-border">
                   <h3 className="font-display font-semibold text-foreground mb-4">
-                    Quick Filters
+                    {t('products.filters.quick_filters_title')}
                   </h3>
                   <div className="space-y-3">
                     <Select>
                       <SelectTrigger>
-                        <SelectValue placeholder="Region" />
+                        <SelectValue placeholder={t('products.filters.region.label')} />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="all">All Regions</SelectItem>
-                        <SelectItem value="egypt">Egypt</SelectItem>
-                        <SelectItem value="uae">UAE</SelectItem>
+                        <SelectItem value="all">{t('products.filters.region.all')}</SelectItem>
+                        <SelectItem value="egypt">{t('products.filters.region.egypt')}</SelectItem>
+                        <SelectItem value="uae">{t('products.filters.region.uae')}</SelectItem>
                       </SelectContent>
                     </Select>
                     <Select>
                       <SelectTrigger>
-                        <SelectValue placeholder="Season" />
+                        <SelectValue placeholder={t('products.filters.season.label')} />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="all">All Seasons</SelectItem>
-                        <SelectItem value="peak">Peak Now</SelectItem>
-                        <SelectItem value="available">Available</SelectItem>
-                        <SelectItem value="starting">Starting Soon</SelectItem>
+                        <SelectItem value="all">{t('products.filters.season.all')}</SelectItem>
+                        <SelectItem value="peak">{t('products.filters.season.peak')}</SelectItem>
+                        <SelectItem value="available">{t('products.filters.season.available')}</SelectItem>
+                        <SelectItem value="starting">{t('products.filters.season.starting')}</SelectItem>
                       </SelectContent>
                     </Select>
                     <Select>
                       <SelectTrigger>
-                        <SelectValue placeholder="Industry" />
+                        <SelectValue placeholder={t('products.filters.industry.label')} />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="all">All Industries</SelectItem>
-                        <SelectItem value="hotel">Hotels</SelectItem>
-                        <SelectItem value="restaurant">Restaurants</SelectItem>
-                        <SelectItem value="airline">Airlines</SelectItem>
-                        <SelectItem value="retail">Retail</SelectItem>
+                        <SelectItem value="all">{t('products.filters.industry.all')}</SelectItem>
+                        <SelectItem value="hotel">{t('products.filters.industry.hotel')}</SelectItem>
+                        <SelectItem value="restaurant">{t('products.filters.industry.restaurant')}</SelectItem>
+                        <SelectItem value="airline">{t('products.filters.industry.airline')}</SelectItem>
+                        <SelectItem value="retail">{t('products.filters.industry.retail')}</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
@@ -254,7 +240,7 @@ export default function ProductsPage() {
                 className="flex items-center justify-between mb-6"
               >
                 <p className="text-muted-foreground">
-                  Showing <span className="font-semibold text-foreground">{filteredProducts.length}</span> products
+                  {t('products.catalog.showing')} <span className="font-semibold text-foreground">{filteredProducts.length}</span> {t('products.catalog.products_suffix')}
                 </p>
                 <div className="flex items-center gap-2">
                   <Button
@@ -291,27 +277,35 @@ export default function ProductsPage() {
                     <div className="flex-1">
                       <div className="flex items-start justify-between gap-2 mb-1">
                         <h3 className="font-display font-semibold text-foreground group-hover:text-primary transition-colors">
-                          {product.name}
+                          {t(`products.catalog.items.${product.key}.name`)}
                         </h3>
-                        <span className={`px-2 py-0.5 rounded text-xs font-medium ${product.season === "Peak"
+                        <span className={`px-2 py-0.5 rounded text-xs font-medium ${product.season === "peak"
                           ? "bg-accent/10 text-accent"
-                          : product.season === "Starting"
+                          : product.season === "starting"
                             ? "bg-amber-500/10 text-amber-600"
                             : "bg-muted text-muted-foreground"
                           }`}>
-                          {product.season}
+                          {product.season === "peak" ? t('products.filters.season.peak') :
+                            product.season === "starting" ? t('products.filters.season.starting') :
+                              t('products.filters.season.available')}
                         </span>
                       </div>
-                      <p className="text-xs text-muted-foreground italic mb-3">{product.scientificName}</p>
+                      <p className="text-xs text-muted-foreground italic mb-3">
+                        {t(`products.catalog.items.${product.key}.scientific_name`)}
+                      </p>
                       <div className="flex flex-wrap gap-2 text-xs">
-                        <span className="px-2 py-1 rounded bg-muted text-muted-foreground">{product.origin}</span>
-                        <span className="px-2 py-1 rounded bg-muted text-muted-foreground">{product.availability}</span>
+                        <span className="px-2 py-1 rounded bg-muted text-muted-foreground">
+                          {t(`products.catalog.items.${product.key}.origin`)}
+                        </span>
+                        <span className="px-2 py-1 rounded bg-muted text-muted-foreground">
+                          {t(`products.catalog.items.${product.key}.availability`)}
+                        </span>
                       </div>
                       {viewMode === "list" && (
                         <div className="flex flex-wrap gap-1 mt-2">
                           {product.grades.map(grade => (
                             <span key={grade} className="px-2 py-0.5 rounded bg-primary/10 text-primary text-xs">
-                              {grade}
+                              {t(`products.catalog.grades.${grade}`)}
                             </span>
                           ))}
                         </div>

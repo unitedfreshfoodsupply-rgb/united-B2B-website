@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { Sparkles, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
@@ -31,6 +32,7 @@ const getCategoryIcon = (category: string) => {
 };
 
 export function InSeasonNow({ products, region, currentMonth }: InSeasonNowProps) {
+    const { t } = useTranslation('pages');
     // Get products at peak (value = 2) for current month
     const peakProducts = products.filter(product => {
         if (region === "both") {
@@ -53,11 +55,11 @@ export function InSeasonNow({ products, region, currentMonth }: InSeasonNowProps
                 <div className="flex items-center gap-2 mb-2">
                     <Sparkles className="w-5 h-5 text-accent" />
                     <h2 className="font-display text-2xl font-bold text-foreground">
-                        In Season Now
+                        {t('seasonal.in_season.title')}
                     </h2>
                 </div>
                 <p className="text-muted-foreground">
-                    Peak availability this month - order now for best quality and pricing
+                    {t('seasonal.in_season.subtitle')}
                 </p>
             </motion.div>
 
@@ -107,12 +109,12 @@ export function InSeasonNow({ products, region, currentMonth }: InSeasonNowProps
                             <div className="flex gap-2 mb-4">
                                 {egyptPeak && (
                                     <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-accent/20 text-accent text-xs font-medium">
-                                        🇪🇬 Egypt
+                                        🇪🇬 {t('seasonal.controls.region.egypt')}
                                     </span>
                                 )}
                                 {uaePeak && (
                                     <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-accent/20 text-accent text-xs font-medium">
-                                        🇦🇪 UAE
+                                        🇦🇪 {t('seasonal.controls.region.uae')}
                                     </span>
                                 )}
                             </div>
@@ -125,7 +127,7 @@ export function InSeasonNow({ products, region, currentMonth }: InSeasonNowProps
                                 asChild
                             >
                                 <Link to="/rfq" className="flex items-center justify-center gap-2">
-                                    Quick Quote
+                                    {t('seasonal.in_season.quick_quote')}
                                     <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
                                 </Link>
                             </Button>

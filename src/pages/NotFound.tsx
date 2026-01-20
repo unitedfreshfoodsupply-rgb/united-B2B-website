@@ -4,9 +4,11 @@ import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { ShieldAlert, Cpu, ArrowLeft, Terminal } from "lucide-react";
+import { useTranslation, Trans } from "react-i18next";
 
 export default function NotFound() {
   const location = useLocation();
+  const { t } = useTranslation('pages');
 
   useEffect(() => {
     console.error("404 Error: Access violation at pathway:", location.pathname);
@@ -47,28 +49,35 @@ export default function NotFound() {
 
             <div className="flex items-center justify-center gap-3 mb-6">
               <div className="w-12 h-px bg-red-500/20" />
-              <div className="text-infra text-red-500 tracking-[0.5em]">ERROR_CODE // PATH_INVALID</div>
+              <div className="text-infra text-red-500 tracking-[0.5em]">{t('not_found.error_code')}</div>
               <div className="w-12 h-px bg-red-500/20" />
             </div>
 
             <h2 className="font-display text-4xl md:text-6xl font-bold text-white mb-8 tracking-tighter">
-              UNAUTHORIZED <span className="text-white/30">TRAJECTORY</span>
+              {t('not_found.media_label')} <span className="text-white/30">{t('not_found.media_highlight')}</span>
             </h2>
 
             <p className="text-white/40 text-xl font-light mb-12 leading-relaxed max-w-xl mx-auto">
-              The requested pathway <span className="text-red-400/60 font-mono text-base bg-red-500/5 px-2 py-0.5 rounded border border-red-500/10">{location.pathname}</span> does not exist within the UNITEDA supply architecture.
+              <Trans
+                i18nKey="not_found.description"
+                t={t}
+                values={{ path: location.pathname }}
+                components={{
+                  path: <span className="text-red-400/60 font-mono text-base bg-red-500/5 px-2 py-0.5 rounded border border-red-500/10" />
+                }}
+              />
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
               <Button variant="accent" size="xl" className="w-full sm:w-auto px-12 h-16 rounded-2xl group" asChild>
                 <Link to="/">
                   <ArrowLeft className="w-5 h-5 mr-3 group-hover:-translate-x-2 transition-transform" />
-                  RESET TO HOME
+                  {t('not_found.reset_btn')}
                 </Link>
               </Button>
               <div className="flex items-center gap-4 px-6 h-16 rounded-2xl border border-white/5 bg-white/[0.02] text-white/40 font-mono text-sm">
                 <Terminal className="w-4 h-4 text-accent" />
-                <span>SYSLOG_REPORTED</span>
+                <span>{t('not_found.syslog')}</span>
               </div>
             </div>
           </motion.div>

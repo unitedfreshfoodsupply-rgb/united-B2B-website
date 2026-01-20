@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -16,43 +17,47 @@ import { Label } from "@/components/ui/label";
 import { ArrowRight, Building2, CheckCircle2, FileText, Clock, Truck } from "lucide-react";
 import { toast } from "sonner";
 
-const businessTypes = [
-  { value: "hotel", label: "Hotel / Resort" },
-  { value: "restaurant", label: "Restaurant / Catering" },
-  { value: "airline", label: "Airline Catering" },
-  { value: "supermarket", label: "Supermarket / Retail" },
-  { value: "distributor", label: "Food Distributor" },
-  { value: "processor", label: "Food Processor" },
-  { value: "other", label: "Other" },
-];
 
-const volumeRanges = [
-  { value: "small", label: "< 500 kg/month" },
-  { value: "medium", label: "500 - 2,000 kg/month" },
-  { value: "large", label: "2,000 - 10,000 kg/month" },
-  { value: "enterprise", label: "10,000+ kg/month" },
-];
-
-const frequencies = [
-  { value: "daily", label: "Daily" },
-  { value: "weekly-2", label: "2-3 times/week" },
-  { value: "weekly", label: "Weekly" },
-  { value: "biweekly", label: "Bi-weekly" },
-  { value: "monthly", label: "Monthly" },
-];
-
-const productCategories = [
-  "Fresh Fruits",
-  "Fresh Vegetables",
-  "Herbs & Greens",
-  "Microgreens",
-  "Exotic Produce",
-  "Specialty Items",
-];
 
 export default function RFQPage() {
+  const { t } = useTranslation('pages');
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Mapped options
+  const businessTypes = [
+    { value: "hotel", label: t('rfq.form.options.business_types.hotel') },
+    { value: "restaurant", label: t('rfq.form.options.business_types.restaurant') },
+    { value: "airline", label: t('rfq.form.options.business_types.airline') },
+    { value: "supermarket", label: t('rfq.form.options.business_types.supermarket') },
+    { value: "distributor", label: t('rfq.form.options.business_types.distributor') },
+    { value: "processor", label: t('rfq.form.options.business_types.processor') },
+    { value: "other", label: t('rfq.form.options.business_types.other') },
+  ];
+
+  const volumeRanges = [
+    { value: "small", label: t('rfq.form.options.volume_ranges.small') },
+    { value: "medium", label: t('rfq.form.options.volume_ranges.medium') },
+    { value: "large", label: t('rfq.form.options.volume_ranges.large') },
+    { value: "enterprise", label: t('rfq.form.options.volume_ranges.enterprise') },
+  ];
+
+  const frequencies = [
+    { value: "daily", label: t('rfq.form.options.frequencies.daily') },
+    { value: "weekly-2", label: t('rfq.form.options.frequencies.weekly_2') },
+    { value: "weekly", label: t('rfq.form.options.frequencies.weekly') },
+    { value: "biweekly", label: t('rfq.form.options.frequencies.biweekly') },
+    { value: "monthly", label: t('rfq.form.options.frequencies.monthly') },
+  ];
+
+  const productCategories = [
+    t('products.catalog.categories.fruits'),
+    t('products.catalog.categories.vegetables'),
+    t('products.catalog.categories.herbs'),
+    t('products.catalog.categories.microgreens'),
+    t('products.catalog.categories.exotic'),
+    t('products.catalog.categories.specialty'),
+  ];
 
   const handleCategoryToggle = (category: string) => {
     setSelectedCategories(prev =>
@@ -69,8 +74,8 @@ export default function RFQPage() {
     // Simulate submission
     await new Promise(resolve => setTimeout(resolve, 1500));
 
-    toast.success("Request submitted successfully!", {
-      description: "Our team will review your request and respond within 24-48 hours.",
+    toast.success(t('rfq.form.success.title'), {
+      description: t('rfq.form.success.description'),
     });
 
     setIsSubmitting(false);
@@ -88,14 +93,13 @@ export default function RFQPage() {
             className="max-w-3xl"
           >
             <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-              Business Request
+              {t('rfq.header.badge')}
             </span>
             <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-              Request a Quote
+              {t('rfq.header.title')}
             </h1>
             <p className="text-muted-foreground text-lg">
-              Complete the form below to submit a structured business request.
-              Our sales team will prepare a comprehensive proposal tailored to your needs.
+              {t('rfq.header.description')}
             </p>
           </motion.div>
         </div>
@@ -117,22 +121,26 @@ export default function RFQPage() {
                 <div className="p-6 rounded-2xl bg-card border border-border">
                   <h2 className="font-display text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
                     <Building2 className="w-5 h-5 text-primary" />
-                    Business Information
+                    {t('rfq.form.sections.business_info')}
                   </h2>
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="company">Company Name *</Label>
-                      <Input id="company" placeholder="Your company name" required />
+                      <Label htmlFor="company">{t('rfq.form.fields.company.label')}</Label>
+                      <Input id="company" placeholder={t('rfq.form.fields.company.placeholder')} required />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="businessType">Business Type *</Label>
+                      <Label htmlFor="businessType">{t('rfq.form.fields.business_type.label')}</Label>
                       <Select required>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select business type" />
+                        <SelectTrigger className="text-start">
+                          <SelectValue placeholder={t('rfq.form.fields.business_type.placeholder')} />
                         </SelectTrigger>
                         <SelectContent>
                           {businessTypes.map(type => (
-                            <SelectItem key={type.value} value={type.value}>
+                            <SelectItem
+                              key={type.value}
+                              value={type.value}
+                              className="text-start rtl:pr-8 rtl:pl-2 rtl:[&>span]:right-2 rtl:[&>span]:left-auto"
+                            >
                               {type.label}
                             </SelectItem>
                           ))}
@@ -140,20 +148,30 @@ export default function RFQPage() {
                       </Select>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="country">Country *</Label>
+                      <Label htmlFor="country">{t('rfq.form.fields.country.label')}</Label>
                       <Select required>
-                        <SelectTrigger>
-                          <SelectValue placeholder="Select country" />
+                        <SelectTrigger className="text-start">
+                          <SelectValue placeholder={t('rfq.form.fields.country.placeholder')} />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="egypt">Egypt</SelectItem>
-                          <SelectItem value="uae">United Arab Emirates</SelectItem>
+                          <SelectItem
+                            value="egypt"
+                            className="text-start rtl:pr-8 rtl:pl-2 rtl:[&>span]:right-2 rtl:[&>span]:left-auto"
+                          >
+                            {t('products.filters.region.egypt')}
+                          </SelectItem>
+                          <SelectItem
+                            value="uae"
+                            className="text-start rtl:pr-8 rtl:pl-2 rtl:[&>span]:right-2 rtl:[&>span]:left-auto"
+                          >
+                            {t('products.filters.region.uae')}
+                          </SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="city">City *</Label>
-                      <Input id="city" placeholder="Your city" required />
+                      <Label htmlFor="city">{t('rfq.form.fields.city.label')}</Label>
+                      <Input id="city" placeholder={t('rfq.form.fields.city.placeholder')} required />
                     </div>
                   </div>
                 </div>
@@ -162,16 +180,16 @@ export default function RFQPage() {
                 <div className="p-6 rounded-2xl bg-card border border-border">
                   <h2 className="font-display text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
                     <Truck className="w-5 h-5 text-primary" />
-                    Supply Requirements
+                    {t('rfq.form.sections.supply_req')}
                   </h2>
                   <div className="space-y-6">
                     <div className="space-y-3">
-                      <Label>Product Categories of Interest *</Label>
+                      <Label>{t('rfq.form.fields.categories.label')}</Label>
                       <div className="grid sm:grid-cols-2 gap-3">
                         {productCategories.map(category => (
                           <div
                             key={category}
-                            className="flex items-center space-x-3"
+                            className="flex items-center gap-3"
                           >
                             <Checkbox
                               id={category}
@@ -187,14 +205,18 @@ export default function RFQPage() {
                     </div>
                     <div className="grid sm:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <Label htmlFor="volume">Estimated Monthly Volume *</Label>
+                        <Label htmlFor="volume">{t('rfq.form.fields.volume.label')}</Label>
                         <Select required>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select volume range" />
+                          <SelectTrigger className="text-start">
+                            <SelectValue placeholder={t('rfq.form.fields.volume.placeholder')} />
                           </SelectTrigger>
                           <SelectContent>
                             {volumeRanges.map(vol => (
-                              <SelectItem key={vol.value} value={vol.value}>
+                              <SelectItem
+                                key={vol.value}
+                                value={vol.value}
+                                className="text-start rtl:pr-8 rtl:pl-2 rtl:[&>span]:right-2 rtl:[&>span]:left-auto"
+                              >
                                 {vol.label}
                               </SelectItem>
                             ))}
@@ -202,14 +224,18 @@ export default function RFQPage() {
                         </Select>
                       </div>
                       <div className="space-y-2">
-                        <Label htmlFor="frequency">Delivery Frequency *</Label>
+                        <Label htmlFor="frequency">{t('rfq.form.fields.frequency.label')}</Label>
                         <Select required>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select frequency" />
+                          <SelectTrigger className="text-start">
+                            <SelectValue placeholder={t('rfq.form.fields.frequency.placeholder')} />
                           </SelectTrigger>
                           <SelectContent>
                             {frequencies.map(freq => (
-                              <SelectItem key={freq.value} value={freq.value}>
+                              <SelectItem
+                                key={freq.value}
+                                value={freq.value}
+                                className="text-start rtl:pr-8 rtl:pl-2 rtl:[&>span]:right-2 rtl:[&>span]:left-auto"
+                              >
                                 {freq.label}
                               </SelectItem>
                             ))}
@@ -218,10 +244,10 @@ export default function RFQPage() {
                       </div>
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="requirements">Specific Requirements</Label>
+                      <Label htmlFor="requirements">{t('rfq.form.fields.requirements.label')}</Label>
                       <Textarea
                         id="requirements"
-                        placeholder="Describe any specific product requirements, quality grades, packing specifications, or compliance needs..."
+                        placeholder={t('rfq.form.fields.requirements.placeholder')}
                         rows={4}
                       />
                     </div>
@@ -232,24 +258,24 @@ export default function RFQPage() {
                 <div className="p-6 rounded-2xl bg-card border border-border">
                   <h2 className="font-display text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
                     <FileText className="w-5 h-5 text-primary" />
-                    Contact Information
+                    {t('rfq.form.sections.contact_info')}
                   </h2>
                   <div className="grid sm:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="name">Contact Name *</Label>
-                      <Input id="name" placeholder="Your full name" required />
+                      <Label htmlFor="name">{t('rfq.form.fields.name.label')}</Label>
+                      <Input id="name" placeholder={t('rfq.form.fields.name.placeholder')} required />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="position">Position / Title</Label>
-                      <Input id="position" placeholder="Your position" />
+                      <Label htmlFor="position">{t('rfq.form.fields.position.label')}</Label>
+                      <Input id="position" placeholder={t('rfq.form.fields.position.placeholder')} />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="email">Email Address *</Label>
-                      <Input id="email" type="email" placeholder="your@email.com" required />
+                      <Label htmlFor="email">{t('rfq.form.fields.email.label')}</Label>
+                      <Input id="email" type="email" placeholder={t('rfq.form.fields.email.placeholder')} required />
                     </div>
                     <div className="space-y-2">
-                      <Label htmlFor="phone">Phone Number *</Label>
-                      <Input id="phone" type="tel" placeholder="+20 XXX XXX XXXX" required />
+                      <Label htmlFor="phone">{t('rfq.form.fields.phone.label')}</Label>
+                      <Input id="phone" type="tel" placeholder={t('rfq.form.fields.phone.placeholder')} required />
                     </div>
                   </div>
                 </div>
@@ -257,11 +283,11 @@ export default function RFQPage() {
                 {/* Submit */}
                 <div className="flex items-center gap-4">
                   <Button type="submit" variant="hero" size="xl" disabled={isSubmitting}>
-                    {isSubmitting ? "Submitting..." : "Submit Request"}
-                    <ArrowRight className="w-5 h-5 ml-1" />
+                    {isSubmitting ? t('rfq.form.submit.submitting') : t('rfq.form.submit.button')}
+                    <ArrowRight className="w-5 h-5 ms-1 rtl:rotate-180" />
                   </Button>
                   <p className="text-sm text-muted-foreground">
-                    We'll respond within 24-48 business hours
+                    {t('rfq.form.submit.note')}
                   </p>
                 </div>
               </form>
@@ -276,42 +302,50 @@ export default function RFQPage() {
             >
               {/* Process */}
               <div className="p-6 rounded-2xl bg-primary text-primary-foreground">
-                <h3 className="font-display text-lg font-semibold mb-4">What Happens Next?</h3>
+                <h3 className="font-display text-lg font-semibold mb-4">{t('rfq.sidebar.process.title')}</h3>
                 <div className="space-y-4">
-                  {[
-                    { icon: FileText, text: "Our team reviews your request" },
-                    { icon: Clock, text: "We prepare a tailored proposal" },
-                    { icon: CheckCircle2, text: "Connect with your account manager" },
-                  ].map((step, i) => (
-                    <div key={i} className="flex items-start gap-3">
-                      <div className="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center shrink-0">
-                        <step.icon className="w-4 h-4 text-accent" />
+                  {(t('rfq.sidebar.process.steps', { returnObjects: true }) as string[]).map((stepText, i) => {
+                    const icons = [FileText, Clock, CheckCircle2];
+                    const Icon = icons[i] || CheckCircle2;
+                    return (
+                      <div key={i} className="flex items-start gap-3">
+                        <div className="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center shrink-0">
+                          <Icon className="w-4 h-4 text-accent" />
+                        </div>
+                        <p className="text-sm text-primary-foreground/90 pt-1">{stepText}</p>
                       </div>
-                      <p className="text-sm text-primary-foreground/90 pt-1">{step.text}</p>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
 
               {/* Contact */}
               <div className="p-6 rounded-2xl bg-card border border-border">
                 <h3 className="font-display text-lg font-semibold text-foreground mb-4">
-                  Need Immediate Assistance?
+                  {t('rfq.sidebar.contact.title')}
                 </h3>
                 <p className="text-sm text-muted-foreground mb-4">
-                  For urgent inquiries, reach our sales team directly:
+                  {t('rfq.sidebar.contact.description')}
                 </p>
-                <div className="space-y-2 text-sm">
-                  <p className="font-medium">Egypt: +20 10 2202 3344</p>
-                  <p className="font-medium">UAE: +971 4 454 2200</p>
-                  <p className="text-muted-foreground">sales@uniteda.com</p>
+                <div className="space-y-3 text-sm">
+                  <div className="flex justify-between items-center px-4 py-2 rounded-lg bg-muted/50">
+                    <span className="font-medium">{t('products.filters.region.egypt')}</span>
+                    <span dir="ltr" className="font-mono text-muted-foreground">+20 10 2202 3344</span>
+                  </div>
+                  <div className="flex justify-between items-center px-4 py-2 rounded-lg bg-muted/50">
+                    <span className="font-medium">{t('products.filters.region.uae')}</span>
+                    <span dir="ltr" className="font-mono text-muted-foreground">+971 4 454 2200</span>
+                  </div>
+                  <div className="text-center pt-2">
+                    <a href="mailto:sales@uniteda.com" className="text-primary hover:underline">sales@uniteda.com</a>
+                  </div>
                 </div>
               </div>
 
               {/* Trust Badges */}
               <div className="p-6 rounded-2xl bg-muted/50 border border-border">
                 <h3 className="font-display text-sm font-semibold text-foreground mb-3 uppercase tracking-wider">
-                  Certifications
+                  {t('rfq.sidebar.certifications')}
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {["HACCP", "ISO 22000", "GlobalGAP"].map(cert => (

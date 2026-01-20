@@ -4,8 +4,10 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Globe, ArrowRight, MessageSquare } from "lucide-react";
+import { useTranslation } from "react-i18next";
 
 export default function Contact() {
+    const { t } = useTranslation('pages');
     return (
         <Layout>
             <section className="relative min-h-[90vh] flex items-center pt-32 pb-24 overflow-hidden bg-uniteda-emerald-dark">
@@ -28,19 +30,19 @@ export default function Contact() {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
                         >
-                            <div className="text-infra text-accent mb-6 tracking-[0.4em]">Section_01 // Global_Reach</div>
+                            <div className="text-infra text-accent mb-6 tracking-[0.4em]">{t('contact.label')}</div>
                             <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter">
-                                CONNECT WITH <span className="text-accent underline decoration-white/10 underline-offset-[12px]">INTELLIGENCE</span>
+                                {t('contact.title_prefix')} <span className="text-accent underline decoration-white/10 underline-offset-[12px]">{t('contact.title_highlight')}</span>
                             </h1>
                             <p className="text-white/60 text-xl font-light max-w-xl mb-12 leading-relaxed">
-                                Initialize communication with our regional hubs. We provide institutional support and supply architecture for global partners.
+                                {t('contact.description')}
                             </p>
 
                             <div className="space-y-8">
                                 {[
-                                    { icon: MapPin, title: "Egypt Regional HQ", detail: "Cairo Hub, Logistics Zone A", infra: "HUB_ID: EG_NORTH_01" },
-                                    { icon: Globe, title: "UAE Strategic Hub", detail: "Dubai Business Bay, Level 42", infra: "HUB_ID: UAE_GULF_CORE" },
-                                    { icon: Mail, title: "Electronic Inquiry", detail: "strategic@uniteda.com", infra: "SSL_ENCRYPTED_STREAM" },
+                                    { icon: MapPin, title: t('contact.items.egypt.title'), detail: t('contact.items.egypt.detail'), infra: t('contact.items.egypt.infra') },
+                                    { icon: Globe, title: t('contact.items.uae.title'), detail: t('contact.items.uae.detail'), infra: t('contact.items.uae.infra') },
+                                    { icon: Mail, title: t('contact.items.email.title'), detail: t('contact.items.email.detail'), infra: t('contact.items.email.infra') },
                                 ].map((item, i) => (
                                     <motion.div
                                         key={item.title}
@@ -71,33 +73,33 @@ export default function Contact() {
                         >
                             <div className="flex items-center gap-2 mb-8 p-3 rounded-full border border-primary/20 bg-primary/5">
                                 <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                                <span className="text-infra text-accent">Status: SECURE_ENTRY_ACTIVE</span>
+                                <span className="text-infra text-accent">{t('contact.status')}</span>
                             </div>
 
                             <form className="space-y-6">
                                 <div className="grid sm:grid-cols-2 gap-6">
                                     <div className="space-y-2">
-                                        <label className="text-infra text-white/40">Entity_Name</label>
-                                        <Input className="bg-white/5 border-white/10 text-white placeholder:text-white/10 h-14 rounded-xl focus:border-accent/40 transition-all font-mono" placeholder="COMPANY CORP" />
+                                        <label className="text-infra text-white/40">{t('contact.form.entity_name')}</label>
+                                        <Input className="bg-white/5 border-white/10 text-white placeholder:text-white/10 h-14 rounded-xl focus:border-accent/40 transition-all font-mono" placeholder={t('contact.form.entity_placeholder')} />
                                     </div>
                                     <div className="space-y-2">
-                                        <label className="text-infra text-white/40">Access_Mail</label>
-                                        <Input className="bg-white/5 border-white/10 text-white placeholder:text-white/10 h-14 rounded-xl focus:border-accent/40 transition-all font-mono" placeholder="PARTNER@PROTOCOL.COM" />
+                                        <label className="text-infra text-white/40">{t('contact.form.access_mail')}</label>
+                                        <Input className="bg-white/5 border-white/10 text-white placeholder:text-white/10 h-14 rounded-xl focus:border-accent/40 transition-all font-mono" placeholder={t('contact.form.mail_placeholder')} />
                                     </div>
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label className="text-infra text-white/40">Transmission_Subject</label>
-                                    <Input className="bg-white/5 border-white/10 text-white placeholder:text-white/10 h-14 rounded-xl focus:border-accent/40 transition-all font-mono" placeholder="SYSTEM INTEGRATION REQUEST" />
+                                    <label className="text-infra text-white/40">{t('contact.form.subject')}</label>
+                                    <Input className="bg-white/5 border-white/10 text-white placeholder:text-white/10 h-14 rounded-xl focus:border-accent/40 transition-all font-mono" placeholder={t('contact.form.subject_placeholder')} />
                                 </div>
 
                                 <div className="space-y-2">
-                                    <label className="text-infra text-white/40">Payload_Data</label>
-                                    <Textarea className="bg-white/5 border-white/10 text-white placeholder:text-white/10 min-h-[150px] rounded-xl focus:border-accent/40 transition-all font-mono" placeholder="DETAILS OF STRATEGIC PARTNERSHIP..." />
+                                    <label className="text-infra text-white/40">{t('contact.form.payload')}</label>
+                                    <Textarea className="bg-white/5 border-white/10 text-white placeholder:text-white/10 min-h-[150px] rounded-xl focus:border-accent/40 transition-all font-mono" placeholder={t('contact.form.payload_placeholder')} />
                                 </div>
 
                                 <Button variant="accent" size="xl" className="w-full h-16 rounded-xl font-infra text-lg hover:scale-[1.02] transition-all group">
-                                    INITIALIZE UPLINK
+                                    {t('contact.form.submit')}
                                     <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-2 transition-transform" />
                                 </Button>
                             </form>

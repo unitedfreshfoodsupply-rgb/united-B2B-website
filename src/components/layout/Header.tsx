@@ -4,35 +4,37 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import { Menu, X, ChevronDown, Globe, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-
-const navigation = [
-  { name: "Home", href: "/" },
-  {
-    name: "Products",
-    href: "/products",
-    children: [
-      { name: "Fresh Fruits", href: "/products?category=fruits" },
-      { name: "Fresh Vegetables", href: "/products?category=vegetables" },
-      { name: "Herbs & Greens", href: "/products?category=herbs" },
-      { name: "Microgreens", href: "/products?category=microgreens" },
-      { name: "Exotic Produce", href: "/products?category=exotic" },
-    ]
-  },
-  { name: "Seasonal", href: "/seasonal" },
-  { name: "Operations", href: "/operations" },
-  { name: "Inquiry Hub", href: "/rfq" },
-];
+import { useTranslation } from "react-i18next";
 
 export function Header() {
+  const { t, i18n } = useTranslation('common');
+  const isRTL = i18n.dir() === 'rtl';
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [region, setRegion] = useState<"EG" | "UAE">("EG");
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
   const { scrollY } = useScroll();
   const headerPadding = useTransform(scrollY, [0, 50], ["1.5rem", "0.75rem"]);
   const headerBg = useTransform(scrollY, [0, 50], ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.8)"]);
+
+  const navigation = [
+    { name: t('header.nav.home'), href: "/" },
+    {
+      name: t('header.nav.products'),
+      href: "/products",
+      children: [
+        { name: t('header.products_dropdown.fruits'), href: "/products?category=fruits" },
+        { name: t('header.products_dropdown.vegetables'), href: "/products?category=vegetables" },
+        { name: t('header.products_dropdown.herbs'), href: "/products?category=herbs" },
+        { name: t('header.products_dropdown.microgreens'), href: "/products?category=microgreens" },
+        { name: t('header.products_dropdown.exotic'), href: "/products?category=exotic" },
+      ]
+    },
+    { name: t('header.nav.seasonal'), href: "/seasonal" },
+    { name: t('header.nav.operations'), href: "/operations" },
+    { name: t('header.nav.inquiry'), href: "/rfq" },
+  ];
 
   useEffect(() => {
     const updateHeader = () => setIsScrolled(window.scrollY > 20);
@@ -61,13 +63,13 @@ export function Header() {
           <Link to="/" className="flex items-center gap-2 group">
             <motion.div
               whileHover={{ rotate: 5, scale: 1.05 }}
-              className="w-10 h-10 rounded-xl bg-uniteda-emerald flex items-center justify-center shadow-lg group-hover:shadow-uniteda-emerald/20"
+              className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-lg group-hover:shadow-uniteda-emerald/20 overflow-hidden"
             >
-              <span className="text-white font-bold text-lg">U</span>
+              <img src="/logo.png" alt="Uniteda Logo" className="w-full h-full object-cover" />
             </motion.div>
             <div className="flex flex-col">
-              <span className="font-bold text-xl text-uniteda-emerald-dark tracking-tight leading-none">UNITEDA</span>
-              <span className="text-[9px] text-uniteda-gold font-semibold tracking-[0.2em] uppercase">Supply Intelligence</span>
+              <span className="font-bold text-xl text-uniteda-emerald-dark tracking-tight leading-none">{t('brand_short')}</span>
+              <span className="text-[9px] text-uniteda-gold font-semibold tracking-[0.2em] uppercase">{t('header.brand.slogan')}</span>
             </div>
           </Link>
 
@@ -105,7 +107,7 @@ export function Header() {
                       initial={{ opacity: 0, scale: 0.95, y: 10 }}
                       animate={{ opacity: 1, scale: 1, y: 0 }}
                       exit={{ opacity: 0, scale: 0.95, y: 10 }}
-                      className="absolute top-full left-0 mt-4 w-64 glass-panel rounded-3xl p-3 border border-white/20 origin-top"
+                      className="absolute top-full start-0 mt-4 w-64 glass-panel rounded-3xl p-3 border border-white/20 origin-top"
                     >
                       <div className="grid gap-1">
                         {item.children.map((child) => (
@@ -125,33 +127,47 @@ export function Header() {
             ))}
           </div>
 
-          {/* Region Switcher & CTA */}
+          {/* Language Switcher (EN/AR Toggle) */}
           <div className="flex items-center gap-4">
             <div className="hidden md:flex items-center gap-1 bg-muted/30 p-1 rounded-full border border-black/5">
               <button
-                onClick={() => setRegion("EG")}
+                onClick={() => {
+                  i18n.changeLanguage('en');
+                  document.documentElement.dir = 'ltr';
+                  document.documentElement.lang = 'en';
+                }}
                 className={cn(
                   "px-3 py-1 rounded-full text-[11px] font-bold transition-all",
-                  region === "EG" ? "bg-uniteda-emerald text-white shadow-sm" : "text-muted-foreground"
+                  !isRTL ? "bg-uniteda-emerald text-white shadow-sm" : "text-muted-foreground hover:text-uniteda-emerald"
                 )}
               >
-                EG
+                EN
               </button>
               <button
-                onClick={() => setRegion("UAE")}
+                onClick={() => {
+                  i18n.changeLanguage('ar');
+                  document.documentElement.dir = 'rtl';
+                  document.documentElement.lang = 'ar';
+                }}
                 className={cn(
                   "px-3 py-1 rounded-full text-[11px] font-bold transition-all",
-                  region === "UAE" ? "bg-uniteda-gold text-white shadow-sm" : "text-muted-foreground"
+                  isRTL ? "bg-uniteda-emerald text-white shadow-sm" : "text-muted-foreground hover:text-uniteda-emerald"
                 )}
               >
-                UAE
+                AR
               </button>
             </div>
 
             <Button size="sm" className="hidden lg:flex rounded-full px-6 bg-uniteda-emerald hover:bg-uniteda-emerald-dark shadow-lg shadow-uniteda-emerald/20 transition-all font-bold group">
               <Link to="/contact" className="flex items-center gap-2">
-                Partner with us
-                <motion.span animate={{ x: [0, 5, 0] }} transition={{ repeat: Infinity, duration: 1.5 }}>→</motion.span>
+                {t('header.cta.partner')}
+                <motion.span
+                  animate={{ x: isRTL ? [0, -5, 0] : [0, 5, 0] }}
+                  transition={{ repeat: Infinity, duration: 1.5 }}
+                  className="inline-block"
+                >
+                  {isRTL ? "←" : "→"}
+                </motion.span>
               </Link>
             </Button>
 
@@ -192,10 +208,10 @@ export function Header() {
                 ))}
                 <div className="pt-4 flex flex-col gap-3">
                   <Button variant="outline" className="rounded-2xl border-uniteda-emerald text-uniteda-emerald font-bold" asChild>
-                    <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>Talk to Sales</Link>
+                    <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>{t('header.cta.sales')}</Link>
                   </Button>
                   <Button className="rounded-2xl bg-uniteda-emerald hover:bg-uniteda-emerald-dark font-bold text-white" asChild>
-                    <Link to="/rfq" onClick={() => setMobileMenuOpen(false)}>Inquiry Hub</Link>
+                    <Link to="/rfq" onClick={() => setMobileMenuOpen(false)}>{t('header.cta.inquiry')}</Link>
                   </Button>
                 </div>
               </div>
@@ -203,6 +219,6 @@ export function Header() {
           )}
         </AnimatePresence>
       </motion.nav>
-    </header>
+    </header >
   );
 }

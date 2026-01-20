@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation, Trans } from "react-i18next";
 import { Link } from "react-router-dom";
 import { ArrowRight, Building2, Plane, ShoppingBag, Utensils, Zap, Shield, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,6 +12,7 @@ const industries = [
 ];
 
 export function HeroSection() {
+  const { t } = useTranslation('home');
   return (
     <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#fafafa]">
       {/* Decorative Background Accents */}
@@ -28,7 +30,7 @@ export function HeroSection() {
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-uniteda-emerald/5 border border-uniteda-emerald/10 text-uniteda-emerald mb-4"
             >
               <Zap size={14} className="animate-pulse" />
-              <span className="text-xs font-bold tracking-widest uppercase">Next-Gen Supply Intelligence</span>
+              <span className="text-xs font-bold tracking-widest uppercase">{t('hero.label')}</span>
             </motion.div>
 
             <motion.h1
@@ -37,9 +39,9 @@ export function HeroSection() {
               transition={{ duration: 0.8, delay: 0.1 }}
               className="text-6xl md:text-7xl xl:text-8xl font-black text-uniteda-emerald-dark leading-[0.95] tracking-tighter"
             >
-              The DNA of <br />
+              {t('hero.title_prefix')} <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-uniteda-emerald to-uniteda-gold">
-                Premium Supply
+                {t('hero.title_highlight')}
               </span>
             </motion.h1>
 
@@ -49,7 +51,7 @@ export function HeroSection() {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-xl text-muted-foreground max-w-lg leading-relaxed font-medium"
             >
-              UNITEDA bridges the gap between traditional agriculture and the high-demand requirements of modern hospitality through a data-driven supply infrastructure.
+              {t('hero.description')}
             </motion.p>
 
             <motion.div
@@ -60,12 +62,12 @@ export function HeroSection() {
             >
               <Button size="xl" className="rounded-full bg-uniteda-emerald hover:bg-uniteda-emerald-dark text-white px-10 py-8 text-lg font-bold shadow-2xl shadow-uniteda-emerald/20 transition-all hover:scale-105">
                 <Link to="/rfq" className="flex items-center gap-2">
-                  Launch Inquiry Hub
-                  <ArrowRight size={20} />
+                  {t('hero.cta_primary')}
+                  <ArrowRight size={20} className="rtl:rotate-180" />
                 </Link>
               </Button>
               <Button variant="outline" size="xl" className="rounded-full border-2 border-uniteda-emerald/20 text-uniteda-emerald hover:bg-uniteda-emerald/5 px-10 py-8 text-lg font-bold transition-all">
-                <Link to="/products">Explore Assets</Link>
+                <Link to="/products">{t('hero.cta_secondary')}</Link>
               </Button>
             </motion.div>
 
@@ -75,15 +77,15 @@ export function HeroSection() {
               transition={{ duration: 1, delay: 0.5 }}
               className="flex items-center gap-8 pt-6"
             >
-              <div className="flex -space-x-3">
+              <div className="flex -space-x-3 rtl:space-x-reverse">
                 {[1, 2, 3, 4].map((i) => (
                   <div key={i} className="w-12 h-12 rounded-full border-4 border-white bg-muted flex items-center justify-center text-xs font-bold overflow-hidden">
                     <img src={`https://i.pravatar.cc/150?u=${i}`} alt="user" />
                   </div>
                 ))}
               </div>
-              <p className="text-sm font-bold text-uniteda-emerald-dark/60 uppercase tracking-widest">
-                Trusted by 50+ <br /> Regional Partners
+              <p className="text-sm font-bold text-uniteda-emerald-dark/60 uppercase tracking-widest text-start">
+                <Trans t={t} i18nKey="hero.social_proof" components={{ br: <br /> }} />
               </p>
             </motion.div>
           </div>
@@ -106,8 +108,8 @@ export function HeroSection() {
                   <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center mb-4">
                     <Shield className="text-white" />
                   </div>
-                  <h3 className="text-3xl font-bold text-white tracking-tight">Certified Excellence</h3>
-                  <p className="text-white/80 font-medium">Full traceability for every batch</p>
+                  <h3 className="text-3xl font-bold text-white tracking-tight">{t('hero.bento.certified.title')}</h3>
+                  <p className="text-white/80 font-medium">{t('hero.bento.certified.subtitle')}</p>
                 </div>
               </motion.div>
 
@@ -117,8 +119,8 @@ export function HeroSection() {
                 transition={{ duration: 1, delay: 0.4 }}
                 className="h-[200px] rounded-[2rem] glass-panel p-8 flex flex-col justify-center gap-2"
               >
-                <div className="text-4xl font-black text-uniteda-emerald tracking-tighter">0.05%</div>
-                <p className="text-sm font-bold text-uniteda-emerald-dark/60 uppercase tracking-widest">Supply Latency</p>
+                <div className="text-4xl font-black text-uniteda-emerald tracking-tighter">{t('hero.bento.latency.value')}</div>
+                <p className="text-sm font-bold text-uniteda-emerald-dark/60 uppercase tracking-widest">{t('hero.bento.latency.label')}</p>
               </motion.div>
 
               <motion.div
@@ -128,8 +130,8 @@ export function HeroSection() {
                 className="h-[200px] rounded-[2rem] bg-uniteda-gold p-8 flex flex-col justify-center gap-2 text-white shadow-xl shadow-uniteda-gold/20"
               >
                 <Globe className="w-8 h-8 mb-2" />
-                <div className="text-2xl font-bold tracking-tight">Multi-Hub Logic</div>
-                <p className="text-white/80 text-sm font-medium">Egypt & UAE Synced</p>
+                <div className="text-2xl font-bold tracking-tight">{t('hero.bento.logic.title')}</div>
+                <p className="text-white/80 text-sm font-medium">{t('hero.bento.logic.subtitle')}</p>
               </motion.div>
             </div>
 
@@ -137,17 +139,17 @@ export function HeroSection() {
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="absolute -bottom-6 -right-6 glass-panel rounded-3xl p-6 shadow-2xl border border-white/40 max-w-[240px]"
+              className="absolute -bottom-6 -right-6 rtl:right-auto rtl:-left-6 glass-panel rounded-3xl p-6 shadow-2xl border border-white/40 max-w-[240px]"
             >
               <div className="flex items-center gap-4">
                 <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-xs font-black uppercase tracking-widest text-uniteda-emerald-dark/40">Real-time status</span>
+                <span className="text-xs font-black uppercase tracking-widest text-uniteda-emerald-dark/40">{t('hero.bento.status.label')}</span>
               </div>
               <p className="mt-2 text-sm font-bold text-uniteda-emerald-dark">
-                Cairo Hub: <span className="text-uniteda-emerald font-black">ACTIVE</span>
+                {t('hero.bento.status.cairo')}: <span className="text-uniteda-emerald font-black">{t('hero.bento.status.active')}</span>
               </p>
               <p className="text-sm font-bold text-uniteda-emerald-dark">
-                Dubai Hub: <span className="text-uniteda-emerald font-black">ACTIVE</span>
+                {t('hero.bento.status.dubai')}: <span className="text-uniteda-emerald font-black">{t('hero.bento.status.active')}</span>
               </p>
             </motion.div>
           </div>

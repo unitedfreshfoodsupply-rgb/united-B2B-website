@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { ArrowRight, Sun, Droplets, Snowflake, Leaf, Calendar, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,35 +7,27 @@ import { Button } from "@/components/ui/button";
 const seasons = [
   {
     id: "spring",
-    name: "Spring",
     icon: Leaf,
-    months: "Mar - May",
     color: "bg-emerald-500",
-    featured: ["Strawberries", "Asparagus", "Microgreens", "Peas"],
+    products: ["strawberries", "asparagus", "microgreens", "peas"],
   },
   {
     id: "summer",
-    name: "Summer",
     icon: Sun,
-    months: "Jun - Aug",
     color: "bg-amber-500",
-    featured: ["Premium Mangoes", "Watermelon", "Vine Tomatoes", "Bell Peppers"],
+    products: ["mangoes", "watermelon", "tomatoes", "peppers"],
   },
   {
     id: "autumn",
-    name: "Autumn",
     icon: Droplets,
-    months: "Sep - Nov",
     color: "bg-orange-600",
-    featured: ["Pomegranates", "Figs", "Winter Squash", "Organic Apples"],
+    products: ["pomegranates", "figs", "squash", "apples"],
   },
   {
     id: "winter",
-    name: "Winter",
     icon: Snowflake,
-    months: "Dec - Feb",
     color: "bg-blue-400",
-    featured: ["Premium Citrus", "Medjool Dates", "Red Cabbage", "Root Vegetables"],
+    products: ["citrus", "dates", "cabbage", "roots"],
   },
 ];
 
@@ -47,6 +40,7 @@ const getCurrentSeason = () => {
 };
 
 export function SeasonalSection() {
+  const { t } = useTranslation('home');
   const currentSeason = getCurrentSeason();
 
   return (
@@ -65,16 +59,16 @@ export function SeasonalSection() {
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider mb-6 border border-accent/20">
               <Calendar size={12} />
-              Seasonal Availability
+              {t('seasonal.label')}
             </div>
 
             <h2 className="text-5xl md:text-6xl font-black tracking-tighter mb-8 leading-[0.9]">
-              Seasonal Availability <br />
-              <span className="text-accent">Calendar</span>
+              {t('seasonal.title')} <br />
+              <span className="text-accent">{t('seasonal.calendar')}</span>
             </h2>
 
             <p className="text-primary-foreground/60 text-lg leading-relaxed mb-10 max-w-lg font-medium">
-              We provide detailed availability data synced between Egypt and UAE production cycles, allowing procurement teams to secure supply for premium menus months in advance.
+              {t('seasonal.description')}
             </p>
 
             {/* Season Selectors */}
@@ -93,16 +87,16 @@ export function SeasonalSection() {
                       <season.icon className="w-6 h-6 text-white" />
                     </div>
                     <div>
-                      <p className="font-bold text-lg tracking-tight">{season.name}</p>
-                      <p className="text-sm font-medium text-primary-foreground/40">{season.months}</p>
+                      <p className="font-bold text-lg tracking-tight">{t(`seasonal.seasons.${season.id}`)}</p>
+                      <p className="text-sm font-medium text-primary-foreground/40">{t(`seasonal.months.${season.id}`, { defaultValue: '' })}</p>
                     </div>
                   </div>
                   {season.id === currentSeason ? (
                     <div className="px-4 py-1.5 rounded-full bg-accent text-accent-foreground text-xs font-bold uppercase tracking-wider">
-                      In Season Now
+                      {t('seasonal.in_season_now')}
                     </div>
                   ) : (
-                    <ArrowRight className="text-primary-foreground/20 group-hover:text-primary-foreground transition-colors" />
+                    <ArrowRight className="text-primary-foreground/20 group-hover:text-primary-foreground transition-colors rtl:rotate-180" />
                   )}
                 </motion.div>
               ))}
@@ -118,14 +112,14 @@ export function SeasonalSection() {
           >
             <div className="bg-card/10 backdrop-blur-md border border-primary-foreground/10 p-12 rounded-[3.5rem] relative overflow-hidden group">
               {/* Background Accent */}
-              <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl -mr-32 -mt-32 transition-colors group-hover:bg-accent/20" />
+              <div className="absolute top-0 right-0 rtl:right-auto rtl:left-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl -mr-32 rtl:mr-0 rtl:-ml-32 -mt-32 transition-colors group-hover:bg-accent/20" />
 
               <div className="relative z-10">
                 <div className="flex items-center justify-between mb-12">
                   <div>
-                    <span className="text-accent text-xs font-bold uppercase tracking-wider">Current Season Highlights</span>
+                    <span className="text-accent text-xs font-bold uppercase tracking-wider">{t('seasonal.highlights')}</span>
                     <h3 className="text-4xl font-black tracking-tight mt-2 italic">
-                      {seasons.find(s => s.id === currentSeason)?.name} Peak
+                      {t('seasonal.peak', { season: t(`seasonal.seasons.${currentSeason}`) })}
                     </h3>
                   </div>
                   <div className="w-20 h-20 rounded-[2rem] bg-primary-foreground/10 flex items-center justify-center border border-primary-foreground/10 group-hover:rotate-12 transition-transform duration-700">
@@ -134,39 +128,39 @@ export function SeasonalSection() {
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {seasons.find(s => s.id === currentSeason)?.featured.map((product, i) => (
+                  {seasons.find(s => s.id === currentSeason)?.products.map((productId, i) => (
                     <motion.div
-                      key={product}
+                      key={productId}
                       initial={{ opacity: 0, y: 10 }}
                       whileInView={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.2 + i * 0.1 }}
                       className="p-6 rounded-[2rem] bg-primary-foreground/5 border border-primary-foreground/5 hover:bg-primary-foreground/10 transition-all cursor-pointer group/item"
                     >
                       <div className="flex items-center justify-between mb-2">
-                        <p className="font-bold text-lg tracking-tight">{product}</p>
+                        <p className="font-bold text-lg tracking-tight">{t(`seasonal.products.${productId}`)}</p>
                         <div className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
                       </div>
-                      <p className="text-xs font-medium text-primary-foreground/40 uppercase tracking-wider">Available - Premium Grade</p>
+                      <p className="text-xs font-medium text-primary-foreground/40 uppercase tracking-wider">{t('seasonal.available_premium')}</p>
                     </motion.div>
                   ))}
                 </div>
 
                 <div className="mt-12 p-8 rounded-[2.5rem] bg-primary/50 border border-primary-foreground/5 flex items-center justify-between">
                   <div className="space-y-4">
-                    <p className="text-xs font-bold uppercase tracking-wider text-primary-foreground/40">Available Regions</p>
+                    <p className="text-xs font-bold uppercase tracking-wider text-primary-foreground/40">{t('seasonal.regions_label')}</p>
                     <div className="flex gap-3">
                       <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-primary-foreground/10 border border-primary-foreground/10 font-medium text-xs uppercase">
-                        <span>🇪🇬</span> Cairo
+                        <span>🇪🇬</span> {t('seasonal.regions.cairo')}
                       </div>
                       <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-primary-foreground/10 border border-primary-foreground/10 font-medium text-xs uppercase">
-                        <span>🇦🇪</span> Dubai
+                        <span>🇦🇪</span> {t('seasonal.regions.dubai')}
                       </div>
                     </div>
                   </div>
                   <Button variant="ghost" className="text-accent hover:text-primary-foreground transition-colors group/btn">
                     <Link to="/seasonal" className="flex items-center gap-2 font-bold text-xs uppercase tracking-wider">
-                      View Full Calendar
-                      <ArrowRight size={14} className="group-hover/btn:translate-x-1 transition-transform" />
+                      {t('seasonal.view_calendar')}
+                      <ArrowRight size={14} className="group-hover/btn:translate-x-1 rtl:group-hover/btn:-translate-x-1 transition-transform rtl:rotate-180" />
                     </Link>
                   </Button>
                 </div>

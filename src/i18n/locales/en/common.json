@@ -1,0 +1,75 @@
+{
+    "app_name": "UNITED Supply Hub",
+    "brand_short": "UNITED",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "header": {
+        "nav": {
+            "home": "Home",
+            "products": "Products",
+            "seasonal": "Seasonal",
+            "operations": "Operations",
+            "inquiry": "Inquiry Hub"
+        },
+        "cta": {
+            "partner": "Partner with us",
+            "sales": "Talk to Sales",
+            "inquiry": "Inquiry Hub"
+        },
+        "brand": {
+            "slogan": "Supply Intelligence"
+        },
+        "products_dropdown": {
+            "fruits": "Fresh Fruits",
+            "vegetables": "Fresh Vegetables",
+            "herbs": "Herbs & Greens",
+            "microgreens": "Microgreens",
+            "exotic": "Exotic Produce"
+        }
+    },
+    "footer": {
+        "description": "Delivering premium fresh produce to hospitality and food service industries across Egypt and UAE with uncompromising quality and reliability.",
+        "brand_slogan": "Agricultural Supply",
+        "columns": {
+            "products": "Products",
+            "company": "Company",
+            "resources": "Regional Offices"
+        },
+        "links": {
+            "products": {
+                "fruits": "Fresh Fruits",
+                "vegetables": "Fresh Vegetables",
+                "herbs": "Herbs & Greens",
+                "microgreens": "Microgreens",
+                "exotic": "Exotic Produce"
+            },
+            "company": {
+                "about": "About Us",
+                "operations": "Operations Hub",
+                "quality": "Quality & Compliance",
+                "network": "Supply Network",
+                "careers": "Careers"
+            },
+            "resources": {
+                "seasonal": "Seasonal Calendar",
+                "solutions": "Industry Solutions",
+                "delivery": "Delivery Information",
+                "portal": "Partner Portal",
+                "faq": "FAQ"
+            }
+        },
+        "regions": {
+            "egypt": {
+                "name": "Egypt Hub",
+                "address": "New Cairo HQ, Logistics Zone"
+            },
+            "uae": {
+                "name": "UAE Hub",
+                "address": "Business Bay, Dubai"
+            }
+        },
+        "copyright": "© {{year}} UNITED Agricultural Supply. All rights reserved.",
+        "privacy": "Privacy Policy",
+        "terms": "Terms of Service"
+    }
+}

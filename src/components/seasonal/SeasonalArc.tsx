@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 interface SeasonalArcProps {
     data: number[]; // 12-month availability array (0=off, 1=available, 2=peak)
@@ -7,6 +8,9 @@ interface SeasonalArcProps {
 }
 
 export function SeasonalArc({ data, currentMonth, compact = false }: SeasonalArcProps) {
+    const { i18n } = useTranslation();
+    const isRTL = i18n.dir() === "rtl";
+
     const width = compact ? 200 : 300;
     const height = compact ? 40 : 60;
     const padding = 4;
@@ -29,7 +33,10 @@ export function SeasonalArc({ data, currentMonth, compact = false }: SeasonalArc
 
                 {/* Availability bars */}
                 {data.map((value, index) => {
-                    const x = padding + index * (barWidth + padding);
+                    // In RTL, we start from the right side for the first month
+                    const xIndex = isRTL ? (11 - index) : index;
+                    const x = padding + xIndex * (barWidth + padding);
+
                     const barHeight = (value / 2) * maxHeight;
                     const y = height - padding - barHeight;
                     const isCurrentMonth = index === currentMonth;

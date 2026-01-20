@@ -1,0 +1,498 @@
+{
+    "contact": {
+        "label": "القسم_01 // الوصول_العالمي",
+        "title_prefix": "تواصل مع",
+        "title_highlight": "الذكاء",
+        "description": "ابدأ التواصل مع مراكزنا الإقليمية. نقدم الدعم المؤسسي وهندسة التوريد للشركاء العالميين.",
+        "items": {
+            "egypt": {
+                "title": "المقر الإقليمي في مصر",
+                "detail": "مركز القاهرة، المنطقة اللوجستية أ",
+                "infra": "معرف المركز: EG_NORTH_01"
+            },
+            "uae": {
+                "title": "المركز الاستراتيجي في الإمارات",
+                "detail": "دبي بيزنس باي، الطابق 42",
+                "infra": "معرف المركز: UAE_GULF_CORE"
+            },
+            "email": {
+                "title": "استفسار إلكتروني",
+                "detail": "strategic@uniteda.com",
+                "infra": "بث_مشفر_ببروتوكول_SSL"
+            }
+        },
+        "status": "الحالة: دخول_آمن_نشط",
+        "form": {
+            "entity_name": "اسم_الجهة",
+            "entity_placeholder": "شركة مساهمة",
+            "access_mail": "بريد_الوصول",
+            "mail_placeholder": "PARTNER@PROTOCOL.COM",
+            "subject": "موضوع_الإرسال",
+            "subject_placeholder": "طلب تكامل النظام",
+            "payload": "بيانات_الحمولة",
+            "payload_placeholder": "تفاصيل الشراكة الاستراتيجية...",
+            "submit": "بدء الاتصال"
+        },
+        "contact_info": {
+            "cairo": "القاهرة",
+            "dubai": "دبي"
+        }
+    },
+    "not_found": {
+        "error_code": "رمز_الخطأ // مسار_غير_صالح",
+        "media_label": "مسار",
+        "media_highlight": "غير مصرح به",
+        "description": "المسار المطلوب <path>{{path}}</path> غير موجود ضمن بنية توريد UNITEDA.",
+        "reset_btn": "العودة إلى الصفحة الرئيسية",
+        "syslog": "تقرير_سجلات_النظام"
+    },
+    "feature_standby": {
+        "badge": "استعداد",
+        "label": "وحدة_النظام // قيد الانتظار",
+        "title_prefix": "طبقة تحت",
+        "title_highlight": "الإعداد",
+        "description": "هذه الوحدة التشغيلية تخضع حاليًا لتحسين معماري. يقوم ذكاء نظامنا بتهيئة طبقة البيانات هذه للنشر القادم.",
+        "protection": {
+            "label": "حماية",
+            "value": "بث مشفر"
+        },
+        "status": {
+            "label": "الحالة",
+            "value": "المزامنة جارية"
+        },
+        "return_btn": "العودة إلى نواة النظام"
+    },
+    "products": {
+        "header": {
+            "badge": "الكتالوج V2.0",
+            "title": "كتالوج المنتجات",
+            "title_highlight": "المتميزة",
+            "description": "استكشف محفظتنا الشاملة من المنتجات المصرية المتميزة والتخصصات العالمية."
+        },
+        "filters": {
+            "search_placeholder": "بحث في الكتالوج...",
+            "categories_title": "الفئات",
+            "quick_filters_title": "فلتر سريع",
+            "region": {
+                "label": "المنطقة",
+                "all": "كل المناطق",
+                "egypt": "مصر",
+                "uae": "الإمارات"
+            },
+            "season": {
+                "label": "الموسم",
+                "all": "كل المواسم",
+                "peak": "ذروة الموسم",
+                "available": "متاح",
+                "starting": "بداية الموسم"
+            },
+            "industry": {
+                "label": "القطاع",
+                "all": "كل القطاعات",
+                "hotel": "تجهيزات الفنادق",
+                "restaurant": "المطاعم",
+                "airline": "تموين الطيران",
+                "retail": "تجار التجزئة"
+            }
+        },
+        "catalog": {
+            "showing": "عرض",
+            "products_suffix": "منتج",
+            "categories": {
+                "all": "كل الفئات",
+                "fruits": "فواكه طازجة",
+                "vegetables": "خضروات طازجة",
+                "herbs": "أعشاب وخضروات",
+                "microgreens": "نباتات صغيرة",
+                "exotic": "منتجات غريبة",
+                "specialty": "أصناف خاصة"
+            },
+            "grades": {
+                "premium": "ممتاز",
+                "standard": "قياسي",
+                "export": "درجة تصدير",
+                "hydroponic": "زراعة مائية",
+                "organic": "عضوي",
+                "baby_leaf": "أوراق صغيرة",
+                "microgreen": "نباتات دقيقة"
+            },
+            "items": {
+                "1": {
+                    "name": "طماطم روما",
+                    "scientific_name": "Solanum lycopersicum",
+                    "origin": "مصر",
+                    "season": "ذروة الموسم",
+                    "availability": "طوال العام"
+                },
+                "2": {
+                    "name": "برتقال فالنسيا",
+                    "scientific_name": "Citrus sinensis",
+                    "origin": "مصر",
+                    "season": "ذروة الموسم",
+                    "availability": "فصل الشتاء"
+                },
+                "3": {
+                    "name": "ريحان طازج",
+                    "scientific_name": "Ocimum basilicum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "4": {
+                    "name": "فراولة",
+                    "scientific_name": "Fragaria × ananassa",
+                    "origin": "مصر",
+                    "season": "بداية الموسم",
+                    "availability": "الربيع"
+                },
+                "5": {
+                    "name": "سبانخ بيبي",
+                    "scientific_name": "Spinacia oleracea",
+                    "origin": "الإمارات",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "6": {
+                    "name": "فاكهة التنين",
+                    "scientific_name": "Selenicereus undatus",
+                    "origin": "مستورد",
+                    "season": "متاح",
+                    "availability": "الصيف"
+                },
+                "7": {
+                    "name": "فلفل ألوان",
+                    "scientific_name": "Capsicum annuum",
+                    "origin": "مصر",
+                    "season": "ذروة الموسم",
+                    "availability": "طوال العام"
+                },
+                "8": {
+                    "name": "براعم البازلاء",
+                    "scientific_name": "Pisum sativum",
+                    "origin": "الإمارات",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                }
+            }
+        }
+    },
+    "seasonal": {
+        "header": {
+            "badge": "التقويم الموسمي",
+            "title": "التوفر",
+            "title_highlight": "الموسمي",
+            "description": "تتبع شامل لتوفر المنتجات عبر مناطق عملنا. تعكس البيانات الأنماط التاريخية ونماذج التنبؤ الحالية."
+        },
+        "stats": {
+            "peak_products": "منتجات في الذروة",
+            "regions_tracked": "مناطق مغطاة",
+            "months_coverage": "شهر تغطية"
+        },
+        "controls": {
+            "region": {
+                "egypt": "مصر",
+                "uae": "الإمارات",
+                "both": "كل المناطق"
+            },
+            "view_mode": {
+                "grid": "عرض شبكي",
+                "table": "عرض جدول"
+            },
+            "buttons": {
+                "export": "تصدير التقرير",
+                "download": "تحميل PDF",
+                "request_access": "طلب الوصول"
+            },
+            "export_note": "يتضمن التحليل الموسمي الكامل والتوقعات"
+        },
+        "legend": {
+            "peak": "ذروة الموسم",
+            "available": "متاح",
+            "off_season": "خارج الموسم"
+        },
+        "months": [
+            "يناير",
+            "فبراير",
+            "مارس",
+            "أبريل",
+            "مايو",
+            "يونيو",
+            "يوليو",
+            "أغسطس",
+            "سبتمبر",
+            "أكتوبر",
+            "نوفمبر",
+            "ديسمبر"
+        ],
+        "seasons": {
+            "spring": "الربيع",
+            "summer": "الصيف",
+            "autumn": "الخريف",
+            "winter": "الشتاء"
+        },
+        "table": {
+            "egypt_title": "نمط التوفر في مصر",
+            "uae_title": "نمط التوفر في الإمارات",
+            "columns": {
+                "product": "المنتج",
+                "category": "الفئة"
+            }
+        },
+        "info": {
+            "title": "الذكاء التشغيلي",
+            "description": "يستخدم نظام التتبع الموسمي لدينا بيانات زراعية آنية وأنماط المحاصيل التاريخية لتوقع نوافذ التوريد المثلى. يشير موسم الذروة إلى أقصى توفر وأعلى مقاييس الجودة."
+        },
+        "cta": {
+            "title": "أمن إمداداتك الموسمية",
+            "description": "لا تترك سلسلة التوريد الخاصة بك للصدفة. احجز متطلباتك الموسمية مسبقًا مع برامج التخصيص المضمونة لدينا."
+        },
+        "products": {
+            "Strawberries": "فراولة",
+            "Mangoes": "مانجو",
+            "Valencia Oranges": "برتقال فالنسيا",
+            "Pomegranates": "رمان",
+            "Tomatoes": "طماطم",
+            "Bell Peppers": "فلفل ألوان",
+            "Asparagus": "هليون",
+            "Fresh Basil": "ريحان طازج"
+        },
+        "status": {
+            "peak_now": "الذروة الآن",
+            "ending_soon": "ينتهي قريباً",
+            "coming_soon": "قريباً",
+            "available": "متاح",
+            "off_season": "خارج الموسم"
+        },
+        "in_season": {
+            "title": "في الموسم الآن",
+            "subtitle": "ذروة التوفر هذا الشهر - اطلب الآن للحصول على أفضل جودة وأسعار",
+            "quick_quote": "عرض سريع"
+        },
+        "modal": {
+            "peak_months": "أشهر",
+            "current_status": "الوضع الحالي",
+            "best_windows": "أفضل أوقات الطلب",
+            "monthly_availability": "التوفر الشهري",
+            "limited_availability": "تفر محدود",
+            "close": "إغلاق",
+            "request_quote": "طلب عرض سعر"
+        }
+    },
+    "operations": {
+        "hero": {
+            "status": "النظام: متصل",
+            "terminal": "محطة_01 // التغذية_الرئيسية",
+            "infra_overview": "نظرة عامة على البنية التحتية",
+            "title_prefix": "التميز",
+            "title_highlight": "التشغيلي",
+            "description": "تضمن بنيتنا التحتية المتكاملة لسلسلة التوريد أقصى أداء عبر جميع المحاور الإقليمية. مراقبة السلامة الحرارية، وسرعة الخدمات اللوجستية، وضمان الجودة في الوقت الفعلي.",
+            "cta": "بدء التوريد",
+            "deco": "معرف_النظام: UNT-882<br/>الرابط_الآمن: تم_التأسيس<br/>التأخير: 12ms"
+        },
+        "stats": {
+            "facility": {
+                "value": "24/7",
+                "label": "وقت تشغيل المنشأة"
+            },
+            "delivery": {
+                "value": "98.5%",
+                "label": "التسليم في الموعد"
+            },
+            "varieties": {
+                "value": "150+",
+                "label": "أصناف المنتجات"
+            },
+            "monitoring": {
+                "value": "100%",
+                "label": "مراقبة نشطة"
+            }
+        },
+        "anatomy": {
+            "label": "// تشريح_النظام",
+            "title_prefix": "الأنظمة الفرعية",
+            "title_highlight": "الأساسية",
+            "description": "تحليل مصنف لبنية سلسلة التوريد الخاصة بنا. تعمل كل طبقة بشكل مستقل مع الحفاظ على التزامن الكامل مع النواة المركزية.",
+            "layer1": {
+                "id": "نظام_01",
+                "title": "العمود الفقري للمشتريات",
+                "description": "شبكة حيازة مباشرة من المصدر تضمن نقاط دخول عالية الجودة.",
+                "tags": [
+                    "مباشر_من_المصدر",
+                    "بوابة_الجودة",
+                    "معتمد"
+                ]
+            },
+            "layer2": {
+                "id": "نظام_02",
+                "title": "السلامة الحرارية",
+                "description": "صيانة سلسلة التبريد المستمرة من الحصاد حتى ناقل التسليم النهائي.",
+                "monitoring": "فحص_الحرارة",
+                "flow": "مثالي"
+            },
+            "layer3": {
+                "id": "نظام_03",
+                "title": "المعالجة الدقيقة",
+                "description": "مرافق فرز وتعبئة آلية مع رقابة جودة مدعومة بالذكاء الاصطناعي.",
+                "tags": [
+                    "فرز_بالذكاء_الاصطناعي",
+                    "تعبئة_آلية",
+                    "معايير_ISO"
+                ]
+            },
+            "layer4": {
+                "id": "نظام_04",
+                "title": "اللوجستيات الذكية",
+                "description": "خوارزميات توجيه ذكية تحسن نشر الأسطول ونوافذ التسليم.",
+                "tags": []
+            }
+        },
+        "compliance": {
+            "label": "// إثبات_السلطة",
+            "title_prefix": "الامتثال",
+            "title_highlight": "العالمي",
+            "description": "تلتزم عملياتنا بأشد المعايير الدولية لسلامة الغذاء والتعامل التشغيلي. نحافظ على شهادات نشطة عبر جميع الأطر التنظيمية الرئيسية.",
+            "verified": "حالة_التحقق",
+            "hud": {
+                "subject": "الموضوع: دفعة_النباتات_الصغيرة_ألفا",
+                "text": "اكتمل تحليل الجودة. مستويات النقاء تتجاوز المعايير القياسية. جاهز للنشر الفوري."
+            }
+        },
+        "certifications": {
+            "haccp": {
+                "name": "شهادة HACCP",
+                "description": "نقطة التحكم الحرجة في تحليل المخاطر"
+            },
+            "iso": {
+                "name": "ISO 22000",
+                "description": "إدارة سلامة الغذاء"
+            },
+            "globalgap": {
+                "name": "Global G.A.P",
+                "description": "الممارسات الزراعية الجيدة"
+            }
+        },
+        "partnerships": {
+            "label": "بروتوكول_التحالف",
+            "title_prefix": "الشراكات",
+            "title_highlight": "الاستراتيجية",
+            "description": "انضم إلى شبكة المؤسسات النخبة التي تستفيد من بنية التوريد الخاصة بنا. ابدأ استفسار شراكة للوصول إلى دعمنا اللوجستي المخصص.",
+            "cta_primary": "بدء الشراكة",
+            "cta_secondary": "اتصل بمركز العمليات",
+            "footer": {
+                "system": "إصدار_النظام: 4.2.0",
+                "access": "مستوى_الوصول: زائر"
+            }
+        }
+    },
+    "rfq": {
+        "header": {
+            "badge": "بوابة المشتريات",
+            "title": "طلب عرض سعر",
+            "description": "ابدأ طلب توريد لمؤسستك. سيقوم فريقنا بهيكلة عرض توريد مخصص بناءً على مواصفاتك."
+        },
+        "form": {
+            "sections": {
+                "business_info": "معلومات العمل",
+                "supply_req": "متطلبات التوريد",
+                "contact_info": "بروتوكول الاتصال"
+            },
+            "fields": {
+                "company": {
+                    "label": "اسم الجهة",
+                    "placeholder": "اسم الشركة المسجل"
+                },
+                "business_type": {
+                    "label": "نطاق العمل",
+                    "placeholder": "اختر نوع الكيان"
+                },
+                "country": {
+                    "label": "المنطقة",
+                    "placeholder": "اختر المنطقة"
+                },
+                "city": {
+                    "label": "المدينة / المنطقة",
+                    "placeholder": "موقع المركز التشغيلي"
+                },
+                "categories": {
+                    "label": "الفئات المطلوبة"
+                },
+                "volume": {
+                    "label": "الحجم المتوقع",
+                    "placeholder": "اختر الحجم الشهري"
+                },
+                "frequency": {
+                    "label": "تكرار التوريد",
+                    "placeholder": "اختر وتيرة التسليم"
+                },
+                "requirements": {
+                    "label": "مواصفات إضافية",
+                    "placeholder": "أصناف محددة، متطلبات التصنيف، أو بروتوكولات التعبئة..."
+                },
+                "name": {
+                    "label": "الشخص المسؤول",
+                    "placeholder": "الاسم الكامل"
+                },
+                "position": {
+                    "label": "المسمى الوظيفي",
+                    "placeholder": "العنوان الوظيفي"
+                },
+                "email": {
+                    "label": "البريد الإلكتروني للعمل",
+                    "placeholder": "name@company.com"
+                },
+                "phone": {
+                    "label": "الخط المباشر",
+                    "placeholder": "+1 (555) 000-0000"
+                }
+            },
+            "options": {
+                "business_types": {
+                    "hotel": "فندق / منتجع",
+                    "restaurant": "مطعم / مقهى",
+                    "airline": "تموين الطيران",
+                    "supermarket": "سوبر ماركت / سلسلة تجزئة",
+                    "distributor": "موزع جملة",
+                    "processor": "مصنع أغذية",
+                    "other": "مؤسسة أخرى"
+                },
+                "volume_ranges": {
+                    "small": "< 1 طن / شهر",
+                    "medium": "1 - 5 طن / شهر",
+                    "large": "5 - 20 طن / شهر",
+                    "enterprise": "> 20 طن / شهر"
+                },
+                "frequencies": {
+                    "daily": "تسليم يومي",
+                    "weekly_2": "2-3 مرات / أسبوعياً",
+                    "weekly": "أسبوعياً",
+                    "biweekly": "كل أسبوعين",
+                    "monthly": "شهرياً"
+                }
+            },
+            "submit": {
+                "button": "إرسال الطلب",
+                "submitting": "جاري الإرسال...",
+                "note": "وقت الاستجابة المتوقع: < 24 ساعة"
+            },
+            "success": {
+                "title": "تم إرسال الطلب",
+                "description": "استقبل فريق المشتريات لدينا إشارتك. توقع عرضًا مشفرًا قريبًا."
+            }
+        },
+        "sidebar": {
+            "process": {
+                "title": "بروتوكول الشراء",
+                "steps": [
+                    "إرسال المتطلبات عبر نموذج آمن",
+                    "تلقي عرض مخصص خلال 24 ساعة",
+                    "تفعيل الحساب وإعداد الخدمات اللوجستية"
+                ]
+            },
+            "contact": {
+                "title": "اتصال مباشر",
+                "description": "للمتطلبات المؤسسية العاجلة أو التكاملات المخصصة، استخدم الخطوط المباشرة."
+            },
+            "certifications": "شهادات الجودة"
+        }
+    }
+}

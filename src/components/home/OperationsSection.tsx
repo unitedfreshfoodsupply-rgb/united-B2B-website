@@ -1,32 +1,30 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { ArrowRight, Truck, Thermometer, CheckCircle2, Package, Factory, Shield, BarChart3 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const operations = [
+const operationsData = [
   {
+    id: "ecosystem",
     icon: Factory,
-    title: "Eco-System Sourcing",
-    description: "Direct farm-to-hub infrastructure with zero mid-layer friction.",
   },
   {
+    id: "grading",
     icon: CheckCircle2,
-    title: "Precision Grading",
-    description: "Multi-parameter quality checks for size, Brix, and visual consistency.",
   },
   {
+    id: "cold_chain",
     icon: Thermometer,
-    title: "Active Cold-Chain",
-    description: "Real-time temperature monitoring from harvest to final delivery.",
   },
   {
+    id: "compliance",
     icon: Shield,
-    title: "Compliance Core",
-    description: "Global standard food safety audits (HACCP / ISO 22000).",
   },
 ];
 
 export function OperationsSection() {
+  const { t } = useTranslation('home');
   return (
     <section className="section-padding bg-[#fafafa]">
       <div className="container-wide">
@@ -46,14 +44,14 @@ export function OperationsSection() {
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-uniteda-emerald-dark to-transparent opacity-60" />
-                <div className="absolute bottom-0 left-0 p-10">
+                <div className="absolute bottom-0 left-0 rtl:left-auto rtl:right-0 p-10">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-12 h-12 rounded-2xl bg-uniteda-gold/20 backdrop-blur-md flex items-center justify-center border border-white/20">
                       <Truck className="text-uniteda-gold" />
                     </div>
-                    <span className="text-white font-black text-xs uppercase tracking-[0.2em]">Logistics Intelligence</span>
+                    <span className="text-white font-black text-xs uppercase tracking-[0.2em]">{t('operations.logistics_intelligence')}</span>
                   </div>
-                  <h3 className="text-3xl font-black text-white tracking-tighter">Cairo & Dubai Hubs Sync</h3>
+                  <h3 className="text-3xl font-black text-white tracking-tighter">{t('operations.hub_sync')}</h3>
                 </div>
               </motion.div>
 
@@ -66,7 +64,7 @@ export function OperationsSection() {
               >
                 <BarChart3 className="text-uniteda-gold w-8 h-8" />
                 <div className="text-3xl font-black text-uniteda-emerald-dark tracking-tighter">99.8%</div>
-                <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest leading-none">Supply Precision</p>
+                <p className="text-[10px] font-black text-muted-foreground uppercase tracking-widest leading-none">{t('operations.supply_precision')}</p>
               </motion.div>
 
               <motion.div
@@ -78,7 +76,7 @@ export function OperationsSection() {
               >
                 <Thermometer className="w-8 h-8 text-white/40" />
                 <div className="text-3xl font-black tracking-tighter">4°C - 8°C</div>
-                <p className="text-[10px] font-black text-white/40 uppercase tracking-widest leading-none">Target Temp Range</p>
+                <p className="text-[10px] font-black text-white/40 uppercase tracking-widest leading-none">{t('operations.target_temp')}</p>
               </motion.div>
             </div>
 
@@ -86,17 +84,17 @@ export function OperationsSection() {
             <motion.div
               animate={{ x: [0, 10, 0] }}
               transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-              className="absolute -top-10 -right-10 hidden xl:flex glass-panel p-6 rounded-3xl shadow-2xl border border-white/40 max-w-[200px] flex-col gap-3"
+              className="absolute -top-10 -right-10 rtl:right-auto rtl:-left-10 hidden xl:flex glass-panel p-6 rounded-3xl shadow-2xl border border-white/40 max-w-[200px] flex-col gap-3"
             >
               <div className="w-10 h-10 rounded-full bg-uniteda-emerald/10 flex items-center justify-center">
                 <Package size={20} className="text-uniteda-emerald" />
               </div>
-              <p className="text-xs font-black text-uniteda-emerald-dark uppercase tracking-widest">Cold-Chain Asset</p>
+              <p className="text-xs font-black text-uniteda-emerald-dark uppercase tracking-widest">{t('operations.cold_chain_asset')}</p>
               <div className="space-y-1">
                 <div className="h-1.5 w-full bg-muted rounded-full overflow-hidden">
                   <div className="h-full w-[80%] bg-uniteda-emerald" />
                 </div>
-                <span className="text-[9px] font-bold text-muted-foreground">Traceability Locked</span>
+                <span className="text-[9px] font-bold text-muted-foreground">{t('operations.traceability_locked')}</span>
               </div>
             </motion.div>
           </div>
@@ -110,19 +108,19 @@ export function OperationsSection() {
           >
             <div>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-uniteda-emerald/5 text-uniteda-emerald text-[10px] font-black uppercase tracking-widest mb-6 border border-uniteda-emerald/10">
-                Supply Chain Architecture
+                {t('operations.architecture_label')}
               </div>
               <h2 className="text-5xl md:text-6xl font-black text-uniteda-emerald-dark tracking-tighter leading-[0.9]">
-                Operations as <br />
-                <span className="text-uniteda-gold">Infrastructure</span>
+                {t('operations.title_prefix')} <br />
+                <span className="text-uniteda-gold">{t('operations.title_highlight')}</span>
               </h2>
               <p className="text-lg text-muted-foreground font-medium mt-8 leading-relaxed max-w-lg">
-                We don't just deliver products; we manage a sophisticated logistics engine designed to ensure 100% freshness from the moment of harvest.
+                {t('operations.description')}
               </p>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-              {operations.map((op, i) => (
+              {operationsData.map((op, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 10 }}
@@ -133,8 +131,12 @@ export function OperationsSection() {
                   <div className="w-12 h-12 rounded-2xl bg-uniteda-emerald/5 flex items-center justify-center text-uniteda-emerald group-hover:bg-uniteda-emerald group-hover:text-white transition-all duration-500">
                     <op.icon size={24} />
                   </div>
-                  <h4 className="font-black text-uniteda-emerald-dark text-lg tracking-tight group-hover:text-uniteda-emerald transition-colors">{op.title}</h4>
-                  <p className="text-sm text-muted-foreground font-medium leading-snug">{op.description}</p>
+                  <h4 className="font-black text-uniteda-emerald-dark text-lg tracking-tight group-hover:text-uniteda-emerald transition-colors">
+                    {t(`operations.items.${op.id}.title`)}
+                  </h4>
+                  <p className="text-sm text-muted-foreground font-medium leading-snug">
+                    {t(`operations.items.${op.id}.description`)}
+                  </p>
                 </motion.div>
               ))}
             </div>
@@ -142,8 +144,8 @@ export function OperationsSection() {
             <div className="pt-4">
               <Button className="rounded-full bg-uniteda-emerald-dark hover:bg-uniteda-emerald px-8 py-7 font-black text-xs uppercase tracking-[0.2em] shadow-xl group">
                 <Link to="/operations" className="flex items-center gap-2">
-                  Technical Architecture
-                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                  {t('operations.cta')}
+                  <ArrowRight size={16} className="group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform rtl:rotate-180" />
                 </Link>
               </Button>
             </div>

@@ -1,4 +1,5 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { X, TrendingUp, Calendar, MapPin, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -20,10 +21,10 @@ interface ProductDetailModalProps {
 
 const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
-const getAvailabilityLabel = (value: number) => {
-    if (value === 2) return "Peak";
-    if (value === 1) return "Available";
-    return "Off-season";
+const getAvailabilityLabelKey = (value: number) => {
+    if (value === 2) return "seasonal.legend.peak";
+    if (value === 1) return "seasonal.legend.available";
+    return "seasonal.legend.off_season";
 };
 
 const getAvailabilityColor = (value: number) => {
@@ -53,6 +54,7 @@ const getCategoryIcon = (category: string) => {
 };
 
 export function ProductDetailModal({ product, isOpen, onClose, currentMonth }: ProductDetailModalProps) {
+    const { t } = useTranslation('pages');
     if (!product) return null;
 
     const egyptBest = getBestMonths(product.egypt);
@@ -94,33 +96,33 @@ export function ProductDetailModal({ product, isOpen, onClose, currentMonth }: P
                         <div className="p-4 rounded-xl bg-muted/50">
                             <div className="flex items-center gap-2 text-sm text-muted-foreground mb-1">
                                 <TrendingUp size={14} />
-                                <span>Egypt Peak</span>
+                                <span>{t('seasonal.controls.region.egypt')} {t('seasonal.legend.peak')}</span>
                             </div>
-                            <p className="font-bold text-foreground">{egyptBest.length} months</p>
+                            <p className="font-bold text-foreground">{egyptBest.length} {t('seasonal.modal.peak_months')}</p>
                         </div>
                         <div className="p-4 rounded-xl bg-muted/50">
                             <div className="flex items-center gap-2 text-sm text-muted-foreground mb-1">
                                 <TrendingUp size={14} />
-                                <span>UAE Peak</span>
+                                <span>{t('seasonal.controls.region.uae')} {t('seasonal.legend.peak')}</span>
                             </div>
-                            <p className="font-bold text-foreground">{uaeBest.length} months</p>
+                            <p className="font-bold text-foreground">{uaeBest.length} {t('seasonal.modal.peak_months')}</p>
                         </div>
                         <div className="p-4 rounded-xl bg-muted/50">
                             <div className="flex items-center gap-2 text-sm text-muted-foreground mb-1">
                                 <Calendar size={14} />
-                                <span>Current Status</span>
+                                <span>{t('seasonal.modal.current_status')}</span>
                             </div>
                             <p className="font-bold text-foreground">
-                                {product.egypt[currentMonth] === 2 || product.uae[currentMonth] === 2 ? "Peak" :
-                                    product.egypt[currentMonth] === 1 || product.uae[currentMonth] === 1 ? "Available" : "Off-season"}
+                                {product.egypt[currentMonth] === 2 || product.uae[currentMonth] === 2 ? t('seasonal.legend.peak') :
+                                    product.egypt[currentMonth] === 1 || product.uae[currentMonth] === 1 ? t('seasonal.legend.available') : t('seasonal.legend.off_season')}
                             </p>
                         </div>
                         <div className="p-4 rounded-xl bg-muted/50">
                             <div className="flex items-center gap-2 text-sm text-muted-foreground mb-1">
                                 <MapPin size={14} />
-                                <span>Regions</span>
+                                <span>{t('products.filters.region.label')}</span>
                             </div>
-                            <p className="font-bold text-foreground">Egypt & UAE</p>
+                            <p className="font-bold text-foreground">{t('seasonal.controls.region.egypt')} & {t('seasonal.controls.region.uae')}</p>
                         </div>
                     </div>
 
@@ -128,19 +130,19 @@ export function ProductDetailModal({ product, isOpen, onClose, currentMonth }: P
                     <div className="p-6 rounded-2xl bg-accent/5 border border-accent/20">
                         <h3 className="font-bold text-foreground mb-4 flex items-center gap-2">
                             <Calendar className="w-5 h-5 text-accent" />
-                            Best Ordering Windows
+                            {t('seasonal.modal.best_windows')}
                         </h3>
                         <div className="grid md:grid-cols-2 gap-4">
                             <div>
-                                <p className="text-sm font-medium text-muted-foreground mb-2">🇪🇬 Egypt</p>
+                                <p className="text-sm font-medium text-muted-foreground mb-2">🇪🇬 {t('seasonal.controls.region.egypt')}</p>
                                 <p className="font-bold text-foreground">
-                                    {egyptBest.length > 0 ? egyptBest.join(", ") : "Limited availability"}
+                                    {egyptBest.length > 0 ? egyptBest.join(", ") : t('seasonal.modal.limited_availability')}
                                 </p>
                             </div>
                             <div>
-                                <p className="text-sm font-medium text-muted-foreground mb-2">🇦🇪 UAE</p>
+                                <p className="text-sm font-medium text-muted-foreground mb-2">🇦🇪 {t('seasonal.controls.region.uae')}</p>
                                 <p className="font-bold text-foreground">
-                                    {uaeBest.length > 0 ? uaeBest.join(", ") : "Limited availability"}
+                                    {uaeBest.length > 0 ? uaeBest.join(", ") : t('seasonal.modal.limited_availability')}
                                 </p>
                             </div>
                         </div>
@@ -148,11 +150,11 @@ export function ProductDetailModal({ product, isOpen, onClose, currentMonth }: P
 
                     {/* Monthly Breakdown */}
                     <div>
-                        <h3 className="font-bold text-foreground mb-4">Monthly Availability</h3>
+                        <h3 className="font-bold text-foreground mb-4">{t('seasonal.modal.monthly_availability')}</h3>
 
                         {/* Egypt */}
                         <div className="mb-4">
-                            <p className="text-sm font-medium text-muted-foreground mb-2">🇪🇬 Egypt</p>
+                            <p className="text-sm font-medium text-muted-foreground mb-2">🇪🇬 {t('seasonal.controls.region.egypt')}</p>
                             <div className="grid grid-cols-6 md:grid-cols-12 gap-2">
                                 {product.egypt.map((value, index) => (
                                     <div key={index} className="text-center">
@@ -165,7 +167,7 @@ export function ProductDetailModal({ product, isOpen, onClose, currentMonth }: P
                                         >
                                             {months[index].charAt(0)}
                                         </div>
-                                        <span className="text-[10px] text-muted-foreground">{getAvailabilityLabel(value)}</span>
+                                        <span className="text-[10px] text-muted-foreground">{t(getAvailabilityLabelKey(value))}</span>
                                     </div>
                                 ))}
                             </div>
@@ -173,7 +175,7 @@ export function ProductDetailModal({ product, isOpen, onClose, currentMonth }: P
 
                         {/* UAE */}
                         <div>
-                            <p className="text-sm font-medium text-muted-foreground mb-2">🇦🇪 UAE</p>
+                            <p className="text-sm font-medium text-muted-foreground mb-2">🇦🇪 {t('seasonal.controls.region.uae')}</p>
                             <div className="grid grid-cols-6 md:grid-cols-12 gap-2">
                                 {product.uae.map((value, index) => (
                                     <div key={index} className="text-center">
@@ -186,7 +188,7 @@ export function ProductDetailModal({ product, isOpen, onClose, currentMonth }: P
                                         >
                                             {months[index].charAt(0)}
                                         </div>
-                                        <span className="text-[10px] text-muted-foreground">{getAvailabilityLabel(value)}</span>
+                                        <span className="text-[10px] text-muted-foreground">{t(getAvailabilityLabelKey(value))}</span>
                                     </div>
                                 ))}
                             </div>
@@ -196,11 +198,11 @@ export function ProductDetailModal({ product, isOpen, onClose, currentMonth }: P
                     {/* CTA */}
                     <div className="flex gap-3 pt-4 border-t border-border">
                         <Button variant="outline" onClick={onClose} className="flex-1">
-                            Close
+                            {t('seasonal.modal.close')}
                         </Button>
                         <Button asChild className="flex-1">
                             <Link to="/rfq" className="flex items-center justify-center gap-2">
-                                Request Quote
+                                {t('seasonal.modal.request_quote')}
                                 <ArrowRight size={16} />
                             </Link>
                         </Button>

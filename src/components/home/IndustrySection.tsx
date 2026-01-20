@@ -1,46 +1,42 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { Building2, Plane, ShoppingBag, Utensils, Ship, Store, CheckCircle2 } from "lucide-react";
 
-const industries = [
+const industriesData = [
   {
+    id: "hospitality",
     icon: Building2,
-    name: "Hospitality & Resorts",
-    description: "Multi-tier supply for enterprise-scale hotel chains with 24/7 reliability.",
-    features: ["Scale Consistency", "Custom Grading", "Global Standards"],
+    features: ["scale", "grading", "standards"],
   },
   {
+    id: "dining",
     icon: Utensils,
-    name: "Fine Dining & Catering",
-    description: "Chef-grade boutique produce for high-end culinary requirements.",
-    features: ["Specialty Varities", "Brix Verified", "Small Batch Logic"],
+    features: ["specialty", "brix", "batch"],
   },
   {
+    id: "aviation",
     icon: Plane,
-    name: "Aviation Logistics",
-    description: "Hyper-compliant supply for inflight services with strict traceability.",
-    features: ["HACCP Core", "Logistics Precision", "ISO Certified"],
+    features: ["haccp", "logistics", "iso"],
   },
   {
+    id: "retail",
     icon: ShoppingBag,
-    name: "Modern Retail",
-    description: "Shelf-ready produce with optimized packaging for premium supermarkets.",
-    features: ["B2B Integration", "Shelf-Life Data", "Retail Packaging"],
+    features: ["b2b", "shelf_life", "packaging"],
   },
   {
+    id: "partners",
     icon: Ship,
-    name: "Logistics Partners",
-    description: "Bulk supply orchestration for regional food distribution hubs.",
-    features: ["Bulk Logic", "Port-to-Hub Flow", "Unified Billing"],
+    features: ["bulk", "flow", "billing"],
   },
   {
+    id: "processing",
     icon: Store,
-    name: "Enterprise Processing",
-    description: "Industrial-grade raw material supply for secondary food processing.",
-    features: ["High-Volume Flow", "Technical Grading", "Supply Locks"],
+    features: ["volume", "technical", "locks"],
   },
 ];
 
 export function IndustrySection() {
+  const { t } = useTranslation('home');
   return (
     <section className="section-padding bg-white relative">
       <div className="container-wide">
@@ -51,22 +47,22 @@ export function IndustrySection() {
             whileInView={{ opacity: 1, scale: 1 }}
             className="px-4 py-1.5 rounded-full bg-uniteda-emerald/5 text-uniteda-emerald text-[10px] font-black uppercase tracking-[0.2em] border border-uniteda-emerald/10"
           >
-            Vertical Market Intelligence
+            {t('industry.label')}
           </motion.div>
           <h2 className="text-5xl md:text-7xl font-black text-uniteda-emerald-dark tracking-tighter leading-none">
-            Tailored Industry <br />
-            <span className="text-uniteda-gold">Solutions</span>
+            {t('industry.title_prefix')} <br />
+            <span className="text-uniteda-gold">{t('industry.title_highlight')}</span>
           </h2>
           <p className="text-lg text-muted-foreground font-medium max-w-xl">
-            We operate across six specialized sectors, delivering data-driven supply logic tailored to the unique technical requirements of each vertical.
+            {t('industry.description')}
           </p>
         </div>
 
         {/* Industries Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {industries.map((industry, index) => (
+          {industriesData.map((industry, index) => (
             <motion.div
-              key={industry.name}
+              key={industry.id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -77,18 +73,18 @@ export function IndustrySection() {
                 <industry.icon className="w-8 h-8" />
               </div>
               <h3 className="text-2xl font-black text-uniteda-emerald-dark tracking-tight mb-4">
-                {industry.name}
+                {t(`industry.sectors.${industry.id}.name`)}
               </h3>
               <p className="text-sm text-muted-foreground font-medium leading-relaxed mb-8">
-                {industry.description}
+                {t(`industry.sectors.${industry.id}.description`)}
               </p>
 
               <div className="space-y-3 border-t border-black/5 pt-8">
-                {industry.features.map((feature) => (
-                  <div key={feature} className="flex items-center gap-3">
+                {industry.features.map((featureKey) => (
+                  <div key={featureKey} className="flex items-center gap-3">
                     <CheckCircle2 size={14} className="text-uniteda-gold" />
                     <span className="text-[11px] font-black text-uniteda-emerald-dark uppercase tracking-widest leading-none">
-                      {feature}
+                      {t(`industry.sectors.${industry.id}.features.${featureKey}`)}
                     </span>
                   </div>
                 ))}

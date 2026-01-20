@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { ArrowRight, Apple, Carrot, Leaf, Sprout, Cherry, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,8 +8,6 @@ import { cn } from "@/lib/utils";
 const categories = [
   {
     id: "fruits",
-    name: "Fresh Fruits",
-    description: "Premium citrus, berries, and stone fruits with verified Brix levels.",
     icon: Apple,
     count: 45,
     size: "large",
@@ -17,8 +16,6 @@ const categories = [
   },
   {
     id: "vegetables",
-    name: "Fresh Vegetables",
-    description: "Root varieties and seasonal greens with cold-chain tracking.",
     icon: Carrot,
     count: 62,
     size: "small",
@@ -26,8 +23,6 @@ const categories = [
   },
   {
     id: "herbs",
-    name: "Herbs & Greens",
-    description: "Aromatic culinary essentials with premium freshness.",
     icon: Leaf,
     count: 28,
     size: "small",
@@ -35,8 +30,6 @@ const categories = [
   },
   {
     id: "microgreens",
-    name: "Microgreens",
-    description: "Nutrient-dense baby veg for premium plating and high-end gastronomy.",
     icon: Sprout,
     count: 18,
     size: "medium",
@@ -45,8 +38,6 @@ const categories = [
   },
   {
     id: "exotic",
-    name: "Exotic & Specialty",
-    description: "Rare imports and unique varieties for discerning buyers.",
     icon: Cherry,
     count: 34,
     size: "small",
@@ -55,6 +46,7 @@ const categories = [
 ];
 
 export function ProductCategoriesSection() {
+  const { t } = useTranslation('home');
   return (
     <section className="section-padding bg-background">
       <div className="container-wide">
@@ -69,12 +61,12 @@ export function ProductCategoriesSection() {
           >
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-4 border border-primary/20">
               <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              Product Catalog
+              {t('product_catalog')}
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-primary tracking-tight leading-[1.1]">
-              Product Intelligence
+              {t('product_intelligence')}
               <br />
-              <span className="text-accent">Portfolio</span>
+              <span className="text-accent">{t('portfolio')}</span>
             </h2>
           </motion.div>
 
@@ -85,7 +77,7 @@ export function ProductCategoriesSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-base lg:text-lg text-muted-foreground font-medium max-w-md leading-relaxed"
           >
-            Every product category is treated as a technical supply asset with deep metadata and regional availability logic.
+            {t('subtitle')}
           </motion.p>
         </div>
 
@@ -119,23 +111,23 @@ export function ProductCategoriesSection() {
                     <cat.icon size={28} strokeWidth={2.5} />
                   </div>
                   <div className="px-3 py-1.5 bg-background/80 backdrop-blur-sm rounded-full text-[10px] font-bold uppercase tracking-wider text-foreground border border-border shadow-sm">
-                    {cat.count} Items
+                    {cat.count} {t('items')}
                   </div>
                 </div>
 
                 {/* Bottom Section */}
                 <div className="space-y-3">
                   <h3 className="text-2xl lg:text-3xl font-black tracking-tight text-foreground group-hover:text-primary transition-colors duration-300">
-                    {cat.name}
+                    {t(`categories.${cat.id}.name`)}
                   </h3>
                   {(cat.size === "large" || cat.size === "medium") && (
                     <p className="text-sm lg:text-base font-medium text-muted-foreground leading-relaxed max-w-sm">
-                      {cat.description}
+                      {t(`categories.${cat.id}.description`)}
                     </p>
                   )}
                   <div className="flex items-center gap-2 text-accent text-xs font-bold uppercase tracking-wider pt-2 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0">
-                    Explore Category
-                    <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                    {t('explore_category')}
+                    <ArrowRight size={16} className="group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform rtl:rotate-180" />
                   </div>
                 </div>
               </Link>
@@ -146,7 +138,7 @@ export function ProductCategoriesSection() {
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20 z-10" />
                   <img
                     src={cat.image}
-                    alt={cat.name}
+                    alt={t(`categories.${cat.id}.name`)}
                     className="w-full h-full object-cover opacity-15 group-hover:opacity-30 transition-all duration-700 group-hover:scale-110"
                   />
                 </div>
@@ -169,10 +161,10 @@ export function ProductCategoriesSection() {
               </div>
               <div>
                 <h3 className="text-2xl lg:text-3xl font-black tracking-tight mb-3">
-                  Business Inquiry Hub
+                  {t('inquiry.title')}
                 </h3>
                 <p className="text-primary-foreground/80 font-medium text-sm lg:text-base leading-relaxed">
-                  Generate structured RFQs for regional logistics hubs with instant quote processing.
+                  {t('inquiry.description')}
                 </p>
               </div>
             </div>
@@ -181,8 +173,8 @@ export function ProductCategoriesSection() {
               className="w-full rounded-2xl bg-accent hover:bg-accent/90 text-accent-foreground font-bold py-6 mt-6 shadow-lg shadow-accent/20 transition-all duration-300 hover:shadow-xl hover:shadow-accent/30"
             >
               <Link to="/rfq" className="flex items-center justify-center gap-2">
-                Open Inquiry Engine
-                <ArrowRight size={18} />
+                {t('inquiry.cta')}
+                <ArrowRight size={18} className="rtl:rotate-180" />
               </Link>
             </Button>
           </motion.div>
