@@ -350,7 +350,7 @@ export default function ProductsPage() {
                     {t('products.filters.quick_filters_title')}
                   </h3>
                   <div className="space-y-4">
-                    <Select>
+                    <Select dir={isRTL ? "rtl" : "ltr"}>
                       <SelectTrigger className="w-full rounded-xl border-black/5 bg-muted/30 hover:bg-muted/50 transition-colors font-medium">
                         <SelectValue placeholder={t('products.filters.region.label')} />
                       </SelectTrigger>
@@ -360,7 +360,7 @@ export default function ProductsPage() {
                         <SelectItem value="uae">{t('products.filters.region.uae')}</SelectItem>
                       </SelectContent>
                     </Select>
-                    <Select>
+                    <Select dir={isRTL ? "rtl" : "ltr"}>
                       <SelectTrigger className="w-full rounded-xl border-black/5 bg-muted/30 hover:bg-muted/50 transition-colors font-medium">
                         <SelectValue placeholder={t('products.filters.season.label')} />
                       </SelectTrigger>

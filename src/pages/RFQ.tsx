@@ -1,6 +1,6 @@
-import { useState } from "react";
+import React, { useState, useMemo, useCallback } from "react";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -14,18 +14,22 @@ import {
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
-import { ArrowRight, Building2, CheckCircle2, FileText, Clock, Truck } from "lucide-react";
+import { ArrowRight, ArrowLeft, Building2, CheckCircle2, FileText, Clock, Truck, ShieldCheck, Globe2, Leaf, Box } from "lucide-react";
 import { toast } from "sonner";
-
-
+import { cn } from "@/lib/utils";
+import rfqHero from "@/assets/rfq-hero.png";
 
 export default function RFQPage() {
-  const { t } = useTranslation('pages');
+  const { t, i18n } = useTranslation('pages');
+  const isRTL = i18n.dir() === 'rtl';
+  const [currentStep, setCurrentStep] = useState(0);
+  const [direction, setDirection] = useState(0); // 1 for forward, -1 for backward
+
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  // Mapped options
-  const businessTypes = [
+  // Mapped options - Stabilized with useMemo
+  const businessTypes = useMemo(() => [
     { value: "hotel", label: t('rfq.form.options.business_types.hotel') },
     { value: "restaurant", label: t('rfq.form.options.business_types.restaurant') },
     { value: "airline", label: t('rfq.form.options.business_types.airline') },
@@ -33,329 +37,424 @@ export default function RFQPage() {
     { value: "distributor", label: t('rfq.form.options.business_types.distributor') },
     { value: "processor", label: t('rfq.form.options.business_types.processor') },
     { value: "other", label: t('rfq.form.options.business_types.other') },
-  ];
+  ], [t]);
 
-  const volumeRanges = [
+  const volumeRanges = useMemo(() => [
     { value: "small", label: t('rfq.form.options.volume_ranges.small') },
     { value: "medium", label: t('rfq.form.options.volume_ranges.medium') },
     { value: "large", label: t('rfq.form.options.volume_ranges.large') },
     { value: "enterprise", label: t('rfq.form.options.volume_ranges.enterprise') },
-  ];
+  ], [t]);
 
-  const frequencies = [
+  const frequencies = useMemo(() => [
     { value: "daily", label: t('rfq.form.options.frequencies.daily') },
     { value: "weekly-2", label: t('rfq.form.options.frequencies.weekly_2') },
     { value: "weekly", label: t('rfq.form.options.frequencies.weekly') },
     { value: "biweekly", label: t('rfq.form.options.frequencies.biweekly') },
     { value: "monthly", label: t('rfq.form.options.frequencies.monthly') },
-  ];
+  ], [t]);
 
-  const productCategories = [
+  const productCategories = useMemo(() => [
     t('products.catalog.categories.fruits'),
     t('products.catalog.categories.vegetables'),
     t('products.catalog.categories.herbs'),
     t('products.catalog.categories.microgreens'),
     t('products.catalog.categories.exotic'),
     t('products.catalog.categories.specialty'),
-  ];
+  ], [t]);
 
-  const handleCategoryToggle = (category: string) => {
+  const handleCategoryToggle = useCallback((category: string) => {
     setSelectedCategories(prev =>
       prev.includes(category)
         ? prev.filter(c => c !== category)
         : [...prev, category]
     );
+  }, []);
+
+  const nextStep = () => {
+    setDirection(1);
+    setCurrentStep(prev => Math.min(prev + 1, 2));
+    window.scrollTo({ top: 300, behavior: 'smooth' });
+  };
+
+  const prevStep = () => {
+    setDirection(-1);
+    setCurrentStep(prev => Math.max(prev - 1, 0));
+    window.scrollTo({ top: 300, behavior: 'smooth' });
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (currentStep < 2) {
+      nextStep();
+      return;
+    }
+
     setIsSubmitting(true);
-
-    // Simulate submission
     await new Promise(resolve => setTimeout(resolve, 1500));
-
     toast.success(t('rfq.form.success.title'), {
       description: t('rfq.form.success.description'),
     });
-
     setIsSubmitting(false);
+  };
+
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? (isRTL ? -100 : 100) : (isRTL ? 100 : -100),
+      opacity: 0,
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? (isRTL ? -100 : 100) : (isRTL ? 100 : -100),
+      opacity: 0,
+    }),
   };
 
   return (
     <Layout>
-      {/* Header */}
-      <section className="pt-12 pb-8 bg-gradient-subtle">
-        <div className="container-wide">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="max-w-3xl"
-          >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
-              {t('rfq.header.badge')}
-            </span>
-            <h1 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
-              {t('rfq.header.title')}
-            </h1>
-            <p className="text-muted-foreground text-lg">
-              {t('rfq.header.description')}
-            </p>
-          </motion.div>
+      {/* Premium Hero */}
+      <section className="relative pt-32 pb-0 overflow-hidden bg-white">
+        <div className="absolute top-0 right-0 rtl:left-0 rtl:right-auto w-[1000px] h-[1000px] bg-uniteda-emerald/10 rounded-full blur-[180px] -mr-96 rtl:-ml-96 rtl:-mr-0 -mt-96 pointer-events-none" />
+
+        <div className="container-wide relative z-10 lg:pb-12">
+          <div className="grid lg:grid-cols-2 gap-20 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: isRTL ? 30 : -30 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8 }}
+              className="space-y-10"
+            >
+              <div className="text-start">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="flex items-center gap-3 mb-8"
+                >
+                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-uniteda-gold/10 border border-uniteda-gold/20 text-uniteda-emerald-dark text-[11px] font-black uppercase tracking-[0.2em]">
+                    <ShieldCheck size={14} className="text-uniteda-emerald" />
+                    {t('rfq.header.badge')}
+                  </span>
+                </motion.div>
+
+                <h1 className="font-display text-6xl md:text-7xl lg:text-8xl font-black text-uniteda-emerald-dark mb-8 tracking-tighter leading-[0.9] uppercase">
+                  {t('rfq.header.title')}
+                </h1>
+
+                <p className="text-xl md:text-2xl text-muted-foreground/90 leading-relaxed max-w-xl font-medium">
+                  {t('rfq.header.description')}
+                </p>
+              </div>
+
+              <div className="flex items-center gap-12 pt-4">
+                <div className="flex flex-col">
+                  <span className="text-3xl font-black text-uniteda-emerald-dark tracking-tighter">{t('rfq.header.response_time_value')}</span>
+                  <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{t('rfq.header.response_time_label')}</span>
+                </div>
+                <div className="w-px h-12 bg-black/5" />
+                <div className="flex flex-col">
+                  <span className="text-3xl font-black text-uniteda-emerald-dark tracking-tighter">{t('rfq.header.quality_value')}</span>
+                  <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{t('rfq.header.quality_label')}</span>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1 }}
+              className="relative w-full hidden lg:block"
+            >
+              <div className="relative aspect-[4/3] rounded-[4rem] border-[12px] border-white shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] overflow-hidden">
+                <img src={rfqHero} alt={t('rfq.header.image_alt')} className="w-full h-full object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-uniteda-emerald-dark/40 via-transparent to-transparent pointer-events-none" />
+              </div>
+            </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Form Section */}
-      <section className="section-padding pt-12">
-        <div className="container-wide">
-          <div className="grid lg:grid-cols-3 gap-12">
-            {/* Form */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="lg:col-span-2"
-            >
-              <form onSubmit={handleSubmit} className="space-y-8">
-                {/* Business Information */}
-                <div className="p-6 rounded-2xl bg-card border border-border">
-                  <h2 className="font-display text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
-                    <Building2 className="w-5 h-5 text-primary" />
-                    {t('rfq.form.sections.business_info')}
-                  </h2>
-                  <div className="grid sm:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="company">{t('rfq.form.fields.company.label')}</Label>
-                      <Input id="company" placeholder={t('rfq.form.fields.company.placeholder')} required />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="businessType">{t('rfq.form.fields.business_type.label')}</Label>
-                      <Select required>
-                        <SelectTrigger className="text-start">
-                          <SelectValue placeholder={t('rfq.form.fields.business_type.placeholder')} />
-                        </SelectTrigger>
-                        <SelectContent>
-                          {businessTypes.map(type => (
-                            <SelectItem
-                              key={type.value}
-                              value={type.value}
-                              className="text-start rtl:pr-8 rtl:pl-2 rtl:[&>span]:right-2 rtl:[&>span]:left-auto"
-                            >
-                              {type.label}
-                            </SelectItem>
-                          ))}
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="country">{t('rfq.form.fields.country.label')}</Label>
-                      <Select required>
-                        <SelectTrigger className="text-start">
-                          <SelectValue placeholder={t('rfq.form.fields.country.placeholder')} />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem
-                            value="egypt"
-                            className="text-start rtl:pr-8 rtl:pl-2 rtl:[&>span]:right-2 rtl:[&>span]:left-auto"
-                          >
-                            {t('products.filters.region.egypt')}
-                          </SelectItem>
-                          <SelectItem
-                            value="uae"
-                            className="text-start rtl:pr-8 rtl:pl-2 rtl:[&>span]:right-2 rtl:[&>span]:left-auto"
-                          >
-                            {t('products.filters.region.uae')}
-                          </SelectItem>
-                        </SelectContent>
-                      </Select>
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="city">{t('rfq.form.fields.city.label')}</Label>
-                      <Input id="city" placeholder={t('rfq.form.fields.city.placeholder')} required />
-                    </div>
-                  </div>
+      {/* Progressive Form Section */}
+      <section className="section-padding bg-[#fafafa] relative overflow-hidden min-h-[900px]">
+        <div className="container-wide relative z-10">
+          <div className="grid lg:grid-cols-12 gap-16">
+            <div className="lg:col-span-8">
+              {/* Progress Tracker */}
+              <div className="mb-12 space-y-4">
+                <div className="flex justify-between items-end mb-2">
+                  <span className="text-[10px] font-black text-uniteda-emerald uppercase tracking-[0.3em]">
+                    {t('rfq.form.step_label', { step: currentStep + 1 })}
+                  </span>
+                  <span className="text-[10px] font-black text-muted-foreground/40 uppercase tracking-[0.3em]">
+                    {currentStep === 0
+                      ? t('rfq.form.steps_names.entity')
+                      : currentStep === 1
+                        ? t('rfq.form.steps_names.supply')
+                        : t('rfq.form.steps_names.verification')}
+                  </span>
                 </div>
+                <div className="h-2 w-full bg-black/5 rounded-full overflow-hidden">
+                  <motion.div
+                    initial={{ width: "33.33%" }}
+                    animate={{ width: `${(currentStep + 1) * 33.33}%` }}
+                    className="h-full bg-uniteda-emerald rounded-full"
+                  />
+                </div>
+              </div>
 
-                {/* Supply Requirements */}
-                <div className="p-6 rounded-2xl bg-card border border-border">
-                  <h2 className="font-display text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
-                    <Truck className="w-5 h-5 text-primary" />
-                    {t('rfq.form.sections.supply_req')}
-                  </h2>
-                  <div className="space-y-6">
-                    <div className="space-y-3">
-                      <Label>{t('rfq.form.fields.categories.label')}</Label>
-                      <div className="grid sm:grid-cols-2 gap-3">
-                        {productCategories.map(category => (
-                          <div
-                            key={category}
-                            className="flex items-center gap-3"
-                          >
-                            <Checkbox
-                              id={category}
-                              checked={selectedCategories.includes(category)}
-                              onCheckedChange={() => handleCategoryToggle(category)}
-                            />
-                            <Label htmlFor={category} className="font-normal cursor-pointer">
-                              {category}
-                            </Label>
+              <form onSubmit={handleSubmit} className="relative">
+                <AnimatePresence initial={false} custom={direction} mode="wait">
+                  <motion.div
+                    key={currentStep}
+                    custom={direction}
+                    variants={slideVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={{
+                      x: { type: "spring", stiffness: 300, damping: 30 },
+                      opacity: { duration: 0.2 },
+                    }}
+                    className="w-full"
+                  >
+                    {currentStep === 0 && (
+                      <div className="p-10 md:p-14 rounded-[3.5rem] bg-white border border-black/5 shadow-2xl shadow-black/[0.02] text-start">
+                        <div className="flex items-center gap-4 mb-10">
+                          <div className="w-12 h-12 rounded-2xl bg-uniteda-emerald/5 flex items-center justify-center text-uniteda-emerald">
+                            <Building2 size={24} />
                           </div>
-                        ))}
-                      </div>
-                    </div>
-                    <div className="grid sm:grid-cols-2 gap-6">
-                      <div className="space-y-2">
-                        <Label htmlFor="volume">{t('rfq.form.fields.volume.label')}</Label>
-                        <Select required>
-                          <SelectTrigger className="text-start">
-                            <SelectValue placeholder={t('rfq.form.fields.volume.placeholder')} />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {volumeRanges.map(vol => (
-                              <SelectItem
-                                key={vol.value}
-                                value={vol.value}
-                                className="text-start rtl:pr-8 rtl:pl-2 rtl:[&>span]:right-2 rtl:[&>span]:left-auto"
-                              >
-                                {vol.label}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-                      <div className="space-y-2">
-                        <Label htmlFor="frequency">{t('rfq.form.fields.frequency.label')}</Label>
-                        <Select required>
-                          <SelectTrigger className="text-start">
-                            <SelectValue placeholder={t('rfq.form.fields.frequency.placeholder')} />
-                          </SelectTrigger>
-                          <SelectContent>
-                            {frequencies.map(freq => (
-                              <SelectItem
-                                key={freq.value}
-                                value={freq.value}
-                                className="text-start rtl:pr-8 rtl:pl-2 rtl:[&>span]:right-2 rtl:[&>span]:left-auto"
-                              >
-                                {freq.label}
-                              </SelectItem>
-                            ))}
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="requirements">{t('rfq.form.fields.requirements.label')}</Label>
-                      <Textarea
-                        id="requirements"
-                        placeholder={t('rfq.form.fields.requirements.placeholder')}
-                        rows={4}
-                      />
-                    </div>
-                  </div>
-                </div>
+                          <div>
+                            <h2 className="text-2xl font-black text-uniteda-emerald-dark leading-none">{t('rfq.form.sections.business_info')}</h2>
+                            <p className="text-xs font-bold text-muted-foreground/60 uppercase mt-2 tracking-widest font-mono">{t('rfq.form.layers.initialization')}</p>
+                          </div>
+                        </div>
 
-                {/* Contact Information */}
-                <div className="p-6 rounded-2xl bg-card border border-border">
-                  <h2 className="font-display text-xl font-semibold text-foreground mb-6 flex items-center gap-2">
-                    <FileText className="w-5 h-5 text-primary" />
-                    {t('rfq.form.sections.contact_info')}
-                  </h2>
-                  <div className="grid sm:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="name">{t('rfq.form.fields.name.label')}</Label>
-                      <Input id="name" placeholder={t('rfq.form.fields.name.placeholder')} required />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="position">{t('rfq.form.fields.position.label')}</Label>
-                      <Input id="position" placeholder={t('rfq.form.fields.position.placeholder')} />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="email">{t('rfq.form.fields.email.label')}</Label>
-                      <Input id="email" type="email" placeholder={t('rfq.form.fields.email.placeholder')} required />
-                    </div>
-                    <div className="space-y-2">
-                      <Label htmlFor="phone">{t('rfq.form.fields.phone.label')}</Label>
-                      <Input id="phone" type="tel" placeholder={t('rfq.form.fields.phone.placeholder')} required />
-                    </div>
-                  </div>
-                </div>
+                        <div className="grid sm:grid-cols-2 gap-x-10 gap-y-8">
+                          <div className="space-y-3">
+                            <Label htmlFor="company" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.company.label')}</Label>
+                            <Input id="company" placeholder={t('rfq.form.fields.company.placeholder')} className="h-16 rounded-2xl bg-[#fcfcfc] border-black/5 px-6 font-medium" required />
+                          </div>
+                          <div className="space-y-3">
+                            <Label htmlFor="businessType" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.business_type.label')}</Label>
+                            <Select required dir={isRTL ? "rtl" : "ltr"}>
+                              <SelectTrigger className="h-16 rounded-2xl bg-[#fcfcfc] border-black/5 px-6 font-medium text-start">
+                                <SelectValue placeholder={t('rfq.form.fields.business_type.placeholder')} />
+                              </SelectTrigger>
+                              <SelectContent className="rounded-2xl">
+                                {businessTypes.map(type => (
+                                  <SelectItem key={type.value} value={type.value} className="text-start">{type.label}</SelectItem>
+                                ))}
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <div className="space-y-3">
+                            <Label htmlFor="country" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.country.label')}</Label>
+                            <Select required dir={isRTL ? "rtl" : "ltr"}>
+                              <SelectTrigger className="h-16 rounded-2xl bg-[#fcfcfc] border-black/5 px-6 font-medium text-start">
+                                <SelectValue placeholder={t('rfq.form.fields.country.placeholder')} />
+                              </SelectTrigger>
+                              <SelectContent className="rounded-2xl">
+                                <SelectItem value="egypt" className="text-start">{t('products.filters.region.egypt')}</SelectItem>
+                                <SelectItem value="uae" className="text-start">{t('products.filters.region.uae')}</SelectItem>
+                              </SelectContent>
+                            </Select>
+                          </div>
+                          <div className="space-y-3">
+                            <Label htmlFor="city" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.city.label')}</Label>
+                            <Input id="city" placeholder={t('rfq.form.fields.city.placeholder')} className="h-16 rounded-2xl bg-[#fcfcfc] border-black/5 px-6 font-medium" required />
+                          </div>
+                        </div>
+                      </div>
+                    )}
 
-                {/* Submit */}
-                <div className="flex items-center gap-4">
-                  <Button type="submit" variant="hero" size="xl" disabled={isSubmitting}>
-                    {isSubmitting ? t('rfq.form.submit.submitting') : t('rfq.form.submit.button')}
-                    <ArrowRight className="w-5 h-5 ms-1 rtl:rotate-180" />
+                    {currentStep === 1 && (
+                      <div className="p-10 md:p-14 rounded-[3.5rem] bg-white border border-black/5 shadow-2xl shadow-black/[0.02] text-start">
+                        <div className="flex items-center gap-4 mb-10">
+                          <div className="w-12 h-12 rounded-2xl bg-uniteda-emerald/5 flex items-center justify-center text-uniteda-emerald">
+                            <Truck size={24} />
+                          </div>
+                          <div>
+                            <h2 className="text-2xl font-black text-uniteda-emerald-dark leading-none">{t('rfq.form.sections.supply_req')}</h2>
+                            <p className="text-xs font-bold text-muted-foreground/60 uppercase mt-2 tracking-widest font-mono">{t('rfq.form.layers.operational')}</p>
+                          </div>
+                        </div>
+
+                        <div className="space-y-10">
+                          <div className="space-y-6">
+                            <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.categories.label')}</Label>
+                            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                              {productCategories.map(category => (
+                                <label
+                                  key={category}
+                                  className={cn(
+                                    "flex items-center gap-4 p-5 rounded-2xl border transition-all cursor-pointer",
+                                    selectedCategories.includes(category)
+                                      ? "bg-uniteda-emerald border-uniteda-emerald text-white"
+                                      : "bg-[#fcfcfc] border-black/5 hover:border-uniteda-emerald/30"
+                                  )}
+                                >
+                                  <Checkbox
+                                    checked={selectedCategories.includes(category)}
+                                    onCheckedChange={() => handleCategoryToggle(category)}
+                                    className={cn(
+                                      "w-6 h-6 rounded-lg border-2 transition-all",
+                                      selectedCategories.includes(category)
+                                        ? "bg-white border-white text-uniteda-emerald data-[state=checked]:bg-white data-[state=checked]:text-uniteda-emerald"
+                                        : "border-black/10 bg-white"
+                                    )}
+                                  />
+                                  <span className="font-bold text-lg select-none">{category}</span>
+                                </label>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div className="grid sm:grid-cols-2 gap-x-10 gap-y-8">
+                            <div className="space-y-3">
+                              <Label htmlFor="volume" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.volume.label')}</Label>
+                              <Select required dir={isRTL ? "rtl" : "ltr"}>
+                                <SelectTrigger className="h-16 rounded-2xl bg-[#fcfcfc] border-black/5 px-6 font-medium text-start">
+                                  <SelectValue placeholder={t('rfq.form.fields.volume.placeholder')} />
+                                </SelectTrigger>
+                                <SelectContent className="rounded-2xl">
+                                  {volumeRanges.map(vol => (
+                                    <SelectItem key={vol.value} value={vol.value} className="text-start">{vol.label}</SelectItem>
+                                  ))}
+                                </SelectContent>
+                              </Select>
+                            </div>
+                            <div className="space-y-3">
+                              <Label htmlFor="frequency" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.frequency.label')}</Label>
+                              <Select required dir={isRTL ? "rtl" : "ltr"}>
+                                <SelectTrigger className="h-16 rounded-2xl bg-[#fcfcfc] border-black/5 px-6 font-medium text-start">
+                                  <SelectValue placeholder={t('rfq.form.fields.frequency.placeholder')} />
+                                </SelectTrigger>
+                                <SelectContent className="rounded-2xl">
+                                  {frequencies.map(freq => (
+                                    <SelectItem key={freq.value} value={freq.value} className="text-start">{freq.label}</SelectItem>
+                                  ))}
+                                </SelectContent>
+                              </Select>
+                            </div>
+                          </div>
+                          <div className="space-y-3">
+                            <Label htmlFor="requirements" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.requirements.label')}</Label>
+                            <Textarea id="requirements" placeholder={t('rfq.form.fields.requirements.placeholder')} rows={4} className="rounded-3xl bg-[#fcfcfc] border-black/5 p-6 font-medium resize-none" />
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {currentStep === 2 && (
+                      <div className="p-10 md:p-14 rounded-[3.5rem] bg-white border border-black/5 shadow-2xl shadow-black/[0.02] text-start">
+                        <div className="flex items-center gap-4 mb-10">
+                          <div className="w-12 h-12 rounded-2xl bg-uniteda-emerald/5 flex items-center justify-center text-uniteda-emerald">
+                            <FileText size={24} />
+                          </div>
+                          <div>
+                            <h2 className="text-2xl font-black text-uniteda-emerald-dark leading-none">{t('rfq.form.sections.contact_info')}</h2>
+                            <p className="text-xs font-bold text-muted-foreground/60 uppercase mt-2 tracking-widest font-mono">{t('rfq.form.layers.verification')}</p>
+                          </div>
+                        </div>
+
+                        <div className="grid sm:grid-cols-2 gap-x-10 gap-y-8">
+                          <div className="space-y-3">
+                            <Label htmlFor="name" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.name.label')}</Label>
+                            <Input id="name" placeholder={t('rfq.form.fields.name.placeholder')} className="h-16 rounded-2xl bg-[#fcfcfc] border-black/5 px-6 font-medium" required />
+                          </div>
+                          <div className="space-y-3">
+                            <Label htmlFor="position" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.position.label')}</Label>
+                            <Input id="position" placeholder={t('rfq.form.fields.position.placeholder')} className="h-16 rounded-2xl bg-[#fcfcfc] border-black/5 px-6 font-medium" />
+                          </div>
+                          <div className="space-y-3">
+                            <Label htmlFor="email" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.email.label')}</Label>
+                            <Input id="email" type="email" placeholder={t('rfq.form.fields.email.placeholder')} className="h-16 rounded-2xl bg-[#fcfcfc] border-black/5 px-6 font-medium" required />
+                          </div>
+                          <div className="space-y-3">
+                            <Label htmlFor="phone" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.phone.label')}</Label>
+                            <Input id="phone" type="tel" placeholder={t('rfq.form.fields.phone.placeholder')} className="h-16 rounded-2xl bg-[#fcfcfc] border-black/5 px-6 font-medium" required />
+                          </div>
+                        </div>
+
+                        <div className="mt-12 p-6 rounded-2xl bg-uniteda-emerald/5 border border-uniteda-emerald/10 flex items-start gap-4">
+                          <ShieldCheck className="text-uniteda-emerald mt-1 shrink-0" size={20} />
+                          <p className="text-xs font-bold text-uniteda-emerald-dark leading-relaxed">{t('rfq.form.authorization_note')}</p>
+                        </div>
+                      </div>
+                    )}
+                  </motion.div>
+                </AnimatePresence>
+
+                {/* Footer Controls */}
+                <div className="mt-12 flex items-center justify-between gap-6 px-4">
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    onClick={prevStep}
+                    disabled={currentStep === 0}
+                    className="h-16 px-8 rounded-2xl font-black text-sm uppercase tracking-widest disabled:opacity-0 transition-opacity"
+                  >
+                    <ArrowLeft className="w-5 h-5 me-3 rtl:rotate-180" />
+                    {t('rfq.form.back_button')}
                   </Button>
-                  <p className="text-sm text-muted-foreground">
-                    {t('rfq.form.submit.note')}
-                  </p>
+
+                  <Button
+                    type="submit"
+                    size="xl"
+                    disabled={isSubmitting}
+                    className="h-20 px-12 rounded-full bg-uniteda-emerald hover:bg-uniteda-emerald-dark text-white font-black text-xl shadow-xl shadow-uniteda-emerald/20 transition-all hover:scale-105 active:scale-95 group"
+                  >
+                    {isSubmitting ? t('rfq.form.submit.submitting') : currentStep === 2 ? t('rfq.form.submit.button') : t('rfq.form.submit.continue')}
+                    <ArrowRight className="w-6 h-6 ms-3 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform rtl:rotate-180" />
+                  </Button>
                 </div>
               </form>
-            </motion.div>
+            </div>
 
-            {/* Sidebar */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="space-y-6"
-            >
-              {/* Process */}
-              <div className="p-6 rounded-2xl bg-primary text-primary-foreground">
-                <h3 className="font-display text-lg font-semibold mb-4">{t('rfq.sidebar.process.title')}</h3>
-                <div className="space-y-4">
+            {/* Sidebar Column */}
+            <div className="lg:col-span-4 space-y-10">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                className="p-12 rounded-[3.5rem] bg-uniteda-emerald-dark text-white relative overflow-hidden"
+              >
+                <h3 className="font-display text-2xl font-black mb-10 text-uniteda-gold tracking-tight">{t('rfq.sidebar.process.title')}</h3>
+                <div className="space-y-8">
                   {(t('rfq.sidebar.process.steps', { returnObjects: true }) as string[]).map((stepText, i) => {
                     const icons = [FileText, Clock, CheckCircle2];
                     const Icon = icons[i] || CheckCircle2;
                     return (
-                      <div key={i} className="flex items-start gap-3">
-                        <div className="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center shrink-0">
-                          <Icon className="w-4 h-4 text-accent" />
+                      <div key={i} className="flex items-start gap-6 group">
+                        <div className={cn(
+                          "w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 transition-all duration-300",
+                          currentStep >= i ? "bg-uniteda-gold text-uniteda-emerald-dark" : "bg-white/10 text-white/40"
+                        )}>
+                          <Icon size={24} />
                         </div>
-                        <p className="text-sm text-primary-foreground/90 pt-1">{stepText}</p>
+                        <div className="space-y-1 text-start">
+                          <span className="text-[10px] font-black opacity-30 uppercase tracking-[0.3em]">{t('rfq.sidebar.phases.phase_label', { phase: i + 1 })}</span>
+                          <p className="text-sm font-medium text-white/80 leading-relaxed">{stepText}</p>
+                        </div>
                       </div>
                     );
                   })}
                 </div>
-              </div>
+              </motion.div>
 
-              {/* Contact */}
-              <div className="p-6 rounded-2xl bg-card border border-border">
-                <h3 className="font-display text-lg font-semibold text-foreground mb-4">
-                  {t('rfq.sidebar.contact.title')}
-                </h3>
-                <p className="text-sm text-muted-foreground mb-4">
-                  {t('rfq.sidebar.contact.description')}
-                </p>
-                <div className="space-y-3 text-sm">
-                  <div className="flex justify-between items-center px-4 py-2 rounded-lg bg-muted/50">
-                    <span className="font-medium">{t('products.filters.region.egypt')}</span>
-                    <span dir="ltr" className="font-mono text-muted-foreground">+20 10 2202 3344</span>
-                  </div>
-                  <div className="flex justify-between items-center px-4 py-2 rounded-lg bg-muted/50">
-                    <span className="font-medium">{t('products.filters.region.uae')}</span>
-                    <span dir="ltr" className="font-mono text-muted-foreground">+971 4 454 2200</span>
-                  </div>
-                  <div className="text-center pt-2">
-                    <a href="mailto:sales@uniteda.com" className="text-primary hover:underline">sales@uniteda.com</a>
-                  </div>
-                </div>
+              <div className="p-12 rounded-[3.5rem] bg-white border border-black/5 shadow-2xl shadow-black/[0.02] text-start">
+                <h3 className="font-display text-2xl font-black text-uniteda-emerald-dark mb-6">{t('rfq.sidebar.support.title')}</h3>
+                <p className="text-sm font-medium text-muted-foreground leading-relaxed mb-6">{t('rfq.sidebar.support.description')}</p>
+                <Button variant="outline" className="w-full h-16 rounded-2xl border-uniteda-emerald/20 text-uniteda-emerald font-black text-xs uppercase tracking-widest hover:bg-uniteda-emerald hover:text-white" asChild>
+                  <a href="mailto:sales@uniteda.com">sales@uniteda.com</a>
+                </Button>
               </div>
-
-              {/* Trust Badges */}
-              <div className="p-6 rounded-2xl bg-muted/50 border border-border">
-                <h3 className="font-display text-sm font-semibold text-foreground mb-3 uppercase tracking-wider">
-                  {t('rfq.sidebar.certifications')}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {["HACCP", "ISO 22000", "GlobalGAP"].map(cert => (
-                    <span key={cert} className="px-3 py-1.5 rounded-lg bg-card border border-border text-xs font-medium">
-                      {cert}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.div>
+            </div>
           </div>
         </div>
       </section>

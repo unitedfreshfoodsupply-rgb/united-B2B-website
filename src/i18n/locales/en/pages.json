@@ -296,14 +296,18 @@
     },
     "operations": {
         "hero": {
-            "status": "SYSTEM: ONLINE",
+            "status": "SOIL-TO-SHIPMENT LOGISTICS",
             "terminal": "TERMINAL_01 // MAIN_FEED",
             "infra_overview": "INFRASTRUCTURE OVERVIEW",
-            "title_prefix": "OPERATIONAL",
-            "title_highlight": "EXCELLENCE",
-            "description": "Our integrated supply chain infrastructure ensures peak performance across all regional hubs. Monitoring thermal integrity, logistics velocity, and quality assurance in real-time.",
-            "cta": "INITIATE PROCUREMENT",
-            "deco": "SYSTEM_ID: UNT-882<br/>SECURE_LINK: ESTABLISHED<br/>LATENCY: 12ms"
+            "title_prefix": "NATURE'S FINEST,",
+            "title_highlight": "DELIVERED FRESH",
+            "description": "We bridge the gap between Egypt's fertile lands and global tables through an unbreakable cold-chain network and precision logistics.",
+            "cta": "INITIALIZE PROCUREMENT",
+            "partners_label": "Global Partners",
+            "partners_sub": "Trusting Our Network",
+            "vessel_label": "Active Vessel",
+            "vessel_name": "North Mediterranean Hub",
+            "integrity_score": "Integrity Score"
         },
         "stats": {
             "facility": {
@@ -320,57 +324,69 @@
             },
             "monitoring": {
                 "value": "100%",
-                "label": "ACTIVE MONITORING"
+                "label": "COLD-CHAIN SECURE"
             }
         },
         "anatomy": {
-            "label": "// SYSTEM_ANATOMY",
-            "title_prefix": "CORE",
-            "title_highlight": "SUBSYSTEMS",
-            "description": "Declassified breakdown of our proprietary supply chain architecture. Each layer operates autonomously while maintaining complete synchronization with the central core.",
+            "label": "OPERATIONAL ARCHITECTURE",
+            "title_prefix": "UNBREAKABLE",
+            "title_highlight": "COLD-CHAIN ARCHITECTURE",
+            "description": "From the moment of harvest to the final delivery vector, we maintain peak freshness through a integrated network of thermal monitoring and smart routing.",
             "layer1": {
                 "id": "SYS_01",
-                "title": "Procurement Backbone",
-                "description": "Direct-from-source acquisition network ensuring premium quality entry points.",
+                "title": "Harvest Optimization",
+                "description": "Direct collaboration with source farms ensures only export-grade produce enters our network at peak maturity.",
+                "stage": "Stage 01: SOURCE",
                 "tags": [
+                    "GLOBAL G.A.P",
                     "SOURCE_DIRECT",
-                    "QUALITY_GATE",
-                    "CERTIFIED"
+                    "QUALITY_GATE"
                 ]
             },
             "layer2": {
                 "id": "SYS_02",
-                "title": "Thermal Integrity",
-                "description": "Unbroken cold chain maintenance from harvest to final delivery vector.",
+                "title": "Cold-Chain Excellence",
+                "description": "Unbroken thermal integrity from harvest to destination. Real-time monitoring ensures zero quality degradation across maritime and aerial cargo vectors.",
                 "monitoring": "TEMP_CHECK",
-                "flow": "OPTIMAL"
+                "flow": "OPTIMAL",
+                "stats": {
+                    "on_time": "98.5% On-Time",
+                    "secured": "Secured Cargo"
+                }
             },
             "layer3": {
                 "id": "SYS_03",
-                "title": "Precision Processing",
-                "description": "Automated sorting and packaging facilities with AI-driven quality control.",
-                "tags": [
-                    "AI_SORTING",
-                    "AUTO_PACK",
-                    "ISO_STD"
-                ]
+                "title": "Precision Screening",
+                "description": "Every SKU is manually inspected by our quality assurance specialists to ensure perfect grading compliance.",
+                "tests": {
+                    "color": "Color Check",
+                    "brix": "Brix Level",
+                    "sizing": "Sizing",
+                    "texture": "Texture",
+                    "residue": "Residue Test",
+                    "hydration": "Hydration",
+                    "skin": "Skin Integrity",
+                    "ethylene": "Ethylene Control"
+                }
             },
             "layer4": {
                 "id": "SYS_04",
                 "title": "Intelligent Logistics",
-                "description": "Smart routing algorithms optimizing fleet deployment and delivery windows.",
-                "tags": []
+                "description": "Smart routing algorithms optimizing fleet deployment and delivery windows across global shipping lanes.",
+                "vessel": "Active Vessel",
+                "route_matrix": "Access Route Matrix"
             }
         },
         "compliance": {
-            "label": "// AUTHORITY_PROOF",
-            "title_prefix": "GLOBAL",
-            "title_highlight": "COMPLIANCE",
+            "label": "AUTHORITY & TRUST",
+            "title_prefix": "GLOBAL QUALITY",
+            "title_highlight": "CERTIFICATION CORE",
             "description": "Our operations adhere to the strictest international standards for food safety and operational handling. We maintain active certification across all key regulatory frameworks.",
             "verified": "VERIFIED_STATUS",
             "hud": {
-                "subject": "SUBJECT: MICROGREENS_BATCH_Alpha",
-                "text": "Quality analysis complete. Purity levels exceed standard parameters. Ready for immediate deployment."
+                "label": "Operational Insight",
+                "subject": "GLOBAL GAP APPROVED",
+                "text": "Freshness is a measurement of time and temperature. We master both to deliver nature's best."
             }
         },
         "certifications": {
@@ -388,15 +404,17 @@
             }
         },
         "partnerships": {
-            "label": "ALLIANCE_PROTOCOL",
-            "title_prefix": "STRATEGIC",
-            "title_highlight": "PARTNERSHIPS",
-            "description": "Join the network of elite institutions leveraging our supply architecture. Initialize a partnership query to access our dedicated logistical support.",
-            "cta_primary": "INITIALIZE PARTNERSHIP",
-            "cta_secondary": "CONTACT OPS_CENTER",
+            "label": "ENABLING GLOBAL COMMERCE",
+            "title_prefix": "PARTNER WITH",
+            "title_highlight": "THE SOURCE.",
+            "description": "Initialize a strategic supply partnership and leverage our infrastructure to scale your institutional requirements.",
+            "cta_primary": "START INQUIRY",
+            "cta_secondary": "CONTACT OPS",
             "footer": {
-                "system": "SYSTEM_VER: 4.2.0",
-                "access": "ACCESS_LEVEL: VISITOR"
+                "system": "GLOBAL NETWORK: ACTIVE",
+                "shipped": "4,200+ Tons Shipped",
+                "recall": "Zero Recall Policy",
+                "access": "SYSTEM_ACCESS: INSTITUTIONAL"
             }
         }
     },
@@ -404,13 +422,29 @@
         "header": {
             "badge": "Procurement Portal",
             "title": "Request for Quote",
-            "description": "Initialize a procurement request for your organization. Our team will structure a custom supply proposal based on your specifications."
+            "description": "Initialize a procurement request for your organization. Our team will structure a custom supply proposal based on your specifications.",
+            "image_alt": "Procurement",
+            "response_time_value": "24H",
+            "response_time_label": "Max Response",
+            "quality_value": "100%",
+            "quality_label": "Quality Secure"
         },
         "form": {
             "sections": {
                 "business_info": "Business Information",
                 "supply_req": "Supply Requirements",
                 "contact_info": "Contact Protocol"
+            },
+            "step_label": "Step 0{{step}} / 03",
+            "steps_names": {
+                "entity": "Entity",
+                "supply": "Supply",
+                "verification": "Verification"
+            },
+            "layers": {
+                "initialization": "Initialization Layer",
+                "operational": "Operational Parameters",
+                "verification": "Verification Matrix"
             },
             "fields": {
                 "company": {
@@ -485,9 +519,12 @@
                     "monthly": "Monthly"
                 }
             },
+            "authorization_note": "By submitting this request, you authorize UNITED to structure a formal procurement proposal. Data is processed under secure institutional protocols.",
+            "back_button": "Step Back",
             "submit": {
                 "button": "Orbit Request",
                 "submitting": "Transmitting...",
+                "continue": "Continue Payload",
                 "note": "Response time estimate: < 24h"
             },
             "success": {
@@ -503,6 +540,13 @@
                     "Receive custom proposal within 24h",
                     "Account activation & logistics setup"
                 ]
+            },
+            "phases": {
+                "phase_label": "Phase 0{{phase}}"
+            },
+            "support": {
+                "title": "Support Uplink",
+                "description": "Immediate institutional support is available for complex supply requirements."
             },
             "contact": {
                 "title": "Direct Uplink",
