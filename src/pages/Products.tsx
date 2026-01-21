@@ -30,6 +30,10 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import productsHero from "@/assets/products-hero.png";
+import { importedProducts } from "@/data/imported-products";
+import { vegetableProducts } from "@/data/vegetable-products";
+import { herbProducts } from "@/data/herb-products";
+import { localFruitProducts } from "@/data/local-fruit-products";
 
 const categories = [
   { id: "all", nameKey: "products.catalog.categories.all", icon: Grid3X3, count: 209 },
@@ -41,97 +45,13 @@ const categories = [
   { id: "specialty", nameKey: "products.catalog.categories.specialty", icon: CircleDot, count: 22 },
 ];
 
-const tickerItems = [
-  { key: "saffron_microgreens", tagKey: "new", icon: Sprout, origin: "UAE" },
-  { key: "dragon_fruit", tagKey: "imported", icon: Globe2, origin: "Vietnam" },
-  { key: "purple_carrots", tagKey: "new", icon: Carrot, origin: "Egypt" },
-  { key: "starfruit", tagKey: "imported", icon: Ship, origin: "Malaysia" },
-  { key: "organic_kale", tagKey: "new", icon: Leaf, origin: "Egypt" },
-  { key: "thai_mangoes", tagKey: "imported", icon: Globe2, origin: "Thailand" },
-  { key: "edible_flowers", tagKey: "new", icon: Sparkles, origin: "UAE" },
-];
+const tickerItems: any[] = [];
 
 const sampleProducts = [
-  {
-    id: "1",
-    key: "1",
-    category: "vegetables",
-    origin: "egypt",
-    season: "peak",
-    image: "🍅",
-    grades: ["premium", "standard"],
-    price: "From $2.50/kg"
-  },
-  {
-    id: "2",
-    key: "2",
-    category: "fruits",
-    origin: "egypt",
-    season: "peak",
-    image: "🍊",
-    grades: ["export", "premium", "standard"],
-    price: "From $1.80/kg"
-  },
-  {
-    id: "3",
-    key: "3",
-    category: "herbs",
-    origin: "egypt",
-    season: "available",
-    image: "🌿",
-    grades: ["hydroponic", "organic"],
-    price: "From $12.00/kg"
-  },
-  {
-    id: "4",
-    key: "4",
-    category: "fruits",
-    origin: "egypt",
-    season: "starting",
-    image: "🍓",
-    grades: ["premium", "standard"],
-    price: "From $3.20/kg"
-  },
-  {
-    id: "5",
-    key: "5",
-    category: "microgreens",
-    origin: "uae",
-    season: "available",
-    image: "🥬",
-    grades: ["baby_leaf", "microgreen"],
-    price: "From $25.00/kg"
-  },
-  {
-    id: "6",
-    key: "6",
-    category: "exotic",
-    origin: "imported",
-    season: "available",
-    image: "🐉",
-    grades: ["premium"],
-    price: "From $15.00/kg"
-  },
-  {
-    id: "7",
-    key: "7",
-    category: "vegetables",
-    origin: "egypt",
-    season: "peak",
-    image: "🫑",
-    grades: ["premium", "standard"],
-    price: "From $4.50/kg"
-  },
-  {
-    id: "8",
-    key: "8",
-    category: "microgreens",
-    origin: "uae",
-    season: "available",
-    image: "🌱",
-    grades: ["microgreen"],
-    price: "From $28.00/kg"
-  },
+  ...importedProducts,
+  ...vegetableProducts,
+  ...herbProducts,
+  ...localFruitProducts
 ];
 
 export default function ProductsPage() {
@@ -440,7 +360,15 @@ export default function ProductsPage() {
                         "relative bg-[#f8f8f8] group-hover:bg-[#f0fdf4] transition-colors duration-500 flex items-center justify-center overflow-hidden",
                         viewMode === "list" ? "w-24 h-24 rounded-2xl shrink-0" : "aspect-square w-full"
                       )}>
-                        <div className="text-6xl group-hover:scale-110 transition-transform duration-500 drop-shadow-xl">{product.image}</div>
+                        {product.image.length > 2 ? (
+                          <img
+                            src={product.image}
+                            alt={t(`products.catalog.items.${product.key}.name`)}
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                        ) : (
+                          <div className="text-6xl group-hover:scale-110 transition-transform duration-500 drop-shadow-xl">{product.image}</div>
+                        )}
 
                         {/* Grade Badge Overlay (Grid only) */}
                         {viewMode === "grid" && (
