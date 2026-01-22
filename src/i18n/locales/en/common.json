@@ -30,6 +30,12 @@
     "footer": {
         "description": "Delivering premium fresh produce to hospitality and food service industries across Egypt and UAE with uncompromising quality and reliability.",
         "brand_slogan": "Agricultural Supply",
+        "pre_footer": {
+            "label": "Grow with us",
+            "title": "Bringing freshness to your business",
+            "description": "Partner with UNITED to access our premium supply chain network and elevate your produce standards with our world-class logistics.",
+            "cta": "Start Exporting"
+        },
         "columns": {
             "products": "Products",
             "company": "Company",
