@@ -50,11 +50,12 @@ export function Header() {
           width: isScrolled ? "90%" : "100%",
           paddingTop: headerPadding,
           paddingBottom: headerPadding,
+          backgroundColor: headerBg,
         }}
         className={cn(
           "pointer-events-auto transition-all duration-500 ease-in-out",
           isScrolled
-            ? "glass-panel rounded-full px-8 max-w-[1280px]"
+            ? "backdrop-blur-md border border-white/20 shadow-xl rounded-full px-8 max-w-[1280px]"
             : "bg-transparent border-b border-transparent px-6 w-full"
         )}
       >

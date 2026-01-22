@@ -94,21 +94,22 @@ export default function SeasonalPage() {
   return (
     <Layout>
       {/* Header */}
-      <section className="relative pt-16 pb-12 overflow-hidden bg-gradient-to-br from-primary/5 via-background to-accent/5">
+      <section className="relative pt-12 sm:pt-16 pb-8 sm:pb-12 overflow-hidden bg-gradient-to-br from-primary/5 via-background to-accent/5">
         {/* Decorative background elements */}
         <div className="absolute top-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl -mr-48 -mt-48" />
         <div className="absolute bottom-0 left-0 w-80 h-80 bg-primary/5 rounded-full blur-3xl -ml-40 -mb-40" />
 
         <div className="container-wide relative z-10">
-          <div className="grid lg:grid-cols-[1fr,auto] gap-8 items-start">
+          <div className="flex flex-col lg:grid lg:grid-cols-[1fr,auto] gap-6 lg:gap-8 items-start">
             {/* Main content */}
             <motion.div
+              className="w-full"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
             >
               {/* Badge with current month */}
-              <div className="flex items-center gap-3 mb-6">
+              <div className="flex flex-wrap items-center gap-3 mb-4 sm:mb-6">
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-bold border border-primary/20">
                   <Calendar size={14} />
                   {t('seasonal.header.badge')}
@@ -120,20 +121,20 @@ export default function SeasonalPage() {
               </div>
 
               {/* Title */}
-              <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-black text-foreground mb-6 tracking-tight leading-[1.1]">
+              <h1 className="font-display text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-foreground mb-4 sm:mb-6 tracking-tight leading-[1.1]">
                 {t('seasonal.header.title')}
-                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mt-2">
+                <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent mt-1 sm:mt-2">
                   {t('seasonal.header.title_highlight')}
                 </span>
               </h1>
 
               {/* Description */}
-              <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl mb-6">
+              <p className="text-muted-foreground text-base sm:text-lg leading-relaxed max-w-2xl mb-4 sm:mb-6">
                 {t('seasonal.header.description')}
               </p>
 
               {/* Quick stats */}
-              <div className="flex flex-wrap items-center gap-6">
+              <div className="flex flex-col sm:flex-row sm:flex-wrap items-start sm:items-center gap-3 sm:gap-6">
                 <div className="flex items-center gap-2 text-sm">
                   <div className="w-2 h-2 rounded-full bg-accent" />
                   <span className="text-muted-foreground">
@@ -157,12 +158,12 @@ export default function SeasonalPage() {
 
             {/* Action card */}
             <motion.div
+              className="w-full lg:w-auto"
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="lg:min-w-[280px]"
             >
-              <div className="p-6 rounded-2xl bg-card border border-border shadow-lg">
+              <div className="p-4 sm:p-6 rounded-2xl bg-card border border-border shadow-lg lg:min-w-[280px]">
                 <div className="flex items-center gap-3 mb-4">
                   <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center">
                     <Download size={20} className="text-accent" />
@@ -186,14 +187,14 @@ export default function SeasonalPage() {
       </section>
 
       {/* Controls */}
-      <section className="py-6 border-b border-border bg-background sticky top-0 z-10">
+      <section className="py-4 sm:py-6 border-b border-border bg-background sticky top-0 z-10">
         <div className="container-wide">
-          <div className="flex flex-wrap items-center justify-between gap-4">
+          <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center justify-between gap-3 sm:gap-4">
             {/* Region Toggle */}
-            <div className="flex items-center gap-2 p-1 rounded-lg bg-muted">
+            <div className="flex items-center gap-2 p-1 rounded-lg bg-muted w-full sm:w-auto order-1">
               <button
                 onClick={() => setSelectedRegion("egypt")}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${selectedRegion === "egypt"
+                className={`flex-1 sm:flex-none px-3 sm:px-4 py-2 rounded-md text-sm font-medium transition-all ${selectedRegion === "egypt"
                   ? "bg-primary text-primary-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground"
                   }`}
@@ -202,7 +203,7 @@ export default function SeasonalPage() {
               </button>
               <button
                 onClick={() => setSelectedRegion("uae")}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${selectedRegion === "uae"
+                className={`flex-1 sm:flex-none px-3 sm:px-4 py-2 rounded-md text-sm font-medium transition-all ${selectedRegion === "uae"
                   ? "bg-primary text-primary-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground"
                   }`}
@@ -211,7 +212,7 @@ export default function SeasonalPage() {
               </button>
               <button
                 onClick={() => setSelectedRegion("both")}
-                className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${selectedRegion === "both"
+                className={`flex-1 sm:flex-none px-3 sm:px-4 py-2 rounded-md text-sm font-medium transition-all ${selectedRegion === "both"
                   ? "bg-primary text-primary-foreground shadow-sm"
                   : "text-muted-foreground hover:text-foreground"
                   }`}
@@ -221,10 +222,10 @@ export default function SeasonalPage() {
             </div>
 
             {/* Category Filters */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 order-3 sm:order-2 w-full sm:w-auto scrollbar-hide">
               <button
                 onClick={() => setSelectedCategory(null)}
-                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${selectedCategory === null
+                className={`px-3 sm:px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${selectedCategory === null
                   ? "bg-accent text-accent-foreground"
                   : "bg-muted text-muted-foreground hover:text-foreground"
                   }`}
@@ -235,7 +236,7 @@ export default function SeasonalPage() {
                 <button
                   key={category.id}
                   onClick={() => setSelectedCategory(category.id)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all ${selectedCategory === category.id
+                  className={`px-3 sm:px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${selectedCategory === category.id
                     ? "bg-accent text-accent-foreground"
                     : "bg-muted text-muted-foreground hover:text-foreground"
                     }`}
@@ -246,7 +247,7 @@ export default function SeasonalPage() {
             </div>
 
             {/* View Mode Toggle */}
-            <div className="flex items-center gap-2 p-1 rounded-lg bg-muted">
+            <div className="flex items-center gap-2 p-1 rounded-lg bg-muted ml-auto sm:ml-0 order-2 sm:order-3">
               <button
                 onClick={() => setViewMode("grid")}
                 className={`p-2 rounded-md transition-all ${viewMode === "grid"
@@ -289,10 +290,10 @@ export default function SeasonalPage() {
           {/* Grid View */}
           {viewMode === "grid" && (
             <div>
-              <h2 className="font-display text-2xl font-bold text-foreground mb-6">
+              <h2 className="font-display text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">
                 {t('products.catalog.categories.all')}
               </h2>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
                 {filteredProducts.map((product, index) => (
                   <ProductCard
                     key={product.name}
@@ -316,9 +317,9 @@ export default function SeasonalPage() {
 
           {/* Table View (Classic) */}
           {viewMode === "table" && (
-            <div className="space-y-12">
+            <div className="space-y-8 sm:space-y-12">
               {/* Legend */}
-              <div className="flex flex-wrap items-center gap-6">
+              <div className="flex flex-wrap items-center gap-4 sm:gap-6">
                 <div className="flex items-center gap-2">
                   <div className="w-4 h-4 rounded bg-accent" />
                   <span className="text-sm text-muted-foreground">{t('seasonal.legend.peak')}</span>
@@ -340,11 +341,11 @@ export default function SeasonalPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <h2 className="font-display text-2xl font-bold text-foreground mb-4 flex items-center gap-2">
+                  <h2 className="font-display text-xl sm:text-2xl font-bold text-foreground mb-3 sm:mb-4 flex items-center gap-2">
                     <span>🇪🇬</span> {t('seasonal.table.egypt_title')}
                   </h2>
-                  <div className="overflow-x-auto">
-                    <table className="w-full min-w-[800px]">
+                  <div className="overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
+                    <table className="w-full min-w-[700px] sm:min-w-[800px]">
                       <thead>
                         <tr className="border-b border-border">
                           <th className="text-left py-3 px-4 font-semibold text-foreground">{t('seasonal.table.columns.product')}</th>
@@ -365,9 +366,9 @@ export default function SeasonalPage() {
                             <td className="py-3 px-4 font-medium text-foreground">{t(`seasonal.products.${product.name}`)}</td>
                             <td className="py-3 px-2 text-sm text-muted-foreground">{t(`products.catalog.categories.${product.category.toLowerCase()}`)}</td>
                             {product.egypt.map((value, i) => (
-                              <td key={i} className="py-3 px-2 text-center">
+                              <td key={i} className="py-2 sm:py-3 px-1 sm:px-2 text-center">
                                 <div
-                                  className={`w-8 h-8 mx-auto rounded-lg ${getAvailabilityColor(value)} ${i === currentMonth ? "ring-2 ring-accent ring-offset-2" : ""}`}
+                                  className={`w-6 h-6 sm:w-8 sm:h-8 mx-auto rounded-lg ${getAvailabilityColor(value)} ${i === currentMonth ? "ring-2 ring-accent ring-offset-2" : ""}`}
                                   title={t(getAvailabilityLabelKey(value))}
                                 />
                               </td>
@@ -387,11 +388,11 @@ export default function SeasonalPage() {
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.1 }}
                 >
-                  <h2 className="font-display text-2xl font-bold text-foreground mb-4 flex items-center gap-2">
+                  <h2 className="font-display text-xl sm:text-2xl font-bold text-foreground mb-3 sm:mb-4 flex items-center gap-2">
                     <span>🇦🇪</span> {t('seasonal.table.uae_title')}
                   </h2>
-                  <div className="overflow-x-auto">
-                    <table className="w-full min-w-[800px]">
+                  <div className="overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
+                    <table className="w-full min-w-[700px] sm:min-w-[800px]">
                       <thead>
                         <tr className="border-b border-border">
                           <th className="text-left py-3 px-4 font-semibold text-foreground">{t('seasonal.table.columns.product')}</th>
@@ -412,9 +413,9 @@ export default function SeasonalPage() {
                             <td className="py-3 px-4 font-medium text-foreground">{t(`seasonal.products.${product.name}`)}</td>
                             <td className="py-3 px-2 text-sm text-muted-foreground">{t(`products.catalog.categories.${product.category.toLowerCase()}`)}</td>
                             {product.uae.map((value, i) => (
-                              <td key={i} className="py-3 px-2 text-center">
+                              <td key={i} className="py-2 sm:py-3 px-1 sm:px-2 text-center">
                                 <div
-                                  className={`w-8 h-8 mx-auto rounded-lg ${getAvailabilityColor(value)} ${i === currentMonth ? "ring-2 ring-accent ring-offset-2" : ""}`}
+                                  className={`w-6 h-6 sm:w-8 sm:h-8 mx-auto rounded-lg ${getAvailabilityColor(value)} ${i === currentMonth ? "ring-2 ring-accent ring-offset-2" : ""}`}
                                   title={t(getAvailabilityLabelKey(value))}
                                 />
                               </td>
@@ -435,13 +436,13 @@ export default function SeasonalPage() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="mt-12 p-6 rounded-2xl bg-primary/5 border border-primary/10"
+            className="mt-8 sm:mt-12 p-4 sm:p-6 rounded-2xl bg-primary/5 border border-primary/10"
           >
-            <div className="flex gap-4">
-              <Info className="w-6 h-6 text-primary shrink-0 mt-1" />
+            <div className="flex gap-3 sm:gap-4">
+              <Info className="w-5 h-5 sm:w-6 sm:h-6 text-primary shrink-0 mt-1" />
               <div>
-                <h3 className="font-semibold text-foreground mb-2">{t('seasonal.info.title')}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">
+                <h3 className="font-semibold text-foreground mb-2 text-sm sm:text-base">{t('seasonal.info.title')}</h3>
+                <p className="text-muted-foreground text-xs sm:text-sm leading-relaxed">
                   {t('seasonal.info.description')}
                 </p>
               </div>
@@ -451,18 +452,18 @@ export default function SeasonalPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16 bg-primary text-primary-foreground">
-        <div className="container-wide text-center">
+      <section className="py-12 sm:py-16 bg-primary text-primary-foreground">
+        <div className="container-wide text-center px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
           >
-            <h2 className="font-display text-3xl font-bold mb-4">
+            <h2 className="font-display text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">
               {t('seasonal.cta.title')}
             </h2>
-            <p className="text-primary-foreground/80 mb-8 max-w-xl mx-auto">
+            <p className="text-primary-foreground/80 text-sm sm:text-base mb-6 sm:mb-8 max-w-xl mx-auto">
               {t('seasonal.cta.description')}
             </p>
             <Button variant="accent" size="xl" asChild>

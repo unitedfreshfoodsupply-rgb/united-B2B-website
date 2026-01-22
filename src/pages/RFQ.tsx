@@ -118,23 +118,23 @@ export default function RFQPage() {
   return (
     <Layout>
       {/* Premium Hero */}
-      <section className="relative pt-32 pb-0 overflow-hidden bg-white">
+      <section className="relative pt-20 sm:pt-24 lg:pt-32 pb-0 overflow-hidden bg-white">
         <div className="absolute top-0 right-0 rtl:left-0 rtl:right-auto w-[1000px] h-[1000px] bg-uniteda-emerald/10 rounded-full blur-[180px] -mr-96 rtl:-ml-96 rtl:-mr-0 -mt-96 pointer-events-none" />
 
         <div className="container-wide relative z-10 lg:pb-12">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center">
             <motion.div
               initial={{ opacity: 0, x: isRTL ? 30 : -30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.8 }}
-              className="space-y-10"
+              className="space-y-6 sm:space-y-8 lg:space-y-10"
             >
               <div className="text-start">
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.2 }}
-                  className="flex items-center gap-3 mb-8"
+                  className="flex items-center gap-3 mb-6 sm:mb-8"
                 >
                   <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-uniteda-gold/10 border border-uniteda-gold/20 text-uniteda-emerald-dark text-[11px] font-black uppercase tracking-[0.2em]">
                     <ShieldCheck size={14} className="text-uniteda-emerald" />
@@ -142,23 +142,23 @@ export default function RFQPage() {
                   </span>
                 </motion.div>
 
-                <h1 className="font-display text-6xl md:text-7xl lg:text-8xl font-black text-uniteda-emerald-dark mb-8 tracking-tighter leading-[0.9] uppercase">
+                <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-uniteda-emerald-dark mb-6 sm:mb-8 tracking-tighter leading-[0.9] uppercase">
                   {t('rfq.header.title')}
                 </h1>
 
-                <p className="text-xl md:text-2xl text-muted-foreground/90 leading-relaxed max-w-xl font-medium">
+                <p className="text-base sm:text-lg md:text-xl lg:text-2xl text-muted-foreground/90 leading-relaxed max-w-xl font-medium">
                   {t('rfq.header.description')}
                 </p>
               </div>
 
-              <div className="flex items-center gap-12 pt-4">
+              <div className="flex flex-wrap items-center gap-6 sm:gap-8 lg:gap-12 pt-4">
                 <div className="flex flex-col">
-                  <span className="text-3xl font-black text-uniteda-emerald-dark tracking-tighter">{t('rfq.header.response_time_value')}</span>
+                  <span className="text-2xl sm:text-3xl font-black text-uniteda-emerald-dark tracking-tighter">{t('rfq.header.response_time_value')}</span>
                   <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{t('rfq.header.response_time_label')}</span>
                 </div>
-                <div className="w-px h-12 bg-black/5" />
+                <div className="w-px h-12 bg-black/5 hidden sm:block" />
                 <div className="flex flex-col">
-                  <span className="text-3xl font-black text-uniteda-emerald-dark tracking-tighter">{t('rfq.header.quality_value')}</span>
+                  <span className="text-2xl sm:text-3xl font-black text-uniteda-emerald-dark tracking-tighter">{t('rfq.header.quality_value')}</span>
                   <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{t('rfq.header.quality_label')}</span>
                 </div>
               </div>
@@ -168,9 +168,9 @@ export default function RFQPage() {
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1 }}
-              className="relative w-full hidden lg:block"
+              className="relative w-full hidden md:block"
             >
-              <div className="relative aspect-[4/3] rounded-[4rem] border-[12px] border-white shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] overflow-hidden">
+              <div className="relative aspect-[4/3] rounded-2xl sm:rounded-3xl lg:rounded-[4rem] border-4 sm:border-8 lg:border-[12px] border-white shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] overflow-hidden">
                 <img src={rfqHero} alt={t('rfq.header.image_alt')} className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-uniteda-emerald-dark/40 via-transparent to-transparent pointer-events-none" />
               </div>
@@ -180,9 +180,9 @@ export default function RFQPage() {
       </section>
 
       {/* Progressive Form Section */}
-      <section className="section-padding bg-[#fafafa] relative overflow-hidden min-h-[900px]">
+      <section className="section-padding bg-[#fafafa] relative overflow-hidden">
         <div className="container-wide relative z-10">
-          <div className="grid lg:grid-cols-12 gap-16">
+          <div className="grid lg:grid-cols-12 gap-8 sm:gap-12 lg:gap-16">
             <div className="lg:col-span-8">
               {/* Progress Tracker */}
               <div className="mb-12 space-y-4">
@@ -229,7 +229,7 @@ export default function RFQPage() {
                             <Building2 size={24} />
                           </div>
                           <div>
-                            <h2 className="text-2xl font-black text-uniteda-emerald-dark leading-none">{t('rfq.form.sections.business_info')}</h2>
+                            <h2 className="text-xl sm:text-2xl font-black text-uniteda-emerald-dark leading-none">{t('rfq.form.sections.business_info')}</h2>
                             <p className="text-xs font-bold text-muted-foreground/60 uppercase mt-2 tracking-widest font-mono">{t('rfq.form.layers.initialization')}</p>
                           </div>
                         </div>
@@ -237,7 +237,7 @@ export default function RFQPage() {
                         <div className="grid sm:grid-cols-2 gap-x-10 gap-y-8">
                           <div className="space-y-3">
                             <Label htmlFor="company" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.company.label')}</Label>
-                            <Input id="company" placeholder={t('rfq.form.fields.company.placeholder')} className="h-16 rounded-2xl bg-[#fcfcfc] border-black/5 px-6 font-medium" required />
+                            <Input id="company" placeholder={t('rfq.form.fields.company.placeholder')} className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-[#fcfcfc] border-black/5 px-4 sm:px-6 font-medium" required />
                           </div>
                           <div className="space-y-3">
                             <Label htmlFor="businessType" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.business_type.label')}</Label>
@@ -266,7 +266,7 @@ export default function RFQPage() {
                           </div>
                           <div className="space-y-3">
                             <Label htmlFor="city" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.city.label')}</Label>
-                            <Input id="city" placeholder={t('rfq.form.fields.city.placeholder')} className="h-16 rounded-2xl bg-[#fcfcfc] border-black/5 px-6 font-medium" required />
+                            <Input id="city" placeholder={t('rfq.form.fields.city.placeholder')} className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-[#fcfcfc] border-black/5 px-4 sm:px-6 font-medium" required />
                           </div>
                         </div>
                       </div>
@@ -279,20 +279,20 @@ export default function RFQPage() {
                             <Truck size={24} />
                           </div>
                           <div>
-                            <h2 className="text-2xl font-black text-uniteda-emerald-dark leading-none">{t('rfq.form.sections.supply_req')}</h2>
+                            <h2 className="text-xl sm:text-2xl font-black text-uniteda-emerald-dark leading-none">{t('rfq.form.sections.supply_req')}</h2>
                             <p className="text-xs font-bold text-muted-foreground/60 uppercase mt-2 tracking-widest font-mono">{t('rfq.form.layers.operational')}</p>
                           </div>
                         </div>
 
-                        <div className="space-y-10">
+                        <div className="space-y-8 sm:space-y-10">
                           <div className="space-y-6">
                             <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.categories.label')}</Label>
-                            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
                               {productCategories.map(category => (
                                 <label
                                   key={category}
                                   className={cn(
-                                    "flex items-center gap-4 p-5 rounded-2xl border transition-all cursor-pointer",
+                                    "flex items-center gap-3 sm:gap-4 p-4 sm:p-5 rounded-xl sm:rounded-2xl border transition-all cursor-pointer",
                                     selectedCategories.includes(category)
                                       ? "bg-uniteda-emerald border-uniteda-emerald text-white"
                                       : "bg-[#fcfcfc] border-black/5 hover:border-uniteda-emerald/30"
@@ -302,23 +302,23 @@ export default function RFQPage() {
                                     checked={selectedCategories.includes(category)}
                                     onCheckedChange={() => handleCategoryToggle(category)}
                                     className={cn(
-                                      "w-6 h-6 rounded-lg border-2 transition-all",
+                                      "w-5 h-5 sm:w-6 sm:h-6 rounded-md sm:rounded-lg border-2 transition-all",
                                       selectedCategories.includes(category)
                                         ? "bg-white border-white text-uniteda-emerald data-[state=checked]:bg-white data-[state=checked]:text-uniteda-emerald"
                                         : "border-black/10 bg-white"
                                     )}
                                   />
-                                  <span className="font-bold text-lg select-none">{category}</span>
+                                  <span className="font-bold text-base sm:text-lg select-none">{category}</span>
                                 </label>
                               ))}
                             </div>
                           </div>
 
-                          <div className="grid sm:grid-cols-2 gap-x-10 gap-y-8">
+                          <div className="grid sm:grid-cols-2 gap-x-4 sm:gap-x-6 md:gap-x-8 lg:gap-x-10 gap-y-6 sm:gap-y-8">
                             <div className="space-y-3">
                               <Label htmlFor="volume" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.volume.label')}</Label>
                               <Select required dir={isRTL ? "rtl" : "ltr"}>
-                                <SelectTrigger className="h-16 rounded-2xl bg-[#fcfcfc] border-black/5 px-6 font-medium text-start">
+                                <SelectTrigger className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-[#fcfcfc] border-black/5 px-4 sm:px-6 font-medium text-start">
                                   <SelectValue placeholder={t('rfq.form.fields.volume.placeholder')} />
                                 </SelectTrigger>
                                 <SelectContent className="rounded-2xl">
@@ -331,7 +331,7 @@ export default function RFQPage() {
                             <div className="space-y-3">
                               <Label htmlFor="frequency" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.frequency.label')}</Label>
                               <Select required dir={isRTL ? "rtl" : "ltr"}>
-                                <SelectTrigger className="h-16 rounded-2xl bg-[#fcfcfc] border-black/5 px-6 font-medium text-start">
+                                <SelectTrigger className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-[#fcfcfc] border-black/5 px-4 sm:px-6 font-medium text-start">
                                   <SelectValue placeholder={t('rfq.form.fields.frequency.placeholder')} />
                                 </SelectTrigger>
                                 <SelectContent className="rounded-2xl">
@@ -344,20 +344,20 @@ export default function RFQPage() {
                           </div>
                           <div className="space-y-3">
                             <Label htmlFor="requirements" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.requirements.label')}</Label>
-                            <Textarea id="requirements" placeholder={t('rfq.form.fields.requirements.placeholder')} rows={4} className="rounded-3xl bg-[#fcfcfc] border-black/5 p-6 font-medium resize-none" />
+                            <Textarea id="requirements" placeholder={t('rfq.form.fields.requirements.placeholder')} rows={4} className="rounded-2xl sm:rounded-3xl bg-[#fcfcfc] border-black/5 p-4 sm:p-6 font-medium resize-none" />
                           </div>
                         </div>
                       </div>
                     )}
 
                     {currentStep === 2 && (
-                      <div className="p-10 md:p-14 rounded-[3.5rem] bg-white border border-black/5 shadow-2xl shadow-black/[0.02] text-start">
+                      <div className="p-4 sm:p-6 md:p-8 lg:p-10 xl:p-14 rounded-2xl sm:rounded-3xl lg:rounded-[3.5rem] bg-white border border-black/5 shadow-2xl shadow-black/[0.02] text-start">
                         <div className="flex items-center gap-4 mb-10">
                           <div className="w-12 h-12 rounded-2xl bg-uniteda-emerald/5 flex items-center justify-center text-uniteda-emerald">
                             <FileText size={24} />
                           </div>
                           <div>
-                            <h2 className="text-2xl font-black text-uniteda-emerald-dark leading-none">{t('rfq.form.sections.contact_info')}</h2>
+                            <h2 className="text-xl sm:text-2xl font-black text-uniteda-emerald-dark leading-none">{t('rfq.form.sections.contact_info')}</h2>
                             <p className="text-xs font-bold text-muted-foreground/60 uppercase mt-2 tracking-widest font-mono">{t('rfq.form.layers.verification')}</p>
                           </div>
                         </div>
@@ -365,23 +365,23 @@ export default function RFQPage() {
                         <div className="grid sm:grid-cols-2 gap-x-10 gap-y-8">
                           <div className="space-y-3">
                             <Label htmlFor="name" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.name.label')}</Label>
-                            <Input id="name" placeholder={t('rfq.form.fields.name.placeholder')} className="h-16 rounded-2xl bg-[#fcfcfc] border-black/5 px-6 font-medium" required />
+                            <Input id="name" placeholder={t('rfq.form.fields.name.placeholder')} className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-[#fcfcfc] border-black/5 px-4 sm:px-6 font-medium" required />
                           </div>
                           <div className="space-y-3">
                             <Label htmlFor="position" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.position.label')}</Label>
-                            <Input id="position" placeholder={t('rfq.form.fields.position.placeholder')} className="h-16 rounded-2xl bg-[#fcfcfc] border-black/5 px-6 font-medium" />
+                            <Input id="position" placeholder={t('rfq.form.fields.position.placeholder')} className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-[#fcfcfc] border-black/5 px-4 sm:px-6 font-medium" />
                           </div>
                           <div className="space-y-3">
                             <Label htmlFor="email" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.email.label')}</Label>
-                            <Input id="email" type="email" placeholder={t('rfq.form.fields.email.placeholder')} className="h-16 rounded-2xl bg-[#fcfcfc] border-black/5 px-6 font-medium" required />
+                            <Input id="email" type="email" placeholder={t('rfq.form.fields.email.placeholder')} className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-[#fcfcfc] border-black/5 px-4 sm:px-6 font-medium" required />
                           </div>
                           <div className="space-y-3">
                             <Label htmlFor="phone" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.phone.label')}</Label>
-                            <Input id="phone" type="tel" placeholder={t('rfq.form.fields.phone.placeholder')} className="h-16 rounded-2xl bg-[#fcfcfc] border-black/5 px-6 font-medium" required />
+                            <Input id="phone" type="tel" placeholder={t('rfq.form.fields.phone.placeholder')} className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-[#fcfcfc] border-black/5 px-4 sm:px-6 font-medium" required />
                           </div>
                         </div>
 
-                        <div className="mt-12 p-6 rounded-2xl bg-uniteda-emerald/5 border border-uniteda-emerald/10 flex items-start gap-4">
+                        <div className="mt-8 sm:mt-10 lg:mt-12 p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-uniteda-emerald/5 border border-uniteda-emerald/10 flex items-start gap-3 sm:gap-4">
                           <ShieldCheck className="text-uniteda-emerald mt-1 shrink-0" size={20} />
                           <p className="text-xs font-bold text-uniteda-emerald-dark leading-relaxed">{t('rfq.form.authorization_note')}</p>
                         </div>
@@ -391,13 +391,13 @@ export default function RFQPage() {
                 </AnimatePresence>
 
                 {/* Footer Controls */}
-                <div className="mt-12 flex items-center justify-between gap-6 px-4">
+                <div className="mt-8 sm:mt-12 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 sm:gap-6 px-2 sm:px-4">
                   <Button
                     type="button"
                     variant="ghost"
                     onClick={prevStep}
                     disabled={currentStep === 0}
-                    className="h-16 px-8 rounded-2xl font-black text-sm uppercase tracking-widest disabled:opacity-0 transition-opacity"
+                    className="h-12 sm:h-14 lg:h-16 px-4 sm:px-6 lg:px-8 rounded-xl sm:rounded-2xl font-black text-xs sm:text-sm uppercase tracking-widest disabled:opacity-0 transition-opacity order-2 sm:order-1"
                   >
                     <ArrowLeft className="w-5 h-5 me-3 rtl:rotate-180" />
                     {t('rfq.form.back_button')}
@@ -407,7 +407,7 @@ export default function RFQPage() {
                     type="submit"
                     size="xl"
                     disabled={isSubmitting}
-                    className="h-20 px-12 rounded-full bg-uniteda-emerald hover:bg-uniteda-emerald-dark text-white font-black text-xl shadow-xl shadow-uniteda-emerald/20 transition-all hover:scale-105 active:scale-95 group"
+                    className="h-14 sm:h-16 lg:h-18 xl:h-20 px-6 sm:px-8 lg:px-10 xl:px-12 rounded-full bg-uniteda-emerald hover:bg-uniteda-emerald-dark text-white font-black text-base sm:text-lg lg:text-xl shadow-xl shadow-uniteda-emerald/20 transition-all hover:scale-105 active:scale-95 group order-1 sm:order-2"
                   >
                     {isSubmitting ? t('rfq.form.submit.submitting') : currentStep === 2 ? t('rfq.form.submit.button') : t('rfq.form.submit.continue')}
                     <ArrowRight className="w-6 h-6 ms-3 group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform rtl:rotate-180" />
@@ -424,7 +424,7 @@ export default function RFQPage() {
                 viewport={{ once: true }}
                 className="p-12 rounded-[3.5rem] bg-uniteda-emerald-dark text-white relative overflow-hidden"
               >
-                <h3 className="font-display text-2xl font-black mb-10 text-uniteda-gold tracking-tight">{t('rfq.sidebar.process.title')}</h3>
+                <h3 className="font-display text-xl sm:text-2xl font-black mb-8 sm:mb-10 text-uniteda-gold tracking-tight">{t('rfq.sidebar.process.title')}</h3>
                 <div className="space-y-8">
                   {(t('rfq.sidebar.process.steps', { returnObjects: true }) as string[]).map((stepText, i) => {
                     const icons = [FileText, Clock, CheckCircle2];
@@ -447,10 +447,10 @@ export default function RFQPage() {
                 </div>
               </motion.div>
 
-              <div className="p-12 rounded-[3.5rem] bg-white border border-black/5 shadow-2xl shadow-black/[0.02] text-start">
-                <h3 className="font-display text-2xl font-black text-uniteda-emerald-dark mb-6">{t('rfq.sidebar.support.title')}</h3>
+              <div className="p-6 sm:p-8 lg:p-10 xl:p-12 rounded-2xl sm:rounded-3xl lg:rounded-[3.5rem] bg-white border border-black/5 shadow-2xl shadow-black/[0.02] text-start">
+                <h3 className="font-display text-xl sm:text-2xl font-black text-uniteda-emerald-dark mb-4 sm:mb-6">{t('rfq.sidebar.support.title')}</h3>
                 <p className="text-sm font-medium text-muted-foreground leading-relaxed mb-6">{t('rfq.sidebar.support.description')}</p>
-                <Button variant="outline" className="w-full h-16 rounded-2xl border-uniteda-emerald/20 text-uniteda-emerald font-black text-xs uppercase tracking-widest hover:bg-uniteda-emerald hover:text-white" asChild>
+                <Button variant="outline" className="w-full h-14 sm:h-16 rounded-xl sm:rounded-2xl border-uniteda-emerald/20 text-uniteda-emerald font-black text-xs uppercase tracking-widest hover:bg-uniteda-emerald hover:text-white" asChild>
                   <a href="mailto:sales@uniteda.com">sales@uniteda.com</a>
                 </Button>
               </div>

@@ -1,46 +1,53 @@
 {
     "contact": {
-        "label": "Section_01 // Global_Reach",
-        "title_prefix": "CONNECT WITH",
-        "title_highlight": "INTELLIGENCE",
-        "description": "Initialize communication with our regional hubs. We provide institutional support and supply architecture for global partners.",
+        "label": "Get In Touch",
+        "title_prefix": "Let's Talk",
+        "title_highlight": "Fresh Business",
+        "description": "Reach out to our team to discuss your fresh produce needs. We're here to help you source the finest fruits and vegetables.",
         "items": {
             "egypt": {
-                "title": "Egypt Regional HQ",
-                "detail": "Cairo Hub, Logistics Zone A",
-                "infra": "HUB_ID: EG_NORTH_01"
+                "title": "Egypt Office",
+                "detail": "Cairo, Egypt",
+                "infra": "Main Location"
             },
             "uae": {
-                "title": "UAE Strategic Hub",
-                "detail": "Dubai Business Bay, Level 42",
-                "infra": "HUB_ID: UAE_GULF_CORE"
+                "title": "UAE Office",
+                "detail": "Dubai, United Arab Emirates",
+                "infra": "Regional Hub"
             },
             "email": {
-                "title": "Electronic Inquiry",
-                "detail": "strategic@uniteda.com",
-                "infra": "SSL_ENCRYPTED_STREAM"
+                "title": "Email Us",
+                "detail": "hello@uniteda.com",
+                "infra": "Quick Response"
             }
         },
-        "status": "Status: SECURE_ENTRY_ACTIVE",
+        "status": "We're here to help",
         "form": {
-            "entity_name": "Entity_Name",
-            "entity_placeholder": "COMPANY CORP",
-            "access_mail": "Access_Mail",
-            "mail_placeholder": "PARTNER@PROTOCOL.COM",
-            "subject": "Transmission_Subject",
-            "subject_placeholder": "SYSTEM INTEGRATION REQUEST",
-            "payload": "Payload_Data",
-            "payload_placeholder": "DETAILS OF STRATEGIC PARTNERSHIP...",
-            "submit": "INITIALIZE UPLINK"
+            "entity_name": "Your Name",
+            "entity_placeholder": "John Smith",
+            "access_mail": "Email Address",
+            "mail_placeholder": "john@company.com",
+            "subject": "Subject",
+            "subject_placeholder": "I'd like to discuss fresh produce supply",
+            "payload": "Your Message",
+            "payload_placeholder": "Tell us about your needs...",
+            "submit": "Send Message"
         }
     },
     "not_found": {
-        "error_code": "ERROR_CODE // PATH_INVALID",
-        "media_label": "UNAUTHORIZED",
-        "media_highlight": "TRAJECTORY",
-        "description": "The requested pathway <path>{{path}}</path> does not exist within the UNITEDA supply architecture.",
-        "reset_btn": "RESET TO HOME",
-        "syslog": "SYSLOG_REPORTED"
+        "error_code": "Page Not Found",
+        "media_label": "Oops! You've",
+        "media_highlight": "Lost Your Way",
+        "description": "The page <path>{{path}}</path> doesn't exist. Let's get you back on track to explore our fresh produce.",
+        "reset_btn": "Back to Home",
+        "browse_products": "Browse Products",
+        "popular_pages": {
+            "title": "Popular Pages",
+            "products": "Products",
+            "seasonal": "Seasonal",
+            "operations": "Operations",
+            "rfq": "Request Quote"
+        }
     },
     "feature_standby": {
         "badge": "STBY",
@@ -73,6 +80,8 @@
         },
         "ticker": {
             "new": "NEW",
+            "premium": "PREMIUM",
+            "peak": "PEAK",
             "imported": "IMPORTED",
             "sourced_via": "Sourced via {{origin}}",
             "items": {}
@@ -1307,6 +1316,13 @@
                     "origin": "Egypt",
                     "season": "Seasonal",
                     "availability": "Oct - Dec"
+                },
+                "loc_52": {
+                    "name": "Mango Alphonso",
+                    "scientific_name": "Mangifera indica 'Alphonso'",
+                    "origin": "Egypt",
+                    "season": "Peak Season",
+                    "availability": "May - Jul"
                 }
             }
         }

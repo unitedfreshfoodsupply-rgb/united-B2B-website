@@ -3,42 +3,46 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Globe, ArrowRight, MessageSquare } from "lucide-react";
+import { Mail, Phone, MapPin, Globe, ArrowRight, MessageSquare, Leaf } from "lucide-react";
 import { useTranslation } from "react-i18next";
 
 export default function Contact() {
-    const { t } = useTranslation('pages');
+    const { t, i18n } = useTranslation('pages');
+    const isRTL = i18n.dir() === 'rtl';
+
     return (
         <Layout>
-            <section className="relative min-h-[90vh] flex items-center pt-32 pb-24 overflow-hidden bg-uniteda-emerald-dark">
-                {/* Background Systems */}
+            <section className="relative min-h-[90vh] flex items-center pt-20 sm:pt-24 lg:pt-32 pb-16 sm:pb-20 lg:pb-24 overflow-hidden bg-white">
+                {/* Organic Background */}
                 <div className="absolute inset-0 z-0">
-                    <div className="absolute inset-0 neural-grid opacity-20" />
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-uniteda-emerald-dark/50 to-uniteda-emerald-dark" />
-                    <div className="scanline" />
-
-                    {/* Animated Glows */}
-                    <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary/20 rounded-full blur-[100px] glow-pulse" />
-                    <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-accent/10 rounded-full blur-[100px] glow-pulse" />
+                    <div className="absolute top-0 right-0 rtl:left-0 rtl:right-auto w-[1000px] h-[1000px] bg-uniteda-emerald/10 rounded-full blur-[180px] -mr-96 rtl:-ml-96 rtl:-mr-0 -mt-96 pointer-events-none" />
+                    <div className="absolute bottom-0 left-0 rtl:right-0 rtl:left-auto w-[800px] h-[800px] bg-uniteda-gold/10 rounded-full blur-[150px] -ml-48 rtl:-mr-48 rtl:-ml-0 -mb-48 pointer-events-none" />
                 </div>
 
                 <div className="container-wide relative z-10">
-                    <div className="grid lg:grid-cols-2 gap-16 items-start">
+                    <div className="grid lg:grid-cols-2 gap-12 sm:gap-16 lg:gap-20 items-start">
                         {/* Left Column: Info */}
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
+                            initial={{ opacity: 0, x: isRTL ? 30 : -30 }}
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.8 }}
+                            className="text-start"
                         >
-                            <div className="text-infra text-accent mb-6 tracking-[0.4em]">{t('contact.label')}</div>
-                            <h1 className="font-display text-5xl md:text-7xl font-bold text-white mb-8 tracking-tighter">
-                                {t('contact.title_prefix')} <span className="text-accent underline decoration-white/10 underline-offset-[12px]">{t('contact.title_highlight')}</span>
+                            <div className="flex items-center gap-2 mb-6 sm:mb-8">
+                                <img src="/logo.png" alt="Uniteda" className="w-5 h-5 sm:w-6 sm:h-6 object-contain" />
+                                <span className="text-[10px] sm:text-xs font-black text-uniteda-emerald uppercase tracking-[0.3em] sm:tracking-[0.4em]">{t('contact.label')}</span>
+                            </div>
+
+                            <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-uniteda-emerald-dark mb-6 sm:mb-8 tracking-tighter uppercase leading-tight">
+                                {t('contact.title_prefix')} <br className="hidden sm:block" />
+                                <span className="text-uniteda-gold">{t('contact.title_highlight')}</span>
                             </h1>
-                            <p className="text-white/60 text-xl font-light max-w-xl mb-12 leading-relaxed">
+
+                            <p className="text-base sm:text-lg lg:text-xl text-muted-foreground font-medium max-w-xl mb-10 sm:mb-12 leading-relaxed">
                                 {t('contact.description')}
                             </p>
 
-                            <div className="space-y-8">
+                            <div className="space-y-6 sm:space-y-8">
                                 {[
                                     { icon: MapPin, title: t('contact.items.egypt.title'), detail: t('contact.items.egypt.detail'), infra: t('contact.items.egypt.infra') },
                                     { icon: Globe, title: t('contact.items.uae.title'), detail: t('contact.items.uae.detail'), infra: t('contact.items.uae.infra') },
@@ -49,15 +53,15 @@ export default function Contact() {
                                         initial={{ opacity: 0, y: 10 }}
                                         animate={{ opacity: 1, y: 0 }}
                                         transition={{ delay: 0.4 + i * 0.1 }}
-                                        className="flex gap-6 group"
+                                        className="flex gap-4 sm:gap-6 group"
                                     >
-                                        <div className="w-14 h-14 rounded-2xl bg-white/5 border border-white/10 flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-uniteda-emerald-dark transition-all duration-500">
-                                            <item.icon className="w-6 h-6" />
+                                        <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-2xl bg-uniteda-emerald/5 border border-uniteda-emerald/10 flex items-center justify-center text-uniteda-emerald group-hover:bg-uniteda-emerald group-hover:text-white transition-all duration-500 shrink-0">
+                                            <item.icon className="w-5 h-5 sm:w-6 sm:h-6" />
                                         </div>
-                                        <div>
-                                            <div className="text-infra text-accent/40 mb-1">{item.infra}</div>
-                                            <h3 className="text-white font-bold text-lg">{item.title}</h3>
-                                            <p className="text-white/40 text-sm">{item.detail}</p>
+                                        <div className="text-start">
+                                            <div className="text-[10px] font-black text-uniteda-emerald/60 uppercase tracking-widest mb-1">{item.infra}</div>
+                                            <h3 className="text-uniteda-emerald-dark font-black text-base sm:text-lg mb-1">{item.title}</h3>
+                                            <p className="text-muted-foreground text-sm sm:text-base">{item.detail}</p>
                                         </div>
                                     </motion.div>
                                 ))}
@@ -69,38 +73,42 @@ export default function Contact() {
                             initial={{ opacity: 0, scale: 0.98 }}
                             animate={{ opacity: 1, scale: 1 }}
                             transition={{ duration: 1, delay: 0.2 }}
-                            className="hud-border p-8 md:p-12 rounded-[2.5rem] bg-white/[0.02] backdrop-blur-3xl"
+                            className="p-6 sm:p-8 lg:p-12 rounded-3xl sm:rounded-[3rem] lg:rounded-[4rem] bg-[#fafafa] border border-black/5 shadow-2xl shadow-black/[0.02]"
                         >
-                            <div className="flex items-center gap-2 mb-8 p-3 rounded-full border border-primary/20 bg-primary/5">
-                                <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-                                <span className="text-infra text-accent">{t('contact.status')}</span>
+                            <div className="flex items-center gap-3 mb-8 sm:mb-10 p-4 sm:p-5 rounded-2xl bg-uniteda-emerald/5 border border-uniteda-emerald/10">
+                                <div className="w-2 h-2 rounded-full bg-uniteda-emerald animate-pulse" />
+                                <MessageSquare className="w-4 h-4 text-uniteda-emerald" />
+                                <span className="text-xs sm:text-sm font-black text-uniteda-emerald-dark uppercase tracking-widest">{t('contact.status')}</span>
                             </div>
 
                             <form className="space-y-6">
-                                <div className="grid sm:grid-cols-2 gap-6">
-                                    <div className="space-y-2">
-                                        <label className="text-infra text-white/40">{t('contact.form.entity_name')}</label>
-                                        <Input className="bg-white/5 border-white/10 text-white placeholder:text-white/10 h-14 rounded-xl focus:border-accent/40 transition-all font-mono" placeholder={t('contact.form.entity_placeholder')} />
+                                <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
+                                    <div className="space-y-3">
+                                        <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('contact.form.entity_name')}</label>
+                                        <Input className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-white border-black/5 px-4 sm:px-6 font-medium focus:border-uniteda-emerald/40 transition-all" placeholder={t('contact.form.entity_placeholder')} />
                                     </div>
-                                    <div className="space-y-2">
-                                        <label className="text-infra text-white/40">{t('contact.form.access_mail')}</label>
-                                        <Input className="bg-white/5 border-white/10 text-white placeholder:text-white/10 h-14 rounded-xl focus:border-accent/40 transition-all font-mono" placeholder={t('contact.form.mail_placeholder')} />
+                                    <div className="space-y-3">
+                                        <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('contact.form.access_mail')}</label>
+                                        <Input type="email" className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-white border-black/5 px-4 sm:px-6 font-medium focus:border-uniteda-emerald/40 transition-all" placeholder={t('contact.form.mail_placeholder')} />
                                     </div>
                                 </div>
 
-                                <div className="space-y-2">
-                                    <label className="text-infra text-white/40">{t('contact.form.subject')}</label>
-                                    <Input className="bg-white/5 border-white/10 text-white placeholder:text-white/10 h-14 rounded-xl focus:border-accent/40 transition-all font-mono" placeholder={t('contact.form.subject_placeholder')} />
+                                <div className="space-y-3">
+                                    <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('contact.form.subject')}</label>
+                                    <Input className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-white border-black/5 px-4 sm:px-6 font-medium focus:border-uniteda-emerald/40 transition-all" placeholder={t('contact.form.subject_placeholder')} />
                                 </div>
 
-                                <div className="space-y-2">
-                                    <label className="text-infra text-white/40">{t('contact.form.payload')}</label>
-                                    <Textarea className="bg-white/5 border-white/10 text-white placeholder:text-white/10 min-h-[150px] rounded-xl focus:border-accent/40 transition-all font-mono" placeholder={t('contact.form.payload_placeholder')} />
+                                <div className="space-y-3">
+                                    <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('contact.form.payload')}</label>
+                                    <Textarea className="min-h-[120px] sm:min-h-[150px] rounded-2xl sm:rounded-3xl bg-white border-black/5 p-4 sm:p-6 font-medium focus:border-uniteda-emerald/40 transition-all resize-none" placeholder={t('contact.form.payload_placeholder')} />
                                 </div>
 
-                                <Button variant="accent" size="xl" className="w-full h-16 rounded-xl font-infra text-lg hover:scale-[1.02] transition-all group">
+                                <Button
+                                    size="xl"
+                                    className="w-full h-14 sm:h-16 lg:h-18 rounded-full bg-uniteda-emerald hover:bg-uniteda-emerald-dark text-white font-black text-base sm:text-lg lg:text-xl shadow-xl shadow-uniteda-emerald/20 transition-all hover:scale-105 active:scale-95 group"
+                                >
                                     {t('contact.form.submit')}
-                                    <ArrowRight className="w-6 h-6 ml-3 group-hover:translate-x-2 transition-transform" />
+                                    <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 ms-3 group-hover:translate-x-2 rtl:group-hover:-translate-x-2 transition-transform rtl:rotate-180" />
                                 </Button>
                             </form>
                         </motion.div>

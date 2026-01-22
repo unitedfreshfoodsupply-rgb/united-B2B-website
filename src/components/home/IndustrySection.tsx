@@ -49,17 +49,17 @@ export function IndustrySection() {
           >
             {t('industry.label')}
           </motion.div>
-          <h2 className="text-5xl md:text-7xl font-black text-uniteda-emerald-dark tracking-tighter leading-none">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-uniteda-emerald-dark tracking-tighter leading-none">
             {t('industry.title_prefix')} <br />
             <span className="text-uniteda-gold">{t('industry.title_highlight')}</span>
           </h2>
-          <p className="text-lg text-muted-foreground font-medium max-w-xl">
+          <p className="text-base sm:text-lg font-medium max-w-xl">
             {t('industry.description')}
           </p>
         </div>
 
         {/* Industries Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {industriesData.map((industry, index) => (
             <motion.div
               key={industry.id}
@@ -67,7 +67,7 @@ export function IndustrySection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="group p-10 rounded-[2.5rem] bg-[#fff] border border-black/5 hover:border-uniteda-emerald/10 hover:shadow-2xl hover:shadow-uniteda-emerald/5 transition-all duration-500"
+              className="group p-6 sm:p-8 lg:p-10 rounded-[2rem] sm:rounded-[2.5rem] bg-[#fff] border border-black/5 hover:border-uniteda-emerald/10 hover:shadow-2xl hover:shadow-uniteda-emerald/5 transition-all duration-500"
             >
               <div className="w-16 h-16 rounded-2xl bg-uniteda-emerald/5 flex items-center justify-center mb-8 group-hover:bg-uniteda-emerald group-hover:text-white transition-all duration-500">
                 <industry.icon className="w-8 h-8" />

@@ -14,15 +14,15 @@ const industries = [
 export function HeroSection() {
   const { t } = useTranslation('home');
   return (
-    <section className="relative min-h-screen flex items-center pt-20 overflow-hidden bg-[#fafafa]">
+    <section className="relative min-h-[600px] sm:min-h-[700px] lg:min-h-screen flex items-center pt-16 sm:pt-20 pb-12 sm:pb-16 lg:pb-20 overflow-hidden bg-[#fafafa]">
       {/* Decorative Background Accents */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-uniteda-emerald/5 rounded-full blur-[120px] -mr-96 -mt-96 animate-pulse" />
       <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-uniteda-gold/5 rounded-full blur-[100px] -ml-48 -mb-48" />
 
       <div className="container-wide relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16 items-center">
           {/* Left Column: Content */}
-          <div className="space-y-8">
+          <div className="space-y-6 sm:space-y-8">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
@@ -37,7 +37,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
-              className="text-6xl md:text-7xl xl:text-8xl font-black text-uniteda-emerald-dark leading-[0.95] tracking-tighter"
+              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-uniteda-emerald-dark leading-[0.95] tracking-tighter"
             >
               {t('hero.title_prefix')} <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-uniteda-emerald to-uniteda-gold">
@@ -49,7 +49,7 @@ export function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
-              className="text-xl text-muted-foreground max-w-lg leading-relaxed font-medium"
+              className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-lg leading-relaxed font-medium"
             >
               {t('hero.description')}
             </motion.p>
@@ -60,13 +60,13 @@ export function HeroSection() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="flex flex-wrap gap-4"
             >
-              <Button size="xl" className="rounded-full bg-uniteda-emerald hover:bg-uniteda-emerald-dark text-white px-10 py-8 text-lg font-bold shadow-2xl shadow-uniteda-emerald/20 transition-all hover:scale-105">
+              <Button size="xl" className="rounded-full bg-uniteda-emerald hover:bg-uniteda-emerald-dark text-white px-6 sm:px-8 lg:px-10 py-5 sm:py-6 lg:py-8 text-sm sm:text-base lg:text-lg font-bold shadow-2xl shadow-uniteda-emerald/20 transition-all hover:scale-105">
                 <Link to="/rfq" className="flex items-center gap-2">
                   {t('hero.cta_primary')}
                   <ArrowRight size={20} className="rtl:rotate-180" />
                 </Link>
               </Button>
-              <Button variant="outline" size="xl" className="rounded-full border-2 border-uniteda-emerald/20 text-uniteda-emerald hover:bg-uniteda-emerald/5 px-10 py-8 text-lg font-bold transition-all">
+              <Button variant="outline" size="xl" className="rounded-full border-2 border-uniteda-emerald/20 text-uniteda-emerald hover:bg-uniteda-emerald/5 px-6 sm:px-8 lg:px-10 py-5 sm:py-6 lg:py-8 text-sm sm:text-base lg:text-lg font-bold transition-all">
                 <Link to="/products">{t('hero.cta_secondary')}</Link>
               </Button>
             </motion.div>
@@ -75,7 +75,7 @@ export function HeroSection() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.5 }}
-              className="flex items-center gap-8 pt-6"
+              className="flex items-center gap-4 sm:gap-6 lg:gap-8 pt-4 sm:pt-6"
             >
               <div className="flex -space-x-3 rtl:space-x-reverse">
                 {[1, 2, 3, 4].map((i) => (
@@ -91,13 +91,13 @@ export function HeroSection() {
           </div>
 
           {/* Right Column: Visual Bento */}
-          <div className="relative">
+          <div className="relative hidden lg:block">
             <div className="grid grid-cols-2 gap-4">
               <motion.div
                 initial={{ opacity: 0, scale: 0.8, y: 50 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 transition={{ duration: 1, delay: 0.2 }}
-                className="col-span-2 h-[300px] rounded-[2.5rem] bg-uniteda-emerald overflow-hidden relative group"
+                className="col-span-2 h-[200px] sm:h-[250px] lg:h-[300px] rounded-[2rem] sm:rounded-[2.5rem] bg-uniteda-emerald overflow-hidden relative group"
               >
                 <img
                   src="https://images.unsplash.com/photo-1610348725531-843dff563e2c?auto=format&fit=crop&q=80&w=1000"
@@ -117,7 +117,7 @@ export function HeroSection() {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1, delay: 0.4 }}
-                className="h-[200px] rounded-[2rem] glass-panel p-8 flex flex-col justify-center gap-2"
+                className="h-[160px] sm:h-[180px] lg:h-[200px] rounded-[1.5rem] sm:rounded-[2rem] glass-panel p-6 sm:p-8 flex flex-col justify-center gap-2"
               >
                 <div className="text-4xl font-black text-uniteda-emerald tracking-tighter">{t('hero.bento.latency.value')}</div>
                 <p className="text-sm font-bold text-uniteda-emerald-dark/60 uppercase tracking-widest">{t('hero.bento.latency.label')}</p>
@@ -127,7 +127,7 @@ export function HeroSection() {
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1, delay: 0.6 }}
-                className="h-[200px] rounded-[2rem] bg-uniteda-gold p-8 flex flex-col justify-center gap-2 text-white shadow-xl shadow-uniteda-gold/20"
+                className="h-[160px] sm:h-[180px] lg:h-[200px] rounded-[1.5rem] sm:rounded-[2rem] bg-uniteda-gold p-6 sm:p-8 flex flex-col justify-center gap-2 text-white shadow-xl shadow-uniteda-gold/20"
               >
                 <Globe className="w-8 h-8 mb-2" />
                 <div className="text-2xl font-bold tracking-tight">{t('hero.bento.logic.title')}</div>
@@ -139,7 +139,7 @@ export function HeroSection() {
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
-              className="absolute -bottom-6 -right-6 rtl:right-auto rtl:-left-6 glass-panel rounded-3xl p-6 shadow-2xl border border-white/40 max-w-[240px]"
+              className="absolute -bottom-6 -right-6 rtl:right-auto rtl:-left-6 glass-panel rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-2xl border border-white/40 max-w-[200px] sm:max-w-[240px] hidden md:block"
             >
               <div className="flex items-center gap-4">
                 <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />

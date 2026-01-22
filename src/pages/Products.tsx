@@ -45,7 +45,43 @@ const categories = [
   { id: "specialty", nameKey: "products.catalog.categories.specialty", icon: CircleDot, count: 22 },
 ];
 
-const tickerItems: any[] = [];
+const tickerItems = [
+  // Exotic Imported Fruits - Premium Berries
+  { key: "imp_2", icon: Cherry, tagKey: "premium", origin: "Global" },  // Blueberries
+  { key: "imp_3", icon: Cherry, tagKey: "premium", origin: "Global" },  // Raspberries
+  { key: "imp_4", icon: Cherry, tagKey: "premium", origin: "Global" },  // Blackberries
+
+  // Exotic Tropical Fruits
+  { key: "imp_5", icon: Cherry, tagKey: "new", origin: "Asia" },        // Lychee
+  { key: "imp_7", icon: Cherry, tagKey: "premium", origin: "Tropical" }, // Passion Fruit
+  { key: "imp_15", icon: Cherry, tagKey: "new", origin: "Asia" },       // Dragon Fruit
+  { key: "imp_9", icon: Cherry, tagKey: "premium", origin: "Asia" },    // Star Fruit
+
+  // Premium Local Fruits - Specialty Mangoes
+  { key: "loc_4", icon: Apple, tagKey: "peak", origin: "Egypt" },       // Mango Zebdia
+  { key: "loc_9", icon: Apple, tagKey: "premium", origin: "Egypt" },    // Mango Keitt
+  { key: "loc_52", icon: Apple, tagKey: "new", origin: "Egypt" },       // Mango Alphonso
+
+  // Premium Citrus & Dates
+  { key: "loc_31", icon: Apple, tagKey: "peak", origin: "Egypt" },      // Orange Navel
+  { key: "loc_21", icon: Apple, tagKey: "premium", origin: "Egypt" },   // Dates Barhi
+
+  // Specialty Vegetables
+  { key: "veg_1", icon: Leaf, tagKey: "premium", origin: "Egypt" },     // Green Asparagus
+  { key: "veg_22", icon: Leaf, tagKey: "new", origin: "Egypt" },        // Mushroom
+
+  // Premium Herbs & Microgreens
+  { key: "herb_27", icon: Sprout, tagKey: "new", origin: "Egypt" },     // Microgreens
+  { key: "herb_18", icon: Sprout, tagKey: "premium", origin: "Egypt" }, // Edible Flowers
+
+  // Specialty Items
+  { key: "herb_39", icon: Leaf, tagKey: "new", origin: "Egypt" },       // Broccolini
+  { key: "herb_42", icon: Leaf, tagKey: "premium", origin: "Egypt" },   // Purple Cauliflower
+
+  // Premium Imported
+  { key: "imp_1", icon: Apple, tagKey: "premium", origin: "Global" },   // Avocado
+  { key: "imp_11", icon: Apple, tagKey: "peak", origin: "Tropical" },   // Pineapple
+];
 
 const sampleProducts = [
   ...importedProducts,
@@ -175,7 +211,7 @@ export default function ProductsPage() {
           <div className="flex whitespace-nowrap overflow-hidden">
             <motion.div
               animate={{ x: isRTL ? ["0%", "100%"] : ["0%", "-100%"] }}
-              transition={{ repeat: Infinity, duration: 60, ease: "linear" }}
+              transition={{ repeat: Infinity, duration: 120, ease: "linear" }}
               className="flex items-center gap-12 px-6"
             >
               {[...tickerItems, ...tickerItems, ...tickerItems].map((item, i) => (
@@ -185,7 +221,9 @@ export default function ProductsPage() {
                   </div>
                   <div className="flex flex-col">
                     <div className="flex items-center gap-2">
-                      <span className="text-sm font-black uppercase tracking-widest whitespace-nowrap">{t(`products.ticker.items.${item.key}`)}</span>
+                      <span className="text-sm font-black uppercase tracking-widest whitespace-nowrap">
+                        {t(`products.catalog.items.${item.key}.name`)}
+                      </span>
                       <span className={cn(
                         "text-[8px] font-black px-1.5 py-0.5 rounded",
                         item.tagKey === "new" ? "bg-uniteda-emerald text-white" : "bg-uniteda-gold text-white"
@@ -193,7 +231,9 @@ export default function ProductsPage() {
                         {t(`products.ticker.${item.tagKey}`)}
                       </span>
                     </div>
-                    <span className="text-[10px] font-bold text-white/40 uppercase tracking-tighter">{t('products.ticker.sourced_via', { origin: item.origin })}</span>
+                    <span className="text-[10px] font-bold text-white/40 uppercase tracking-tighter">
+                      {t('products.ticker.sourced_via', { origin: item.origin })}
+                    </span>
                   </div>
                   <div className="h-4 w-px bg-white/10 ml-8" />
                 </div>

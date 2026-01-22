@@ -1,37 +1,37 @@
 {
     "contact": {
-        "label": "القسم_01 // الوصول_العالمي",
-        "title_prefix": "تواصل مع",
-        "title_highlight": "الذكاء",
-        "description": "ابدأ التواصل مع مراكزنا الإقليمية. نقدم الدعم المؤسسي وهندسة التوريد للشركاء العالميين.",
+        "label": "تواصل معنا",
+        "title_prefix": "لنتحدث عن",
+        "title_highlight": "منتجاتنا الطازجة",
+        "description": "تواصل مع فريقنا لمناقشة احتياجاتك من المنتجات الطازجة. نحن هنا لمساعدتك في الحصول على أفضل الفواكه والخضروات.",
         "items": {
             "egypt": {
-                "title": "المقر الإقليمي في مصر",
-                "detail": "مركز القاهرة، المنطقة اللوجستية أ",
-                "infra": "معرف المركز: EG_NORTH_01"
+                "title": "مكتب مصر",
+                "detail": "القاهرة، مصر",
+                "infra": "الموقع الرئيسي"
             },
             "uae": {
-                "title": "المركز الاستراتيجي في الإمارات",
-                "detail": "دبي بيزنس باي، الطابق 42",
-                "infra": "معرف المركز: UAE_GULF_CORE"
+                "title": "مكتب الإمارات",
+                "detail": "دبي، الإمارات العربية المتحدة",
+                "infra": "المركز الإقليمي"
             },
             "email": {
-                "title": "استفسار إلكتروني",
-                "detail": "strategic@uniteda.com",
-                "infra": "بث_مشفر_ببروتوكول_SSL"
+                "title": "راسلنا",
+                "detail": "hello@uniteda.com",
+                "infra": "استجابة سريعة"
             }
         },
-        "status": "الحالة: دخول_آمن_نشط",
+        "status": "نحن هنا لمساعدتك",
         "form": {
-            "entity_name": "اسم_الجهة",
-            "entity_placeholder": "شركة مساهمة",
-            "access_mail": "بريد_الوصول",
-            "mail_placeholder": "PARTNER@PROTOCOL.COM",
-            "subject": "موضوع_الإرسال",
-            "subject_placeholder": "طلب تكامل النظام",
-            "payload": "بيانات_الحمولة",
-            "payload_placeholder": "تفاصيل الشراكة الاستراتيجية...",
-            "submit": "بدء الاتصال"
+            "entity_name": "اسمك",
+            "entity_placeholder": "أحمد محمد",
+            "access_mail": "البريد الإلكتروني",
+            "mail_placeholder": "ahmed@company.com",
+            "subject": "الموضوع",
+            "subject_placeholder": "أرغب في مناقشة توريد المنتجات الطازجة",
+            "payload": "رسالتك",
+            "payload_placeholder": "أخبرنا عن احتياجاتك...",
+            "submit": "إرسال الرسالة"
         },
         "contact_info": {
             "cairo": "القاهرة",
@@ -39,12 +39,19 @@
         }
     },
     "not_found": {
-        "error_code": "رمز_الخطأ // مسار_غير_صالح",
-        "media_label": "مسار",
-        "media_highlight": "غير مصرح به",
-        "description": "المسار المطلوب <path>{{path}}</path> غير موجود ضمن بنية توريد UNITEDA.",
-        "reset_btn": "العودة إلى الصفحة الرئيسية",
-        "syslog": "تقرير_سجلات_النظام"
+        "error_code": "الصفحة غير موجودة",
+        "media_label": "عذراً! لقد",
+        "media_highlight": "ضللت الطريق",
+        "description": "الصفحة <path>{{path}}</path> غير موجودة. دعنا نعيدك إلى المسار الصحيح لاستكشاف منتجاتنا الطازجة.",
+        "reset_btn": "العودة للرئيسية",
+        "browse_products": "تصفح المنتجات",
+        "popular_pages": {
+            "title": "الصفحات الشائعة",
+            "products": "المنتجات",
+            "seasonal": "الموسمية",
+            "operations": "العمليات",
+            "rfq": "طلب عرض سعر"
+        }
     },
     "feature_standby": {
         "badge": "استعداد",
@@ -77,6 +84,8 @@
         },
         "ticker": {
             "new": "جديد",
+            "premium": "مميز",
+            "peak": "موسم الذروة",
             "imported": "مستورد",
             "sourced_via": "تم التوريد عبر {{origin}}",
             "items": {}
@@ -1311,6 +1320,13 @@
                     "origin": "مصر",
                     "season": "موسمي",
                     "availability": "اكتوبر - ديسمبر"
+                },
+                "loc_52": {
+                    "name": "مانجو ألفونسو",
+                    "scientific_name": "Mangifera indica 'Alphonso'",
+                    "origin": "مصر",
+                    "season": "موسم الذروة",
+                    "availability": "مايو - يوليو"
                 }
             }
         }

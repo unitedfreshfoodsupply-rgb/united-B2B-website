@@ -28,7 +28,7 @@ export function OperationsSection() {
   return (
     <section className="section-padding bg-[#fafafa]">
       <div className="container-wide">
-        <div className="grid lg:grid-cols-2 gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-20 items-center">
           {/* Left Column: Visual Bento */}
           <div className="relative order-2 lg:order-1">
             <div className="grid grid-cols-2 gap-4">
@@ -36,7 +36,7 @@ export function OperationsSection() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="col-span-2 h-[440px] rounded-[3rem] overflow-hidden relative shadow-2xl"
+                className="col-span-2 h-[280px] sm:h-[360px] lg:h-[440px] rounded-[2rem] sm:rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden relative shadow-2xl"
               >
                 <img
                   src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=1000"
@@ -60,7 +60,7 @@ export function OperationsSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="p-8 rounded-[2rem] glass-panel bg-white flex flex-col justify-center gap-2"
+                className="p-6 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] glass-panel bg-white flex flex-col justify-center gap-2"
               >
                 <BarChart3 className="text-uniteda-gold w-8 h-8" />
                 <div className="text-3xl font-black text-uniteda-emerald-dark tracking-tighter">99.8%</div>
@@ -72,7 +72,7 @@ export function OperationsSection() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.4 }}
-                className="p-8 rounded-[2rem] bg-uniteda-emerald flex flex-col justify-center gap-2 text-white"
+                className="p-6 sm:p-8 rounded-[1.5rem] sm:rounded-[2rem] bg-uniteda-emerald flex flex-col justify-center gap-2 text-white"
               >
                 <Thermometer className="w-8 h-8 text-white/40" />
                 <div className="text-3xl font-black tracking-tighter">4°C - 8°C</div>
@@ -84,7 +84,7 @@ export function OperationsSection() {
             <motion.div
               animate={{ x: [0, 10, 0] }}
               transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
-              className="absolute -top-10 -right-10 rtl:right-auto rtl:-left-10 hidden xl:flex glass-panel p-6 rounded-3xl shadow-2xl border border-white/40 max-w-[200px] flex-col gap-3"
+              className="absolute -top-10 -right-10 rtl:right-auto rtl:-left-10 hidden md:flex glass-panel p-4 sm:p-6 rounded-2xl sm:rounded-3xl shadow-2xl border border-white/40 max-w-[180px] sm:max-w-[200px] flex-col gap-3"
             >
               <div className="w-10 h-10 rounded-full bg-uniteda-emerald/10 flex items-center justify-center">
                 <Package size={20} className="text-uniteda-emerald" />
@@ -110,11 +110,11 @@ export function OperationsSection() {
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-uniteda-emerald/5 text-uniteda-emerald text-[10px] font-black uppercase tracking-widest mb-6 border border-uniteda-emerald/10">
                 {t('operations.architecture_label')}
               </div>
-              <h2 className="text-5xl md:text-6xl font-black text-uniteda-emerald-dark tracking-tighter leading-[0.9]">
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-uniteda-emerald-dark tracking-tighter leading-[0.9]">
                 {t('operations.title_prefix')} <br />
                 <span className="text-uniteda-gold">{t('operations.title_highlight')}</span>
               </h2>
-              <p className="text-lg text-muted-foreground font-medium mt-8 leading-relaxed max-w-lg">
+              <p className="text-base sm:text-lg font-medium mt-6 sm:mt-8 leading-relaxed max-w-lg">
                 {t('operations.description')}
               </p>
             </div>
@@ -126,7 +126,7 @@ export function OperationsSection() {
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.1 }}
-                  className="space-y-3 p-6 rounded-3xl hover:bg-white hover:shadow-xl transition-all duration-500 border border-transparent hover:border-black/5 group cursor-default"
+                  className="space-y-3 p-4 sm:p-6 rounded-2xl sm:rounded-3xl hover:bg-white hover:shadow-xl transition-all duration-500 border border-transparent hover:border-black/5 group cursor-default"
                 >
                   <div className="w-12 h-12 rounded-2xl bg-uniteda-emerald/5 flex items-center justify-center text-uniteda-emerald group-hover:bg-uniteda-emerald group-hover:text-white transition-all duration-500">
                     <op.icon size={24} />
