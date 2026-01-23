@@ -36,16 +36,13 @@ import { herbProducts } from "@/data/herb-products";
 import { localFruitProducts } from "@/data/local-fruit-products";
 
 const categories = [
-  { id: "all", nameKey: "products.catalog.categories.all", icon: Grid3X3, count: 209 },
-  { id: "fruits", nameKey: "products.catalog.categories.fruits", icon: Apple, count: 45 },
-  { id: "vegetables", nameKey: "products.catalog.categories.vegetables", icon: Carrot, count: 62 },
-  { id: "herbs", nameKey: "products.catalog.categories.herbs", icon: Leaf, count: 28 },
-  { id: "microgreens", nameKey: "products.catalog.categories.microgreens", icon: Sprout, count: 18 },
-  { id: "exotic", nameKey: "products.catalog.categories.exotic", icon: Cherry, count: 34 },
-  { id: "specialty", nameKey: "products.catalog.categories.specialty", icon: CircleDot, count: 22 },
+  { id: "all", nameKey: "products.catalog.categories.all", icon: Grid3X3 },
+  { id: "fruits", nameKey: "products.catalog.categories.fruits", icon: Apple },
+  { id: "vegetables", nameKey: "products.catalog.categories.vegetables", icon: Carrot },
+  { id: "herbs", nameKey: "products.catalog.categories.herbs", icon: Leaf },
+  { id: "exotic", nameKey: "products.catalog.categories.exotic", icon: Cherry },
+  { id: "specialty", nameKey: "products.catalog.categories.specialty", icon: CircleDot },
 ];
-
-const tickerItems: any[] = [];
 
 const sampleProducts = [
   ...importedProducts,
@@ -54,18 +51,44 @@ const sampleProducts = [
   ...localFruitProducts
 ];
 
+// Generate ticker items from peak products
+const tickerItems = sampleProducts
+  .filter(p => p.season === "peak")
+  .slice(0, 10)
+  .map(p => ({
+    key: p.key,
+    icon: p.category === "fruits" ? Apple : p.category === "vegetables" ? Carrot : Leaf,
+    tagKey: "new",
+    origin: p.origin
+  }));
+
 export default function ProductsPage() {
   const { t, i18n } = useTranslation('pages');
   const isRTL = i18n.dir() === 'rtl';
   const [activeCategory, setActiveCategory] = useState("all");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedRegion, setSelectedRegion] = useState("all");
+  const [selectedSeason, setSelectedSeason] = useState("all");
+
+  // Calculate dynamic counts
+  const categoryCounts = categories.reduce((acc, cat) => {
+    if (cat.id === "all") {
+      acc[cat.id] = sampleProducts.length;
+    } else {
+      acc[cat.id] = sampleProducts.filter(p => p.category === cat.id).length;
+    }
+    return acc;
+  }, {} as Record<string, number>);
 
   const filteredProducts = sampleProducts.filter(product => {
     const productName = t(`products.catalog.items.${product.key}.name`);
     const matchesCategory = activeCategory === "all" || product.category === activeCategory;
     const matchesSearch = productName.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
+    const matchesRegion = selectedRegion === "all" || product.origin.toLowerCase() === selectedRegion.toLowerCase();
+    const matchesSeason = selectedSeason === "all" || product.season === selectedSeason;
+
+    return matchesCategory && matchesSearch && matchesRegion && matchesSeason;
   });
 
   return (
@@ -257,7 +280,7 @@ export default function ProductsPage() {
                           "text-[10px] px-2 py-0.5 rounded-full font-bold",
                           activeCategory === cat.id ? "bg-white/20 text-white" : "bg-black/5 text-muted-foreground"
                         )}>
-                          {cat.count}
+                          {categoryCounts[cat.id] || 0}
                         </span>
                       </button>
                     ))}
@@ -270,7 +293,11 @@ export default function ProductsPage() {
                     {t('products.filters.quick_filters_title')}
                   </h3>
                   <div className="space-y-4">
-                    <Select dir={isRTL ? "rtl" : "ltr"}>
+                    <Select
+                      dir={isRTL ? "rtl" : "ltr"}
+                      value={selectedRegion}
+                      onValueChange={setSelectedRegion}
+                    >
                       <SelectTrigger className="w-full rounded-xl border-black/5 bg-muted/30 hover:bg-muted/50 transition-colors font-medium">
                         <SelectValue placeholder={t('products.filters.region.label')} />
                       </SelectTrigger>
@@ -278,9 +305,14 @@ export default function ProductsPage() {
                         <SelectItem value="all">{t('products.filters.region.all')}</SelectItem>
                         <SelectItem value="egypt">{t('products.filters.region.egypt')}</SelectItem>
                         <SelectItem value="uae">{t('products.filters.region.uae')}</SelectItem>
+                        <SelectItem value="imported">{t('products.filters.region.imported') || "Imported"}</SelectItem>
                       </SelectContent>
                     </Select>
-                    <Select dir={isRTL ? "rtl" : "ltr"}>
+                    <Select
+                      dir={isRTL ? "rtl" : "ltr"}
+                      value={selectedSeason}
+                      onValueChange={setSelectedSeason}
+                    >
                       <SelectTrigger className="w-full rounded-xl border-black/5 bg-muted/30 hover:bg-muted/50 transition-colors font-medium">
                         <SelectValue placeholder={t('products.filters.season.label')} />
                       </SelectTrigger>

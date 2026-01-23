@@ -160,5 +160,55 @@ export const importedProducts: ImportedProduct[] = [
         image: "/images/products/imported/dragon_fruit.png",
         grades: ["premium"],
         price: "Market Price"
+    },
+    {
+        id: "imp_cherry",
+        key: "imp_cherry",
+        category: "fruits",
+        origin: "imported",
+        season: "available",
+        image: "/images/products/imported-fruits/imported-red-cherry.jpg",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "imp_apple_green_it",
+        key: "imp_apple_green_it",
+        category: "fruits",
+        origin: "imported",
+        season: "available",
+        image: "/images/products/imported-fruits/italian-green-apple.jpg",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "imp_apple_red_it",
+        key: "imp_apple_red_it",
+        category: "fruits",
+        origin: "imported",
+        season: "available",
+        image: "/images/products/imported-fruits/italian-red-apple.jpg",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "imp_apple_yellow_it",
+        key: "imp_apple_yellow_it",
+        category: "fruits",
+        origin: "imported",
+        season: "available",
+        image: "/images/products/imported-fruits/italian-yellow-apple.jpg",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "imp_apple_green_pl",
+        key: "imp_apple_green_pl",
+        category: "fruits",
+        origin: "imported",
+        season: "available",
+        image: "/images/products/imported-fruits/polish-green-apple.jpg",
+        grades: ["premium"],
+        price: "Market Price"
     }
 ];
