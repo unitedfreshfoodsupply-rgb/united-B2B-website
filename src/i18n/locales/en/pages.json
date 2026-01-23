@@ -49,6 +49,75 @@
             "rfq": "Request Quote"
         }
     },
+    "about": {
+        "hero": {
+            "label": "The Chapter of Uniteda",
+            "title": "A Story of <highlight>Freshness</highlight> <br /> and Global Scale",
+            "description": "Beyond shipping, we are the architects of a global freshness journey. Explore the chapters that define our commitment to agricultural excellence.",
+            "scroll": "Begin Scrolling"
+        },
+        "story": {
+            "chapter_01": {
+                "num": "01",
+                "label": "The Heritage",
+                "title": "Roots in Fertile Soil",
+                "content": "Our story begins in the heart of Egypt's agriculture. We learned early that quality isn't just a metric; it's a legacy. Every fruit and vegetable we move carries the weight of thousands of years of farming wisdom, brought into the modern era.",
+                "stats": {
+                    "legacy": {
+                        "value": "1990+",
+                        "label": "Legacy Start"
+                    },
+                    "organic": {
+                        "value": "Organic",
+                        "label": "Organic Grade Certified"
+                    }
+                },
+                "badge": "Soil to Customer Pipeline"
+            },
+            "chapter_02": {
+                "num": "02",
+                "label": "The Intelligence",
+                "title": "The Technical Pulse",
+                "content": "As we grew, so did our ambition. We realized that the shortest path from field to table isn't just a line; it's a sophisticated data stream. In this chapter, agriculture meets aero-logistics and cold-chain precision.",
+                "features": {
+                    "precision": "Cold-Chain Precision",
+                    "telemetry": "Real-time Telemetry"
+                }
+            },
+            "chapter_03": {
+                "num": "03",
+                "label": "The Vision",
+                "title": "Witness the Motion",
+                "content": "See the journey through our lens. This is where strategy meets the open road, where the Egyptian harvest finds its global destination.",
+                "cta": "Watch Project: Uniteda",
+                "cinema_label": "Uniteda_Global_Cinema"
+            },
+            "chapter_04": {
+                "num": "04",
+                "label": "The Horizon",
+                "title": "Defining the Future",
+                "content": "Uniteda is now a bridge. Between Cairo and Dubai, between the farmer and the chef. We are scaling the integrity of fresh produce, one shipment at a time.",
+                "strategy": {
+                    "label": "Scale Strategy Active",
+                    "detail": "Bridging Cairo & Dubai"
+                }
+            }
+        },
+        "impact": {
+            "title": "The Global Footprint",
+            "stats": {
+                "countries": "Destinations Active",
+                "growers": "Grower Partners",
+                "tonnage": "Export Volume",
+                "satisfaction": "Service Level"
+            }
+        },
+        "cta": {
+            "title": "Start your <highlight>Chapter</highlight> <br /> with us",
+            "contact": "Contact Express",
+            "inventory": "Explore Inventory"
+        }
+    },
     "feature_standby": {
         "badge": "STBY",
         "label": "SYSTEM_MODULE // PENDING",

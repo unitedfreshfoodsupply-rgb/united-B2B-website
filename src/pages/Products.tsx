@@ -35,15 +35,6 @@ import { vegetableProducts } from "@/data/vegetable-products";
 import { herbProducts } from "@/data/herb-products";
 import { localFruitProducts } from "@/data/local-fruit-products";
 
-const categories = [
-  { id: "all", nameKey: "products.catalog.categories.all", icon: Grid3X3, count: 209 },
-  { id: "fruits", nameKey: "products.catalog.categories.fruits", icon: Apple, count: 45 },
-  { id: "vegetables", nameKey: "products.catalog.categories.vegetables", icon: Carrot, count: 62 },
-  { id: "herbs", nameKey: "products.catalog.categories.herbs", icon: Leaf, count: 28 },
-  { id: "microgreens", nameKey: "products.catalog.categories.microgreens", icon: Sprout, count: 18 },
-  { id: "exotic", nameKey: "products.catalog.categories.exotic", icon: Cherry, count: 34 },
-  { id: "specialty", nameKey: "products.catalog.categories.specialty", icon: CircleDot, count: 22 },
-];
 
 const tickerItems = [
   // Exotic Imported Fruits - Premium Berries
@@ -96,12 +87,46 @@ export default function ProductsPage() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [searchQuery, setSearchQuery] = useState("");
+  const [regionFilter, setRegionFilter] = useState("all");
+  const [seasonFilter, setSeasonFilter] = useState("all");
 
+  // Calculate real category counts from actual products
+  const getCategoryCount = (categoryId: string) => {
+    if (categoryId === "all") return sampleProducts.length;
+    return sampleProducts.filter(p => p.category === categoryId).length;
+  };
+
+  const categories = [
+    { id: "all", nameKey: "products.catalog.categories.all", icon: Grid3X3, count: getCategoryCount("all") },
+    { id: "fruits", nameKey: "products.catalog.categories.fruits", icon: Apple, count: getCategoryCount("fruits") },
+    { id: "vegetables", nameKey: "products.catalog.categories.vegetables", icon: Carrot, count: getCategoryCount("vegetables") },
+    { id: "herbs", nameKey: "products.catalog.categories.herbs", icon: Leaf, count: getCategoryCount("herbs") },
+    { id: "microgreens", nameKey: "products.catalog.categories.microgreens", icon: Sprout, count: getCategoryCount("microgreens") },
+    { id: "exotic", nameKey: "products.catalog.categories.exotic", icon: Cherry, count: getCategoryCount("exotic") },
+    { id: "specialty", nameKey: "products.catalog.categories.specialty", icon: CircleDot, count: getCategoryCount("specialty") },
+  ];
+
+  // Combined filtering logic - all filters work together
   const filteredProducts = sampleProducts.filter(product => {
     const productName = t(`products.catalog.items.${product.key}.name`);
+    const productOrigin = t(`products.catalog.items.${product.key}.origin`);
+
+    // Category filter
     const matchesCategory = activeCategory === "all" || product.category === activeCategory;
-    const matchesSearch = productName.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
+
+    // Search filter
+    const matchesSearch = searchQuery === "" ||
+      productName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      productOrigin.toLowerCase().includes(searchQuery.toLowerCase());
+
+    // Region filter
+    const matchesRegion = regionFilter === "all" ||
+      productOrigin.toLowerCase().includes(regionFilter.toLowerCase());
+
+    // Season filter
+    const matchesSeason = seasonFilter === "all" || product.season === seasonFilter;
+
+    return matchesCategory && matchesSearch && matchesRegion && matchesSeason;
   });
 
   return (
@@ -310,7 +335,7 @@ export default function ProductsPage() {
                     {t('products.filters.quick_filters_title')}
                   </h3>
                   <div className="space-y-4">
-                    <Select dir={isRTL ? "rtl" : "ltr"}>
+                    <Select dir={isRTL ? "rtl" : "ltr"} value={regionFilter} onValueChange={setRegionFilter}>
                       <SelectTrigger className="w-full rounded-xl border-black/5 bg-muted/30 hover:bg-muted/50 transition-colors font-medium">
                         <SelectValue placeholder={t('products.filters.region.label')} />
                       </SelectTrigger>
@@ -320,7 +345,7 @@ export default function ProductsPage() {
                         <SelectItem value="uae">{t('products.filters.region.uae')}</SelectItem>
                       </SelectContent>
                     </Select>
-                    <Select dir={isRTL ? "rtl" : "ltr"}>
+                    <Select dir={isRTL ? "rtl" : "ltr"} value={seasonFilter} onValueChange={setSeasonFilter}>
                       <SelectTrigger className="w-full rounded-xl border-black/5 bg-muted/30 hover:bg-muted/50 transition-colors font-medium">
                         <SelectValue placeholder={t('products.filters.season.label')} />
                       </SelectTrigger>

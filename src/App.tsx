@@ -10,6 +10,7 @@ import Operations from "./pages/Operations";
 import Seasonal from "./pages/Seasonal";
 import Contact from "./pages/Contact";
 import FeatureStandby from "./pages/FeatureStandby";
+import About from "./pages/About";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,7 +29,7 @@ const App = () => (
           <Route path="/seasonal" element={<Seasonal />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/standby" element={<FeatureStandby />} />
-          <Route path="/about" element={<FeatureStandby />} />
+          <Route path="/about" element={<About />} />
           <Route path="/quality" element={<FeatureStandby />} />
           <Route path="/network" element={<FeatureStandby />} />
           <Route path="/careers" element={<FeatureStandby />} />
