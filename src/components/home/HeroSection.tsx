@@ -79,9 +79,14 @@ export function HeroSection() {
               className="flex items-center gap-4 sm:gap-6 lg:gap-8 pt-4 sm:pt-6"
             >
               <div className="flex -space-x-3 rtl:space-x-reverse">
-                {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="w-12 h-12 rounded-full border-4 border-white bg-muted flex items-center justify-center text-xs font-bold overflow-hidden">
-                    <img src={`https://i.pravatar.cc/150?u=${i}`} alt="user" />
+                {[
+                  "/images/partners/fairmont.png",
+                  "/images/partners/four-seasons.png",
+                  "/images/partners/kempinski.png",
+                  "/images/partners/jaz.png"
+                ].map((src, i) => (
+                  <div key={i} className="w-12 h-12 rounded-full border-4 border-white bg-white flex items-center justify-center text-xs font-bold overflow-hidden shadow-sm">
+                    <img src={src} alt="partner" className="w-full h-full object-contain p-1.5" />
                   </div>
                 ))}
               </div>
