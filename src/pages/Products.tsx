@@ -516,6 +516,7 @@ export default function ProductsPage() {
                 {filteredProducts.length > 0 ? (
                   <VirtuosoGrid
                     useWindowScroll
+                    overscan={400}
                     data={filteredProducts}
                     components={{
                       List: React.forwardRef<HTMLDivElement, { children?: React.ReactNode }>(({ children, ...props }, ref) => (

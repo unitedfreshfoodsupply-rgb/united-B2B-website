@@ -1,47 +1,53 @@
-import { useState, useMemo, memo } from "react";
+import { useState, useMemo, memo, useDeferredValue } from "react";
 import React from "react";
 import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sun, Droplets, Snowflake, Leaf, Info, Grid3x3, Table2, Download, Calendar } from "lucide-react";
+import { ArrowRight, Sun, Droplets, Snowflake, Leaf, Info, Grid3x3, Table2, Download, Calendar, Search } from "lucide-react";
 import { ProductCard } from "@/components/seasonal/ProductCard";
 import { InSeasonNow } from "@/components/seasonal/InSeasonNow";
 import { ProductDetailModal } from "@/components/seasonal/ProductDetailModal";
 import { cn } from "@/lib/utils";
+import { importedProducts } from "@/data/imported-products";
+import { vegetableProducts } from "@/data/vegetable-products";
+import { herbProducts } from "@/data/herb-products";
+import { localFruitProducts } from "@/data/local-fruit-products";
+import { Input } from "@/components/ui/input";
 
-
-const seasonalProducts = [
-
-  {
-    name: "Mangoes",
-    category: "Fruits",
-    egypt: [0, 0, 0, 0, 1, 2, 2, 2, 1, 0, 0, 0],
-    uae: [0, 0, 0, 1, 2, 2, 2, 1, 0, 0, 0, 0],
-    image: "/images/products/mangoes.webp",
-  },
-
-  {
-    name: "Pomegranates",
-    category: "Fruits",
-    egypt: [0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 1, 0],
-    uae: [0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 1],
-    image: "/images/products/pomegranates.webp",
-  },
-
-
-  {
-    name: "Asparagus",
-    category: "Vegetables",
-    egypt: [0, 1, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0],
-    uae: [0, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0],
-    image: "/images/products/asparagus.webp",
-  },
-
-];
 
 const currentMonth = new Date().getMonth();
+
+const monthMap: Record<string, number> = {
+  Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
+  Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11
+};
+
+const parseAvailabilityString = (str: string): number[] => {
+  if (!str) return Array(12).fill(0);
+  if (str === "Year-round" || str === "Available" || str === "طوال العام") return Array(12).fill(1);
+  if (str === "Summer" || str === "صيفي") return [0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0];
+
+  const parts = str.split(" - ").map(s => s.trim());
+  if (parts.length === 2) {
+    const startIndex = monthMap[parts[0]];
+    const endIndex = monthMap[parts[1]];
+
+    if (startIndex !== undefined && endIndex !== undefined) {
+      const arr = Array(12).fill(0);
+      if (startIndex <= endIndex) {
+        for (let i = startIndex; i <= endIndex; i++) arr[i] = 1;
+      } else {
+        for (let i = startIndex; i < 12; i++) arr[i] = 1;
+        for (let i = 0; i <= endIndex; i++) arr[i] = 1;
+      }
+      return arr;
+    }
+  }
+
+  return Array(12).fill(1);
+};
 
 const getAvailabilityColor = (value: number) => {
   if (value === 2) return "bg-accent";
@@ -65,17 +71,22 @@ const seasons = [
 type ViewMode = "grid" | "table";
 type Region = "egypt" | "uae" | "both";
 
-const MatrixRow = memo(({ product, months, currentMonth, t, regionType }: { product: any, months: string[], currentMonth: number, t: any, regionType: "egypt" | "uae" }) => {
-  const availability = regionType === "egypt" ? product.egypt : product.uae;
+const MatrixRow = memo(({ product, months, currentMonth, t, regionType }: { product: any, months: string[], currentMonth: number, t: any, regionType: Region }) => {
+  const availability = regionType === "both"
+    ? product.egypt.map((val: number, idx: number) => Math.max(val, product.uae[idx]))
+    : regionType === "egypt" ? product.egypt : product.uae;
+
   return (
-    <tr className="border-b border-border/50 hover:bg-muted/30">
-      <td className="py-3 px-4 font-medium text-foreground">{t(`seasonal.products.${product.name}`)}</td>
-      <td className="py-3 px-2 text-sm text-muted-foreground">{t(`products.catalog.categories.${product.category.toLowerCase()}`)}</td>
+    <tr className="border-b border-border/50 hover:bg-muted/30 transition-colors">
+      <td className="py-3 px-4 font-medium text-foreground sticky left-0 bg-background/80 backdrop-blur-md z-10 w-[200px]">
+        {t(`products.catalog.items.${product.key}.name`)}
+      </td>
+      <td className="py-3 px-2 text-sm text-muted-foreground whitespace-nowrap">{t(`products.catalog.categories.${product.category.toLowerCase()}`)}</td>
       {availability.map((value: number, i: number) => (
         <td key={i} className="py-2 sm:py-3 px-1 sm:px-2 text-center">
           <div
             className={cn(
-              "w-6 h-6 sm:w-8 sm:h-8 mx-auto rounded-lg",
+              "w-6 h-6 sm:w-8 sm:h-8 mx-auto rounded-lg transition-all",
               getAvailabilityColor(value),
               i === currentMonth ? "ring-2 ring-accent ring-offset-2" : ""
             )}
@@ -94,27 +105,64 @@ export default function SeasonalPage() {
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [selectedRegion, setSelectedRegion] = useState<Region>("both");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [selectedProduct, setSelectedProduct] = useState<typeof seasonalProducts[0] | null>(null);
+  const [searchQuery, setSearchQuery] = useState("");
+  const deferredSearchQuery = useDeferredValue(searchQuery);
   const [showModal, setShowModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
 
   const months = t('seasonal.months', { returnObjects: true }) as string[];
 
+  // Merge full catalog data
+  const allProducts = useMemo(() => {
+    const catalogBase = [
+      ...importedProducts,
+      ...vegetableProducts,
+      ...herbProducts,
+      ...localFruitProducts
+    ];
+
+    // Map these to seasonal format
+    return catalogBase.map(p => {
+      const availabilityStr = t(`products.catalog.items.${p.key}.availability`);
+      const dynamicArr = parseAvailabilityString(availabilityStr);
+
+      // Check if we have a manually tuned entry for this product (preserving peak info)
+      const manualEntry = [
+        { name: "mangoes", key: "loc_5", egypt: [0, 0, 0, 0, 1, 2, 2, 2, 1, 0, 0, 0], uae: [0, 0, 0, 1, 2, 2, 2, 1, 0, 0, 0, 0] },
+        { name: "pomegranates", key: "loc_3", egypt: [0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 1, 0], uae: [0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 1] },
+        { name: "asparagus", key: "veg_1", egypt: [0, 1, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0], uae: [0, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0] },
+        { name: "strawberries", key: "loc_1", egypt: [1, 2, 2, 1, 0, 0, 0, 0, 0, 0, 2, 2], uae: [1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 1, 2] }
+      ].find(m => m.key === p.key || m.name === p.key);
+
+      return {
+        ...p,
+        name: p.key,
+        egypt: manualEntry ? manualEntry.egypt : dynamicArr,
+        uae: manualEntry ? manualEntry.uae : dynamicArr
+      };
+    });
+  }, [t]);
+
   // Filter products
   const filteredProducts = useMemo(() => {
-    return seasonalProducts.filter(p =>
-      !selectedCategory || p.category === selectedCategory
-    );
-  }, [selectedCategory]);
+    return allProducts.filter(p => {
+      const matchesCategory = !selectedCategory || p.category === selectedCategory.toLowerCase();
+      const productName = t(`products.catalog.items.${p.key}.name`).toLowerCase();
+      const matchesSearch = productName.includes(deferredSearchQuery.toLowerCase());
+      return matchesCategory && matchesSearch;
+    });
+  }, [allProducts, selectedCategory, deferredSearchQuery, t]);
 
-  const handleProductClick = (product: typeof seasonalProducts[0]) => {
+  const handleProductClick = (product: any) => {
     setSelectedProduct(product);
     setShowModal(true);
   };
 
   const categories = [
-    { id: "Fruits", label: t('products.catalog.categories.fruits') },
-    { id: "Vegetables", label: t('products.catalog.categories.vegetables') },
-    { id: "Herbs", label: t('products.catalog.categories.herbs') },
+    { id: "fruits", label: t('products.catalog.categories.fruits') },
+    { id: "vegetables", label: t('products.catalog.categories.vegetables') },
+    { id: "herbs", label: t('products.catalog.categories.herbs') },
+    { id: "exotic", label: t('products.catalog.categories.exotic') || "Exotic" },
   ];
 
   return (
@@ -164,13 +212,13 @@ export default function SeasonalPage() {
                 <div className="flex items-center gap-2 text-sm">
                   <div className="w-2 h-2 rounded-full bg-accent" />
                   <span className="text-muted-foreground">
-                    <span className="font-bold text-foreground">{seasonalProducts.filter(p => p.egypt[currentMonth] === 2 || p.uae[currentMonth] === 2).length}</span> {t('seasonal.stats.peak_products')}
+                    <span className="font-bold text-foreground">{allProducts.filter(p => p.egypt[currentMonth] === 2 || p.uae[currentMonth] === 2).length}</span> {t('seasonal.stats.peak_products')}
                   </span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
                   <div className="w-2 h-2 rounded-full bg-primary" />
                   <span className="text-muted-foreground">
-                    <span className="font-bold text-foreground">2</span> {t('seasonal.stats.regions_tracked')}
+                    <span className="font-bold text-foreground">{allProducts.length}</span> {t('seasonal.stats.regions_tracked')}
                   </span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
@@ -247,29 +295,42 @@ export default function SeasonalPage() {
               </button>
             </div>
 
-            {/* Category Filters */}
-            <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 order-3 sm:order-2 w-full sm:w-auto scrollbar-hide">
-              <button
-                onClick={() => setSelectedCategory(null)}
-                className={`px-3 sm:px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${selectedCategory === null
-                  ? "bg-accent text-accent-foreground"
-                  : "bg-muted text-muted-foreground hover:text-foreground"
-                  }`}
-              >
-                {t('products.catalog.categories.all')}
-              </button>
-              {categories.map(category => (
+            {/* Search and Category Filters */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 order-3 sm:order-2 w-full lg:w-auto">
+              <div className="relative group min-w-[200px] lg:min-w-[280px]">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground group-focus-within:text-primary transition-colors" />
+                <Input
+                  type="text"
+                  placeholder={t('products.filters.search_placeholder')}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="pl-10 h-10 bg-muted/50 border-none rounded-xl focus-visible:ring-1 focus-visible:ring-accent/20 transition-all font-medium text-sm"
+                />
+              </div>
+
+              <div className="flex items-center gap-2 overflow-x-auto pb-1 sm:pb-0 scrollbar-hide">
                 <button
-                  key={category.id}
-                  onClick={() => setSelectedCategory(category.id)}
-                  className={`px-3 sm:px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${selectedCategory === category.id
-                    ? "bg-accent text-accent-foreground"
+                  onClick={() => setSelectedCategory(null)}
+                  className={`px-3 sm:px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${selectedCategory === null
+                    ? "bg-accent text-accent-foreground shadow-lg shadow-accent/20"
                     : "bg-muted text-muted-foreground hover:text-foreground"
                     }`}
                 >
-                  {category.label}
+                  {t('products.catalog.categories.all')}
                 </button>
-              ))}
+                {categories.map(category => (
+                  <button
+                    key={category.id}
+                    onClick={() => setSelectedCategory(category.id)}
+                    className={`px-3 sm:px-4 py-2 rounded-lg text-sm font-medium transition-all whitespace-nowrap ${selectedCategory === category.id
+                      ? "bg-accent text-accent-foreground shadow-lg shadow-accent/20"
+                      : "bg-muted text-muted-foreground hover:text-foreground"
+                      }`}
+                  >
+                    {category.label}
+                  </button>
+                ))}
+              </div>
             </div>
 
             {/* View Mode Toggle */}
@@ -306,7 +367,7 @@ export default function SeasonalPage() {
           <InSeasonNow
             products={filteredProducts.map(p => ({
               ...p,
-              name: t(`seasonal.products.${p.name}`),
+              name: t(`products.catalog.items.${p.key}.name`),
               category: t(`products.catalog.categories.${p.category.toLowerCase()}`)
             }))}
             region={selectedRegion}
@@ -316,25 +377,26 @@ export default function SeasonalPage() {
           {/* Grid View */}
           {viewMode === "grid" && (
             <div>
-              <h2 className="font-display text-xl sm:text-2xl font-bold text-foreground mb-4 sm:mb-6">
-                {t('products.catalog.categories.all')}
-              </h2>
+              <div className="flex items-center gap-3 mb-6">
+                <h2 className="font-display text-xl sm:text-2xl font-bold text-foreground">
+                  {selectedCategory ? t(`products.catalog.categories.${selectedCategory}`) : t('products.catalog.categories.all')}
+                </h2>
+                <span className="px-3 py-1 rounded-full bg-muted text-muted-foreground text-xs font-bold">
+                  {filteredProducts.length} {t('products.catalog.products_suffix')}
+                </span>
+              </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
                 {filteredProducts.map((product, index) => (
                   <ProductCard
-                    key={product.name}
+                    key={product.key}
                     product={{
                       ...product,
-                      name: t(`seasonal.products.${product.name}`),
+                      name: t(`products.catalog.items.${product.key}.name`),
                       category: t(`products.catalog.categories.${product.category.toLowerCase()}`)
                     }}
                     region={selectedRegion}
                     currentMonth={currentMonth}
-                    onClick={() => handleProductClick({
-                      ...product,
-                      name: t(`seasonal.products.${product.name}`),
-                      category: t(`products.catalog.categories.${product.category.toLowerCase()}`)
-                    })}
+                    onClick={() => handleProductClick(product)}
                   />
                 ))}
               </div>
@@ -389,12 +451,12 @@ export default function SeasonalPage() {
                       <tbody>
                         {filteredProducts.map((product) => (
                           <MatrixRow
-                            key={product.name}
+                            key={product.key}
                             product={product}
                             months={months}
                             currentMonth={currentMonth}
                             t={t}
-                            regionType="egypt"
+                            regionType={selectedRegion}
                           />
                         ))}
                       </tbody>

@@ -312,6 +312,48 @@
                     "season": "متاح",
                     "availability": "صيفي"
                 },
+                "imp_apple_green_it": {
+                    "name": "تفاح أخضر إيطالي",
+                    "scientific_name": "Malus domestica 'Granny Smith'",
+                    "origin": "إيطاليا",
+                    "season": "متاح",
+                    "availability": "أكتوبر - مايو"
+                },
+                "imp_apple_red_it": {
+                    "name": "تفاح أحمر إيطالي",
+                    "scientific_name": "Malus domestica 'Red Delicious'",
+                    "origin": "إيطاليا",
+                    "season": "متاح",
+                    "availability": "أكتوبر - مايو"
+                },
+                "imp_apple_yellow_it": {
+                    "name": "تفاح أصفر إيطالي",
+                    "scientific_name": "Malus domestica 'Golden Delicious'",
+                    "origin": "إيطاليا",
+                    "season": "متاح",
+                    "availability": "أكتوبر - مايو"
+                },
+                "imp_apple_green_pl": {
+                    "name": "تفاح أخضر بولندي",
+                    "scientific_name": "Malus domestica",
+                    "origin": "بولندا",
+                    "season": "متاح",
+                    "availability": "أكتوبر - أبريل"
+                },
+                "imp_cherry": {
+                    "name": "كرز أحمر مستورد",
+                    "scientific_name": "Prunus avium",
+                    "origin": "مستورد",
+                    "season": "متاح",
+                    "availability": "صيفي"
+                },
+                "imp_mango": {
+                    "name": "مانجو مستورد",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "مستورد",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
                 "veg_1": {
                     "name": "اسبراجوس اخضر فاخر",
                     "scientific_name": "Asparagus officinalis",

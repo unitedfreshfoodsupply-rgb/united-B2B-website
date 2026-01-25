@@ -308,6 +308,48 @@
                     "season": "Available",
                     "availability": "Summer"
                 },
+                "imp_apple_green_it": {
+                    "name": "Italian Green Apple",
+                    "scientific_name": "Malus domestica 'Granny Smith'",
+                    "origin": "Italy",
+                    "season": "Available",
+                    "availability": "Oct - May"
+                },
+                "imp_apple_red_it": {
+                    "name": "Italian Red Apple",
+                    "scientific_name": "Malus domestica 'Red Delicious'",
+                    "origin": "Italy",
+                    "season": "Available",
+                    "availability": "Oct - May"
+                },
+                "imp_apple_yellow_it": {
+                    "name": "Italian Yellow Apple",
+                    "scientific_name": "Malus domestica 'Golden Delicious'",
+                    "origin": "Italy",
+                    "season": "Available",
+                    "availability": "Oct - May"
+                },
+                "imp_apple_green_pl": {
+                    "name": "Polish Green Apple",
+                    "scientific_name": "Malus domestica",
+                    "origin": "Poland",
+                    "season": "Available",
+                    "availability": "Oct - Apr"
+                },
+                "imp_cherry": {
+                    "name": "Imported Red Cherry",
+                    "scientific_name": "Prunus avium",
+                    "origin": "Imported",
+                    "season": "Available",
+                    "availability": "Summer"
+                },
+                "imp_mango": {
+                    "name": "Imported Mango",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "Imported",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
                 "veg_1": {
                     "name": "Premium Green Asparagus",
                     "scientific_name": "Asparagus officinalis",

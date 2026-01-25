@@ -180,5 +180,35 @@ export const vegetableProducts: ProductEntry[] = [
         image: "/images/products/vegetables/broad-beans.webp",
         grades: ["premium"],
         price: "Market Price"
+    },
+    {
+        id: "veg_18",
+        key: "veg_18",
+        category: "vegetables",
+        origin: "egypt",
+        season: "available",
+        image: "/images/products/vegetables/garlic.png",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "veg_29",
+        key: "veg_29",
+        category: "vegetables",
+        origin: "egypt",
+        season: "available",
+        image: "/images/products/vegetables/green-bell-pepper.png",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "veg_45",
+        key: "veg_45",
+        category: "vegetables",
+        origin: "egypt",
+        season: "available",
+        image: "/images/products/vegetables/tomatoes.png",
+        grades: ["premium"],
+        price: "Market Price"
     }
 ];

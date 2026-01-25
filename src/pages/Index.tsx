@@ -8,10 +8,6 @@ const Index = () => {
       <HeroSection />
 
       <LazySection
-        importFunc={() => import("@/components/home/PartnerSection").then(m => ({ default: m.PartnerSection }))}
-      />
-
-      <LazySection
         importFunc={() => import("@/components/home/ProductCategoriesSection").then(m => ({ default: m.ProductCategoriesSection }))}
       />
 

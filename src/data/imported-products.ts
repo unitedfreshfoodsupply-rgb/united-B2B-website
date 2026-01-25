@@ -87,7 +87,7 @@ export const importedProducts: ImportedProduct[] = [
         category: "exotic",
         origin: "imported",
         season: "available",
-        image: "/images/products/imported/rambutan.webp",
+        image: "/images/products/imported/rambutan.png",
         grades: ["premium"],
         price: "Market Price"
     },
@@ -97,7 +97,7 @@ export const importedProducts: ImportedProduct[] = [
         category: "exotic",
         origin: "imported",
         season: "available",
-        image: "/images/products/imported/star_fruit.webp",
+        image: "/images/products/imported/star-fruit.png",
         grades: ["premium"],
         price: "Market Price"
     },
@@ -127,7 +127,7 @@ export const importedProducts: ImportedProduct[] = [
         category: "fruits",
         origin: "imported",
         season: "available",
-        image: "/images/products/imported/red_currant.webp",
+        image: "/images/products/imported/red-currant.png",
         grades: ["premium"],
         price: "Market Price"
     },
@@ -208,6 +208,16 @@ export const importedProducts: ImportedProduct[] = [
         origin: "imported",
         season: "available",
         image: "/images/products/imported-fruits/polish-green-apple.webp",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "imp_mango",
+        key: "imp_mango",
+        category: "fruits",
+        origin: "imported",
+        season: "available",
+        image: "/images/products/imported/mango.png",
         grades: ["premium"],
         price: "Market Price"
     }

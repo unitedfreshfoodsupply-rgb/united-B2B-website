@@ -71,5 +71,15 @@ export const herbProducts: ProductEntry[] = [
         image: "/images/products/herbs-greens/thyme.webp",
         grades: ["premium"],
         price: "Market Price"
+    },
+    {
+        id: "herb_1",
+        key: "herb_1",
+        category: "herbs",
+        origin: "egypt",
+        season: "available",
+        image: "/images/products/herbs-greens/fresh-basil.png",
+        grades: ["premium"],
+        price: "Market Price"
     }
 ];

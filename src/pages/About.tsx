@@ -14,7 +14,6 @@ const StoryChapter02 = lazy(() => import("@/components/about/StoryChapter02"));
 const StoryChapter03 = lazy(() => import("@/components/about/StoryChapter03"));
 const StoryChapter04 = lazy(() => import("@/components/about/StoryChapter04"));
 const ImpactCTA = lazy(() => import("@/components/about/ImpactCTA"));
-const PartnerSection = lazy(() => import("@/components/home/PartnerSection").then(m => ({ default: m.PartnerSection })));
 
 export default function About() {
     const { t, i18n, isRTL } = useUnifiedTranslation();
@@ -65,7 +64,6 @@ export default function About() {
                             alt=""
                             width={1920}
                             height={1080}
-                            fetchPriority="high"
                             decoding="async"
                         />
                     </div>
@@ -121,10 +119,6 @@ export default function About() {
                         </motion.div>
                     </div>
                 </section>
-
-                <Suspense fallback={null}>
-                    <PartnerSection />
-                </Suspense>
 
                 {/* Sub-sections: Lazy loaded for structural performance */}
                 <Suspense fallback={<div className="h-96 flex items-center justify-center bg-white"><div className="w-8 h-8 rounded-full border-4 border-uniteda-gold border-t-transparent animate-spin" /></div>}>

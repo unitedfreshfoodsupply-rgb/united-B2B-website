@@ -141,5 +141,35 @@ export const localFruitProducts: ProductEntry[] = [
         image: "/images/products/local-fruits/local-white-grapes.webp",
         grades: ["premium"],
         price: "Market Price"
+    },
+    {
+        id: "loc_1",
+        key: "loc_1",
+        category: "fruits",
+        origin: "egypt",
+        season: "available",
+        image: "/images/products/local-fruits/strawberries.png",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "loc_3",
+        key: "loc_3",
+        category: "fruits",
+        origin: "egypt",
+        season: "available",
+        image: "/images/products/local-fruits/pomegranates.png",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "loc_5",
+        key: "loc_5",
+        category: "fruits",
+        origin: "egypt",
+        season: "available",
+        image: "/images/products/local-fruits/local-mango.png",
+        grades: ["premium"],
+        price: "Market Price"
     }
 ];
