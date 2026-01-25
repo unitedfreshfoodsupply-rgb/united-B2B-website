@@ -35,6 +35,7 @@ import { vegetableProducts } from "@/data/vegetable-products";
 import { herbProducts } from "@/data/herb-products";
 import { localFruitProducts } from "@/data/local-fruit-products";
 import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
+import { ProduceImage } from "@/components/ui/ProduceImage";
 
 
 const sampleProducts = [
@@ -62,10 +63,14 @@ const ProductCard = memo(({ product, t, viewMode, index }: { product: any, t: an
   return (
     <motion.div
       layout
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.9 }}
-      transition={{ duration: 0.3, delay: Math.min(index * 0.05, 0.5) }}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 10 }}
+      transition={{
+        duration: 0.2,
+        delay: Math.min(index * 0.03, 0.3),
+        ease: "easeOut"
+      }}
       className={cn(
         "group relative bg-white border border-black/5 rounded-[2rem] overflow-hidden hover:border-uniteda-emerald/30 hover:shadow-xl hover:shadow-uniteda-emerald/5 transition-all duration-500",
         viewMode === "list" && "flex items-center p-4 gap-6 hover:translate-x-2"
@@ -77,12 +82,11 @@ const ProductCard = memo(({ product, t, viewMode, index }: { product: any, t: an
         viewMode === "list" ? "w-24 h-24 rounded-2xl shrink-0" : "aspect-square w-full"
       )}>
         {product.image.length > 2 ? (
-          <img
+          <ProduceImage
             src={product.image}
             alt={t(`products.catalog.items.${product.key}.name`)}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-            loading="lazy"
-            decoding="async"
+            className="w-full h-full group-hover:scale-110 transition-transform duration-500"
+            isPriority={index < 4}
           />
         ) : (
           <div className="text-6xl group-hover:scale-110 transition-transform duration-500 drop-shadow-xl">{product.image}</div>
