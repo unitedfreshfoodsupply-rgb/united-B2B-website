@@ -1,0 +1,1808 @@
+{
+    "contact": {
+        "label": "تواصل معنا",
+        "title_prefix": "لنتحدث عن",
+        "title_highlight": "منتجاتنا الطازجة",
+        "description": "تواصل مع فريقنا لمناقشة احتياجاتك من المنتجات الطازجة. نحن هنا لمساعدتك في الحصول على أفضل الفواكه والخضروات.",
+        "items": {
+            "egypt": {
+                "title": "مكتب مصر",
+                "detail": "القاهرة، مصر",
+                "infra": "الموقع الرئيسي"
+            },
+            "uae": {
+                "title": "مكتب الإمارات",
+                "detail": "دبي، الإمارات العربية المتحدة",
+                "infra": "المركز الإقليمي"
+            },
+            "email": {
+                "title": "راسلنا",
+                "detail": "hello@uniteda.com",
+                "infra": "استجابة سريعة"
+            }
+        },
+        "status": "نحن هنا لمساعدتك",
+        "form": {
+            "entity_name": "اسمك",
+            "entity_placeholder": "أحمد محمد",
+            "access_mail": "البريد الإلكتروني",
+            "mail_placeholder": "ahmed@company.com",
+            "subject": "الموضوع",
+            "subject_placeholder": "أرغب في مناقشة توريد المنتجات الطازجة",
+            "payload": "رسالتك",
+            "payload_placeholder": "أخبرنا عن احتياجاتك...",
+            "submit": "إرسال الرسالة"
+        },
+        "contact_info": {
+            "cairo": "القاهرة",
+            "dubai": "دبي"
+        }
+    },
+    "not_found": {
+        "error_code": "الصفحة غير موجودة",
+        "media_label": "عذراً! لقد",
+        "media_highlight": "ضللت الطريق",
+        "description": "الصفحة <path>{{path}}</path> غير موجودة. دعنا نعيدك إلى المسار الصحيح لاستكشاف منتجاتنا الطازجة.",
+        "reset_btn": "العودة للرئيسية",
+        "browse_products": "تصفح المنتجات",
+        "popular_pages": {
+            "title": "الصفحات الشائعة",
+            "products": "المنتجات",
+            "seasonal": "الموسمية",
+            "operations": "العمليات",
+            "rfq": "طلب عرض سعر"
+        }
+    },
+    "about": {
+        "hero": {
+            "label": "فصل المتحدة",
+            "title": "قصة <highlight>النضارة</highlight> <br /> والوصول العالمي",
+            "description": "أبعد من مجرد الشحن، نحن معماريو رحلة النضارة العالمية. استكشف الفصول التي تحدد التزامنا بالتميز الزراعي.",
+            "scroll": "ابدأ التصفح"
+        },
+        "story": {
+            "chapter_01": {
+                "num": "٠١",
+                "label": "الأصالة",
+                "title": "جذور في التربة الخصبة",
+                "content": "تبدأ قصتنا من قلب الزراعة المصرية. تعلمنا مبكراً أن الجودة ليست مجرد رقم؛ بل هي إرث. كل ثمرة فاكهة وخضار ننقلها تحمل معها حكمة زراعية تمتد لآلاف السنين، مقدمة في قالب عصري.",
+                "stats": {
+                    "legacy": {
+                        "value": "١٩٩٠+",
+                        "label": "بداية الإرث"
+                    },
+                    "organic": {
+                        "value": "عضوي",
+                        "label": "درجة عضوية معتمدة"
+                    }
+                },
+                "badge": "خط توريد من التربة للعميل"
+            },
+            "chapter_02": {
+                "num": "٠٢",
+                "label": "الذكاء",
+                "title": "النبض التقني",
+                "content": "مع نمو أعمالنا، نمت طموحاتنا. أدركنا أن أقصر طريق من الحقل إلى المائدة ليس مجرد خط؛ بل هو تيار بيانات متطور. في هذا فصل، تلتقي الزراعة باللوجستيات الجوية ودقة سلسلة التبريد.",
+                "features": {
+                    "precision": "دقة سلسلة التبريد",
+                    "telemetry": "تتبع لحظي عبر الأقمار"
+                }
+            },
+            "chapter_03": {
+                "num": "٠٣",
+                "label": "الرؤية",
+                "title": "شاهد مسار الحركة",
+                "content": "شاهد الرحلة من خلال عدستنا. هنا تلتقي الاستراتيجية بالطرق المفتوحة، حيث يجد المحصول المصري وجهته العالمية.",
+                "cta": "شاهد مشروع: المتحدة",
+                "cinema_label": "سينما المتحدة العالمية"
+            },
+            "chapter_04": {
+                "num": "٠٤",
+                "label": "الأفق",
+                "title": "رسم ملامح المستقبل",
+                "content": "المتحدة اليوم هي الجسر. بين القاهرة ودبي، بين المزارع والطاهي. نحن نرتقي بنزاهة المنتجات الطازجة، شحنة تلو الأخرى.",
+                "strategy": {
+                    "label": "استراتيجية النمو نشطة",
+                    "detail": "الربط بين القاهرة ودبي"
+                }
+            }
+        },
+        "impact": {
+            "title": "الأثر العالمي",
+            "stats": {
+                "countries": "وجهة نشطة",
+                "growers": "شركاء الإنتاج",
+                "tonnage": "حمولة التصدير",
+                "satisfaction": "مستوى الخدمة"
+            }
+        },
+        "cta": {
+            "title": "ابدأ <highlight>فصلك</highlight> <br /> معنا",
+            "contact": "تواصل سريع",
+            "inventory": "استعرض المخزون"
+        }
+    },
+    "feature_standby": {
+        "badge": "استعداد",
+        "label": "وحدة_النظام // قيد الانتظار",
+        "title_prefix": "طبقة تحت",
+        "title_highlight": "الإعداد",
+        "description": "هذه الوحدة التشغيلية تخضع حاليًا لتحسين معماري. يقوم ذكاء نظامنا بتهيئة طبقة البيانات هذه للنشر القادم.",
+        "protection": {
+            "label": "حماية",
+            "value": "بث مشفر"
+        },
+        "status": {
+            "label": "الحالة",
+            "value": "المزامنة جارية"
+        },
+        "return_btn": "العودة إلى نواة النظام"
+    },
+    "products": {
+        "header": {
+            "badge": "مجموعة المنتجات",
+            "title": "المجموعة",
+            "title_highlight": "العالمية",
+            "description": "استكشف محفظتنا الشاملة من المنتجات المصرية المتميزة والتخصصات العالمية.",
+            "stats": {
+                "active_skus": "أصناف نشطة",
+                "global_sourcing": "توريد عالمي",
+                "quality_index": "مؤشر الجودة",
+                "live_track": "تتبع المنشأ المباشر"
+            }
+        },
+        "ticker": {
+            "new": "جديد",
+            "premium": "مميز",
+            "peak": "موسم الذروة",
+            "imported": "مستورد",
+            "sourced_via": "تم التوريد عبر {{origin}}",
+            "items": {}
+        },
+        "filters": {
+            "search_placeholder": "بحث في الكتالوج...",
+            "categories_title": "الفئات",
+            "quick_filters_title": "فلتر سريع",
+            "region": {
+                "label": "المنطقة",
+                "all": "كل المناطق",
+                "egypt": "مصر",
+                "uae": "الإمارات"
+            },
+            "season": {
+                "label": "الموسم",
+                "all": "كل المواسم",
+                "peak": "ذروة الموسم",
+                "available": "متاح",
+                "starting": "بداية الموسم"
+            },
+            "industry": {
+                "label": "القطاع",
+                "all": "كل القطاعات",
+                "hotel": "تجهيزات الفنادق",
+                "restaurant": "المطاعم",
+                "airline": "تموين الطيران",
+                "retail": "تجار التجزئة"
+            }
+        },
+        "catalog": {
+            "showing": "عرض",
+            "products_suffix": "منتج",
+            "categories": {
+                "all": "كل الفئات",
+                "fruits": "فواكه طازجة",
+                "vegetables": "خضروات طازجة",
+                "herbs": "أعشاب وخضروات",
+                "microgreens": "نباتات صغيرة",
+                "exotic": "منتجات غريبة",
+                "specialty": "أصناف خاصة"
+            },
+            "grades": {
+                "premium": "ممتاز",
+                "standard": "قياسي",
+                "export": "درجة تصدير",
+                "hydroponic": "زراعة مائية",
+                "organic": "عضوي",
+                "baby_leaf": "أوراق صغيرة",
+                "microgreen": "نباتات دقيقة"
+            },
+            "items": {
+                "imp_1": {
+                    "name": "أفوكادو هاس فاخر",
+                    "scientific_name": "Persea americana",
+                    "origin": "مستورد",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "imp_2": {
+                    "name": "توت أزرق طازج",
+                    "scientific_name": "Vaccinium corymbosum",
+                    "origin": "مستورد",
+                    "season": "متاح",
+                    "availability": "موسمي"
+                },
+                "imp_3": {
+                    "name": "توت أحمر طازج",
+                    "scientific_name": "Rubus idaeus",
+                    "origin": "مستورد",
+                    "season": "متاح",
+                    "availability": "موسمي"
+                },
+                "imp_4": {
+                    "name": "توت أسود طازج",
+                    "scientific_name": "Rubus fruticosus",
+                    "origin": "مستورد",
+                    "season": "متاح",
+                    "availability": "موسمي"
+                },
+                "imp_5": {
+                    "name": "ليتشي طازج",
+                    "scientific_name": "Litchi chinensis",
+                    "origin": "مستورد",
+                    "season": "متاح",
+                    "availability": "موسمي"
+                },
+                "imp_6": {
+                    "name": "مانجوستين طازج",
+                    "scientific_name": "Garcinia mangostana",
+                    "origin": "مستورد",
+                    "season": "متاح",
+                    "availability": "موسمي"
+                },
+                "imp_7": {
+                    "name": "باشون فروت فاخر",
+                    "scientific_name": "Passiflora edulis",
+                    "origin": "مستورد",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "imp_8": {
+                    "name": "رامبوتان طازج",
+                    "scientific_name": "Nephelium lappaceum",
+                    "origin": "مستورد",
+                    "season": "متاح",
+                    "availability": "موسمي"
+                },
+                "imp_9": {
+                    "name": "فاكهة النجمة (كارامبولا)",
+                    "scientific_name": "Averrhoa carambola",
+                    "origin": "مستورد",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "imp_10": {
+                    "name": "كيوي ذهبي",
+                    "scientific_name": "Actinidia chinensis",
+                    "origin": "مستورد",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "imp_11": {
+                    "name": "أناناس حلو",
+                    "scientific_name": "Ananas comosus",
+                    "origin": "مستورد",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "imp_12": {
+                    "name": "كشمش أحمر",
+                    "scientific_name": "Ribes rubrum",
+                    "origin": "مستورد",
+                    "season": "متاح",
+                    "availability": "موسمي"
+                },
+                "imp_13": {
+                    "name": "كشمش أبيض",
+                    "scientific_name": "Ribes glandulosum",
+                    "origin": "مستورد",
+                    "season": "متاح",
+                    "availability": "موسمي"
+                },
+                "imp_14": {
+                    "name": "زنجبيل طازج",
+                    "scientific_name": "Zingiber officinale",
+                    "origin": "مستورد",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "imp_15": {
+                    "name": "فاكهة التنين (بيتايا)",
+                    "scientific_name": "Selenicereus undatus",
+                    "origin": "مستورد",
+                    "season": "متاح",
+                    "availability": "صيفي"
+                },
+                "imp_apple_green_it": {
+                    "name": "تفاح أخضر إيطالي",
+                    "scientific_name": "Malus domestica 'Granny Smith'",
+                    "origin": "إيطاليا",
+                    "season": "متاح",
+                    "availability": "أكتوبر - مايو"
+                },
+                "imp_apple_red_it": {
+                    "name": "تفاح أحمر إيطالي",
+                    "scientific_name": "Malus domestica 'Red Delicious'",
+                    "origin": "إيطاليا",
+                    "season": "متاح",
+                    "availability": "أكتوبر - مايو"
+                },
+                "imp_apple_yellow_it": {
+                    "name": "تفاح أصفر إيطالي",
+                    "scientific_name": "Malus domestica 'Golden Delicious'",
+                    "origin": "إيطاليا",
+                    "season": "متاح",
+                    "availability": "أكتوبر - مايو"
+                },
+                "imp_apple_green_pl": {
+                    "name": "تفاح أخضر بولندي",
+                    "scientific_name": "Malus domestica",
+                    "origin": "بولندا",
+                    "season": "متاح",
+                    "availability": "أكتوبر - أبريل"
+                },
+                "imp_cherry": {
+                    "name": "كرز أحمر مستورد",
+                    "scientific_name": "Prunus avium",
+                    "origin": "مستورد",
+                    "season": "متاح",
+                    "availability": "صيفي"
+                },
+                "imp_mango": {
+                    "name": "مانجو مستورد",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "مستورد",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_1": {
+                    "name": "اسبراجوس اخضر فاخر",
+                    "scientific_name": "Asparagus officinalis",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_2": {
+                    "name": "اسبراجوس ابيض فاخر",
+                    "scientific_name": "Asparagus officinalis",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_3": {
+                    "name": "خرشوف بلدى",
+                    "scientific_name": "Cynara scolymus",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "ديسمبر - مايو"
+                },
+                "veg_4": {
+                    "name": "فاصوليا خضراء",
+                    "scientific_name": "Phaseolus vulgaris",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_5": {
+                    "name": "بنجر احمر",
+                    "scientific_name": "Beta vulgaris",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_6": {
+                    "name": "بروكلى فاخر",
+                    "scientific_name": "Brassica oleracea var. italica",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_7": {
+                    "name": "كرنب بلدى",
+                    "scientific_name": "Brassica oleracea var. capitata",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "اكتوبر - مارس"
+                },
+                "veg_8": {
+                    "name": "كرنب صينى",
+                    "scientific_name": "Brassica rapa subsp. pekinensis",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_9": {
+                    "name": "كرنب سلطة احمر",
+                    "scientific_name": "Brassica oleracea var. capitata f. rubra",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_10": {
+                    "name": "كرنب سلطة ابيض",
+                    "scientific_name": "Brassica oleracea var. capitata",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_11": {
+                    "name": "جزر طازج",
+                    "scientific_name": "Daucus carota subsp. sativus",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_12": {
+                    "name": "قرنبيط فاخر",
+                    "scientific_name": "Brassica oleracea var. botrytis",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "نوفمبر - ابريل"
+                },
+                "veg_13": {
+                    "name": "ذرة صفراء سكرية",
+                    "scientific_name": "Zea mays var. saccharata",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_14": {
+                    "name": "خيار بلدى",
+                    "scientific_name": "Cucumis sativus",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_15": {
+                    "name": "باذنجان رومي فاخر",
+                    "scientific_name": "Solanum melongena",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_16": {
+                    "name": "ثوم صيني",
+                    "scientific_name": "Allium sativum",
+                    "origin": "الصين",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_17": {
+                    "name": "ثوم مقشر فاخر",
+                    "scientific_name": "Allium sativum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_18": {
+                    "name": "ثوم بلدى",
+                    "scientific_name": "Allium sativum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_19": {
+                    "name": "ليمون بلدى",
+                    "scientific_name": "Citrus x limon",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_20": {
+                    "name": "ليمون اضاليا",
+                    "scientific_name": "Citrus x limon 'Adalia'",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_21": {
+                    "name": "ليمون جراس (عشب الليمون)",
+                    "scientific_name": "Cymbopogon citratus",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_22": {
+                    "name": "مشروم طازج",
+                    "scientific_name": "Agaricus bisporus",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_23": {
+                    "name": "بصل ابيض",
+                    "scientific_name": "Allium cepa",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_24": {
+                    "name": "بصل احمر",
+                    "scientific_name": "Allium cepa",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_25": {
+                    "name": "بصل ابيض مقشر",
+                    "scientific_name": "Allium cepa",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_26": {
+                    "name": "بصل احمر مقشر",
+                    "scientific_name": "Allium cepa",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_27": {
+                    "name": "بصل صغير (بكلز)",
+                    "scientific_name": "Allium cepa",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_28": {
+                    "name": "بصل اخضر",
+                    "scientific_name": "Allium fistulosum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_29": {
+                    "name": "فلفل اخضر رومى",
+                    "scientific_name": "Capsicum annuum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_30": {
+                    "name": "فلفل احمر رومى",
+                    "scientific_name": "Capsicum annuum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_31": {
+                    "name": "فلفل اصفر رومى",
+                    "scientific_name": "Capsicum annuum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_32": {
+                    "name": "فلفل احمر حشو",
+                    "scientific_name": "Capsicum annuum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_33": {
+                    "name": "فلفل اخضر حشو",
+                    "scientific_name": "Capsicum annuum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_34": {
+                    "name": "شطة حمراء",
+                    "scientific_name": "Capsicum frutescens",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_35": {
+                    "name": "شطة خضراء",
+                    "scientific_name": "Capsicum frutescens",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_36": {
+                    "name": "بطاطس تحمير فاخرة",
+                    "scientific_name": "Solanum tuberosum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_37": {
+                    "name": "بطاطس طهى فاخرة",
+                    "scientific_name": "Solanum tuberosum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_38": {
+                    "name": "بطاطس بيبي",
+                    "scientific_name": "Solanum tuberosum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_39": {
+                    "name": "بطاطا سكرية",
+                    "scientific_name": "Ipomoea batatas",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_40": {
+                    "name": "قرع عسلى",
+                    "scientific_name": "Cucurbita maxima",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "سبتمبر - ديسمبر"
+                },
+                "veg_41": {
+                    "name": "فجل احمر",
+                    "scientific_name": "Raphanus sativus",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_42": {
+                    "name": "فجل ابيض",
+                    "scientific_name": "Raphanus sativus var. longipinnatus",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_43": {
+                    "name": "سبانخ طازجة",
+                    "scientific_name": "Spinacia oleracea",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "نوفمبر - مارس"
+                },
+                "veg_44": {
+                    "name": "بيبى سبانخ",
+                    "scientific_name": "Spinacia oleracea",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_45": {
+                    "name": "طماطم حمراء فاخرة",
+                    "scientific_name": "Solanum lycopersicum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_46": {
+                    "name": "طماطم شيري حمراء",
+                    "scientific_name": "Solanum lycopersicum var. cerasiforme",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_47": {
+                    "name": "طماطم شيري صفراء",
+                    "scientific_name": "Solanum lycopersicum var. cerasiforme",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_48": {
+                    "name": "كوسة طازجة",
+                    "scientific_name": "Cucurbita pepo",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_49": {
+                    "name": "قلقاس بلدى",
+                    "scientific_name": "Colocasia esculenta",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "اكتوبر - ابريل"
+                },
+                "veg_50": {
+                    "name": "سلق طازج",
+                    "scientific_name": "Beta vulgaris subsp. vulgaris",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_51": {
+                    "name": "ورق عنب بناتي",
+                    "scientific_name": "Vitis vinifera",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "ابريل - يوليو"
+                },
+                "veg_52": {
+                    "name": "كرنب بروكسل",
+                    "scientific_name": "Brassica oleracea var. gemmifera",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "نوفمبر - مارس"
+                },
+                "veg_53": {
+                    "name": "بسلة خضراء",
+                    "scientific_name": "Pisum sativum",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "ديسمبر - ابريل"
+                },
+                "veg_54": {
+                    "name": "ملوخية طازجة",
+                    "scientific_name": "Corchorus olitorius",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_55": {
+                    "name": "باذنجان اسود حشو",
+                    "scientific_name": "Solanum melongena",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_56": {
+                    "name": "باذنجان ابيض حشو",
+                    "scientific_name": "Solanum melongena",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_57": {
+                    "name": "فلفل اخضر حشو فاخر",
+                    "scientific_name": "Capsicum annuum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_58": {
+                    "name": "فلفل احمر حشو فاخر",
+                    "scientific_name": "Capsicum annuum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_59": {
+                    "name": "كوسة حشو فاخرة",
+                    "scientific_name": "Cucurbita pepo",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_60": {
+                    "name": "اسبراجوس بنفسجي فاخر",
+                    "scientific_name": "Asparagus officinalis",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_61": {
+                    "name": "اسبراجوس مستورد",
+                    "scientific_name": "Asparagus officinalis",
+                    "origin": "مستورد",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_62": {
+                    "name": "ذرة خضراء سكرية",
+                    "scientific_name": "Zea mays var. saccharata",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_63": {
+                    "name": "باذنجان عروس اسود",
+                    "scientific_name": "Solanum melongena",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_64": {
+                    "name": "باذنجان عروس ابيض",
+                    "scientific_name": "Solanum melongena",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_65": {
+                    "name": "فلفل اخضر دولمة",
+                    "scientific_name": "Capsicum annuum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_66": {
+                    "name": "فلفل احمر دولمة",
+                    "scientific_name": "Capsicum annuum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_67": {
+                    "name": "كوسة دولمة فاخرة",
+                    "scientific_name": "Cucurbita pepo",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_1": {
+                    "name": "ريحان طازج",
+                    "scientific_name": "Ocimum basilicum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_2": {
+                    "name": "كرفس بلدى",
+                    "scientific_name": "Apium graveolens var. dulce",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_3": {
+                    "name": "كرات افرنجي",
+                    "scientific_name": "Allium porrum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_4": {
+                    "name": "كرات بلدى",
+                    "scientific_name": "Allium ampeloprasum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_5": {
+                    "name": "كزبرة خضراء",
+                    "scientific_name": "Coriandrum sativum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_6": {
+                    "name": "شبت طازج",
+                    "scientific_name": "Anethum graveolens",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_7": {
+                    "name": "نعناع بلدى",
+                    "scientific_name": "Mentha spicata",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_8": {
+                    "name": "بقدونس طازج",
+                    "scientific_name": "Petroselinum crispum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_9": {
+                    "name": "جرجير بلدى",
+                    "scientific_name": "Eruca vesicaria",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_10": {
+                    "name": "فينيل (شمر)",
+                    "scientific_name": "Foeniculum vulgare",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_11": {
+                    "name": "خس بلدى",
+                    "scientific_name": "Lactuca sativa",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_12": {
+                    "name": "خس كابوتشا",
+                    "scientific_name": "Lactuca sativa var. capitata",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_13": {
+                    "name": "خس احمر فاخر",
+                    "scientific_name": "Lactuca sativa",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_14": {
+                    "name": "خس اخضر فاخر",
+                    "scientific_name": "Lactuca sativa",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_15": {
+                    "name": "خس صيني",
+                    "scientific_name": "Lactuca sativa var. longifolia",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_16": {
+                    "name": "خس فرنساوى",
+                    "scientific_name": "Lactuca sativa",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_17": {
+                    "name": "خس اوكليف فاخر",
+                    "scientific_name": "Lactuca sativa",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_18": {
+                    "name": "زهور غذائية صالحة للأكل",
+                    "scientific_name": "Viola tricolor",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_19": {
+                    "name": "روزماري (إكليل الجبل)",
+                    "scientific_name": "Salvia rosmarinus",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_20": {
+                    "name": "زعتر طازج",
+                    "scientific_name": "Thymus vulgaris",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_21": {
+                    "name": "روكلا (جرجير ايطالى)",
+                    "scientific_name": "Diplotaxis tenuifolia",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_22": {
+                    "name": "بردقوش (مارجورام)",
+                    "scientific_name": "Origanum majorana",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_23": {
+                    "name": "مرمرية (ساج)",
+                    "scientific_name": "Salvia officinalis",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_24": {
+                    "name": "تاراجون فاخر",
+                    "scientific_name": "Artemisia dracunculus",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_25": {
+                    "name": "انديف ابيض",
+                    "scientific_name": "Cichorium endivia",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "نوفمبر - مارس"
+                },
+                "herb_26": {
+                    "name": "انديف احمر",
+                    "scientific_name": "Cichorium endivia",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "نوفمبر - مارس"
+                },
+                "herb_27": {
+                    "name": "ميكرو جرين فاخر",
+                    "scientific_name": "Various",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_28": {
+                    "name": "ميكس ميكرو جرين",
+                    "scientific_name": "Various",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_29": {
+                    "name": "ميكس طماطم شيري",
+                    "scientific_name": "Solanum lycopersicum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_30": {
+                    "name": "ميجا ميكس شيري",
+                    "scientific_name": "Solanum lycopersicum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_31": {
+                    "name": "طماطم شيري برتقالي",
+                    "scientific_name": "Solanum lycopersicum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_32": {
+                    "name": "طماطم شيري شيكولاتة",
+                    "scientific_name": "Solanum lycopersicum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_33": {
+                    "name": "ثوم معمر (تشايفز)",
+                    "scientific_name": "Allium schoenoprasum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_34": {
+                    "name": "أعواد كرفس فاخرة",
+                    "scientific_name": "Apium graveolens",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_35": {
+                    "name": "بصل اخضر اورجانيك",
+                    "scientific_name": "Allium fistulosum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_36": {
+                    "name": "جزر بيبى طازج",
+                    "scientific_name": "Daucus carota",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_37": {
+                    "name": "حميض احمر (ريد سوريل)",
+                    "scientific_name": "Rumex sanguineus",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_38": {
+                    "name": "بيبى روكت فاخر",
+                    "scientific_name": "Eruca sativa",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_39": {
+                    "name": "بروكلينى (بروكلي صغير)",
+                    "scientific_name": "Brassica oleracea var. italica x alboglabra",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_40": {
+                    "name": "كيل بنفسجي فاخر",
+                    "scientific_name": "Brassica oleracea var. sabellica",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_41": {
+                    "name": "أوراق موز طازجة",
+                    "scientific_name": "Musa acuminata",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_42": {
+                    "name": "قرنبيط بنفسجى",
+                    "scientific_name": "Brassica oleracea var. botrytis",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "نوفمبر - مارس"
+                },
+                "herb_43": {
+                    "name": "مرمرية بلدى",
+                    "scientific_name": "Salvia officinalis",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_44": {
+                    "name": "ملانة (حمص اخضر)",
+                    "scientific_name": "Cicer arietinum",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "يناير - ابريل"
+                },
+                "herb_45": {
+                    "name": "ميكس ريحان متنوع",
+                    "scientific_name": "Ocimum basilicum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_46": {
+                    "name": "جرجير بيبى طازج",
+                    "scientific_name": "Eruca vesicaria",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_47": {
+                    "name": "بصل شالوتس (أورمة)",
+                    "scientific_name": "Allium cepa var. aggregatum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "loc_1": {
+                    "name": "فراولة طازجة فاخرة",
+                    "scientific_name": "Fragaria x ananassa",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "نوفمبر - ابريل"
+                },
+                "loc_2": {
+                    "name": "جوافة بلدى",
+                    "scientific_name": "Psidium guajava",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "اكتوبر - يناير"
+                },
+                "loc_3": {
+                    "name": "رمان اسيوطى فاخر",
+                    "scientific_name": "Punica granatum",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "سبتمبر - يناير"
+                },
+                "loc_4": {
+                    "name": "مانجو زبده",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "يوليو - اكتوبر"
+                },
+                "loc_5": {
+                    "name": "مانجو عويسي فاخر",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "يوليو - اكتوبر"
+                },
+                "loc_6": {
+                    "name": "مانجو فص عويسي",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "يوليو - اكتوبر"
+                },
+                "loc_7": {
+                    "name": "مانجو سكري",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "يوليو - اكتوبر"
+                },
+                "loc_8": {
+                    "name": "مانجو نعومي",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "يوليو - نوفمبر"
+                },
+                "loc_9": {
+                    "name": "مانجو كيت",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "سبتمبر - ديسمبر"
+                },
+                "loc_10": {
+                    "name": "مانجو كنت",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "اغسطس - نوفمبر"
+                },
+                "loc_11": {
+                    "name": "مانجو شلي",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "اغسطس - اكتوبر"
+                },
+                "loc_12": {
+                    "name": "مانجو ياسمينه",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "اغسطس - اكتوبر"
+                },
+                "loc_13": {
+                    "name": "مانجو مايا",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "اغسطس - اكتوبر"
+                },
+                "loc_14": {
+                    "name": "مانجو هايدي",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "اغسطس - اكتوبر"
+                },
+                "loc_15": {
+                    "name": "مانجو R2",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "اغسطس - نوفمبر"
+                },
+                "loc_16": {
+                    "name": "مانجو عون",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "اغسطس - اكتوبر"
+                },
+                "loc_17": {
+                    "name": "مانجو بالمر",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "اغسطس - اكتوبر"
+                },
+                "loc_18": {
+                    "name": "مانجو كاستوري",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "اغسطس - اكتوبر"
+                },
+                "loc_19": {
+                    "name": "عنب احمر بلدى",
+                    "scientific_name": "Vitis vinifera",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "يونيو - سبتمبر"
+                },
+                "loc_20": {
+                    "name": "عنب ابيض (بناتي)",
+                    "scientific_name": "Vitis vinifera",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "يونيو - سبتمبر"
+                },
+                "loc_21": {
+                    "name": "بلح برحي فاخر",
+                    "scientific_name": "Phoenix dactylifera",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "اغسطس - اكتوبر"
+                },
+                "loc_22": {
+                    "name": "خوخ بلدى طازج",
+                    "scientific_name": "Prunus persica",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "ابريل - يونيو"
+                },
+                "loc_23": {
+                    "name": "نكتارين بلدى",
+                    "scientific_name": "Prunus persica var. nucipersica",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "مايو - يوليو"
+                },
+                "loc_24": {
+                    "name": "برقوق مصري فاخر",
+                    "scientific_name": "Prunus domestica",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "يونيو - سبتمبر"
+                },
+                "loc_25": {
+                    "name": "مشمش بلدى",
+                    "scientific_name": "Prunus armeniaca",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "ابريل - يونيو"
+                },
+                "loc_26": {
+                    "name": "كمثرى مصري (خشابي)",
+                    "scientific_name": "Pyrus communis",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "اغسطس - اكتوبر"
+                },
+                "loc_27": {
+                    "name": "تفاح بلدى",
+                    "scientific_name": "Malus domestica",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "loc_28": {
+                    "name": "موز بلدى فاخر",
+                    "scientific_name": "Musa acuminata",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "loc_29": {
+                    "name": "بطيخ صيفي احمر",
+                    "scientific_name": "Citrullus lanatus",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "مايو - سبتمبر"
+                },
+                "loc_30": {
+                    "name": "كنتالوب (شهد)",
+                    "scientific_name": "Cucumis melo",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "ابريل - اغسطس"
+                },
+                "loc_31": {
+                    "name": "برتقال بسرة فاخر",
+                    "scientific_name": "Citrus x sinensis",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "نوفمبر - مارس"
+                },
+                "loc_32": {
+                    "name": "برتقال صيفي (فالنسيا)",
+                    "scientific_name": "Citrus x sinensis",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "مارس - يوليو"
+                },
+                "loc_33": {
+                    "name": "يوسفي بلدي مركب",
+                    "scientific_name": "Citrus reticulata",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "ديسمبر - مارس"
+                },
+                "loc_34": {
+                    "name": "جريب فروت احمر",
+                    "scientific_name": "Citrus x paradisi",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "اكتوبر - فبراير"
+                },
+                "loc_35": {
+                    "name": "كاكا مصري فاخرة",
+                    "scientific_name": "Diospyros kaki",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "سبتمبر - ديسمبر"
+                },
+                "loc_36": {
+                    "name": "تين برشومى طازج",
+                    "scientific_name": "Ficus carica",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "يوليو - سبتمبر"
+                },
+                "loc_37": {
+                    "name": "تين شوكي",
+                    "scientific_name": "Opuntia ficus-indica",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "يونيو - اغسطس"
+                },
+                "loc_38": {
+                    "name": "قشطة عبد الرازق فاخرة",
+                    "scientific_name": "Annona squamosa",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "سبتمبر - ديسمبر"
+                },
+                "loc_39": {
+                    "name": "بشملة طازجة",
+                    "scientific_name": "Eriobotrya japonica",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "مارس - مايو"
+                },
+                "loc_40": {
+                    "name": "سفرجل بلدى",
+                    "scientific_name": "Cydonia oblonga",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "اكتوبر - ديسمبر"
+                },
+                "loc_52": {
+                    "name": "مانجو ألفونسو",
+                    "scientific_name": "Mangifera indica 'Alphonso'",
+                    "origin": "مصر",
+                    "season": "موسم الذروة",
+                    "availability": "مايو - يوليو"
+                }
+            }
+        }
+    },
+    "seasonal": {
+        "header": {
+            "badge": "التقويم الموسمي",
+            "title": "التوفر",
+            "title_highlight": "الموسمي",
+            "description": "تتبع شامل لتوفر المنتجات عبر مناطق عملنا. تعكس البيانات الأنماط التاريخية ونماذج التنبؤ الحالية."
+        },
+        "stats": {
+            "peak_products": "منتجات في الذروة",
+            "regions_tracked": "مناطق مغطاة",
+            "months_coverage": "شهر تغطية"
+        },
+        "controls": {
+            "region": {
+                "egypt": "مصر",
+                "uae": "الإمارات",
+                "both": "كل المناطق"
+            },
+            "view_mode": {
+                "grid": "عرض شبكي",
+                "table": "عرض جدول"
+            },
+            "buttons": {
+                "export": "تصدير التقرير",
+                "download": "تحميل PDF",
+                "request_access": "طلب الوصول"
+            },
+            "export_note": "يتضمن التحليل الموسمي الكامل والتوقعات"
+        },
+        "legend": {
+            "peak": "ذروة الموسم",
+            "available": "متاح",
+            "off_season": "خارج الموسم"
+        },
+        "months": [
+            "يناير",
+            "فبراير",
+            "مارس",
+            "أبريل",
+            "مايو",
+            "يونيو",
+            "يوليو",
+            "أغسطس",
+            "سبتمبر",
+            "أكتوبر",
+            "نوفمبر",
+            "ديسمبر"
+        ],
+        "seasons": {
+            "spring": "الربيع",
+            "summer": "الصيف",
+            "autumn": "الخريف",
+            "winter": "الشتاء"
+        },
+        "table": {
+            "egypt_title": "نمط التوفر في مصر",
+            "uae_title": "نمط التوفر في الإمارات",
+            "columns": {
+                "product": "المنتج",
+                "category": "الفئة"
+            }
+        },
+        "info": {
+            "title": "الذكاء التشغيلي",
+            "description": "يستخدم نظام التتبع الموسمي لدينا بيانات زراعية آنية وأنماط المحاصيل التاريخية لتوقع نوافذ التوريد المثلى. يشير موسم الذروة إلى أقصى توفر وأعلى مقاييس الجودة."
+        },
+        "cta": {
+            "title": "أمن إمداداتك الموسمية",
+            "description": "لا تترك سلسلة التوريد الخاصة بك للصدفة. احجز متطلباتك الموسمية مسبقًا مع برامج التخصيص المضمونة لدينا."
+        },
+        "products": {
+            "Strawberries": "فراولة",
+            "Mangoes": "مانجو",
+            "Valencia Oranges": "برتقال فالنسيا",
+            "Pomegranates": "رمان",
+            "Tomatoes": "طماطم",
+            "Bell Peppers": "فلفل ألوان",
+            "Asparagus": "هليون",
+            "Fresh Basil": "ريحان طازج"
+        },
+        "status": {
+            "peak_now": "الذروة الآن",
+            "ending_soon": "ينتهي قريباً",
+            "coming_soon": "قريباً",
+            "available": "متاح",
+            "off_season": "خارج الموسم"
+        },
+        "in_season": {
+            "title": "في الموسم الآن",
+            "subtitle": "ذروة التوفر هذا الشهر - اطلب الآن للحصول على أفضل جودة وأسعار",
+            "quick_quote": "عرض سريع"
+        },
+        "modal": {
+            "peak_months": "أشهر",
+            "current_status": "الوضع الحالي",
+            "best_windows": "أفضل أوقات الطلب",
+            "monthly_availability": "التوفر الشهري",
+            "limited_availability": "تفر محدود",
+            "close": "إغلاق",
+            "request_quote": "طلب عرض سعر"
+        }
+    },
+    "operations": {
+        "hero": {
+            "status": "لوجستيات من التربة إلى الشحن",
+            "terminal": "محطة_01 // التغذية_الرئيسية",
+            "infra_overview": "نظرة عامة على البنية التحتية",
+            "title_prefix": "أفضل ما في الطبيعة،",
+            "title_highlight": "يصل طازجاً",
+            "description": "نحن نبني الجسر بين أراضي مصر الخصبة والموائد العالمية من خلال شبكة سلسلة تبريد لا تنقطع ولوجستيات دقيقة.",
+            "cta": "بدء المشتريات",
+            "partners_label": "شركاء عالميون",
+            "partners_sub": "يثقون في شبكتنا",
+            "vessel_label": "السفينة النشطة",
+            "vessel_name": "مركز شمال البحر الأبيض المتوسط",
+            "integrity_score": "درجة النزاهة"
+        },
+        "stats": {
+            "facility": {
+                "value": "24/7",
+                "label": "وقت تشغيل المنشأة"
+            },
+            "delivery": {
+                "value": "98.5%",
+                "label": "التسليم في الموعد"
+            },
+            "varieties": {
+                "value": "150+",
+                "label": "أصناف المنتجات"
+            },
+            "monitoring": {
+                "value": "100%",
+                "label": "سلسلة تبريد آمنة"
+            }
+        },
+        "anatomy": {
+            "label": "المعمار التشغيلي",
+            "title_prefix": "بنية",
+            "title_highlight": "سلسلة تبريد لا تنقطع",
+            "description": "من لحظة الحصاد وحتى ناقل التسليم النهائي، نحافظ على ذروة الطزاجة من خلال شبكة متكاملة من المراقبة الحرارية والتوجيه الذكي.",
+            "layer1": {
+                "id": "نظام_01",
+                "title": "تحسين الحصاد",
+                "description": "التعاون المباشر مع مزارع المصدر يضمن دخول المنتجات المخصصة للتصدير فقط إلى شبكتنا في ذروة نضجها.",
+                "stage": "المرحلة 01: المصدر",
+                "tags": [
+                    "GLOBAL G.A.P",
+                    "مباشر_من_المصدر",
+                    "بوابة_الجودة"
+                ]
+            },
+            "layer2": {
+                "id": "نظام_02",
+                "title": "التميز في سلسلة التبريد",
+                "description": "سلامة حرارية مستمرة من الحصاد حتى الوجهة. تضمن المراقبة في الوقت الفعلي عدم تدهور الجودة عبر ناقلات الشحن البحري والجوي.",
+                "monitoring": "فحص_الحرارة",
+                "flow": "مثالي",
+                "stats": {
+                    "on_time": "98.5% في الموعد",
+                    "secured": "حمولة مؤمنة"
+                }
+            },
+            "layer3": {
+                "id": "نظام_03",
+                "title": "الفحص الدقيق",
+                "description": "يتم فحص كل صنف يدويًا من قبل متخصصي ضمان الجودة لدينا لضمان التوافق التام مع معايير التصنيف.",
+                "tests": {
+                    "color": "فحص اللون",
+                    "brix": "مستوى السكر (Brix)",
+                    "sizing": "التحجيم",
+                    "texture": "القوام",
+                    "residue": "اختبار الرواسب",
+                    "hydration": "الترطيب",
+                    "skin": "سلامة القشرة",
+                    "ethylene": "التحكم في الإيثيلين"
+                }
+            },
+            "layer4": {
+                "id": "نظام_04",
+                "title": "اللوجستيات الذكية",
+                "description": "خوارزميات توجيه ذكية تحسن نشر الأسطول ونوافذ التسليم عبر ممرات الشحن العالمية.",
+                "vessel": "السفينة النشطة",
+                "route_matrix": "مصفوفة الطريق"
+            }
+        },
+        "compliance": {
+            "label": "السلطة والثقة",
+            "title_prefix": "الجودة العالمية",
+            "title_highlight": "جوهر الشهادات",
+            "description": "تلتزم عملياتنا بأشد المعايير الدولية لسلامة الغذاء والتعامل التشغيلي. نحافظ على شهادات نشطة عبر جميع الأطر التنظيمية الرئيسية.",
+            "verified": "حالة_التحقق",
+            "hud": {
+                "label": "رؤية تشغيلية",
+                "subject": "معتمد من GLOBAL GAP",
+                "text": "الطزاجة هي مقياس للوقت ودرجة الحرارة. نحن نتقن كليهما لنقدم أفضل ما في الطبيعة."
+            }
+        },
+        "certifications": {
+            "haccp": {
+                "name": "شهادة HACCP",
+                "description": "نقطة التحكم الحرجة في تحليل المخاطر"
+            },
+            "iso": {
+                "name": "ISO 22000",
+                "description": "إدارة سلامة الغذاء"
+            },
+            "globalgap": {
+                "name": "Global G.A.P",
+                "description": "الممارسات الزراعية الجيدة"
+            }
+        },
+        "partnerships": {
+            "label": "تمكين التجارة العالمية",
+            "title_prefix": "تشارك مع",
+            "title_highlight": "المصدر.",
+            "description": "ابدأ شراكة توريد استراتيجية واستفد من بنيتنا التحتية لتوسيع متطلباتك المؤسسية.",
+            "cta_primary": "بدء الاستفسار",
+            "cta_secondary": "اتصل بالعمليات",
+            "footer": {
+                "system": "الشبكة العالمية: نشطة",
+                "shipped": "تم شحن أكثر من 4,200 طن",
+                "recall": "سياسة عدم الاسترجاع",
+                "access": "دخول_النظام: مؤسسي"
+            }
+        }
+    },
+    "rfq": {
+        "header": {
+            "badge": "بوابة المشتريات",
+            "title": "طلب عرض سعر",
+            "description": "ابدأ طلب توريد لمؤسستك. سيقوم فريقنا بهيكلة عرض توريد مخصص بناءً على مواصفاتك.",
+            "image_alt": "المشتريات",
+            "response_time_value": "٢٤ ساعة",
+            "response_time_label": "أقصى وقت استجابة",
+            "quality_value": "١٠٠٪",
+            "quality_label": "جودة مضمونة"
+        },
+        "form": {
+            "sections": {
+                "business_info": "معلومات العمل",
+                "supply_req": "متطلبات التوريد",
+                "contact_info": "بروتوكول الاتصال"
+            },
+            "step_label": "خطوة ٠{{step}} / ٠٣",
+            "steps_names": {
+                "entity": "الكيان",
+                "supply": "التوريد",
+                "verification": "التحقق"
+            },
+            "layers": {
+                "initialization": "طبقة التهيئة",
+                "operational": "المعايير التشغيلية",
+                "verification": "مصفوفة التحقق"
+            },
+            "fields": {
+                "company": {
+                    "label": "اسم الجهة",
+                    "placeholder": "اسم الشركة المسجل"
+                },
+                "business_type": {
+                    "label": "نطاق العمل",
+                    "placeholder": "اختر نوع الكيان"
+                },
+                "country": {
+                    "label": "المنطقة",
+                    "placeholder": "اختر المنطقة"
+                },
+                "city": {
+                    "label": "المدينة / المنطقة",
+                    "placeholder": "موقع المركز التشغيلي"
+                },
+                "categories": {
+                    "label": "الفئات المطلوبة"
+                },
+                "volume": {
+                    "label": "الحجم المتوقع",
+                    "placeholder": "اختر الحجم الشهري"
+                },
+                "frequency": {
+                    "label": "تكرار التوريد",
+                    "placeholder": "اختر وتيرة التسليم"
+                },
+                "requirements": {
+                    "label": "مواصفات إضافية",
+                    "placeholder": "أصناف محددة، متطلبات التصنيف، أو بروتوكولات التعبئة..."
+                },
+                "name": {
+                    "label": "الشخص المسؤول",
+                    "placeholder": "الاسم الكامل"
+                },
+                "position": {
+                    "label": "المسمى الوظيفي",
+                    "placeholder": "العنوان الوظيفي"
+                },
+                "email": {
+                    "label": "البريد الإلكتروني للعمل",
+                    "placeholder": "name@company.com"
+                },
+                "phone": {
+                    "label": "الخط المباشر",
+                    "placeholder": "+1 (555) 000-0000"
+                }
+            },
+            "options": {
+                "business_types": {
+                    "hotel": "فندق / منتجع",
+                    "restaurant": "مطعم / مقهى",
+                    "airline": "تموين الطيران",
+                    "supermarket": "سوبر ماركت / سلسلة تجزئة",
+                    "distributor": "موزع جملة",
+                    "processor": "مصنع أغذية",
+                    "other": "مؤسسة أخرى"
+                },
+                "volume_ranges": {
+                    "small": "< 1 طن / شهر",
+                    "medium": "1 - 5 طن / شهر",
+                    "large": "5 - 20 طن / شهر",
+                    "enterprise": "> 20 طن / شهر"
+                },
+                "frequencies": {
+                    "daily": "تسليم يومي",
+                    "weekly_2": "2-3 مرات / أسبوعياً",
+                    "weekly": "أسبوعياً",
+                    "biweekly": "كل أسبوعين",
+                    "monthly": "شهرياً"
+                }
+            },
+            "authorization_note": "بتقديم هذا الطلب، فإنك تفوض UNITED لهيكلة عرض شراء رسمي. يتم معالجة البيانات بموجب البروتوكولات المؤسسية الآمنة.",
+            "back_button": "الخطوة السابقة",
+            "submit": {
+                "button": "إرسال الطلب",
+                "submitting": "جاري الإرسال...",
+                "continue": "متابعة الحمولة",
+                "note": "وقت الاستجابة المتوقع: < 24 ساعة"
+            },
+            "success": {
+                "title": "تم إرسال الطلب",
+                "description": "استقبل فريق المشتريات لدينا إشارتك. توقع عرضًا مشفرًا قريبًا."
+            }
+        },
+        "sidebar": {
+            "process": {
+                "title": "بروتوكول الشراء",
+                "steps": [
+                    "إرسال المتطلبات عبر نموذج آمن",
+                    "تلقي عرض مخصص خلال 24 ساعة",
+                    "تفعيل الحساب وإعداد الخدمات اللوجستية"
+                ]
+            },
+            "phases": {
+                "phase_label": "المرحلة ٠{{phase}}"
+            },
+            "support": {
+                "title": "اتصال الدعم",
+                "description": "الدعم المؤسسي الفوري متاح لمتطلبات التوريد المعقدة."
+            },
+            "contact": {
+                "title": "اتصال مباشر",
+                "description": "للمتطلبات المؤسسية العاجلة أو التكاملات المخصصة، استخدم الخطوط المباشرة."
+            },
+            "certifications": "شهادات الجودة"
+        }
+    }
+}

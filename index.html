@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Performance: Resource Prioritization -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="preconnect" href="https://images.unsplash.com" />
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://images.unsplash.com" />
+
+  <style>
+    /* Critical Loading Styles */
+    :root {
+      --uniteda-emerald: #064e3b;
+      --uniteda-gold: #b6985a;
+    }
+
+    body {
+      margin: 0;
+      background: #fafafa;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .loader-wrapper {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #fafafa;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.6s ease-out, visibility 0.6s;
+    }
+
+    .loader-content {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .loader-ring {
+      position: absolute;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 3px solid rgba(6, 78, 59, 0.1);
+      border-top-color: var(--uniteda-emerald);
+      animation: spin 1.2s linear infinite;
+    }
+
+    .loader-logo {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes pulse {
+
+      0%,
+      100% {
+        transform: scale(1);
+        opacity: 0.8;
+      }
+
+      50% {
+        transform: scale(1.1);
+        opacity: 1;
+      }
+    }
+
+    .hydrated .loader-wrapper {
+      opacity: 0;
+      visibility: hidden;
+    }
+  </style>
+
+  <title>Uniteda - Advanced Agricultural Supply</title>
+</head>
+
+<body>
+  <!-- Global Loader -->
+  <div class="loader-wrapper" id="global-loader">
+    <div class="loader-content">
+      <div class="loader-ring"></div>
+      <img src="/logo.webp" class="loader-logo" alt="Loading...">
+    </div>
+  </div>
+
+  <div id="root"></div>
+
+  <script type="module" src="/src/main.tsx"></script>
+  <script>
+    // Trigger fade-out when React signals mount
+    window.addEventListener('react-mounted', () => {
+      document.body.classList.add('hydrated');
+      setTimeout(() => {
+        const bp = document.getElementById('hero-bp-persistent');
+        if (bp) bp.style.display = 'none';
+      }, 1100);
+    });
+  </script>
+</body>
+
+</html>

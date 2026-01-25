@@ -1,0 +1,1804 @@
+{
+    "contact": {
+        "label": "Get In Touch",
+        "title_prefix": "Let's Talk",
+        "title_highlight": "Fresh Business",
+        "description": "Reach out to our team to discuss your fresh produce needs. We're here to help you source the finest fruits and vegetables.",
+        "items": {
+            "egypt": {
+                "title": "Egypt Office",
+                "detail": "Cairo, Egypt",
+                "infra": "Main Location"
+            },
+            "uae": {
+                "title": "UAE Office",
+                "detail": "Dubai, United Arab Emirates",
+                "infra": "Regional Hub"
+            },
+            "email": {
+                "title": "Email Us",
+                "detail": "hello@uniteda.com",
+                "infra": "Quick Response"
+            }
+        },
+        "status": "We're here to help",
+        "form": {
+            "entity_name": "Your Name",
+            "entity_placeholder": "John Smith",
+            "access_mail": "Email Address",
+            "mail_placeholder": "john@company.com",
+            "subject": "Subject",
+            "subject_placeholder": "I'd like to discuss fresh produce supply",
+            "payload": "Your Message",
+            "payload_placeholder": "Tell us about your needs...",
+            "submit": "Send Message"
+        }
+    },
+    "not_found": {
+        "error_code": "Page Not Found",
+        "media_label": "Oops! You've",
+        "media_highlight": "Lost Your Way",
+        "description": "The page <path>{{path}}</path> doesn't exist. Let's get you back on track to explore our fresh produce.",
+        "reset_btn": "Back to Home",
+        "browse_products": "Browse Products",
+        "popular_pages": {
+            "title": "Popular Pages",
+            "products": "Products",
+            "seasonal": "Seasonal",
+            "operations": "Operations",
+            "rfq": "Request Quote"
+        }
+    },
+    "about": {
+        "hero": {
+            "label": "The Chapter of Uniteda",
+            "title": "A Story of <highlight>Freshness</highlight> <br /> and Global Scale",
+            "description": "Beyond shipping, we are the architects of a global freshness journey. Explore the chapters that define our commitment to agricultural excellence.",
+            "scroll": "Begin Scrolling"
+        },
+        "story": {
+            "chapter_01": {
+                "num": "01",
+                "label": "The Heritage",
+                "title": "Roots in Fertile Soil",
+                "content": "Our story begins in the heart of Egypt's agriculture. We learned early that quality isn't just a metric; it's a legacy. Every fruit and vegetable we move carries the weight of thousands of years of farming wisdom, brought into the modern era.",
+                "stats": {
+                    "legacy": {
+                        "value": "1990+",
+                        "label": "Legacy Start"
+                    },
+                    "organic": {
+                        "value": "Organic",
+                        "label": "Organic Grade Certified"
+                    }
+                },
+                "badge": "Soil to Customer Pipeline"
+            },
+            "chapter_02": {
+                "num": "02",
+                "label": "The Intelligence",
+                "title": "The Technical Pulse",
+                "content": "As we grew, so did our ambition. We realized that the shortest path from field to table isn't just a line; it's a sophisticated data stream. In this chapter, agriculture meets aero-logistics and cold-chain precision.",
+                "features": {
+                    "precision": "Cold-Chain Precision",
+                    "telemetry": "Real-time Telemetry"
+                }
+            },
+            "chapter_03": {
+                "num": "03",
+                "label": "The Vision",
+                "title": "Witness the Motion",
+                "content": "See the journey through our lens. This is where strategy meets the open road, where the Egyptian harvest finds its global destination.",
+                "cta": "Watch Project: Uniteda",
+                "cinema_label": "Uniteda_Global_Cinema"
+            },
+            "chapter_04": {
+                "num": "04",
+                "label": "The Horizon",
+                "title": "Defining the Future",
+                "content": "Uniteda is now a bridge. Between Cairo and Dubai, between the farmer and the chef. We are scaling the integrity of fresh produce, one shipment at a time.",
+                "strategy": {
+                    "label": "Scale Strategy Active",
+                    "detail": "Bridging Cairo & Dubai"
+                }
+            }
+        },
+        "impact": {
+            "title": "The Global Footprint",
+            "stats": {
+                "countries": "Destinations Active",
+                "growers": "Grower Partners",
+                "tonnage": "Export Volume",
+                "satisfaction": "Service Level"
+            }
+        },
+        "cta": {
+            "title": "Start your <highlight>Chapter</highlight> <br /> with us",
+            "contact": "Contact Express",
+            "inventory": "Explore Inventory"
+        }
+    },
+    "feature_standby": {
+        "badge": "STBY",
+        "label": "SYSTEM_MODULE // PENDING",
+        "title_prefix": "LAYER UNDER",
+        "title_highlight": "CONFIGURATION",
+        "description": "This operational module is currently undergoing architectural refinement. Our system intelligence is initializing this data layer for upcoming deployment.",
+        "protection": {
+            "label": "Protection",
+            "value": "Encrypted Stream"
+        },
+        "status": {
+            "label": "Status",
+            "value": "Sync In-Progress"
+        },
+        "return_btn": "RETURN TO SYSTEM CORE"
+    },
+    "products": {
+        "header": {
+            "badge": "Product Collection",
+            "title": "Global",
+            "title_highlight": "Collection",
+            "description": "Explore our comprehensive portfolio of premium Egyptian produce and international specialties.",
+            "stats": {
+                "active_skus": "Active SKUs",
+                "global_sourcing": "Global Sourcing",
+                "quality_index": "Quality Index",
+                "live_track": "Live Origin Track"
+            }
+        },
+        "ticker": {
+            "new": "NEW",
+            "premium": "PREMIUM",
+            "peak": "PEAK",
+            "imported": "IMPORTED",
+            "sourced_via": "Sourced via {{origin}}",
+            "items": {}
+        },
+        "filters": {
+            "search_placeholder": "Search catalog...",
+            "categories_title": "Categories",
+            "quick_filters_title": "Quick Filter",
+            "region": {
+                "label": "Region",
+                "all": "All Regions",
+                "egypt": "Egypt",
+                "uae": "UAE"
+            },
+            "season": {
+                "label": "Season",
+                "all": "All Seasons",
+                "peak": "Peak Season",
+                "available": "Available",
+                "starting": "Just Starting"
+            },
+            "industry": {
+                "label": "Industry",
+                "all": "All Industries",
+                "hotel": "Hotel Supplies",
+                "restaurant": "Restaurant",
+                "airline": "Airline Catering",
+                "retail": "Retail Retail"
+            }
+        },
+        "catalog": {
+            "showing": "Showing",
+            "products_suffix": "products",
+            "categories": {
+                "all": "All Categories",
+                "fruits": "Fresh Fruits",
+                "vegetables": "Fresh Vegetables",
+                "herbs": "Herbs & Greens",
+                "microgreens": "Microgreens",
+                "exotic": "Exotic Produce",
+                "specialty": "Specialty Items"
+            },
+            "grades": {
+                "premium": "Premium",
+                "standard": "Standard",
+                "export": "Export Grade",
+                "hydroponic": "Hydroponic",
+                "organic": "Organic",
+                "baby_leaf": "Baby Leaf",
+                "microgreen": "Microgreen"
+            },
+            "items": {
+                "imp_1": {
+                    "name": "Premium Hass Avocado",
+                    "scientific_name": "Persea americana",
+                    "origin": "Imported",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "imp_2": {
+                    "name": "Fresh Blueberries",
+                    "scientific_name": "Vaccinium corymbosum",
+                    "origin": "Imported",
+                    "season": "Available",
+                    "availability": "Seasonal"
+                },
+                "imp_3": {
+                    "name": "Fresh Raspberries",
+                    "scientific_name": "Rubus idaeus",
+                    "origin": "Imported",
+                    "season": "Available",
+                    "availability": "Seasonal"
+                },
+                "imp_4": {
+                    "name": "Fresh Blackberries",
+                    "scientific_name": "Rubus fruticosus",
+                    "origin": "Imported",
+                    "season": "Available",
+                    "availability": "Seasonal"
+                },
+                "imp_5": {
+                    "name": "Fresh Lychee",
+                    "scientific_name": "Litchi chinensis",
+                    "origin": "Imported",
+                    "season": "Available",
+                    "availability": "Seasonal"
+                },
+                "imp_6": {
+                    "name": "Fresh Mangosteen",
+                    "scientific_name": "Garcinia mangostana",
+                    "origin": "Imported",
+                    "season": "Available",
+                    "availability": "Seasonal"
+                },
+                "imp_7": {
+                    "name": "Premium Passion Fruit",
+                    "scientific_name": "Passiflora edulis",
+                    "origin": "Imported",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "imp_8": {
+                    "name": "Fresh Rambutan",
+                    "scientific_name": "Nephelium lappaceum",
+                    "origin": "Imported",
+                    "season": "Available",
+                    "availability": "Seasonal"
+                },
+                "imp_9": {
+                    "name": "Star Fruit (Carambola)",
+                    "scientific_name": "Averrhoa carambola",
+                    "origin": "Imported",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "imp_10": {
+                    "name": "Golden Kiwi",
+                    "scientific_name": "Actinidia chinensis",
+                    "origin": "Imported",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "imp_11": {
+                    "name": "Sweet Pineapple",
+                    "scientific_name": "Ananas comosus",
+                    "origin": "Imported",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "imp_12": {
+                    "name": "Red Currants",
+                    "scientific_name": "Ribes rubrum",
+                    "origin": "Imported",
+                    "season": "Available",
+                    "availability": "Seasonal"
+                },
+                "imp_13": {
+                    "name": "White Currants",
+                    "scientific_name": "Ribes glandulosum",
+                    "origin": "Imported",
+                    "season": "Available",
+                    "availability": "Seasonal"
+                },
+                "imp_14": {
+                    "name": "Fresh Ginger",
+                    "scientific_name": "Zingiber officinale",
+                    "origin": "Imported",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "imp_15": {
+                    "name": "Dragon Fruit (Pitaya)",
+                    "scientific_name": "Selenicereus undatus",
+                    "origin": "Imported",
+                    "season": "Available",
+                    "availability": "Summer"
+                },
+                "imp_apple_green_it": {
+                    "name": "Italian Green Apple",
+                    "scientific_name": "Malus domestica 'Granny Smith'",
+                    "origin": "Italy",
+                    "season": "Available",
+                    "availability": "Oct - May"
+                },
+                "imp_apple_red_it": {
+                    "name": "Italian Red Apple",
+                    "scientific_name": "Malus domestica 'Red Delicious'",
+                    "origin": "Italy",
+                    "season": "Available",
+                    "availability": "Oct - May"
+                },
+                "imp_apple_yellow_it": {
+                    "name": "Italian Yellow Apple",
+                    "scientific_name": "Malus domestica 'Golden Delicious'",
+                    "origin": "Italy",
+                    "season": "Available",
+                    "availability": "Oct - May"
+                },
+                "imp_apple_green_pl": {
+                    "name": "Polish Green Apple",
+                    "scientific_name": "Malus domestica",
+                    "origin": "Poland",
+                    "season": "Available",
+                    "availability": "Oct - Apr"
+                },
+                "imp_cherry": {
+                    "name": "Imported Red Cherry",
+                    "scientific_name": "Prunus avium",
+                    "origin": "Imported",
+                    "season": "Available",
+                    "availability": "Summer"
+                },
+                "imp_mango": {
+                    "name": "Imported Mango",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "Imported",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_1": {
+                    "name": "Premium Green Asparagus",
+                    "scientific_name": "Asparagus officinalis",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_2": {
+                    "name": "Premium White Asparagus",
+                    "scientific_name": "Asparagus officinalis",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_3": {
+                    "name": "Fresh Artichoke",
+                    "scientific_name": "Cynara scolymus",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Dec - May"
+                },
+                "veg_4": {
+                    "name": "Green Beans",
+                    "scientific_name": "Phaseolus vulgaris",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_5": {
+                    "name": "Red Beetroot",
+                    "scientific_name": "Beta vulgaris",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_6": {
+                    "name": "Fresh Broccoli",
+                    "scientific_name": "Brassica oleracea var. italica",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_7": {
+                    "name": "Egyptian Cabbage",
+                    "scientific_name": "Brassica oleracea var. capitata",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Oct - Mar"
+                },
+                "veg_8": {
+                    "name": "Chinese Cabbage",
+                    "scientific_name": "Brassica rapa subsp. pekinensis",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_9": {
+                    "name": "Red Salad Cabbage",
+                    "scientific_name": "Brassica oleracea var. capitata f. rubra",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_10": {
+                    "name": "White Salad Cabbage",
+                    "scientific_name": "Brassica oleracea var. capitata",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_11": {
+                    "name": "Fresh Carrots",
+                    "scientific_name": "Daucus carota subsp. sativus",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_12": {
+                    "name": "Fresh Cauliflower",
+                    "scientific_name": "Brassica oleracea var. botrytis",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Nov - Apr"
+                },
+                "veg_13": {
+                    "name": "Sweet Corn (Yellow)",
+                    "scientific_name": "Zea mays var. saccharata",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_14": {
+                    "name": "Fresh Cucumber",
+                    "scientific_name": "Cucumis sativus",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_15": {
+                    "name": "Large Eggplant (Rumi)",
+                    "scientific_name": "Solanum melongena",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_16": {
+                    "name": "Chinese Garlic",
+                    "scientific_name": "Allium sativum",
+                    "origin": "China",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_17": {
+                    "name": "Premium Peeled Garlic",
+                    "scientific_name": "Allium sativum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_18": {
+                    "name": "Egyptian Local Garlic",
+                    "scientific_name": "Allium sativum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_19": {
+                    "name": "Egyptian Local Lemon",
+                    "scientific_name": "Citrus x limon",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_20": {
+                    "name": "Adalia Lemon",
+                    "scientific_name": "Citrus x limon 'Adalia'",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_21": {
+                    "name": "Fresh Lemongrass",
+                    "scientific_name": "Cymbopogon citratus",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_22": {
+                    "name": "Fresh Button Mushrooms",
+                    "scientific_name": "Agaricus bisporus",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_23": {
+                    "name": "White Onion",
+                    "scientific_name": "Allium cepa",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_24": {
+                    "name": "Red Onion",
+                    "scientific_name": "Allium cepa",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_25": {
+                    "name": "Peeled White Onion",
+                    "scientific_name": "Allium cepa",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_26": {
+                    "name": "Peeled Red Onion",
+                    "scientific_name": "Allium cepa",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_27": {
+                    "name": "Pickling Onions",
+                    "scientific_name": "Allium cepa",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_28": {
+                    "name": "Fresh Spring Onions",
+                    "scientific_name": "Allium fistulosum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_29": {
+                    "name": "Green Bell Pepper",
+                    "scientific_name": "Capsicum annuum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_30": {
+                    "name": "Red Bell Pepper",
+                    "scientific_name": "Capsicum annuum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_31": {
+                    "name": "Yellow Bell Pepper",
+                    "scientific_name": "Capsicum annuum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_32": {
+                    "name": "Red Dolma Pepper",
+                    "scientific_name": "Capsicum annuum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_33": {
+                    "name": "Green Dolma Pepper",
+                    "scientific_name": "Capsicum annuum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_34": {
+                    "name": "Red Chilli",
+                    "scientific_name": "Capsicum frutescens",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_35": {
+                    "name": "Green Chilli",
+                    "scientific_name": "Capsicum frutescens",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_36": {
+                    "name": "Premium Frying Potatoes",
+                    "scientific_name": "Solanum tuberosum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_37": {
+                    "name": "Premium Cooking Potatoes",
+                    "scientific_name": "Solanum tuberosum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_38": {
+                    "name": "Baby Potatoes",
+                    "scientific_name": "Solanum tuberosum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_39": {
+                    "name": "Sweet Potato",
+                    "scientific_name": "Ipomoea batatas",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_40": {
+                    "name": "Fresh Pumpkin",
+                    "scientific_name": "Cucurbita maxima",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Sep - Dec"
+                },
+                "veg_41": {
+                    "name": "Red Radish",
+                    "scientific_name": "Raphanus sativus",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_42": {
+                    "name": "White Radish",
+                    "scientific_name": "Raphanus sativus var. longipinnatus",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_43": {
+                    "name": "Fresh Spinach",
+                    "scientific_name": "Spinacia oleracea",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Nov - Mar"
+                },
+                "veg_44": {
+                    "name": "Baby Spinach",
+                    "scientific_name": "Spinacia oleracea",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_45": {
+                    "name": "Premium Red Tomatoes",
+                    "scientific_name": "Solanum lycopersicum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_46": {
+                    "name": "Red Cherry Tomatoes",
+                    "scientific_name": "Solanum lycopersicum var. cerasiforme",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_47": {
+                    "name": "Yellow Cherry Tomatoes",
+                    "scientific_name": "Solanum lycopersicum var. cerasiforme",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_48": {
+                    "name": "Fresh Zucchini",
+                    "scientific_name": "Cucurbita pepo",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_49": {
+                    "name": "Egyptian Taro",
+                    "scientific_name": "Colocasia esculenta",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Oct - Apr"
+                },
+                "veg_50": {
+                    "name": "Fresh Swiss Chard",
+                    "scientific_name": "Beta vulgaris subsp. vulgaris",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_51": {
+                    "name": "Premium Vine Leaves",
+                    "scientific_name": "Vitis vinifera",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Apr - Jul"
+                },
+                "veg_52": {
+                    "name": "Brussels Sprouts",
+                    "scientific_name": "Brassica oleracea var. gemmifera",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Nov - Mar"
+                },
+                "veg_53": {
+                    "name": "Green Peas",
+                    "scientific_name": "Pisum sativum",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Dec - Apr"
+                },
+                "veg_54": {
+                    "name": "Fresh Molokhia",
+                    "scientific_name": "Corchorus olitorius",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_55": {
+                    "name": "Black Eggplant (Dolma)",
+                    "scientific_name": "Solanum melongena",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_56": {
+                    "name": "White Eggplant (Dolma)",
+                    "scientific_name": "Solanum melongena",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_57": {
+                    "name": "Green Pepper (Dolma)",
+                    "scientific_name": "Capsicum annuum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_58": {
+                    "name": "Red Pepper (Dolma)",
+                    "scientific_name": "Capsicum annuum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_59": {
+                    "name": "Zucchini (Dolma)",
+                    "scientific_name": "Cucurbita pepo",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_60": {
+                    "name": "Premium Purple Asparagus",
+                    "scientific_name": "Asparagus officinalis",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_61": {
+                    "name": "Imported Asparagus",
+                    "scientific_name": "Asparagus officinalis",
+                    "origin": "Imported",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_62": {
+                    "name": "Green Sweet Corn",
+                    "scientific_name": "Zea mays var. saccharata",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_63": {
+                    "name": "Black Arous Eggplant",
+                    "scientific_name": "Solanum melongena",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_64": {
+                    "name": "White Arous Eggplant",
+                    "scientific_name": "Solanum melongena",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_65": {
+                    "name": "Green Pepper (Dolma)",
+                    "scientific_name": "Capsicum annuum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_66": {
+                    "name": "Red Pepper (Dolma)",
+                    "scientific_name": "Capsicum annuum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_67": {
+                    "name": "Premium Zucchini (Dolma)",
+                    "scientific_name": "Cucurbita pepo",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_1": {
+                    "name": "Fresh Basil",
+                    "scientific_name": "Ocimum basilicum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_2": {
+                    "name": "Egyptian Celery",
+                    "scientific_name": "Apium graveolens var. dulce",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_3": {
+                    "name": "Leeks (European)",
+                    "scientific_name": "Allium porrum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_4": {
+                    "name": "Local Leeks",
+                    "scientific_name": "Allium ampeloprasum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_5": {
+                    "name": "Fresh Coriander",
+                    "scientific_name": "Coriandrum sativum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_6": {
+                    "name": "Fresh Dill",
+                    "scientific_name": "Anethum graveolens",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_7": {
+                    "name": "Egyptian Mint",
+                    "scientific_name": "Mentha spicata",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_8": {
+                    "name": "Fresh Parsley",
+                    "scientific_name": "Petroselinum crispum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_9": {
+                    "name": "Fresh Arugula (Rocket)",
+                    "scientific_name": "Eruca vesicaria",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_10": {
+                    "name": "Fresh Fennel",
+                    "scientific_name": "Foeniculum vulgare",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_11": {
+                    "name": "Local Lettuce",
+                    "scientific_name": "Lactuca sativa",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_12": {
+                    "name": "Iceberg Lettuce",
+                    "scientific_name": "Lactuca sativa var. capitata",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_13": {
+                    "name": "Premium Red Lettuce",
+                    "scientific_name": "Lactuca sativa",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_14": {
+                    "name": "Premium Green Lettuce",
+                    "scientific_name": "Lactuca sativa",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_15": {
+                    "name": "Chinese Lettuce",
+                    "scientific_name": "Lactuca sativa var. longifolia",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_16": {
+                    "name": "French Lettuce",
+                    "scientific_name": "Lactuca sativa",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_17": {
+                    "name": "Premium Oakleaf Lettuce",
+                    "scientific_name": "Lactuca sativa",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_18": {
+                    "name": "Edible Flowers (Culinary Grade)",
+                    "scientific_name": "Viola tricolor",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_19": {
+                    "name": "Fresh Rosemary",
+                    "scientific_name": "Salvia rosmarinus",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_20": {
+                    "name": "Fresh Thyme",
+                    "scientific_name": "Thymus vulgaris",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_21": {
+                    "name": "Wild Rocket / Rucola",
+                    "scientific_name": "Diplotaxis tenuifolia",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_22": {
+                    "name": "Fresh Marjoram",
+                    "scientific_name": "Origanum majorana",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_23": {
+                    "name": "Fresh Sage",
+                    "scientific_name": "Salvia officinalis",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_24": {
+                    "name": "Premium Tarragon",
+                    "scientific_name": "Artemisia dracunculus",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_25": {
+                    "name": "White Endive",
+                    "scientific_name": "Cichorium endivia",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Nov - Mar"
+                },
+                "herb_26": {
+                    "name": "Red Endive",
+                    "scientific_name": "Cichorium endivia",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Nov - Mar"
+                },
+                "herb_27": {
+                    "name": "Premium Microgreens",
+                    "scientific_name": "Various",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_28": {
+                    "name": "Mixed Microgreens",
+                    "scientific_name": "Various",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_29": {
+                    "name": "Mixed Cherry Tomatoes",
+                    "scientific_name": "Solanum lycopersicum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_30": {
+                    "name": "Mega Cherry Tomato Mix",
+                    "scientific_name": "Solanum lycopersicum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_31": {
+                    "name": "Orange Cherry Tomatoes",
+                    "scientific_name": "Solanum lycopersicum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_32": {
+                    "name": "Chocolate Cherry Tomatoes",
+                    "scientific_name": "Solanum lycopersicum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_33": {
+                    "name": "Fresh Chives",
+                    "scientific_name": "Allium schoenoprasum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_34": {
+                    "name": "Premium Celery Sticks",
+                    "scientific_name": "Apium graveolens",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_35": {
+                    "name": "Organic Spring Onions",
+                    "scientific_name": "Allium fistulosum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_36": {
+                    "name": "Fresh Baby Carrots",
+                    "scientific_name": "Daucus carota",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_37": {
+                    "name": "Red Sorrel",
+                    "scientific_name": "Rumex sanguineus",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_38": {
+                    "name": "Premium Baby Rocket",
+                    "scientific_name": "Eruca sativa",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_39": {
+                    "name": "Fresh Broccolini",
+                    "scientific_name": "Brassica oleracea var. italica x alboglabra",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_40": {
+                    "name": "Premium Purple Kale",
+                    "scientific_name": "Brassica oleracea var. sabellica",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_41": {
+                    "name": "Fresh Banana Leaves",
+                    "scientific_name": "Musa acuminata",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_42": {
+                    "name": "Purple Cauliflower",
+                    "scientific_name": "Brassica oleracea var. botrytis",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Nov - Mar"
+                },
+                "herb_43": {
+                    "name": "Egyptian Sage (Marmariya)",
+                    "scientific_name": "Salvia officinalis",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_44": {
+                    "name": "Fresh Malana (Green Chickpeas)",
+                    "scientific_name": "Cicer arietinum",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Jan - Apr"
+                },
+                "herb_45": {
+                    "name": "Mixed Basil Varieties",
+                    "scientific_name": "Ocimum basilicum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_46": {
+                    "name": "Fresh Baby Arugula",
+                    "scientific_name": "Eruca vesicaria",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_47": {
+                    "name": "Shallot Onions",
+                    "scientific_name": "Allium cepa var. aggregatum",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "loc_1": {
+                    "name": "Premium Fresh Strawberries",
+                    "scientific_name": "Fragaria x ananassa",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Nov - Apr"
+                },
+                "loc_2": {
+                    "name": "Egyptian Local Guava",
+                    "scientific_name": "Psidium guajava",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Oct - Jan"
+                },
+                "loc_3": {
+                    "name": "Premium Egyptian Pomegranate",
+                    "scientific_name": "Punica granatum",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Sep - Jan"
+                },
+                "loc_4": {
+                    "name": "Zebdia Mango",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Jul - Oct"
+                },
+                "loc_5": {
+                    "name": "Premium Owais Mango",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Jul - Oct"
+                },
+                "loc_6": {
+                    "name": "Fas Owais Mango (Elite)",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Jul - Oct"
+                },
+                "loc_7": {
+                    "name": "Sukkari Mango",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Jul - Oct"
+                },
+                "loc_8": {
+                    "name": "Naomi Mango",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Jul - Nov"
+                },
+                "loc_9": {
+                    "name": "Keitt Mango",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Sep - Dec"
+                },
+                "loc_10": {
+                    "name": "Kent Mango",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Aug - Nov"
+                },
+                "loc_11": {
+                    "name": "Shelly Mango",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Aug - Oct"
+                },
+                "loc_12": {
+                    "name": "Yasmina Mango",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Aug - Oct"
+                },
+                "loc_13": {
+                    "name": "Maya Mango",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Aug - Oct"
+                },
+                "loc_14": {
+                    "name": "Heidi Mango",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Aug - Oct"
+                },
+                "loc_15": {
+                    "name": "R2 Mango",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Aug - Nov"
+                },
+                "loc_16": {
+                    "name": "Aoun Mango",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Aug - Oct"
+                },
+                "loc_17": {
+                    "name": "Palamar Mango",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Aug - Oct"
+                },
+                "loc_18": {
+                    "name": "Kasturi Mango",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Aug - Oct"
+                },
+                "loc_19": {
+                    "name": "Local Red Grapes",
+                    "scientific_name": "Vitis vinifera",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Jun - Sep"
+                },
+                "loc_20": {
+                    "name": "Local White Grapes",
+                    "scientific_name": "Vitis vinifera",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Jun - Sep"
+                },
+                "loc_21": {
+                    "name": "Premium Barhi Dates",
+                    "scientific_name": "Phoenix dactylifera",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Aug - Oct"
+                },
+                "loc_22": {
+                    "name": "Fresh Local Peach",
+                    "scientific_name": "Prunus persica",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Apr - Jun"
+                },
+                "loc_23": {
+                    "name": "Fresh Local Nectarine",
+                    "scientific_name": "Prunus persica var. nucipersica",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "May - Jul"
+                },
+                "loc_24": {
+                    "name": "Premium Egyptian Plum",
+                    "scientific_name": "Prunus domestica",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Jun - Sep"
+                },
+                "loc_25": {
+                    "name": "Local Apricot",
+                    "scientific_name": "Prunus armeniaca",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Apr - Jun"
+                },
+                "loc_26": {
+                    "name": "Egyptian Pear",
+                    "scientific_name": "Pyrus communis",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Aug - Oct"
+                },
+                "loc_27": {
+                    "name": "Local Egyptian Apple",
+                    "scientific_name": "Malus domestica",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "loc_28": {
+                    "name": "Premium Local Banana",
+                    "scientific_name": "Musa acuminata",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "loc_29": {
+                    "name": "Fresh Summer Watermelon",
+                    "scientific_name": "Citrullus lanatus",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "May - Sep"
+                },
+                "loc_30": {
+                    "name": "Cantaloupe / Sweet Melon",
+                    "scientific_name": "Cucumis melo",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Apr - Aug"
+                },
+                "loc_31": {
+                    "name": "Premium Navel Orange",
+                    "scientific_name": "Citrus x sinensis",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Nov - Mar"
+                },
+                "loc_32": {
+                    "name": "Summer Orange (Valencia)",
+                    "scientific_name": "Citrus x sinensis",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Mar - Jul"
+                },
+                "loc_33": {
+                    "name": "Local Mandarin (Yusufi)",
+                    "scientific_name": "Citrus reticulata",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Dec - Mar"
+                },
+                "loc_34": {
+                    "name": "Fresh Red Grapefruit",
+                    "scientific_name": "Citrus x paradisi",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Oct - Feb"
+                },
+                "loc_35": {
+                    "name": "Premium Egyptian Persimmon",
+                    "scientific_name": "Diospyros kaki",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Sep - Dec"
+                },
+                "loc_36": {
+                    "name": "Fresh Black Figs",
+                    "scientific_name": "Ficus carica",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Jul - Sep"
+                },
+                "loc_37": {
+                    "name": "Egyptian Prickly Pear",
+                    "scientific_name": "Opuntia ficus-indica",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Jun - Aug"
+                },
+                "loc_38": {
+                    "name": "Premium Custard Apple (Eshta)",
+                    "scientific_name": "Annona squamosa",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Sep - Dec"
+                },
+                "loc_39": {
+                    "name": "Fresh Loquat (Bashmela)",
+                    "scientific_name": "Eriobotrya japonica",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Mar - May"
+                },
+                "loc_40": {
+                    "name": "Local Quince",
+                    "scientific_name": "Cydonia oblonga",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Oct - Dec"
+                },
+                "loc_52": {
+                    "name": "Mango Alphonso",
+                    "scientific_name": "Mangifera indica 'Alphonso'",
+                    "origin": "Egypt",
+                    "season": "Peak Season",
+                    "availability": "May - Jul"
+                }
+            }
+        }
+    },
+    "seasonal": {
+        "header": {
+            "badge": "Seasonal Calendar",
+            "title": "Seasonal",
+            "title_highlight": "Availability",
+            "description": "Comprehensive tracking of produce availability across our operational regions. Data reflects historical patterns and current forecast models."
+        },
+        "stats": {
+            "peak_products": "Products in Peak",
+            "regions_tracked": "Regions Tracked",
+            "months_coverage": "Months Coverage"
+        },
+        "controls": {
+            "region": {
+                "egypt": "Egypt",
+                "uae": "UAE",
+                "both": "Both Regions"
+            },
+            "view_mode": {
+                "grid": "Grid View",
+                "table": "Table View"
+            },
+            "buttons": {
+                "export": "Export Report",
+                "download": "Download PDF",
+                "request_access": "Request Access"
+            },
+            "export_note": "Includes full seasonal analysis & forecasts"
+        },
+        "legend": {
+            "peak": "Peak Season",
+            "available": "Available",
+            "off_season": "Off Season"
+        },
+        "months": [
+            "Jan",
+            "Feb",
+            "Mar",
+            "Apr",
+            "May",
+            "Jun",
+            "Jul",
+            "Aug",
+            "Sep",
+            "Oct",
+            "Nov",
+            "Dec"
+        ],
+        "seasons": {
+            "spring": "Spring",
+            "summer": "Summer",
+            "autumn": "Autumn",
+            "winter": "Winter"
+        },
+        "table": {
+            "egypt_title": "Egypt Availability Pattern",
+            "uae_title": "UAE Availability Pattern",
+            "columns": {
+                "product": "Product",
+                "category": "Category"
+            }
+        },
+        "info": {
+            "title": "Operational Intelligence",
+            "description": "Our seasonal tracking system utilizes real-time agricultural data and historical yield patterns to forecast optimal sourcing windows. Peak season indicates maximum availability and highest quality metrics."
+        },
+        "cta": {
+            "title": "Secure Your Seasonal Supply",
+            "description": "Don't leave your supply chain to chance. Pre-book your seasonal requirements with our guaranteed allocation programs."
+        },
+        "products": {
+            "Strawberries": "Strawberries",
+            "Mangoes": "Mangoes",
+            "Valencia Oranges": "Valencia Oranges",
+            "Pomegranates": "Pomegranates",
+            "Tomatoes": "Tomatoes",
+            "Bell Peppers": "Bell Peppers",
+            "Asparagus": "Asparagus",
+            "Fresh Basil": "Fresh Basil"
+        },
+        "status": {
+            "peak_now": "Peak Now",
+            "ending_soon": "Ending Soon",
+            "coming_soon": "Coming Soon",
+            "available": "Available",
+            "off_season": "Off-Season"
+        },
+        "in_season": {
+            "title": "In Season Now",
+            "subtitle": "Peak availability this month - order now for best quality and pricing",
+            "quick_quote": "Quick Quote"
+        },
+        "modal": {
+            "peak_months": "months",
+            "current_status": "Current Status",
+            "best_windows": "Best Ordering Windows",
+            "monthly_availability": "Monthly Availability",
+            "limited_availability": "Limited availability",
+            "close": "Close",
+            "request_quote": "Request Quote"
+        }
+    },
+    "operations": {
+        "hero": {
+            "status": "SOIL-TO-SHIPMENT LOGISTICS",
+            "terminal": "TERMINAL_01 // MAIN_FEED",
+            "infra_overview": "INFRASTRUCTURE OVERVIEW",
+            "title_prefix": "NATURE'S FINEST,",
+            "title_highlight": "DELIVERED FRESH",
+            "description": "We bridge the gap between Egypt's fertile lands and global tables through an unbreakable cold-chain network and precision logistics.",
+            "cta": "INITIALIZE PROCUREMENT",
+            "partners_label": "Global Partners",
+            "partners_sub": "Trusting Our Network",
+            "vessel_label": "Active Vessel",
+            "vessel_name": "North Mediterranean Hub",
+            "integrity_score": "Integrity Score"
+        },
+        "stats": {
+            "facility": {
+                "value": "24/7",
+                "label": "FACILITY UPTIME"
+            },
+            "delivery": {
+                "value": "98.5%",
+                "label": "ON-TIME DELIVERY"
+            },
+            "varieties": {
+                "value": "150+",
+                "label": "PRODUCE VARIETIES"
+            },
+            "monitoring": {
+                "value": "100%",
+                "label": "COLD-CHAIN SECURE"
+            }
+        },
+        "anatomy": {
+            "label": "OPERATIONAL ARCHITECTURE",
+            "title_prefix": "UNBREAKABLE",
+            "title_highlight": "COLD-CHAIN ARCHITECTURE",
+            "description": "From the moment of harvest to the final delivery vector, we maintain peak freshness through a integrated network of thermal monitoring and smart routing.",
+            "layer1": {
+                "id": "SYS_01",
+                "title": "Harvest Optimization",
+                "description": "Direct collaboration with source farms ensures only export-grade produce enters our network at peak maturity.",
+                "stage": "Stage 01: SOURCE",
+                "tags": [
+                    "GLOBAL G.A.P",
+                    "SOURCE_DIRECT",
+                    "QUALITY_GATE"
+                ]
+            },
+            "layer2": {
+                "id": "SYS_02",
+                "title": "Cold-Chain Excellence",
+                "description": "Unbroken thermal integrity from harvest to destination. Real-time monitoring ensures zero quality degradation across maritime and aerial cargo vectors.",
+                "monitoring": "TEMP_CHECK",
+                "flow": "OPTIMAL",
+                "stats": {
+                    "on_time": "98.5% On-Time",
+                    "secured": "Secured Cargo"
+                }
+            },
+            "layer3": {
+                "id": "SYS_03",
+                "title": "Precision Screening",
+                "description": "Every SKU is manually inspected by our quality assurance specialists to ensure perfect grading compliance.",
+                "tests": {
+                    "color": "Color Check",
+                    "brix": "Brix Level",
+                    "sizing": "Sizing",
+                    "texture": "Texture",
+                    "residue": "Residue Test",
+                    "hydration": "Hydration",
+                    "skin": "Skin Integrity",
+                    "ethylene": "Ethylene Control"
+                }
+            },
+            "layer4": {
+                "id": "SYS_04",
+                "title": "Intelligent Logistics",
+                "description": "Smart routing algorithms optimizing fleet deployment and delivery windows across global shipping lanes.",
+                "vessel": "Active Vessel",
+                "route_matrix": "Access Route Matrix"
+            }
+        },
+        "compliance": {
+            "label": "AUTHORITY & TRUST",
+            "title_prefix": "GLOBAL QUALITY",
+            "title_highlight": "CERTIFICATION CORE",
+            "description": "Our operations adhere to the strictest international standards for food safety and operational handling. We maintain active certification across all key regulatory frameworks.",
+            "verified": "VERIFIED_STATUS",
+            "hud": {
+                "label": "Operational Insight",
+                "subject": "GLOBAL GAP APPROVED",
+                "text": "Freshness is a measurement of time and temperature. We master both to deliver nature's best."
+            }
+        },
+        "certifications": {
+            "haccp": {
+                "name": "HACCP Certified",
+                "description": "Hazard Analysis Critical Control Point"
+            },
+            "iso": {
+                "name": "ISO 22000",
+                "description": "Food Safety Management"
+            },
+            "globalgap": {
+                "name": "Global G.A.P",
+                "description": "Good Agricultural Practices"
+            }
+        },
+        "partnerships": {
+            "label": "ENABLING GLOBAL COMMERCE",
+            "title_prefix": "PARTNER WITH",
+            "title_highlight": "THE SOURCE.",
+            "description": "Initialize a strategic supply partnership and leverage our infrastructure to scale your institutional requirements.",
+            "cta_primary": "START INQUIRY",
+            "cta_secondary": "CONTACT OPS",
+            "footer": {
+                "system": "GLOBAL NETWORK: ACTIVE",
+                "shipped": "4,200+ Tons Shipped",
+                "recall": "Zero Recall Policy",
+                "access": "SYSTEM_ACCESS: INSTITUTIONAL"
+            }
+        }
+    },
+    "rfq": {
+        "header": {
+            "badge": "Procurement Portal",
+            "title": "Request for Quote",
+            "description": "Initialize a procurement request for your organization. Our team will structure a custom supply proposal based on your specifications.",
+            "image_alt": "Procurement",
+            "response_time_value": "24H",
+            "response_time_label": "Max Response",
+            "quality_value": "100%",
+            "quality_label": "Quality Secure"
+        },
+        "form": {
+            "sections": {
+                "business_info": "Business Information",
+                "supply_req": "Supply Requirements",
+                "contact_info": "Contact Protocol"
+            },
+            "step_label": "Step 0{{step}} / 03",
+            "steps_names": {
+                "entity": "Entity",
+                "supply": "Supply",
+                "verification": "Verification"
+            },
+            "layers": {
+                "initialization": "Initialization Layer",
+                "operational": "Operational Parameters",
+                "verification": "Verification Matrix"
+            },
+            "fields": {
+                "company": {
+                    "label": "Entity Name",
+                    "placeholder": "Registered Company Name"
+                },
+                "business_type": {
+                    "label": "Business Type",
+                    "placeholder": "Select Entity Type"
+                },
+                "country": {
+                    "label": "Region",
+                    "placeholder": "Select Region"
+                },
+                "city": {
+                    "label": "City / Zone",
+                    "placeholder": "Operational Hub Location"
+                },
+                "categories": {
+                    "label": "Required Categories"
+                },
+                "volume": {
+                    "label": "Projected Volume",
+                    "placeholder": "Select Monthly Volume"
+                },
+                "frequency": {
+                    "label": "Supply Frequency",
+                    "placeholder": "Select Delivery Cadence"
+                },
+                "requirements": {
+                    "label": "Additional Specifications",
+                    "placeholder": "Specific varieties, grading requirements, or packaging protocols..."
+                },
+                "name": {
+                    "label": "Contact Person",
+                    "placeholder": "Full Name"
+                },
+                "position": {
+                    "label": "Position",
+                    "placeholder": "Job Title"
+                },
+                "email": {
+                    "label": "Business Email",
+                    "placeholder": "name@company.com"
+                },
+                "phone": {
+                    "label": "Direct Line",
+                    "placeholder": "+1 (555) 000-0000"
+                }
+            },
+            "options": {
+                "business_types": {
+                    "hotel": "Hotel / Resort",
+                    "restaurant": "Restaurant / Cafe",
+                    "airline": "Airline Catering",
+                    "supermarket": "Supermarket / Retail chain",
+                    "distributor": "Wholesale Distributor",
+                    "processor": "Food Processor",
+                    "other": "Other Institution"
+                },
+                "volume_ranges": {
+                    "small": "< 1 Ton / Month",
+                    "medium": "1 - 5 Tons / Month",
+                    "large": "5 - 20 Tons / Month",
+                    "enterprise": "> 20 Tons / Month"
+                },
+                "frequencies": {
+                    "daily": "Daily Delivery",
+                    "weekly_2": "2-3 Times / Weekly",
+                    "weekly": "Weekly",
+                    "biweekly": "Bi-Weekly",
+                    "monthly": "Monthly"
+                }
+            },
+            "authorization_note": "By submitting this request, you authorize UNITED to structure a formal procurement proposal. Data is processed under secure institutional protocols.",
+            "back_button": "Step Back",
+            "submit": {
+                "button": "Orbit Request",
+                "submitting": "Transmitting...",
+                "continue": "Continue Payload",
+                "note": "Response time estimate: < 24h"
+            },
+            "success": {
+                "title": "Request Transmitted",
+                "description": "Our procurement team has received your signal. Expect an encrypted proposal shortly."
+            }
+        },
+        "sidebar": {
+            "process": {
+                "title": "Procurement Protocol",
+                "steps": [
+                    "Submit requirements via secure form",
+                    "Receive custom proposal within 24h",
+                    "Account activation & logistics setup"
+                ]
+            },
+            "phases": {
+                "phase_label": "Phase 0{{phase}}"
+            },
+            "support": {
+                "title": "Support Uplink",
+                "description": "Immediate institutional support is available for complex supply requirements."
+            },
+            "contact": {
+                "title": "Direct Uplink",
+                "description": "For urgent enterprise requirements or custom integrations, utilize direct lines."
+            },
+            "certifications": "Quality Certifications"
+        }
+    }
+}
