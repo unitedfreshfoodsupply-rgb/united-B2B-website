@@ -1,37 +1,22 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
-
-import commonEn from './locales/en/common.json';
-import homeEn from './locales/en/home.json';
-import pagesEn from './locales/en/pages.json';
-import commonAr from './locales/ar/common.json';
-import homeAr from './locales/ar/home.json';
-import pagesAr from './locales/ar/pages.json';
-
-// Define resources
-export const resources = {
-    en: {
-        common: commonEn,
-        home: homeEn,
-        pages: pagesEn,
-    },
-    ar: {
-        common: commonAr,
-        home: homeAr,
-        pages: pagesAr,
-    },
-} as const;
+import HttpBackend from 'i18next-http-backend';
 
 i18n
+    .use(HttpBackend)
     .use(LanguageDetector)
     .use(initReactI18next)
     .init({
-        resources,
         fallbackLng: 'en',
         defaultNS: 'common',
+        fallbackNS: ['common', 'home', 'pages'],
+        ns: ['common', 'home', 'pages'],
         interpolation: {
-            escapeValue: false, // React already escapes values
+            escapeValue: false,
+        },
+        backend: {
+            loadPath: '/locales/{{lng}}/{{ns}}.json',
         },
         detection: {
             order: ['localStorage', 'navigator'],

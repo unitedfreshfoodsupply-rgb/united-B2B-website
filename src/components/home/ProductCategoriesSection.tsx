@@ -140,6 +140,8 @@ export function ProductCategoriesSection() {
                     src={cat.image}
                     alt={t(`categories.${cat.id}.name`)}
                     className="w-full h-full object-cover opacity-15 group-hover:opacity-30 transition-all duration-700 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
               )}

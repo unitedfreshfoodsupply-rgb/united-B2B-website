@@ -1,5 +1,6 @@
-import { useState, useMemo } from "react";
-import { useTranslation } from "react-i18next";
+import { useState, useMemo, memo } from "react";
+import React from "react";
+import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
@@ -8,6 +9,7 @@ import { ArrowRight, Sun, Droplets, Snowflake, Leaf, Info, Grid3x3, Table2, Down
 import { ProductCard } from "@/components/seasonal/ProductCard";
 import { InSeasonNow } from "@/components/seasonal/InSeasonNow";
 import { ProductDetailModal } from "@/components/seasonal/ProductDetailModal";
+import { cn } from "@/lib/utils";
 
 
 const seasonalProducts = [
@@ -17,7 +19,7 @@ const seasonalProducts = [
     category: "Fruits",
     egypt: [0, 0, 0, 0, 1, 2, 2, 2, 1, 0, 0, 0],
     uae: [0, 0, 0, 1, 2, 2, 2, 1, 0, 0, 0, 0],
-    image: "/images/products/mangoes.png",
+    image: "/images/products/mangoes.webp",
   },
 
   {
@@ -25,7 +27,7 @@ const seasonalProducts = [
     category: "Fruits",
     egypt: [0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 1, 0],
     uae: [0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 1],
-    image: "/images/products/pomegranates.png",
+    image: "/images/products/pomegranates.webp",
   },
 
 
@@ -34,7 +36,7 @@ const seasonalProducts = [
     category: "Vegetables",
     egypt: [0, 1, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0],
     uae: [0, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0],
-    image: "/images/products/asparagus.png",
+    image: "/images/products/asparagus.webp",
   },
 
 ];
@@ -63,8 +65,32 @@ const seasons = [
 type ViewMode = "grid" | "table";
 type Region = "egypt" | "uae" | "both";
 
+const MatrixRow = memo(({ product, months, currentMonth, t, regionType }: { product: any, months: string[], currentMonth: number, t: any, regionType: "egypt" | "uae" }) => {
+  const availability = regionType === "egypt" ? product.egypt : product.uae;
+  return (
+    <tr className="border-b border-border/50 hover:bg-muted/30">
+      <td className="py-3 px-4 font-medium text-foreground">{t(`seasonal.products.${product.name}`)}</td>
+      <td className="py-3 px-2 text-sm text-muted-foreground">{t(`products.catalog.categories.${product.category.toLowerCase()}`)}</td>
+      {availability.map((value: number, i: number) => (
+        <td key={i} className="py-2 sm:py-3 px-1 sm:px-2 text-center">
+          <div
+            className={cn(
+              "w-6 h-6 sm:w-8 sm:h-8 mx-auto rounded-lg",
+              getAvailabilityColor(value),
+              i === currentMonth ? "ring-2 ring-accent ring-offset-2" : ""
+            )}
+            title={t(getAvailabilityLabelKey(value))}
+          />
+        </td>
+      ))}
+    </tr>
+  );
+});
+
+MatrixRow.displayName = "MatrixRow";
+
 export default function SeasonalPage() {
-  const { t } = useTranslation('pages');
+  const { t, i18n, isRTL } = useUnifiedTranslation();
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [selectedRegion, setSelectedRegion] = useState<Region>("both");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
@@ -362,18 +388,14 @@ export default function SeasonalPage() {
                       </thead>
                       <tbody>
                         {filteredProducts.map((product) => (
-                          <tr key={product.name} className="border-b border-border/50 hover:bg-muted/30">
-                            <td className="py-3 px-4 font-medium text-foreground">{t(`seasonal.products.${product.name}`)}</td>
-                            <td className="py-3 px-2 text-sm text-muted-foreground">{t(`products.catalog.categories.${product.category.toLowerCase()}`)}</td>
-                            {product.egypt.map((value, i) => (
-                              <td key={i} className="py-2 sm:py-3 px-1 sm:px-2 text-center">
-                                <div
-                                  className={`w-6 h-6 sm:w-8 sm:h-8 mx-auto rounded-lg ${getAvailabilityColor(value)} ${i === currentMonth ? "ring-2 ring-accent ring-offset-2" : ""}`}
-                                  title={t(getAvailabilityLabelKey(value))}
-                                />
-                              </td>
-                            ))}
-                          </tr>
+                          <MatrixRow
+                            key={product.name}
+                            product={product}
+                            months={months}
+                            currentMonth={currentMonth}
+                            t={t}
+                            regionType="egypt"
+                          />
                         ))}
                       </tbody>
                     </table>
@@ -409,18 +431,14 @@ export default function SeasonalPage() {
                       </thead>
                       <tbody>
                         {filteredProducts.map((product) => (
-                          <tr key={product.name} className="border-b border-border/50 hover:bg-muted/30">
-                            <td className="py-3 px-4 font-medium text-foreground">{t(`seasonal.products.${product.name}`)}</td>
-                            <td className="py-3 px-2 text-sm text-muted-foreground">{t(`products.catalog.categories.${product.category.toLowerCase()}`)}</td>
-                            {product.uae.map((value, i) => (
-                              <td key={i} className="py-2 sm:py-3 px-1 sm:px-2 text-center">
-                                <div
-                                  className={`w-6 h-6 sm:w-8 sm:h-8 mx-auto rounded-lg ${getAvailabilityColor(value)} ${i === currentMonth ? "ring-2 ring-accent ring-offset-2" : ""}`}
-                                  title={t(getAvailabilityLabelKey(value))}
-                                />
-                              </td>
-                            ))}
-                          </tr>
+                          <MatrixRow
+                            key={product.name}
+                            product={product}
+                            months={months}
+                            currentMonth={currentMonth}
+                            t={t}
+                            regionType="uae"
+                          />
                         ))}
                       </tbody>
                     </table>

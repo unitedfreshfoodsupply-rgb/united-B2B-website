@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useTranslation } from "react-i18next";
+import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
 import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -18,12 +18,11 @@ import {
   PackageCheck,
   Container
 } from "lucide-react";
-import operationsFreshHero from "@/assets/operations-fresh-hero.png";
-import microgreens from "@/assets/microgreens.jpg";
+import operationsFreshHero from "@/assets/operations-fresh-hero.webp";
+import microgreens from "@/assets/microgreens.webp";
 
 export default function OperationsPage() {
-  const { t, i18n } = useTranslation('pages');
-  const isRTL = i18n.dir() === 'rtl';
+  const { t, i18n, isRTL } = useUnifiedTranslation();
 
   const certifications = [
     { name: t('operations.certifications.haccp.name'), description: t('operations.certifications.haccp.description'), id: "CERT_HACCP" },
@@ -106,12 +105,12 @@ export default function OperationsPage() {
 
             {/* Right: Fresh Infrastructure Visual */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.98 }}
+              initial={{ opacity: 1, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1 }}
               className="relative w-full"
             >
-              <div className="relative aspect-[1/1] rounded-3xl sm:rounded-[4rem] lg:rounded-[5rem] border-8 sm:border-12 lg:border-[16px] border-white shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] overflow-hidden">
+              <div className="relative aspect-square rounded-3xl sm:rounded-[4rem] lg:rounded-[5rem] border-8 sm:border-12 lg:border-[16px] border-white shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] overflow-hidden">
                 <img
                   src={operationsFreshHero}
                   alt="United Fresh Shipment"
@@ -263,8 +262,7 @@ export default function OperationsPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="lg:col-span-12 p-12 rounded-[4rem] bg-[#fafafa] border border-black/5 group hover:bg-white hover:shadow-xl transition-all duration-500 overflow-hidden"
+              className="lg:col-span-12 p-12 rounded-[4rem] bg-[#fafafa] border border-black/5 group hover:bg-white hover:shadow-xl transition-all duration-500 overflow-hidden min-h-[300px]"
             >
               <div className="grid md:grid-cols-3 gap-8 sm:gap-12 items-center">
                 <div className="space-y-4 sm:space-y-6 text-start">

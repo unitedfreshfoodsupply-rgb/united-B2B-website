@@ -4,19 +4,18 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Mail, Phone, MapPin, Globe, ArrowRight, MessageSquare, Leaf } from "lucide-react";
-import { useTranslation } from "react-i18next";
+import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
 
 export default function Contact() {
-    const { t, i18n } = useTranslation('pages');
-    const isRTL = i18n.dir() === 'rtl';
+    const { t, i18n, isRTL } = useUnifiedTranslation();
 
     return (
         <Layout>
             <section className="relative min-h-[90vh] flex items-center pt-20 sm:pt-24 lg:pt-32 pb-16 sm:pb-20 lg:pb-24 overflow-hidden bg-white">
                 {/* Organic Background */}
-                <div className="absolute inset-0 z-0">
-                    <div className="absolute top-0 right-0 rtl:left-0 rtl:right-auto w-[1000px] h-[1000px] bg-uniteda-emerald/10 rounded-full blur-[180px] -mr-96 rtl:-ml-96 rtl:-mr-0 -mt-96 pointer-events-none" />
-                    <div className="absolute bottom-0 left-0 rtl:right-0 rtl:left-auto w-[800px] h-[800px] bg-uniteda-gold/10 rounded-full blur-[150px] -ml-48 rtl:-mr-48 rtl:-ml-0 -mb-48 pointer-events-none" />
+                <div className="absolute inset-0 z-0 overflow-hidden">
+                    <div className="absolute top-0 right-0 rtl:left-0 rtl:right-auto w-[1000px] h-[1000px] bg-uniteda-emerald/10 rounded-full blur-[100px] -mr-96 rtl:-ml-96 rtl:-mr-0 -mt-96 pointer-events-none will-change-transform" style={{ transform: 'translateZ(0)' }} />
+                    <div className="absolute bottom-0 left-0 rtl:right-0 rtl:left-auto w-[800px] h-[800px] bg-uniteda-gold/10 rounded-full blur-[80px] -ml-48 rtl:-mr-48 rtl:-ml-0 -mb-48 pointer-events-none will-change-transform" style={{ transform: 'translateZ(0)' }} />
                 </div>
 
                 <div className="container-wide relative z-10">
@@ -29,7 +28,7 @@ export default function Contact() {
                             className="text-start"
                         >
                             <div className="flex items-center gap-2 mb-6 sm:mb-8">
-                                <img src="/logo.png" alt="Uniteda" className="w-5 h-5 sm:w-6 sm:h-6 object-contain" />
+                                <img src="/logo.webp" alt="Uniteda" className="w-5 h-5 sm:w-6 sm:h-6 object-contain" width={24} height={24} />
                                 <span className="text-[10px] sm:text-xs font-black text-uniteda-emerald uppercase tracking-[0.3em] sm:tracking-[0.4em]">{t('contact.label')}</span>
                             </div>
 

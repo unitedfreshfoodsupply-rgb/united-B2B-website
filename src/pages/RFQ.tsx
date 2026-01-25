@@ -1,8 +1,8 @@
-import React, { useState, useMemo, useCallback } from "react";
-import { useTranslation } from "react-i18next";
+import { useState, useMemo, useCallback, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
+import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import {
@@ -17,11 +17,14 @@ import { Label } from "@/components/ui/label";
 import { ArrowRight, ArrowLeft, Building2, CheckCircle2, FileText, Clock, Truck, ShieldCheck, Globe2, Leaf, Box } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
-import rfqHero from "@/assets/rfq-hero.png";
+import rfqHero from "@/assets/rfq-hero.webp";
+
+const BusinessInfoStep = lazy(() => import("@/components/rfq/BusinessInfoStep").then(m => ({ default: m.BusinessInfoStep })));
+const SupplyRequirementsStep = lazy(() => import("@/components/rfq/SupplyRequirementsStep").then(m => ({ default: m.SupplyRequirementsStep })));
+const ContactInfoStep = lazy(() => import("@/components/rfq/ContactInfoStep").then(m => ({ default: m.ContactInfoStep })));
 
 export default function RFQPage() {
-  const { t, i18n } = useTranslation('pages');
-  const isRTL = i18n.dir() === 'rtl';
+  const { t, i18n, isRTL } = useUnifiedTranslation();
   const [currentStep, setCurrentStep] = useState(0);
   const [direction, setDirection] = useState(0); // 1 for forward, -1 for backward
 
@@ -222,171 +225,33 @@ export default function RFQPage() {
                     }}
                     className="w-full"
                   >
-                    {currentStep === 0 && (
-                      <div className="p-10 md:p-14 rounded-[3.5rem] bg-white border border-black/5 shadow-2xl shadow-black/[0.02] text-start">
-                        <div className="flex items-center gap-4 mb-10">
-                          <div className="w-12 h-12 rounded-2xl bg-uniteda-emerald/5 flex items-center justify-center text-uniteda-emerald">
-                            <Building2 size={24} />
-                          </div>
-                          <div>
-                            <h2 className="text-xl sm:text-2xl font-black text-uniteda-emerald-dark leading-none">{t('rfq.form.sections.business_info')}</h2>
-                            <p className="text-xs font-bold text-muted-foreground/60 uppercase mt-2 tracking-widest font-mono">{t('rfq.form.layers.initialization')}</p>
-                          </div>
-                        </div>
+                    <Suspense fallback={<div className="h-[400px] animate-pulse bg-white rounded-[3.5rem] border border-black/5" />}>
+                      {currentStep === 0 && (
+                        <BusinessInfoStep
+                          t={t}
+                          isRTL={isRTL}
+                          businessTypes={businessTypes}
+                        />
+                      )}
 
-                        <div className="grid sm:grid-cols-2 gap-x-10 gap-y-8">
-                          <div className="space-y-3">
-                            <Label htmlFor="company" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.company.label')}</Label>
-                            <Input id="company" placeholder={t('rfq.form.fields.company.placeholder')} className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-[#fcfcfc] border-black/5 px-4 sm:px-6 font-medium" required />
-                          </div>
-                          <div className="space-y-3">
-                            <Label htmlFor="businessType" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.business_type.label')}</Label>
-                            <Select required dir={isRTL ? "rtl" : "ltr"}>
-                              <SelectTrigger className="h-16 rounded-2xl bg-[#fcfcfc] border-black/5 px-6 font-medium text-start">
-                                <SelectValue placeholder={t('rfq.form.fields.business_type.placeholder')} />
-                              </SelectTrigger>
-                              <SelectContent className="rounded-2xl">
-                                {businessTypes.map(type => (
-                                  <SelectItem key={type.value} value={type.value} className="text-start">{type.label}</SelectItem>
-                                ))}
-                              </SelectContent>
-                            </Select>
-                          </div>
-                          <div className="space-y-3">
-                            <Label htmlFor="country" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.country.label')}</Label>
-                            <Select required dir={isRTL ? "rtl" : "ltr"}>
-                              <SelectTrigger className="h-16 rounded-2xl bg-[#fcfcfc] border-black/5 px-6 font-medium text-start">
-                                <SelectValue placeholder={t('rfq.form.fields.country.placeholder')} />
-                              </SelectTrigger>
-                              <SelectContent className="rounded-2xl">
-                                <SelectItem value="egypt" className="text-start">{t('products.filters.region.egypt')}</SelectItem>
-                                <SelectItem value="uae" className="text-start">{t('products.filters.region.uae')}</SelectItem>
-                              </SelectContent>
-                            </Select>
-                          </div>
-                          <div className="space-y-3">
-                            <Label htmlFor="city" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.city.label')}</Label>
-                            <Input id="city" placeholder={t('rfq.form.fields.city.placeholder')} className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-[#fcfcfc] border-black/5 px-4 sm:px-6 font-medium" required />
-                          </div>
-                        </div>
-                      </div>
-                    )}
+                      {currentStep === 1 && (
+                        <SupplyRequirementsStep
+                          t={t}
+                          isRTL={isRTL}
+                          productCategories={productCategories}
+                          selectedCategories={selectedCategories}
+                          handleCategoryToggle={handleCategoryToggle}
+                          volumeRanges={volumeRanges}
+                          frequencies={frequencies}
+                        />
+                      )}
 
-                    {currentStep === 1 && (
-                      <div className="p-10 md:p-14 rounded-[3.5rem] bg-white border border-black/5 shadow-2xl shadow-black/[0.02] text-start">
-                        <div className="flex items-center gap-4 mb-10">
-                          <div className="w-12 h-12 rounded-2xl bg-uniteda-emerald/5 flex items-center justify-center text-uniteda-emerald">
-                            <Truck size={24} />
-                          </div>
-                          <div>
-                            <h2 className="text-xl sm:text-2xl font-black text-uniteda-emerald-dark leading-none">{t('rfq.form.sections.supply_req')}</h2>
-                            <p className="text-xs font-bold text-muted-foreground/60 uppercase mt-2 tracking-widest font-mono">{t('rfq.form.layers.operational')}</p>
-                          </div>
-                        </div>
-
-                        <div className="space-y-8 sm:space-y-10">
-                          <div className="space-y-6">
-                            <Label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.categories.label')}</Label>
-                            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-                              {productCategories.map(category => (
-                                <label
-                                  key={category}
-                                  className={cn(
-                                    "flex items-center gap-3 sm:gap-4 p-4 sm:p-5 rounded-xl sm:rounded-2xl border transition-all cursor-pointer",
-                                    selectedCategories.includes(category)
-                                      ? "bg-uniteda-emerald border-uniteda-emerald text-white"
-                                      : "bg-[#fcfcfc] border-black/5 hover:border-uniteda-emerald/30"
-                                  )}
-                                >
-                                  <Checkbox
-                                    checked={selectedCategories.includes(category)}
-                                    onCheckedChange={() => handleCategoryToggle(category)}
-                                    className={cn(
-                                      "w-5 h-5 sm:w-6 sm:h-6 rounded-md sm:rounded-lg border-2 transition-all",
-                                      selectedCategories.includes(category)
-                                        ? "bg-white border-white text-uniteda-emerald data-[state=checked]:bg-white data-[state=checked]:text-uniteda-emerald"
-                                        : "border-black/10 bg-white"
-                                    )}
-                                  />
-                                  <span className="font-bold text-base sm:text-lg select-none">{category}</span>
-                                </label>
-                              ))}
-                            </div>
-                          </div>
-
-                          <div className="grid sm:grid-cols-2 gap-x-4 sm:gap-x-6 md:gap-x-8 lg:gap-x-10 gap-y-6 sm:gap-y-8">
-                            <div className="space-y-3">
-                              <Label htmlFor="volume" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.volume.label')}</Label>
-                              <Select required dir={isRTL ? "rtl" : "ltr"}>
-                                <SelectTrigger className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-[#fcfcfc] border-black/5 px-4 sm:px-6 font-medium text-start">
-                                  <SelectValue placeholder={t('rfq.form.fields.volume.placeholder')} />
-                                </SelectTrigger>
-                                <SelectContent className="rounded-2xl">
-                                  {volumeRanges.map(vol => (
-                                    <SelectItem key={vol.value} value={vol.value} className="text-start">{vol.label}</SelectItem>
-                                  ))}
-                                </SelectContent>
-                              </Select>
-                            </div>
-                            <div className="space-y-3">
-                              <Label htmlFor="frequency" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.frequency.label')}</Label>
-                              <Select required dir={isRTL ? "rtl" : "ltr"}>
-                                <SelectTrigger className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-[#fcfcfc] border-black/5 px-4 sm:px-6 font-medium text-start">
-                                  <SelectValue placeholder={t('rfq.form.fields.frequency.placeholder')} />
-                                </SelectTrigger>
-                                <SelectContent className="rounded-2xl">
-                                  {frequencies.map(freq => (
-                                    <SelectItem key={freq.value} value={freq.value} className="text-start">{freq.label}</SelectItem>
-                                  ))}
-                                </SelectContent>
-                              </Select>
-                            </div>
-                          </div>
-                          <div className="space-y-3">
-                            <Label htmlFor="requirements" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.requirements.label')}</Label>
-                            <Textarea id="requirements" placeholder={t('rfq.form.fields.requirements.placeholder')} rows={4} className="rounded-2xl sm:rounded-3xl bg-[#fcfcfc] border-black/5 p-4 sm:p-6 font-medium resize-none" />
-                          </div>
-                        </div>
-                      </div>
-                    )}
-
-                    {currentStep === 2 && (
-                      <div className="p-4 sm:p-6 md:p-8 lg:p-10 xl:p-14 rounded-2xl sm:rounded-3xl lg:rounded-[3.5rem] bg-white border border-black/5 shadow-2xl shadow-black/[0.02] text-start">
-                        <div className="flex items-center gap-4 mb-10">
-                          <div className="w-12 h-12 rounded-2xl bg-uniteda-emerald/5 flex items-center justify-center text-uniteda-emerald">
-                            <FileText size={24} />
-                          </div>
-                          <div>
-                            <h2 className="text-xl sm:text-2xl font-black text-uniteda-emerald-dark leading-none">{t('rfq.form.sections.contact_info')}</h2>
-                            <p className="text-xs font-bold text-muted-foreground/60 uppercase mt-2 tracking-widest font-mono">{t('rfq.form.layers.verification')}</p>
-                          </div>
-                        </div>
-
-                        <div className="grid sm:grid-cols-2 gap-x-10 gap-y-8">
-                          <div className="space-y-3">
-                            <Label htmlFor="name" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.name.label')}</Label>
-                            <Input id="name" placeholder={t('rfq.form.fields.name.placeholder')} className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-[#fcfcfc] border-black/5 px-4 sm:px-6 font-medium" required />
-                          </div>
-                          <div className="space-y-3">
-                            <Label htmlFor="position" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.position.label')}</Label>
-                            <Input id="position" placeholder={t('rfq.form.fields.position.placeholder')} className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-[#fcfcfc] border-black/5 px-4 sm:px-6 font-medium" />
-                          </div>
-                          <div className="space-y-3">
-                            <Label htmlFor="email" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.email.label')}</Label>
-                            <Input id="email" type="email" placeholder={t('rfq.form.fields.email.placeholder')} className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-[#fcfcfc] border-black/5 px-4 sm:px-6 font-medium" required />
-                          </div>
-                          <div className="space-y-3">
-                            <Label htmlFor="phone" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.phone.label')}</Label>
-                            <Input id="phone" type="tel" placeholder={t('rfq.form.fields.phone.placeholder')} className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-[#fcfcfc] border-black/5 px-4 sm:px-6 font-medium" required />
-                          </div>
-                        </div>
-
-                        <div className="mt-8 sm:mt-10 lg:mt-12 p-4 sm:p-6 rounded-xl sm:rounded-2xl bg-uniteda-emerald/5 border border-uniteda-emerald/10 flex items-start gap-3 sm:gap-4">
-                          <ShieldCheck className="text-uniteda-emerald mt-1 shrink-0" size={20} />
-                          <p className="text-xs font-bold text-uniteda-emerald-dark leading-relaxed">{t('rfq.form.authorization_note')}</p>
-                        </div>
-                      </div>
-                    )}
+                      {currentStep === 2 && (
+                        <ContactInfoStep
+                          t={t}
+                        />
+                      )}
+                    </Suspense>
                   </motion.div>
                 </AnimatePresence>
 

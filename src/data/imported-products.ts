@@ -17,7 +17,7 @@ export const importedProducts: ImportedProduct[] = [
         category: "fruits",
         origin: "imported",
         season: "available",
-        image: "/images/products/imported/avocado.png",
+        image: "/images/products/imported/avocado.webp",
         grades: ["premium"],
         price: "Market Price"
     },
@@ -27,7 +27,7 @@ export const importedProducts: ImportedProduct[] = [
         category: "fruits",
         origin: "imported",
         season: "available",
-        image: "/images/products/imported/blueberries.png",
+        image: "/images/products/imported/blueberries.webp",
         grades: ["premium"],
         price: "Market Price"
     },
@@ -37,7 +37,7 @@ export const importedProducts: ImportedProduct[] = [
         category: "fruits",
         origin: "imported",
         season: "available",
-        image: "/images/products/imported/raspberries.png",
+        image: "/images/products/imported/raspberries.webp",
         grades: ["premium"],
         price: "Market Price"
     },
@@ -47,7 +47,7 @@ export const importedProducts: ImportedProduct[] = [
         category: "fruits",
         origin: "imported",
         season: "available",
-        image: "/images/products/imported/blackberries.png",
+        image: "/images/products/imported/blackberries.webp",
         grades: ["premium"],
         price: "Market Price"
     },
@@ -57,7 +57,7 @@ export const importedProducts: ImportedProduct[] = [
         category: "exotic",
         origin: "imported",
         season: "available",
-        image: "/images/products/imported/lychee.png",
+        image: "/images/products/imported/lychee.webp",
         grades: ["premium"],
         price: "Market Price"
     },
@@ -67,7 +67,7 @@ export const importedProducts: ImportedProduct[] = [
         category: "exotic",
         origin: "imported",
         season: "available",
-        image: "/images/products/imported/mangosteen.png",
+        image: "/images/products/imported/mangosteen.webp",
         grades: ["premium"],
         price: "Market Price"
     },
@@ -77,7 +77,7 @@ export const importedProducts: ImportedProduct[] = [
         category: "exotic",
         origin: "imported",
         season: "available",
-        image: "/images/products/imported/passion_fruit.png",
+        image: "/images/products/imported/passion_fruit.webp",
         grades: ["premium"],
         price: "Market Price"
     },
@@ -87,7 +87,7 @@ export const importedProducts: ImportedProduct[] = [
         category: "exotic",
         origin: "imported",
         season: "available",
-        image: "/images/products/imported/rambutan.png",
+        image: "/images/products/imported/rambutan.webp",
         grades: ["premium"],
         price: "Market Price"
     },
@@ -97,7 +97,7 @@ export const importedProducts: ImportedProduct[] = [
         category: "exotic",
         origin: "imported",
         season: "available",
-        image: "/images/products/imported/star_fruit.png",
+        image: "/images/products/imported/star_fruit.webp",
         grades: ["premium"],
         price: "Market Price"
     },
@@ -107,7 +107,7 @@ export const importedProducts: ImportedProduct[] = [
         category: "fruits",
         origin: "imported",
         season: "available",
-        image: "/images/products/imported/kiwi.png",
+        image: "/images/products/imported/kiwi.webp",
         grades: ["premium"],
         price: "Market Price"
     },
@@ -117,7 +117,7 @@ export const importedProducts: ImportedProduct[] = [
         category: "fruits",
         origin: "imported",
         season: "available",
-        image: "/images/products/imported/pineapple.png",
+        image: "/images/products/imported/pineapple.webp",
         grades: ["premium"],
         price: "Market Price"
     },
@@ -127,7 +127,7 @@ export const importedProducts: ImportedProduct[] = [
         category: "fruits",
         origin: "imported",
         season: "available",
-        image: "/images/products/imported/red_currant.png",
+        image: "/images/products/imported/red_currant.webp",
         grades: ["premium"],
         price: "Market Price"
     },
@@ -137,7 +137,7 @@ export const importedProducts: ImportedProduct[] = [
         category: "fruits",
         origin: "imported",
         season: "available",
-        image: "/images/products/imported/white_currant.png",
+        image: "/images/products/imported/white_currant.webp",
         grades: ["premium"],
         price: "Market Price"
     },
@@ -147,7 +147,7 @@ export const importedProducts: ImportedProduct[] = [
         category: "specialty",
         origin: "imported",
         season: "available",
-        image: "/images/products/imported/ginger.png",
+        image: "/images/products/imported/ginger.webp",
         grades: ["premium"],
         price: "Market Price"
     },
@@ -157,7 +157,57 @@ export const importedProducts: ImportedProduct[] = [
         category: "exotic",
         origin: "imported",
         season: "available",
-        image: "/images/products/imported/dragon_fruit.png",
+        image: "/images/products/imported/dragon_fruit.webp",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "imp_cherry",
+        key: "imp_cherry",
+        category: "fruits",
+        origin: "imported",
+        season: "available",
+        image: "/images/products/imported-fruits/imported-red-cherry.webp",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "imp_apple_green_it",
+        key: "imp_apple_green_it",
+        category: "fruits",
+        origin: "imported",
+        season: "available",
+        image: "/images/products/imported-fruits/italian-green-apple.webp",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "imp_apple_red_it",
+        key: "imp_apple_red_it",
+        category: "fruits",
+        origin: "imported",
+        season: "available",
+        image: "/images/products/imported-fruits/italian-red-apple.webp",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "imp_apple_yellow_it",
+        key: "imp_apple_yellow_it",
+        category: "fruits",
+        origin: "imported",
+        season: "available",
+        image: "/images/products/imported-fruits/italian-yellow-apple.webp",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "imp_apple_green_pl",
+        key: "imp_apple_green_pl",
+        category: "fruits",
+        origin: "imported",
+        season: "available",
+        image: "/images/products/imported-fruits/polish-green-apple.webp",
         grades: ["premium"],
         price: "Market Price"
     }

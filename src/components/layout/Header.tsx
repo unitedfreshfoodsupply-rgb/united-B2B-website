@@ -4,11 +4,10 @@ import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion"
 import { Menu, X, ChevronDown, Globe, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { useTranslation } from "react-i18next";
+import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
 
 export function Header() {
-  const { t, i18n } = useTranslation('common');
-  const isRTL = i18n.dir() === 'rtl';
+  const { t, i18n, isRTL } = useUnifiedTranslation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,25 +38,22 @@ export function Header() {
 
   useEffect(() => {
     const updateHeader = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener("scroll", updateHeader);
+    window.addEventListener("scroll", updateHeader, { passive: true });
     return () => window.removeEventListener("scroll", updateHeader);
   }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none">
-      <motion.nav
+      <nav
         style={{
-          marginTop: isScrolled ? "1rem" : "0px",
           width: isScrolled ? "90%" : "100%",
-          paddingTop: headerPadding,
-          paddingBottom: headerPadding,
-          backgroundColor: headerBg,
+          transform: isScrolled ? "translateY(1rem)" : "translateY(0px)",
         }}
         className={cn(
-          "pointer-events-auto transition-all duration-500 ease-in-out",
+          "pointer-events-auto transition-all duration-500 ease-[0.22,1,0.36,1] will-change-transform",
           isScrolled
-            ? "backdrop-blur-md border border-white/20 shadow-xl rounded-full px-8 max-w-[1280px]"
-            : "bg-transparent border-b border-transparent px-6 w-full"
+            ? "backdrop-blur-md bg-white/80 border border-white/20 shadow-xl rounded-full px-8 py-3 max-w-[1280px]"
+            : "bg-transparent border-b border-transparent px-6 py-6 w-full"
         )}
       >
         <div className="flex items-center justify-between mx-auto">
@@ -67,7 +63,7 @@ export function Header() {
               whileHover={{ rotate: 5, scale: 1.05 }}
               className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-lg group-hover:shadow-uniteda-emerald/20 overflow-hidden"
             >
-              <img src="/logo.png" alt="Uniteda Logo" className="w-full h-full object-cover" />
+              <img src="/logo.webp" alt="Uniteda Logo" className="w-full h-full object-cover" width={40} height={40} />
             </motion.div>
             <div className="flex flex-col">
               <span className="font-bold text-xl text-uniteda-emerald-dark tracking-tight leading-none">{t('brand_short')}</span>
@@ -220,7 +216,7 @@ export function Header() {
             </motion.div>
           )}
         </AnimatePresence>
-      </motion.nav>
+      </nav>
     </header >
   );
 }

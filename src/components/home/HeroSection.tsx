@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { useTranslation, Trans } from "react-i18next";
+import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
 import { Link } from "react-router-dom";
 import { ArrowRight, Building2, Plane, ShoppingBag, Utensils, Zap, Shield, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -12,7 +13,7 @@ const industries = [
 ];
 
 export function HeroSection() {
-  const { t } = useTranslation('home');
+  const { t } = useUnifiedTranslation();
   return (
     <section className="relative min-h-[600px] sm:min-h-[700px] lg:min-h-screen flex items-center pt-16 sm:pt-20 pb-12 sm:pb-16 lg:pb-20 overflow-hidden bg-[#fafafa]">
       {/* Decorative Background Accents */}
@@ -24,8 +25,8 @@ export function HeroSection() {
           {/* Left Column: Content */}
           <div className="space-y-6 sm:space-y-8">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{ x: -20 }}
+              animate={{ x: 0 }}
               transition={{ duration: 0.6 }}
               className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-uniteda-emerald/5 border border-uniteda-emerald/10 text-uniteda-emerald mb-4"
             >
@@ -34,8 +35,8 @@ export function HeroSection() {
             </motion.div>
 
             <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ y: 30 }}
+              animate={{ y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
               className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-uniteda-emerald-dark leading-[0.95] tracking-tighter"
             >
@@ -46,8 +47,8 @@ export function HeroSection() {
             </motion.h1>
 
             <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+              initial={{ y: 20 }}
+              animate={{ y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-base sm:text-lg lg:text-xl text-muted-foreground max-w-lg leading-relaxed font-medium"
             >
@@ -94,15 +95,17 @@ export function HeroSection() {
           <div className="relative hidden lg:block">
             <div className="grid grid-cols-2 gap-4">
               <motion.div
-                initial={{ opacity: 0, scale: 0.8, y: 50 }}
+                initial={{ opacity: 1, scale: 0.95, y: 0 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0.2 }}
+                transition={{ duration: 1, delay: 0 }}
                 className="col-span-2 h-[200px] sm:h-[250px] lg:h-[300px] rounded-[2rem] sm:rounded-[2.5rem] bg-uniteda-emerald overflow-hidden relative group"
               >
                 <img
-                  src="https://images.unsplash.com/photo-1610348725531-843dff563e2c?auto=format&fit=crop&q=80&w=1000"
+                  src="https://images.unsplash.com/photo-1610348725531-843dff563e2c?auto=format&fit=crop&q=80&w=800"
                   alt="Premium Produce"
                   className="w-full h-full object-cover mix-blend-overlay opacity-60 transition-transform duration-700 group-hover:scale-110"
+                  fetchPriority="high"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 p-10 flex flex-col justify-end">
                   <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center mb-4">
@@ -155,6 +158,6 @@ export function HeroSection() {
           </div>
         </div>
       </div>
-    </section>
+    </section >
   );
 }

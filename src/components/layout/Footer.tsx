@@ -4,9 +4,10 @@ import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
+import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
+
 export function Footer() {
-  const { t, i18n } = useTranslation('common');
-  const isRTL = i18n.dir() === 'rtl';
+  const { t, i18n, isRTL } = useUnifiedTranslation();
 
   const footerLinks = {
     products: [
@@ -99,7 +100,7 @@ export function Footer() {
           <div className="lg:col-span-4 space-y-8">
             <Link to="/" className="flex items-center gap-4 group">
               <div className="w-14 h-14 rounded-2xl bg-white flex items-center justify-center shadow-xl shadow-uniteda-emerald/10 group-hover:rotate-6 transition-transform duration-500 rtl:group-hover:-rotate-6 overflow-hidden border border-black/5">
-                <img src="/logo.png" alt="Uniteda Logo" className="w-full h-full object-contain p-2" />
+                <img src="/logo.webp" alt="Uniteda Logo" className="w-full h-full object-contain p-2" width={48} height={48} />
               </div>
               <div className="flex flex-col">
                 <span className="font-black text-3xl tracking-tighter leading-none text-uniteda-emerald-dark uppercase">{t('brand_short')}</span>

@@ -42,6 +42,8 @@ export function OperationsSection() {
                   src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&q=80&w=1000"
                   alt="Operations Hub"
                   className="w-full h-full object-cover"
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-uniteda-emerald-dark to-transparent opacity-60" />
                 <div className="absolute bottom-0 left-0 rtl:left-auto rtl:right-0 p-10">

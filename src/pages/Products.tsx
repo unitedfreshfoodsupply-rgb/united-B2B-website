@@ -1,5 +1,4 @@
-import { useState, useRef, useEffect } from "react";
-import { useTranslation, Trans } from "react-i18next";
+import React, { useState, useRef, useEffect, useMemo, useDeferredValue, memo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
@@ -29,50 +28,14 @@ import {
   Sparkles
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import productsHero from "@/assets/products-hero.png";
+import { VirtuosoGrid } from "react-virtuoso";
+import productsHero from "@/assets/products-hero.webp";
 import { importedProducts } from "@/data/imported-products";
 import { vegetableProducts } from "@/data/vegetable-products";
 import { herbProducts } from "@/data/herb-products";
 import { localFruitProducts } from "@/data/local-fruit-products";
+import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
 
-
-const tickerItems = [
-  // Exotic Imported Fruits - Premium Berries
-  { key: "imp_2", icon: Cherry, tagKey: "premium", origin: "Global" },  // Blueberries
-  { key: "imp_3", icon: Cherry, tagKey: "premium", origin: "Global" },  // Raspberries
-  { key: "imp_4", icon: Cherry, tagKey: "premium", origin: "Global" },  // Blackberries
-
-  // Exotic Tropical Fruits
-  { key: "imp_5", icon: Cherry, tagKey: "new", origin: "Asia" },        // Lychee
-  { key: "imp_7", icon: Cherry, tagKey: "premium", origin: "Tropical" }, // Passion Fruit
-  { key: "imp_15", icon: Cherry, tagKey: "new", origin: "Asia" },       // Dragon Fruit
-  { key: "imp_9", icon: Cherry, tagKey: "premium", origin: "Asia" },    // Star Fruit
-
-  // Premium Local Fruits - Specialty Mangoes
-  { key: "loc_4", icon: Apple, tagKey: "peak", origin: "Egypt" },       // Mango Zebdia
-  { key: "loc_9", icon: Apple, tagKey: "premium", origin: "Egypt" },    // Mango Keitt
-  { key: "loc_52", icon: Apple, tagKey: "new", origin: "Egypt" },       // Mango Alphonso
-
-  // Premium Citrus & Dates
-  { key: "loc_31", icon: Apple, tagKey: "peak", origin: "Egypt" },      // Orange Navel
-  { key: "loc_21", icon: Apple, tagKey: "premium", origin: "Egypt" },   // Dates Barhi
-
-  // Specialty Vegetables
-  { key: "veg_1", icon: Leaf, tagKey: "premium", origin: "Egypt" },     // Green Asparagus
-  { key: "veg_22", icon: Leaf, tagKey: "new", origin: "Egypt" },        // Mushroom
-
-  // Premium Herbs & Microgreens
-  { key: "herb_27", icon: Sprout, tagKey: "new", origin: "Egypt" },     // Microgreens
-  { key: "herb_18", icon: Sprout, tagKey: "premium", origin: "Egypt" }, // Edible Flowers
-
-  // Specialty Items
-  { key: "herb_39", icon: Leaf, tagKey: "new", origin: "Egypt" },       // Broccolini
-  { key: "herb_42", icon: Leaf, tagKey: "premium", origin: "Egypt" },   // Purple Cauliflower
-
-  // Premium Imported
-  { key: "imp_1", icon: Apple, tagKey: "premium", origin: "Global" },   // Avocado
-  { key: "imp_11", icon: Apple, tagKey: "peak", origin: "Tropical" },   // Pineapple
-];
 
 const sampleProducts = [
   ...importedProducts,
@@ -81,12 +44,150 @@ const sampleProducts = [
   ...localFruitProducts
 ];
 
+// Generate ticker items dynamically from peak season products
+const tickerItems = sampleProducts
+  .filter(p => p.season === "peak")
+  .slice(0, 15)
+  .map(p => ({
+    key: p.key,
+    icon: p.category === "fruits" ? Apple :
+      p.category === "vegetables" ? Carrot :
+        p.category === "herbs" ? Leaf :
+          p.category === "microgreens" ? Sprout : Cherry,
+    tagKey: "peak",
+    origin: p.origin
+  }));
+
+const ProductCard = memo(({ product, t, viewMode, index }: { product: any, t: any, viewMode: "grid" | "list", index: number }) => {
+  return (
+    <motion.div
+      layout
+      initial={{ opacity: 0, scale: 0.9 }}
+      animate={{ opacity: 1, scale: 1 }}
+      exit={{ opacity: 0, scale: 0.9 }}
+      transition={{ duration: 0.3, delay: Math.min(index * 0.05, 0.5) }}
+      className={cn(
+        "group relative bg-white border border-black/5 rounded-[2rem] overflow-hidden hover:border-uniteda-emerald/30 hover:shadow-xl hover:shadow-uniteda-emerald/5 transition-all duration-500",
+        viewMode === "list" && "flex items-center p-4 gap-6 hover:translate-x-2"
+      )}
+    >
+      {/* Image Area */}
+      <div className={cn(
+        "relative bg-[#f8f8f8] group-hover:bg-[#f0fdf4] transition-colors duration-500 flex items-center justify-center overflow-hidden",
+        viewMode === "list" ? "w-24 h-24 rounded-2xl shrink-0" : "aspect-square w-full"
+      )}>
+        {product.image.length > 2 ? (
+          <img
+            src={product.image}
+            alt={t(`products.catalog.items.${product.key}.name`)}
+            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+            loading="lazy"
+            decoding="async"
+          />
+        ) : (
+          <div className="text-6xl group-hover:scale-110 transition-transform duration-500 drop-shadow-xl">{product.image}</div>
+        )}
+
+        {/* Grade Badge Overlay (Grid only) */}
+        {viewMode === "grid" && (
+          <div className="absolute top-4 right-4 flex flex-col gap-2 items-end">
+            {product.grades.slice(0, 1).map((grade: string) => (
+              <span key={grade} className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-sm shadow-sm text-[10px] font-bold uppercase tracking-wider text-uniteda-emerald-dark border border-black/5">
+                {t(`products.catalog.grades.${grade}`)}
+              </span>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {/* Content Area */}
+      <div className={cn(
+        "flex flex-col",
+        viewMode === "grid" ? "p-6" : "flex-1 py-1"
+      )}>
+        {/* Header */}
+        <div className="flex justify-between items-start mb-2">
+          <div className="text-start">
+            <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-1 block">
+              {t(`products.catalog.items.${product.key}.scientific_name`)}
+            </span>
+            <h3 className="font-display font-bold text-xl text-uniteda-emerald-dark group-hover:text-uniteda-emerald transition-colors leading-tight">
+              {t(`products.catalog.items.${product.key}.name`)}
+            </h3>
+          </div>
+          {viewMode === "list" && (
+            <span className={cn(
+              "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider",
+              product.season === "peak" ? "bg-emerald-100 text-emerald-700" :
+                product.season === "starting" ? "bg-amber-100 text-amber-700" :
+                  "bg-slate-100 text-slate-600"
+            )}>
+              {product.season === "peak" ? t('products.filters.season.peak') :
+                product.season === "starting" ? t('products.filters.season.starting') :
+                  t('products.filters.season.available')}
+            </span>
+          )}
+        </div>
+
+        {/* Metadata (Grid) */}
+        {viewMode === "grid" && (
+          <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground bg-muted/30 px-2 py-1 rounded-md">
+              <span className="w-1.5 h-1.5 rounded-full bg-uniteda-emerald" />
+              {t(`products.catalog.items.${product.key}.origin`)}
+            </div>
+            <div className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground bg-muted/30 px-2 py-1 rounded-md">
+              <TrendingUp className="w-3 h-3" />
+              {product.price}
+            </div>
+          </div>
+        )}
+
+        {/* Footer / Action */}
+        <div className={cn(
+          "mt-auto pt-4 border-t border-black/5 flex items-center justify-between",
+          viewMode === "list" && "mt-0 pt-0 border-none justify-end gap-6"
+        )}>
+          {viewMode === "grid" && (
+            <span className={cn(
+              "px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5",
+              product.season === "peak" ? "bg-emerald-50 text-emerald-600 border border-emerald-100" :
+                product.season === "starting" ? "bg-amber-50 text-amber-600 border border-amber-100" :
+                  "bg-slate-50 text-slate-500 border border-slate-100"
+            )}>
+              <span className={cn("w-1.5 h-1.5 rounded-full animate-pulse",
+                product.season === "peak" ? "bg-emerald-500" :
+                  product.season === "starting" ? "bg-amber-500" :
+                    "bg-slate-400"
+              )} />
+              {product.season === "peak" ? t('products.filters.season.peak') :
+                product.season === "starting" ? t('products.filters.season.starting') :
+                  t('products.filters.season.available')}
+            </span>
+          )}
+
+          <Button size="sm" className={cn(
+            "rounded-full font-bold transition-all",
+            viewMode === "grid"
+              ? "w-8 h-8 p-0 bg-transparent text-uniteda-emerald border border-uniteda-emerald/20 hover:bg-uniteda-emerald hover:text-white"
+              : "px-6 bg-uniteda-emerald text-white hover:bg-uniteda-emerald-dark"
+          )}>
+            {viewMode === "grid" ? <ArrowRight size={14} className="rtl:rotate-180" /> : <span className="flex items-center gap-2">{t('hero.cta_secondary')} <ArrowRight size={14} className="rtl:rotate-180" /></span>}
+          </Button>
+        </div>
+      </div>
+    </motion.div>
+  );
+});
+
+ProductCard.displayName = "ProductCard";
+
 export default function ProductsPage() {
-  const { t, i18n } = useTranslation('pages');
-  const isRTL = i18n.dir() === 'rtl';
+  const { t, i18n, isRTL } = useUnifiedTranslation();
   const [activeCategory, setActiveCategory] = useState("all");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [searchQuery, setSearchQuery] = useState("");
+  const deferredSearchQuery = useDeferredValue(searchQuery);
   const [regionFilter, setRegionFilter] = useState("all");
   const [seasonFilter, setSeasonFilter] = useState("all");
 
@@ -96,7 +197,7 @@ export default function ProductsPage() {
     return sampleProducts.filter(p => p.category === categoryId).length;
   };
 
-  const categories = [
+  const categories = useMemo(() => [
     { id: "all", nameKey: "products.catalog.categories.all", icon: Grid3X3, count: getCategoryCount("all") },
     { id: "fruits", nameKey: "products.catalog.categories.fruits", icon: Apple, count: getCategoryCount("fruits") },
     { id: "vegetables", nameKey: "products.catalog.categories.vegetables", icon: Carrot, count: getCategoryCount("vegetables") },
@@ -104,30 +205,32 @@ export default function ProductsPage() {
     { id: "microgreens", nameKey: "products.catalog.categories.microgreens", icon: Sprout, count: getCategoryCount("microgreens") },
     { id: "exotic", nameKey: "products.catalog.categories.exotic", icon: Cherry, count: getCategoryCount("exotic") },
     { id: "specialty", nameKey: "products.catalog.categories.specialty", icon: CircleDot, count: getCategoryCount("specialty") },
-  ];
+  ], [t]);
 
   // Combined filtering logic - all filters work together
-  const filteredProducts = sampleProducts.filter(product => {
-    const productName = t(`products.catalog.items.${product.key}.name`);
-    const productOrigin = t(`products.catalog.items.${product.key}.origin`);
+  const filteredProducts = useMemo(() => {
+    return sampleProducts.filter(product => {
+      const productName = t(`products.catalog.items.${product.key}.name`);
+      const productOrigin = t(`products.catalog.items.${product.key}.origin`);
 
-    // Category filter
-    const matchesCategory = activeCategory === "all" || product.category === activeCategory;
+      // Category filter
+      const matchesCategory = activeCategory === "all" || product.category === activeCategory;
 
-    // Search filter
-    const matchesSearch = searchQuery === "" ||
-      productName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      productOrigin.toLowerCase().includes(searchQuery.toLowerCase());
+      // Search filter
+      const matchesSearch = deferredSearchQuery === "" ||
+        productName.toLowerCase().includes(deferredSearchQuery.toLowerCase()) ||
+        productOrigin.toLowerCase().includes(deferredSearchQuery.toLowerCase());
 
-    // Region filter
-    const matchesRegion = regionFilter === "all" ||
-      productOrigin.toLowerCase().includes(regionFilter.toLowerCase());
+      // Region filter
+      const matchesRegion = regionFilter === "all" ||
+        productOrigin.toLowerCase().includes(regionFilter.toLowerCase());
 
-    // Season filter
-    const matchesSeason = seasonFilter === "all" || product.season === seasonFilter;
+      // Season filter
+      const matchesSeason = seasonFilter === "all" || product.season === seasonFilter;
 
-    return matchesCategory && matchesSearch && matchesRegion && matchesSeason;
-  });
+      return matchesCategory && matchesSearch && matchesRegion && matchesSeason;
+    });
+  }, [activeCategory, deferredSearchQuery, regionFilter, seasonFilter, t]);
 
   return (
     <Layout>
@@ -192,6 +295,8 @@ export default function ProductsPage() {
                   src={productsHero}
                   alt="Premium Produce"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
+                  fetchPriority="high"
+                  decoding="async"
                 />
 
                 {/* HUD Overlay */}
@@ -239,7 +344,7 @@ export default function ProductsPage() {
               transition={{ repeat: Infinity, duration: 120, ease: "linear" }}
               className="flex items-center gap-12 px-6"
             >
-              {[...tickerItems, ...tickerItems, ...tickerItems].map((item, i) => (
+              {[...tickerItems, ...tickerItems].map((item, i) => (
                 <div key={i} className="flex items-center gap-4 text-white group cursor-default flex-shrink-0">
                   <div className="w-10 h-10 rounded-full bg-uniteda-emerald/20 flex items-center justify-center group-hover:bg-uniteda-emerald transition-colors">
                     <item.icon size={18} className="text-uniteda-gold" />
@@ -343,6 +448,7 @@ export default function ProductsPage() {
                         <SelectItem value="all">{t('products.filters.region.all')}</SelectItem>
                         <SelectItem value="egypt">{t('products.filters.region.egypt')}</SelectItem>
                         <SelectItem value="uae">{t('products.filters.region.uae')}</SelectItem>
+                        <SelectItem value="imported">{t('products.filters.region.imported') || "Imported"}</SelectItem>
                       </SelectContent>
                     </Select>
                     <Select dir={isRTL ? "rtl" : "ltr"} value={seasonFilter} onValueChange={setSeasonFilter}>
@@ -402,131 +508,62 @@ export default function ProductsPage() {
               </motion.div>
 
               {/* Products List */}
-              <AnimatePresence mode="popLayout">
-                <div className={cn(
-                  "grid gap-6",
-                  viewMode === "grid" ? "sm:grid-cols-2 xl:grid-cols-3" : "grid-cols-1"
-                )}>
-                  {filteredProducts.map((product, index) => (
-                    <motion.div
-                      key={product.id}
-                      layout
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.9 }}
-                      transition={{ duration: 0.3, delay: index * 0.05 }}
-                      className={cn(
-                        "group relative bg-white border border-black/5 rounded-[2rem] overflow-hidden hover:border-uniteda-emerald/30 hover:shadow-xl hover:shadow-uniteda-emerald/5 transition-all duration-500",
-                        viewMode === "list" && "flex items-center p-4 gap-6 hover:translate-x-2"
-                      )}
+              <div className="min-h-[600px]">
+                {filteredProducts.length > 0 ? (
+                  <VirtuosoGrid
+                    useWindowScroll
+                    data={filteredProducts}
+                    components={{
+                      List: React.forwardRef<HTMLDivElement, { children?: React.ReactNode }>(({ children, ...props }, ref) => (
+                        <div
+                          {...props}
+                          ref={ref}
+                          className={cn(
+                            "grid gap-6",
+                            viewMode === "grid" ? "sm:grid-cols-2 xl:grid-cols-3" : "grid-cols-1"
+                          )}
+                        >
+                          {children}
+                        </div>
+                      )),
+                      Item: ({ children, ...props }) => (
+                        <div {...props}>
+                          {children}
+                        </div>
+                      )
+                    }}
+                    itemContent={(index, product) => (
+                      <ProductCard
+                        key={product.id}
+                        product={product}
+                        t={t}
+                        viewMode={viewMode}
+                        index={index}
+                      />
+                    )}
+                  />
+                ) : (
+                  <div className="flex flex-col items-center justify-center py-24 text-center">
+                    <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
+                      <Search className="w-8 h-8 text-muted-foreground" />
+                    </div>
+                    <h3 className="text-xl font-bold text-uniteda-emerald-dark mb-2">{t('products.catalog.no_results')}</h3>
+                    <p className="text-muted-foreground">{t('products.catalog.no_results_description')}</p>
+                    <Button
+                      variant="ghost"
+                      className="mt-4 text-uniteda-emerald font-bold"
+                      onClick={() => {
+                        setActiveCategory("all");
+                        setSearchQuery("");
+                        setRegionFilter("all");
+                        setSeasonFilter("all");
+                      }}
                     >
-                      {/* Image Area */}
-                      <div className={cn(
-                        "relative bg-[#f8f8f8] group-hover:bg-[#f0fdf4] transition-colors duration-500 flex items-center justify-center overflow-hidden",
-                        viewMode === "list" ? "w-24 h-24 rounded-2xl shrink-0" : "aspect-square w-full"
-                      )}>
-                        {product.image.length > 2 ? (
-                          <img
-                            src={product.image}
-                            alt={t(`products.catalog.items.${product.key}.name`)}
-                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                          />
-                        ) : (
-                          <div className="text-6xl group-hover:scale-110 transition-transform duration-500 drop-shadow-xl">{product.image}</div>
-                        )}
-
-                        {/* Grade Badge Overlay (Grid only) */}
-                        {viewMode === "grid" && (
-                          <div className="absolute top-4 right-4 flex flex-col gap-2 items-end">
-                            {product.grades.slice(0, 1).map(grade => (
-                              <span key={grade} className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-sm shadow-sm text-[10px] font-bold uppercase tracking-wider text-uniteda-emerald-dark border border-black/5">
-                                {t(`products.catalog.grades.${grade}`)}
-                              </span>
-                            ))}
-                          </div>
-                        )}
-                      </div>
-
-                      {/* Content Area */}
-                      <div className={cn(
-                        "flex flex-col",
-                        viewMode === "grid" ? "p-6" : "flex-1 py-1"
-                      )}>
-                        {/* Header */}
-                        <div className="flex justify-between items-start mb-2">
-                          <div className="text-start">
-                            <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-1 block">
-                              {t(`products.catalog.items.${product.key}.scientific_name`)}
-                            </span>
-                            <h3 className="font-display font-bold text-xl text-uniteda-emerald-dark group-hover:text-uniteda-emerald transition-colors leading-tight">
-                              {t(`products.catalog.items.${product.key}.name`)}
-                            </h3>
-                          </div>
-                          {viewMode === "list" && (
-                            <span className={cn(
-                              "px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider",
-                              product.season === "peak" ? "bg-emerald-100 text-emerald-700" :
-                                product.season === "starting" ? "bg-amber-100 text-amber-700" :
-                                  "bg-slate-100 text-slate-600"
-                            )}>
-                              {product.season === "peak" ? t('products.filters.season.peak') :
-                                product.season === "starting" ? t('products.filters.season.starting') :
-                                  t('products.filters.season.available')}
-                            </span>
-                          )}
-                        </div>
-
-                        {/* Metadata (Grid) */}
-                        {viewMode === "grid" && (
-                          <div className="flex items-center gap-3 mb-4">
-                            <div className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground bg-muted/30 px-2 py-1 rounded-md">
-                              <span className="w-1.5 h-1.5 rounded-full bg-uniteda-emerald" />
-                              {t(`products.catalog.items.${product.key}.origin`)}
-                            </div>
-                            <div className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground bg-muted/30 px-2 py-1 rounded-md">
-                              <TrendingUp className="w-3 h-3" />
-                              {product.price}
-                            </div>
-                          </div>
-                        )}
-
-                        {/* Footer / Action */}
-                        <div className={cn(
-                          "mt-auto pt-4 border-t border-black/5 flex items-center justify-between",
-                          viewMode === "list" && "mt-0 pt-0 border-none justify-end gap-6"
-                        )}>
-                          {viewMode === "grid" && (
-                            <span className={cn(
-                              "px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5",
-                              product.season === "peak" ? "bg-emerald-50 text-emerald-600 border border-emerald-100" :
-                                product.season === "starting" ? "bg-amber-50 text-amber-600 border border-amber-100" :
-                                  "bg-slate-50 text-slate-500 border border-slate-100"
-                            )}>
-                              <span className={cn("w-1.5 h-1.5 rounded-full animate-pulse",
-                                product.season === "peak" ? "bg-emerald-500" :
-                                  product.season === "starting" ? "bg-amber-500" :
-                                    "bg-slate-400"
-                              )} />
-                              {product.season === "peak" ? t('products.filters.season.peak') :
-                                product.season === "starting" ? t('products.filters.season.starting') :
-                                  t('products.filters.season.available')}
-                            </span>
-                          )}
-
-                          <Button size="sm" className={cn(
-                            "rounded-full font-bold transition-all",
-                            viewMode === "grid"
-                              ? "w-8 h-8 p-0 bg-transparent text-uniteda-emerald border border-uniteda-emerald/20 hover:bg-uniteda-emerald hover:text-white"
-                              : "px-6 bg-uniteda-emerald text-white hover:bg-uniteda-emerald-dark"
-                          )}>
-                            {viewMode === "grid" ? <ArrowRight size={14} className="rtl:rotate-180" /> : <span className="flex items-center gap-2">{t('hero.cta_secondary')} <ArrowRight size={14} className="rtl:rotate-180" /></span>}
-                          </Button>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ))}
-                </div>
-              </AnimatePresence>
+                      {t('products.filters.clear_all')}
+                    </Button>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>

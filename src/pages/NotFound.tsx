@@ -56,7 +56,7 @@ export default function NotFound() {
                 transition={{ duration: 0.8 }}
                 className="w-24 h-24 sm:w-28 sm:h-28 lg:w-32 lg:h-32 rounded-full bg-uniteda-emerald/10 border-2 border-uniteda-emerald/20 flex items-center justify-center text-uniteda-emerald mb-4 sm:mb-6 relative z-10 shadow-lg shadow-uniteda-emerald/10 p-5 sm:p-6 lg:p-7"
               >
-                <img src="/logo.png" alt="Uniteda" className="w-full h-full object-contain" />
+                <img src="/logo.webp" alt="Uniteda" className="w-full h-full object-contain" width={80} height={80} />
               </motion.div>
               <h1 className="font-display text-[80px] sm:text-[120px] md:text-[150px] lg:text-[180px] font-black text-uniteda-emerald/5 leading-none absolute -top-6 sm:-top-8 lg:-top-10 tracking-widest pointer-events-none">
                 404
