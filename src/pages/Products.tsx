@@ -264,13 +264,9 @@ export default function ProductsPage() {
   const [activeCategory, setActiveCategory] = useState("all");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [searchQuery, setSearchQuery] = useState("");
-  const [searchQuery, setSearchQuery] = useState("");
   const deferredSearchQuery = useDeferredValue(searchQuery);
   const [seasonFilter, setSeasonFilter] = useState("all");
   const [regionFilter, setRegionFilter] = useState("all");
-
-  // Use deferred search for filter stability during typing
-  const deferredSearchQuery = useDeferredValue(searchQuery);
 
   // 1️⃣ Data Normalization Layer
   // Pre-computes localized search strings to avoid calling t() inside hot loops

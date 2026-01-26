@@ -12,11 +12,27 @@
   <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
   <link rel="dns-prefetch" href="https://images.unsplash.com" />
 
-  <!-- Critical Translation Preload -->
-  <link rel="preload" href="/locales/en/common.json" as="fetch" crossorigin />
-  <link rel="preload" href="/locales/en/pages.json" as="fetch" crossorigin />
-  <link rel="preload" href="/locales/ar/common.json" as="fetch" crossorigin />
-  <link rel="preload" href="/locales/ar/pages.json" as="fetch" crossorigin />
+  <!-- Dynamic Translation Preload -->
+  <script>
+    (function () {
+      try {
+        const lng = localStorage.getItem('i18nextLng') || navigator.language.split('-')[0] || 'en';
+        const activeLng = lng.startsWith('ar') ? 'ar' : 'en';
+        const namespaces = ['common', 'pages'];
+
+        namespaces.forEach(ns => {
+          const link = document.createElement('link');
+          link.rel = 'preload';
+          link.as = 'fetch';
+          link.href = `/locales/${activeLng}/${ns}.json`;
+          link.crossOrigin = 'anonymous';
+          document.head.appendChild(link);
+        });
+      } catch (e) {
+        console.error('Preload failed:', e);
+      }
+    })();
+  </script>
 
   <!-- Critical Fonts -->
   <link rel="preload"
