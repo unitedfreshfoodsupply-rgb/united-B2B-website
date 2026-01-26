@@ -36,6 +36,8 @@ const getAvailabilityStatusKey = (data: number[], currentMonth: number) => {
     return { statusKey: "seasonal.status.off_season", color: "text-muted-foreground", bg: "bg-muted" };
 };
 
+import { ProduceImage } from "@/components/ui/ProduceImage";
+
 export function ProductCard({ product, region, currentMonth, onClick }: ProductCardProps) {
     const { t } = useTranslation('pages');
     const data = product.egypt;
@@ -65,11 +67,10 @@ export function ProductCard({ product, region, currentMonth, onClick }: ProductC
                 {/* Product Image */}
                 {product.image ? (
                     <div className="w-16 h-16 rounded-xl overflow-hidden shadow-md border border-border/50 bg-gradient-to-br from-muted/50 to-background">
-                        <img
+                        <ProduceImage
                             src={product.image}
                             alt={product.name}
                             className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
-                            loading="lazy"
                         />
                     </div>
                 ) : (

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Menu, X, ChevronDown, Globe, MapPin } from "lucide-react";
@@ -17,7 +17,7 @@ export function Header() {
   const headerPadding = useTransform(scrollY, [0, 50], ["1.5rem", "0.75rem"]);
   const headerBg = useTransform(scrollY, [0, 50], ["rgba(255, 255, 255, 0)", "rgba(255, 255, 255, 0.8)"]);
 
-  const navigation = [
+  const navigation = useMemo(() => [
     { name: t('header.nav.home'), href: "/" },
     { name: t('header.nav.about'), href: "/about" },
     {
@@ -34,7 +34,7 @@ export function Header() {
     { name: t('header.nav.seasonal'), href: "/seasonal" },
     { name: t('header.nav.operations'), href: "/operations" },
     { name: t('header.nav.inquiry'), href: "/rfq" },
-  ];
+  ], [t]);
 
   useEffect(() => {
     const updateHeader = () => setIsScrolled(window.scrollY > 20);
@@ -43,17 +43,13 @@ export function Header() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none">
+    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pointer-events-none px-4 sm:px-6 py-4 sm:py-6">
       <nav
-        style={{
-          width: isScrolled ? "90%" : "100%",
-          transform: isScrolled ? "translateY(1rem)" : "translateY(0px)",
-        }}
         className={cn(
-          "pointer-events-auto transition-all duration-500 ease-[0.22,1,0.36,1] will-change-transform",
+          "pointer-events-auto transition-all duration-500 ease-[0.22,1,0.36,1] will-change-[transform,opacity] w-full mx-auto max-w-[1400px] px-8 py-3 rounded-full",
           isScrolled
-            ? "backdrop-blur-md bg-white/80 border border-white/20 shadow-xl rounded-full px-8 py-3 max-w-[1280px]"
-            : "bg-transparent border-b border-transparent px-6 py-6 w-full"
+            ? "backdrop-blur-md bg-white/80 border border-white/20 shadow-xl translate-y-2 scale-[0.98]"
+            : "bg-white/0 border border-transparent translate-y-0 scale-100"
         )}
       >
         <div className="flex items-center justify-between mx-auto">
@@ -85,42 +81,29 @@ export function Header() {
                   className={cn(
                     "relative px-5 py-2 rounded-full text-sm font-semibold transition-all duration-300",
                     location.pathname === item.href
-                      ? "text-uniteda-emerald-dark"
+                      ? "text-uniteda-emerald-dark bg-white shadow-sm"
                       : "text-muted-foreground hover:text-uniteda-emerald"
                   )}
                 >
-                  {location.pathname === item.href && (
-                    <motion.div
-                      layoutId="nav-pill"
-                      className="absolute inset-0 bg-white rounded-full shadow-sm -z-10"
-                    />
-                  )}
                   {item.name}
                 </Link>
 
-                {/* Dropdown */}
-                <AnimatePresence>
-                  {item.children && activeDropdown === item.name && (
-                    <motion.div
-                      initial={{ opacity: 0, scale: 0.95, y: 10 }}
-                      animate={{ opacity: 1, scale: 1, y: 0 }}
-                      exit={{ opacity: 0, scale: 0.95, y: 10 }}
-                      className="absolute top-full start-0 mt-4 w-64 glass-panel rounded-3xl p-3 border border-white/20 origin-top"
-                    >
-                      <div className="grid gap-1">
-                        {item.children.map((child) => (
-                          <Link
-                            key={child.name}
-                            to={child.href}
-                            className="flex items-center px-4 py-3 rounded-2xl text-sm font-medium text-muted-foreground hover:text-uniteda-emerald hover:bg-uniteda-emerald/5 transition-all"
-                          >
-                            {child.name}
-                          </Link>
-                        ))}
-                      </div>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                {/* Dropdown - CSS Based for Zero Reflow */}
+                {item.children && activeDropdown === item.name && (
+                  <div className="absolute top-full start-0 mt-4 w-64 bg-white/90 backdrop-blur-xl rounded-3xl p-3 border border-black/5 shadow-2xl z-[100]">
+                    <div className="grid gap-1">
+                      {item.children.map((child) => (
+                        <Link
+                          key={child.name}
+                          to={child.href}
+                          className="flex items-center px-4 py-3 rounded-2xl text-sm font-medium text-muted-foreground hover:text-uniteda-emerald hover:bg-uniteda-emerald/5 transition-all"
+                        >
+                          {child.name}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </div>
             ))}
           </div>

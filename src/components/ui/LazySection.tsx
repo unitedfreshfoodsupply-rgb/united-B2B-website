@@ -1,12 +1,20 @@
 import React, { Suspense, lazy } from 'react';
 import { useInView } from 'react-intersection-observer';
+import { SectionSkeleton } from '@/components/ui/SectionSkeleton';
 
 interface LazySectionProps {
     importFunc: () => Promise<{ default: React.ComponentType<any> }>;
     fallback?: React.ReactNode;
+    minHeight?: string;
+    props?: any;
 }
 
-export const LazySection: React.FC<LazySectionProps> = ({ importFunc, fallback }) => {
+export const LazySection: React.FC<LazySectionProps> = ({
+    importFunc,
+    fallback,
+    minHeight = "400px",
+    props = {}
+}) => {
     const { ref, inView } = useInView({
         triggerOnce: true,
         rootMargin: '600px 0px', // Load much earlier to prevent layout shifts
@@ -15,13 +23,13 @@ export const LazySection: React.FC<LazySectionProps> = ({ importFunc, fallback }
     const LazyComponent = React.useMemo(() => lazy(importFunc), [importFunc]);
 
     return (
-        <div ref={ref} className="min-h-[200px]">
+        <div ref={ref} style={{ minHeight }}>
             {inView ? (
-                <Suspense fallback={fallback || <div className="h-20 animate-pulse bg-muted/20" />}>
-                    <LazyComponent />
+                <Suspense fallback={fallback || <SectionSkeleton height={minHeight} />}>
+                    <LazyComponent {...props} />
                 </Suspense>
             ) : (
-                fallback || <div className="h-20 animate-pulse bg-muted/20" />
+                fallback || <SectionSkeleton height={minHeight} />
             )}
         </div>
     );

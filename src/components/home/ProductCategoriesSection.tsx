@@ -45,6 +45,8 @@ const categories = [
   },
 ];
 
+import { ProduceImage } from "@/components/ui/ProduceImage";
+
 export function ProductCategoriesSection() {
   const { t } = useTranslation('home');
   return (
@@ -136,12 +138,10 @@ export function ProductCategoriesSection() {
               {cat.image && (
                 <div className="absolute inset-0 z-0">
                   <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-background/20 z-10" />
-                  <img
+                  <ProduceImage
                     src={cat.image}
                     alt={t(`categories.${cat.id}.name`)}
                     className="w-full h-full object-cover opacity-15 group-hover:opacity-30 transition-all duration-700 group-hover:scale-110"
-                    loading="lazy"
-                    decoding="async"
                   />
                 </div>
               )}

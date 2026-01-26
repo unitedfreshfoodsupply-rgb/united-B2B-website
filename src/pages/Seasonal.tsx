@@ -1,4 +1,4 @@
-import { useState, useMemo, memo, useDeferredValue } from "react";
+import { useState, useMemo, memo, useDeferredValue, lazy } from "react";
 import React from "react";
 import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
 import { motion } from "framer-motion";
@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Sun, Droplets, Snowflake, Leaf, Info, Grid3x3, Table2, Download, Calendar, Search } from "lucide-react";
 import { ProductCard } from "@/components/seasonal/ProductCard";
 import { InSeasonNow } from "@/components/seasonal/InSeasonNow";
-import { ProductDetailModal } from "@/components/seasonal/ProductDetailModal";
+const ProductDetailModal = lazy(() => import("@/components/seasonal/ProductDetailModal").then(m => ({ default: m.ProductDetailModal })));
 import { cn } from "@/lib/utils";
 import { importedProducts } from "@/data/imported-products";
 import { vegetableProducts } from "@/data/vegetable-products";

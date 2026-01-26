@@ -35,6 +35,8 @@ import { vegetableProducts } from "@/data/vegetable-products";
 import { herbProducts } from "@/data/herb-products";
 import { localFruitProducts } from "@/data/local-fruit-products";
 import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
+import { ProduceImage } from "@/components/ui/ProduceImage";
+import { LazySection } from "@/components/ui/LazySection";
 
 
 const sampleProducts = [
@@ -45,26 +47,34 @@ const sampleProducts = [
 ];
 
 // Generate ticker items dynamically from peak season products
-const tickerItems = sampleProducts
-  .filter(p => p.season === "peak")
-  .slice(0, 15)
-  .map(p => ({
-    key: p.key,
-    icon: p.category === "fruits" ? Apple :
-      p.category === "vegetables" ? Carrot :
-        p.category === "herbs" ? Leaf :
-          p.category === "microgreens" ? Sprout : Cherry,
-    tagKey: "peak",
-    origin: p.origin
-  }));
+const useProductTickerItems = (products: any[]) => {
+  return useMemo(() => {
+    return products
+      .filter(p => p.season === "peak")
+      .slice(0, 15)
+      .map(p => ({
+        key: p.key,
+        icon: p.category === "fruits" ? Apple :
+          p.category === "vegetables" ? Carrot :
+            p.category === "herbs" ? Leaf :
+              p.category === "microgreens" ? Sprout : Cherry,
+        tagKey: "peak",
+        origin: p.origin
+      }));
+  }, [products]);
+};
 
 const ProductCard = memo(({ product, t, viewMode, index }: { product: any, t: any, viewMode: "grid" | "list", index: number }) => {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      exit={{ opacity: 0, scale: 0.9 }}
-      transition={{ duration: 0.3, delay: Math.min(index * 0.05, 0.5) }}
+      initial={{ opacity: 0, y: 10 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: 10 }}
+      transition={{
+        duration: 0.2,
+        delay: Math.min(index * 0.03, 0.3),
+        ease: "easeOut"
+      }}
       className={cn(
         "group relative bg-white border border-black/5 rounded-[2rem] overflow-hidden hover:border-uniteda-emerald/30 hover:shadow-xl hover:shadow-uniteda-emerald/5 transition-all duration-500",
         viewMode === "list" && "flex items-center p-4 gap-6 hover:translate-x-2"
@@ -76,12 +86,11 @@ const ProductCard = memo(({ product, t, viewMode, index }: { product: any, t: an
         viewMode === "list" ? "w-24 h-24 rounded-2xl shrink-0" : "aspect-square w-full"
       )}>
         {product.image.length > 2 ? (
-          <img
+          <ProduceImage
             src={product.image}
             alt={t(`products.catalog.items.${product.key}.name`)}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-            loading={index < 6 ? "eager" : "lazy"}
-            decoding="async"
+            className="w-full h-full group-hover:scale-110 transition-transform duration-500"
+            isPriority={index < 4}
           />
         ) : (
           <div className="text-6xl group-hover:scale-110 transition-transform duration-500 drop-shadow-xl">{product.image}</div>
@@ -183,11 +192,13 @@ ProductCard.displayName = "ProductCard";
 
 export default function ProductsPage() {
   const { t, i18n, isRTL } = useUnifiedTranslation();
+  const tickerItems = useProductTickerItems(sampleProducts);
   const [activeCategory, setActiveCategory] = useState("all");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [searchQuery, setSearchQuery] = useState("");
   const deferredSearchQuery = useDeferredValue(searchQuery);
   const [seasonFilter, setSeasonFilter] = useState("all");
+  const [regionFilter, setRegionFilter] = useState("all");
 
   // Calculate real category counts from actual products
   const getCategoryCount = (categoryId: string) => {
@@ -207,24 +218,29 @@ export default function ProductsPage() {
 
   // Combined filtering logic - all filters work together
   const filteredProducts = useMemo(() => {
+    const query = deferredSearchQuery.toLowerCase().trim();
+    const region = regionFilter.toLowerCase();
+
     return sampleProducts.filter(product => {
-      const productName = t(`products.catalog.items.${product.key}.name`);
-      const productOrigin = t(`products.catalog.items.${product.key}.origin`);
-
       // Category filter
-      const matchesCategory = activeCategory === "all" || product.category === activeCategory;
-
-      // Search filter
-      const matchesSearch = deferredSearchQuery === "" ||
-        productName.toLowerCase().includes(deferredSearchQuery.toLowerCase()) ||
-        productOrigin.toLowerCase().includes(deferredSearchQuery.toLowerCase());
+      if (activeCategory !== "all" && product.category !== activeCategory) return false;
 
       // Season filter
-      const matchesSeason = seasonFilter === "all" || product.season === seasonFilter;
+      if (seasonFilter !== "all" && product.season !== seasonFilter) return false;
 
-      return matchesCategory && matchesSearch && matchesSeason;
+      // Search and Region filter
+      const productName = t(`products.catalog.items.${product.key}.name`).toLowerCase();
+      const productOrigin = t(`products.catalog.items.${product.key}.origin`).toLowerCase();
+
+      const matchesSearch = query === "" ||
+        productName.includes(query) ||
+        productOrigin.includes(query);
+
+      const matchesRegion = region === "all" || productOrigin.includes(region);
+
+      return matchesSearch && matchesRegion;
     });
-  }, [activeCategory, deferredSearchQuery, seasonFilter, t]);
+  }, [activeCategory, deferredSearchQuery, seasonFilter, regionFilter, t, sampleProducts]);
 
   return (
     <Layout>
@@ -253,9 +269,9 @@ export default function ProductsPage() {
                   <Sparkles size={14} className="animate-pulse" />
                   {t('products.header.badge')}
                 </motion.span>
-                <h1 className="font-display text-6xl md:text-7xl lg:text-8xl font-black text-uniteda-emerald-dark mb-6 tracking-tight leading-[0.9] uppercase">
-                  {t('products.header.title')} <br />
-                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-uniteda-emerald via-uniteda-emerald to-uniteda-gold">
+                <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-uniteda-emerald-dark mb-6 tracking-tight leading-[0.9] uppercase">
+                  {t('products.header.title')}
+                  <span className="block text-transparent bg-clip-text bg-gradient-to-r from-uniteda-emerald via-uniteda-emerald to-uniteda-gold">
                     {t('products.header.title_highlight')}
                   </span>
                 </h1>
@@ -289,7 +305,7 @@ export default function ProductsPage() {
                   src={productsHero}
                   alt="Premium Produce"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
-                  decoding="async"
+                  fetchPriority="high"
                 />
 
                 {/* HUD Overlay */}
@@ -325,45 +341,51 @@ export default function ProductsPage() {
           </div>
         </div>
 
-        {/* Categories Auto-scroll Ticker */}
-        <div className="relative mt-12 bg-uniteda-emerald-dark py-6 overflow-hidden border-y border-uniteda-emerald/20">
-          {/* Edge Masks */}
-          <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-uniteda-emerald-dark to-transparent z-10 pointer-events-none" />
-          <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-uniteda-emerald-dark to-transparent z-10 pointer-events-none" />
+        <LazySection
+          minHeight="100px"
+          importFunc={() => Promise.resolve({
+            default: () => (
+              <div className="relative mt-12 bg-uniteda-emerald-dark py-6 overflow-hidden border-y border-uniteda-emerald/20">
+                {/* Edge Masks */}
+                <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-uniteda-emerald-dark to-transparent z-10 pointer-events-none" />
+                <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-uniteda-emerald-dark to-transparent z-10 pointer-events-none" />
 
-          <div className="flex whitespace-nowrap overflow-hidden">
-            <motion.div
-              animate={{ x: isRTL ? ["0%", "100%"] : ["0%", "-100%"] }}
-              transition={{ repeat: Infinity, duration: 120, ease: "linear" }}
-              className="flex items-center gap-12 px-6"
-            >
-              {[...tickerItems, ...tickerItems].map((item, i) => (
-                <div key={i} className="flex items-center gap-4 text-white group cursor-default flex-shrink-0">
-                  <div className="w-10 h-10 rounded-full bg-uniteda-emerald/20 flex items-center justify-center group-hover:bg-uniteda-emerald transition-colors">
-                    <item.icon size={18} className="text-uniteda-gold" />
-                  </div>
-                  <div className="flex flex-col">
-                    <div className="flex items-center gap-2">
-                      <span className="text-sm font-black uppercase tracking-widest whitespace-nowrap">
-                        {t(`products.catalog.items.${item.key}.name`)}
-                      </span>
-                      <span className={cn(
-                        "text-[8px] font-black px-1.5 py-0.5 rounded",
-                        item.tagKey === "new" ? "bg-uniteda-emerald text-white" : "bg-uniteda-gold text-white"
-                      )}>
-                        {t(`products.ticker.${item.tagKey}`)}
-                      </span>
-                    </div>
-                    <span className="text-[10px] font-bold text-white/40 uppercase tracking-tighter">
-                      {t('products.ticker.sourced_via_local')}
-                    </span>
-                  </div>
-                  <div className="h-4 w-px bg-white/10 ml-8" />
+                <div className="flex whitespace-nowrap overflow-hidden">
+                  <motion.div
+                    animate={{ x: isRTL ? ["0%", "100%"] : ["0%", "-100%"] }}
+                    transition={{ repeat: Infinity, duration: 120, ease: "linear" }}
+                    className="flex items-center gap-12 px-6"
+                  >
+                    {[...tickerItems, ...tickerItems].map((item, i) => (
+                      <div key={i} className="flex items-center gap-4 text-white group cursor-default flex-shrink-0">
+                        <div className="w-10 h-10 rounded-full bg-uniteda-emerald/20 flex items-center justify-center group-hover:bg-uniteda-emerald transition-colors">
+                          <item.icon size={18} className="text-uniteda-gold" />
+                        </div>
+                        <div className="flex flex-col">
+                          <div className="flex items-center gap-2">
+                            <span className="text-sm font-black uppercase tracking-widest whitespace-nowrap">
+                              {t(`products.catalog.items.${item.key}.name`)}
+                            </span>
+                            <span className={cn(
+                              "text-[8px] font-black px-1.5 py-0.5 rounded",
+                              item.tagKey === "new" ? "bg-uniteda-emerald text-white" : "bg-uniteda-gold text-white"
+                            )}>
+                              {t(`products.ticker.${item.tagKey}`)}
+                            </span>
+                          </div>
+                          <span className="text-[10px] font-bold text-white/40 uppercase tracking-tighter">
+                            {t('products.ticker.sourced_via_local')}
+                          </span>
+                        </div>
+                        <div className="h-4 w-px bg-white/10 ml-8" />
+                      </div>
+                    ))}
+                  </motion.div>
                 </div>
-              ))}
-            </motion.div>
-          </div>
-        </div>
+              </div>
+            )
+          })}
+        />
       </section>
 
       {/* Main Content (Filters & Products) */}
@@ -444,6 +466,17 @@ export default function ProductsPage() {
                         <SelectItem value="starting">{t('products.filters.season.starting')}</SelectItem>
                       </SelectContent>
                     </Select>
+
+                    <Select dir={isRTL ? "rtl" : "ltr"} value={regionFilter} onValueChange={setRegionFilter}>
+                      <SelectTrigger className="w-full rounded-xl border-black/5 bg-muted/30 hover:bg-muted/50 transition-colors font-medium">
+                        <SelectValue placeholder={t('seasonal.controls.region.all') || "All Regions"} />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">{t('seasonal.controls.region.all') || "All Regions"}</SelectItem>
+                        <SelectItem value="egypt">{t('seasonal.controls.region.egypt')}</SelectItem>
+                        <SelectItem value="imported">{t('products.ticker.imported')}</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                 </div>
               </div>
@@ -494,7 +527,7 @@ export default function ProductsPage() {
                 {filteredProducts.length > 0 ? (
                   <VirtuosoGrid
                     useWindowScroll
-                    overscan={400}
+                    overscan={200}
                     data={filteredProducts}
                     components={{
                       List: React.forwardRef<HTMLDivElement, { children?: React.ReactNode }>(({ children, ...props }, ref) => (
