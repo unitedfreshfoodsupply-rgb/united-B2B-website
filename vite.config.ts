@@ -38,9 +38,8 @@ export default defineConfig(({ mode }) => ({
     rollupOptions: {
       output: {
         manualChunks: {
-          'vendor-core': ['react', 'react-dom', 'react-router-dom', '@tanstack/react-query'],
-          'vendor-utils': ['clsx', 'tailwind-merge', 'date-fns', 'i18next'],
-          'vendor-ui-core': ['@radix-ui/react-slot', '@radix-ui/react-label', 'lucide-react'],
+          'vendor-core': ['react', 'react-dom'],
+          'vendor-base': ['@tanstack/react-query', 'react-router-dom', 'i18next', 'clsx', 'tailwind-merge', 'date-fns', '@radix-ui/react-slot', '@radix-ui/react-label', 'lucide-react'],
           'vendor-animation': ['framer-motion'],
         }
       }

@@ -1,4 +1,10 @@
 {
+    "partners": {
+        "label": "Strategic Supply Network",
+        "title_prefix": "Supplying The",
+        "title_highlight": "Best",
+        "subtitle": "UNITEDA powers the digital supply infrastructure for the world's most elite hospitality brands."
+    },
     "hero": {
         "label": "Next-Gen Supply Intelligence",
         "title_prefix": "The DNA of",

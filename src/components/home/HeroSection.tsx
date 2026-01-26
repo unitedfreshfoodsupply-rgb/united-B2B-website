@@ -1,19 +1,22 @@
+import React from "react";
 import { motion } from "framer-motion";
-import { useTranslation, Trans } from "react-i18next";
+import { Trans } from "react-i18next";
 import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
 import { Link } from "react-router-dom";
 import { ArrowRight, Building2, Plane, ShoppingBag, Utensils, Zap, Shield, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { MagneticWrapper } from "@/components/ui/MagneticWrapper";
+import { ProduceImage } from "@/components/ui/ProduceImage";
 
-const industries = [
-  { icon: Building2, label: "Hotels" },
-  { icon: Utensils, label: "Restaurants" },
-  { icon: Plane, label: "Airlines" },
-  { icon: ShoppingBag, label: "Retail" },
+const PARTNER_LOGOS = [
+  "/images/partners/fairmont.png",
+  "/images/partners/four-seasons.png",
+  "/images/partners/kempinski.png",
+  "/images/partners/jaz.png"
 ];
 
-export function HeroSection() {
-  const { t } = useUnifiedTranslation();
+export const HeroSection = React.memo(function HeroSection() {
+  const { t, isRTL } = useUnifiedTranslation();
   return (
     <section className="relative min-h-[600px] sm:min-h-[700px] lg:min-h-screen flex items-center pt-16 sm:pt-20 pb-12 sm:pb-16 lg:pb-20 overflow-hidden bg-[#fafafa]">
       {/* Decorative Background Accents */}
@@ -61,15 +64,20 @@ export function HeroSection() {
               transition={{ duration: 0.8, delay: 0.3 }}
               className="flex flex-wrap gap-4"
             >
-              <Button size="xl" className="rounded-full bg-uniteda-emerald hover:bg-uniteda-emerald-dark text-white px-6 sm:px-8 lg:px-10 py-5 sm:py-6 lg:py-8 text-sm sm:text-base lg:text-lg font-bold shadow-2xl shadow-uniteda-emerald/20 transition-all hover:scale-105">
-                <Link to="/rfq" className="flex items-center gap-2">
-                  {t('hero.cta_primary')}
-                  <ArrowRight size={20} className="rtl:rotate-180" />
-                </Link>
-              </Button>
-              <Button variant="outline" size="xl" className="rounded-full border-2 border-uniteda-emerald/20 text-uniteda-emerald hover:bg-uniteda-emerald/5 px-6 sm:px-8 lg:px-10 py-5 sm:py-6 lg:py-8 text-sm sm:text-base lg:text-lg font-bold transition-all">
-                <Link to="/products">{t('hero.cta_secondary')}</Link>
-              </Button>
+              <MagneticWrapper strength={0.2}>
+                <Button size="xl" className="rounded-full bg-uniteda-emerald hover:bg-uniteda-emerald-dark text-white px-6 sm:px-8 lg:px-10 py-5 sm:py-6 lg:py-8 text-sm sm:text-base lg:text-lg font-bold shadow-2xl shadow-uniteda-emerald/20 transition-all hover:scale-105">
+                  <Link to="/rfq" className="flex items-center gap-2">
+                    {t('hero.cta_primary')}
+                    <ArrowRight size={20} className={isRTL ? "rotate-180" : ""} />
+                  </Link>
+                </Button>
+              </MagneticWrapper>
+
+              <MagneticWrapper strength={0.15}>
+                <Button variant="outline" size="xl" className="rounded-full border-2 border-uniteda-emerald/20 text-uniteda-emerald hover:bg-uniteda-emerald/5 px-6 sm:px-8 lg:px-10 py-5 sm:py-6 lg:py-8 text-sm sm:text-base lg:text-lg font-bold transition-all">
+                  <Link to="/products">{t('hero.cta_secondary')}</Link>
+                </Button>
+              </MagneticWrapper>
             </motion.div>
 
             <motion.div
@@ -79,14 +87,9 @@ export function HeroSection() {
               className="flex items-center gap-4 sm:gap-6 lg:gap-8 pt-4 sm:pt-6"
             >
               <div className="flex -space-x-3 rtl:space-x-reverse">
-                {[
-                  "/images/partners/fairmont.png",
-                  "/images/partners/four-seasons.png",
-                  "/images/partners/kempinski.png",
-                  "/images/partners/jaz.png"
-                ].map((src, i) => (
+                {PARTNER_LOGOS.map((src, i) => (
                   <div key={i} className="w-12 h-12 rounded-full border-4 border-white bg-white flex items-center justify-center text-xs font-bold overflow-hidden shadow-sm">
-                    <img src={src} alt="partner" className="w-full h-full object-contain p-1.5" />
+                    <img src={src} alt="partner" className="w-full h-full object-contain p-1.5" width={48} height={48} />
                   </div>
                 ))}
               </div>
@@ -105,12 +108,13 @@ export function HeroSection() {
                 transition={{ duration: 1, delay: 0 }}
                 className="col-span-2 h-[200px] sm:h-[250px] lg:h-[300px] rounded-[2rem] sm:rounded-[2.5rem] bg-uniteda-emerald overflow-hidden relative group"
               >
-                <img
-                  src="https://images.unsplash.com/photo-1610348725531-843dff563e2c?auto=format&fit=crop&q=80&w=800"
+                <ProduceImage
+                  src="https://images.unsplash.com/photo-1610348725531-843dff563e2c"
                   alt="Premium Produce"
+                  width={800}
+                  height={300}
                   className="w-full h-full object-cover mix-blend-overlay opacity-60 transition-transform duration-700 group-hover:scale-110"
-                  fetchPriority="high"
-                  decoding="async"
+                  isPriority={true}
                 />
                 <div className="absolute inset-0 p-10 flex flex-col justify-end">
                   <div className="w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center mb-4">
@@ -163,6 +167,6 @@ export function HeroSection() {
           </div>
         </div>
       </div>
-    </section >
+    </section>
   );
-}
+});

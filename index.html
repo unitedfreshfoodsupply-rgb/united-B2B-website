@@ -12,28 +12,79 @@
   <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
   <link rel="dns-prefetch" href="https://images.unsplash.com" />
 
+  <!-- Critical Translation Preload -->
+  <link rel="preload" href="/locales/en/common.json" as="fetch" crossorigin />
+  <link rel="preload" href="/locales/en/pages.json" as="fetch" crossorigin />
+  <link rel="preload" href="/locales/ar/common.json" as="fetch" crossorigin />
+  <link rel="preload" href="/locales/ar/pages.json" as="fetch" crossorigin />
+
+  <!-- Critical Fonts -->
+  <link rel="preload"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&display=swap"
+    as="style" />
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&display=swap"
+    media="print" onload="this.media='all'" />
+  <noscript>
+    <link rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@700;800&display=swap" />
+  </noscript>
+
   <style>
     /* Critical Loading Styles */
     :root {
       --uniteda-emerald: #064e3b;
+      --uniteda-emerald-dark: #022c22;
       --uniteda-gold: #b6985a;
+      --background: #fafafa;
     }
 
     body {
       margin: 0;
-      background: #fafafa;
-      font-family: system-ui, -apple-system, sans-serif;
+      background: var(--background);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* Initial Layout Primitives to prevent FOIT/CLS */
+    .hero-placeholder {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      background: var(--background);
+    }
+
+    /* Products Page LCP Optimization */
+    .products-hero-container {
+      content-visibility: auto;
+      contain-intrinsic-size: 1px 500px;
+    }
+
+    /* Prevent content jump before hydration */
+    [data-framer-appear-id] {
+      opacity: 0;
+    }
+
+    .hydrated [data-framer-appear-id] {
+      opacity: 1;
+      transition: opacity 0.3s ease;
     }
 
     .loader-wrapper {
       position: fixed;
       inset: 0;
       z-index: 9999;
-      background: #fafafa;
+      background: var(--background);
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: opacity 0.6s ease-out, visibility 0.6s;
+      transition: opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+      pointer-events: auto;
+    }
+
+    .hydrated .loader-wrapper {
+      opacity: 0;
+      pointer-events: none;
     }
 
     .loader-content {
@@ -78,11 +129,6 @@
         transform: scale(1.1);
         opacity: 1;
       }
-    }
-
-    .hydrated .loader-wrapper {
-      opacity: 0;
-      visibility: hidden;
     }
   </style>
 

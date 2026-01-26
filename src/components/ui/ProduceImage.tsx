@@ -7,6 +7,9 @@ interface ProduceImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
     className?: string;
     isPriority?: boolean;
     aspectRatio?: "square" | "video" | "wide" | "auto";
+    objectFit?: "cover" | "contain" | "fill" | "none" | "scale-down";
+    width?: string | number;
+    height?: string | number;
 }
 
 /**
@@ -19,6 +22,9 @@ export const ProduceImage: React.FC<ProduceImageProps> = ({
     className,
     isPriority = false,
     aspectRatio = "auto",
+    objectFit = "cover",
+    width,
+    height,
     ...props
 }) => {
     // If it's an Unsplash image, we can use their dynamic resizing API
@@ -58,8 +64,11 @@ export const ProduceImage: React.FC<ProduceImageProps> = ({
                 srcSet={generateSrcSet()}
                 sizes={isUnsplash ? "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw" : undefined}
                 alt={alt}
+                width={width}
+                height={height}
                 className={cn(
-                    "w-full h-full object-cover transition-opacity duration-500",
+                    "w-full h-full transition-opacity duration-500",
+                    objectFit === "cover" ? "object-cover" : "object-contain",
                     !isPriority && "opacity-0"
                 )}
                 loading={isPriority ? "eager" : "lazy"}

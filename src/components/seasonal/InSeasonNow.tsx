@@ -31,6 +31,8 @@ const getCategoryIcon = (category: string) => {
     }
 };
 
+import { ProduceImage } from "@/components/ui/ProduceImage";
+
 export function InSeasonNow({ products, region, currentMonth }: InSeasonNowProps) {
     const { t } = useTranslation('pages');
     // Get products at peak (value = 2) for current month
@@ -87,10 +89,11 @@ export function InSeasonNow({ products, region, currentMonth }: InSeasonNowProps
                             {/* Product Image or Icon */}
                             {product.image ? (
                                 <div className="w-16 h-16 rounded-xl overflow-hidden shadow-md border border-border/50 bg-white mb-3">
-                                    <img
+                                    <ProduceImage
                                         src={product.image}
                                         alt={product.name}
-                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+                                        className="w-full h-full group-hover:scale-110 transition-transform duration-300"
+                                        isPriority={true}
                                     />
                                 </div>
                             ) : (
