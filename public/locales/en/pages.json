@@ -10,11 +10,6 @@
                 "detail": "Cairo, Egypt",
                 "infra": "Main Location"
             },
-            "uae": {
-                "title": "UAE Office",
-                "detail": "Dubai, United Arab Emirates",
-                "infra": "Regional Hub"
-            },
             "email": {
                 "title": "Email Us",
                 "detail": "hello@uniteda.com",
@@ -53,7 +48,7 @@
         "hero": {
             "label": "The Chapter of Uniteda",
             "title": "A Story of <highlight>Freshness</highlight> <br /> and Global Scale",
-            "description": "Beyond shipping, we are the architects of a global freshness journey. Explore the chapters that define our commitment to agricultural excellence.",
+            "description": "Beyond shipping, we are the architects of a premium freshness journey. Explore the chapters that define our commitment to local agricultural excellence.",
             "scroll": "Begin Scrolling"
         },
         "story": {
@@ -96,15 +91,15 @@
                 "num": "04",
                 "label": "The Horizon",
                 "title": "Defining the Future",
-                "content": "Uniteda is now a bridge. Between Cairo and Dubai, between the farmer and the chef. We are scaling the integrity of fresh produce, one shipment at a time.",
+                "content": "Uniteda is now a bridge. Between the farmer and the chef, we ensure the integrity of fresh produce with local precision.",
                 "strategy": {
-                    "label": "Scale Strategy Active",
-                    "detail": "Bridging Cairo & Dubai"
+                    "label": "Local Growth Strategy",
+                    "detail": "Comprehensive Egypt Coverage"
                 }
             }
         },
         "impact": {
-            "title": "The Global Footprint",
+            "title": "Egypt Operations Impact",
             "stats": {
                 "countries": "Destinations Active",
                 "growers": "Grower Partners",
@@ -137,9 +132,9 @@
     "products": {
         "header": {
             "badge": "Product Collection",
-            "title": "Global",
+            "title": "Premium",
             "title_highlight": "Collection",
-            "description": "Explore our comprehensive portfolio of premium Egyptian produce and international specialties.",
+            "description": "Explore our comprehensive portfolio of the finest Egyptian agricultural produce.",
             "stats": {
                 "active_skus": "Active SKUs",
                 "global_sourcing": "Global Sourcing",
@@ -159,12 +154,7 @@
             "search_placeholder": "Search catalog...",
             "categories_title": "Categories",
             "quick_filters_title": "Quick Filter",
-            "region": {
-                "label": "Region",
-                "all": "All Regions",
-                "egypt": "Egypt",
-                "uae": "UAE"
-            },
+            "clear_all": "Clear All Filters",
             "season": {
                 "label": "Season",
                 "all": "All Seasons",
@@ -184,6 +174,8 @@
         "catalog": {
             "showing": "Showing",
             "products_suffix": "products",
+            "no_results": "No Products Found",
+            "no_results_description": "We couldn't find any products matching your search criteria. Try clearing your filters or using different keywords.",
             "categories": {
                 "all": "All Categories",
                 "fruits": "Fresh Fruits",

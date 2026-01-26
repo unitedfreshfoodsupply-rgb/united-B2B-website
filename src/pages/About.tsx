@@ -27,7 +27,7 @@ export default function About() {
     }, []);
 
     const stats = [
-        { id: 'countries', value: '12+', icon: Globe, label: t('about.impact.stats.countries') },
+        { id: 'regions', value: '27', icon: Globe, label: "Egyptian Governorates" },
         { id: 'growers', value: '450+', icon: Users, label: t('about.impact.stats.growers') },
         { id: 'tonnage', value: '15k', icon: BarChart3, label: t('about.impact.stats.tonnage') },
         { id: 'satisfaction', value: '98%', icon: Navigation, label: t('about.impact.stats.satisfaction') },

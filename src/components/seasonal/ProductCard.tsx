@@ -7,13 +7,12 @@ interface SeasonalProduct {
     name: string;
     category: string;
     egypt: number[];
-    uae: number[];
     image?: string; // Optional image URL
 }
 
 interface ProductCardProps {
     product: SeasonalProduct;
-    region: "egypt" | "uae" | "both";
+    region: "egypt";
     currentMonth: number;
     onClick: () => void;
 }
@@ -39,14 +38,7 @@ const getAvailabilityStatusKey = (data: number[], currentMonth: number) => {
 
 export function ProductCard({ product, region, currentMonth, onClick }: ProductCardProps) {
     const { t } = useTranslation('pages');
-    // Handle 'both' region by combining Egypt and UAE data
-    const egyptData = product.egypt;
-    const uaeData = product.uae;
-
-    // For 'both', use the maximum availability from either region
-    const data = region === "both"
-        ? egyptData.map((val, idx) => Math.max(val, uaeData[idx]))
-        : region === "egypt" ? egyptData : uaeData;
+    const data = product.egypt;
 
     const { statusKey, color, bg } = getAvailabilityStatusKey(data, currentMonth);
     const peakMonths = data.filter(v => v === 2).length;
@@ -109,14 +101,7 @@ export function ProductCard({ product, region, currentMonth, onClick }: ProductC
                 </div>
                 <div className="flex items-center gap-1">
                     <Calendar size={12} />
-                    {region === "both" ? (
-                        <div className="flex items-center gap-1">
-                            <span>🇪🇬</span>
-                            <span>🇦🇪</span>
-                        </div>
-                    ) : (
-                        <span className="capitalize">{region}</span>
-                    )}
+                    <span className="capitalize">Egypt</span>
                 </div>
             </div>
 

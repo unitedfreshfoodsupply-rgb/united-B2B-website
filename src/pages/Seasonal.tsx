@@ -69,12 +69,10 @@ const seasons = [
 ];
 
 type ViewMode = "grid" | "table";
-type Region = "egypt" | "uae" | "both";
+type Region = "egypt";
 
 const MatrixRow = memo(({ product, months, currentMonth, t, regionType }: { product: any, months: string[], currentMonth: number, t: any, regionType: Region }) => {
-  const availability = regionType === "both"
-    ? product.egypt.map((val: number, idx: number) => Math.max(val, product.uae[idx]))
-    : regionType === "egypt" ? product.egypt : product.uae;
+  const availability = product.egypt;
 
   return (
     <tr className="border-b border-border/50 hover:bg-muted/30 transition-colors">
@@ -103,7 +101,7 @@ MatrixRow.displayName = "MatrixRow";
 export default function SeasonalPage() {
   const { t, i18n, isRTL } = useUnifiedTranslation();
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
-  const [selectedRegion, setSelectedRegion] = useState<Region>("both");
+  const [selectedRegion, setSelectedRegion] = useState<Region>("egypt");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const deferredSearchQuery = useDeferredValue(searchQuery);
@@ -128,17 +126,16 @@ export default function SeasonalPage() {
 
       // Check if we have a manually tuned entry for this product (preserving peak info)
       const manualEntry = [
-        { name: "mangoes", key: "loc_5", egypt: [0, 0, 0, 0, 1, 2, 2, 2, 1, 0, 0, 0], uae: [0, 0, 0, 1, 2, 2, 2, 1, 0, 0, 0, 0] },
-        { name: "pomegranates", key: "loc_3", egypt: [0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 1, 0], uae: [0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 1] },
-        { name: "asparagus", key: "veg_1", egypt: [0, 1, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0], uae: [0, 0, 1, 2, 1, 0, 0, 0, 0, 0, 0, 0] },
-        { name: "strawberries", key: "loc_1", egypt: [1, 2, 2, 1, 0, 0, 0, 0, 0, 0, 2, 2], uae: [1, 2, 1, 0, 0, 0, 0, 0, 0, 0, 1, 2] }
+        { name: "mangoes", key: "loc_5", egypt: [0, 0, 0, 0, 1, 2, 2, 2, 1, 0, 0, 0] },
+        { name: "pomegranates", key: "loc_3", egypt: [0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 1, 0] },
+        { name: "asparagus", key: "veg_1", egypt: [0, 1, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0] },
+        { name: "strawberries", key: "loc_1", egypt: [1, 2, 2, 1, 0, 0, 0, 0, 0, 0, 2, 2] }
       ].find(m => m.key === p.key || m.name === p.key);
 
       return {
         ...p,
         name: p.key,
         egypt: manualEntry ? manualEntry.egypt : dynamicArr,
-        uae: manualEntry ? manualEntry.uae : dynamicArr
       };
     });
   }, [t]);
@@ -212,7 +209,7 @@ export default function SeasonalPage() {
                 <div className="flex items-center gap-2 text-sm">
                   <div className="w-2 h-2 rounded-full bg-accent" />
                   <span className="text-muted-foreground">
-                    <span className="font-bold text-foreground">{allProducts.filter(p => p.egypt[currentMonth] === 2 || p.uae[currentMonth] === 2).length}</span> {t('seasonal.stats.peak_products')}
+                    <span className="font-bold text-foreground">{allProducts.filter(p => p.egypt[currentMonth] === 2).length}</span> {t('seasonal.stats.peak_products')}
                   </span>
                 </div>
                 <div className="flex items-center gap-2 text-sm">
@@ -264,35 +261,11 @@ export default function SeasonalPage() {
       <section className="py-4 sm:py-6 border-b border-border bg-background sticky top-0 z-10">
         <div className="container-wide">
           <div className="flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center justify-between gap-3 sm:gap-4">
-            {/* Region Toggle */}
+            {/* Region Indicator */}
             <div className="flex items-center gap-2 p-1 rounded-lg bg-muted w-full sm:w-auto order-1">
-              <button
-                onClick={() => setSelectedRegion("egypt")}
-                className={`flex-1 sm:flex-none px-3 sm:px-4 py-2 rounded-md text-sm font-medium transition-all ${selectedRegion === "egypt"
-                  ? "bg-primary text-primary-foreground shadow-sm"
-                  : "text-muted-foreground hover:text-foreground"
-                  }`}
-              >
-                🇪🇬 {t('seasonal.controls.region.egypt')}
-              </button>
-              <button
-                onClick={() => setSelectedRegion("uae")}
-                className={`flex-1 sm:flex-none px-3 sm:px-4 py-2 rounded-md text-sm font-medium transition-all ${selectedRegion === "uae"
-                  ? "bg-primary text-primary-foreground shadow-sm"
-                  : "text-muted-foreground hover:text-foreground"
-                  }`}
-              >
-                🇦🇪 {t('seasonal.controls.region.uae')}
-              </button>
-              <button
-                onClick={() => setSelectedRegion("both")}
-                className={`flex-1 sm:flex-none px-3 sm:px-4 py-2 rounded-md text-sm font-medium transition-all ${selectedRegion === "both"
-                  ? "bg-primary text-primary-foreground shadow-sm"
-                  : "text-muted-foreground hover:text-foreground"
-                  }`}
-              >
-                {t('seasonal.controls.region.both')}
-              </button>
+              <div className="px-4 py-2 rounded-md text-sm font-bold bg-uniteda-emerald text-white shadow-sm flex items-center gap-2">
+                <span>🇪🇬</span> Egypt Operations
+              </div>
             </div>
 
             {/* Search and Category Filters */}
@@ -423,90 +396,45 @@ export default function SeasonalPage() {
               </div>
 
               {/* Egypt Table */}
-              {(selectedRegion === "egypt" || selectedRegion === "both") && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <h2 className="font-display text-xl sm:text-2xl font-bold text-foreground mb-3 sm:mb-4 flex items-center gap-2">
-                    <span>🇪🇬</span> {t('seasonal.table.egypt_title')}
-                  </h2>
-                  <div className="overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
-                    <table className="w-full min-w-[700px] sm:min-w-[800px]">
-                      <thead>
-                        <tr className="border-b border-border">
-                          <th className="text-left py-3 px-4 font-semibold text-foreground">{t('seasonal.table.columns.product')}</th>
-                          <th className="text-left py-3 px-2 text-muted-foreground text-sm">{t('seasonal.table.columns.category')}</th>
-                          {months.map((month, i) => (
-                            <th
-                              key={month}
-                              className={`py-3 px-2 text-center text-sm ${i === currentMonth ? "text-accent font-bold" : "text-muted-foreground"}`}
-                            >
-                              {month}
-                            </th>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {filteredProducts.map((product) => (
-                          <MatrixRow
-                            key={product.key}
-                            product={product}
-                            months={months}
-                            currentMonth={currentMonth}
-                            t={t}
-                            regionType={selectedRegion}
-                          />
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <h2 className="font-display text-xl sm:text-2xl font-bold text-foreground mb-3 sm:mb-4 flex items-center gap-2">
+                  <span>🇪🇬</span> {t('seasonal.table.egypt_title')}
+                </h2>
+                <div className="overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
+                  <table className="w-full min-w-[700px] sm:min-w-[800px]">
+                    <thead>
+                      <tr className="border-b border-border">
+                        <th className="text-left py-3 px-4 font-semibold text-foreground">{t('seasonal.table.columns.product')}</th>
+                        <th className="text-left py-3 px-2 text-muted-foreground text-sm">{t('seasonal.table.columns.category')}</th>
+                        {months.map((month, i) => (
+                          <th
+                            key={month}
+                            className={`py-3 px-2 text-center text-sm ${i === currentMonth ? "text-accent font-bold" : "text-muted-foreground"}`}
+                          >
+                            {month}
+                          </th>
                         ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </motion.div>
-              )}
-
-              {/* UAE Table */}
-              {(selectedRegion === "uae" || selectedRegion === "both") && (
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.1 }}
-                >
-                  <h2 className="font-display text-xl sm:text-2xl font-bold text-foreground mb-3 sm:mb-4 flex items-center gap-2">
-                    <span>🇦🇪</span> {t('seasonal.table.uae_title')}
-                  </h2>
-                  <div className="overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
-                    <table className="w-full min-w-[700px] sm:min-w-[800px]">
-                      <thead>
-                        <tr className="border-b border-border">
-                          <th className="text-left py-3 px-4 font-semibold text-foreground">{t('seasonal.table.columns.product')}</th>
-                          <th className="text-left py-3 px-2 text-muted-foreground text-sm">{t('seasonal.table.columns.category')}</th>
-                          {months.map((month, i) => (
-                            <th
-                              key={month}
-                              className={`py-3 px-2 text-center text-sm ${i === currentMonth ? "text-accent font-bold" : "text-muted-foreground"}`}
-                            >
-                              {month}
-                            </th>
-                          ))}
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {filteredProducts.map((product) => (
-                          <MatrixRow
-                            key={product.name}
-                            product={product}
-                            months={months}
-                            currentMonth={currentMonth}
-                            t={t}
-                            regionType="uae"
-                          />
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </motion.div>
-              )}
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {filteredProducts.map((product) => (
+                        <MatrixRow
+                          key={product.key}
+                          product={product}
+                          months={months}
+                          currentMonth={currentMonth}
+                          t={t}
+                          regionType={selectedRegion}
+                        />
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </motion.div>
             </div>
           )}
 

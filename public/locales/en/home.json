@@ -6,7 +6,7 @@
         "description": "UNITEDA bridges the gap between traditional agriculture and the high-demand requirements of modern hospitality through a data-driven supply infrastructure.",
         "cta_primary": "Launch Inquiry Hub",
         "cta_secondary": "Explore Assets",
-        "social_proof": "Trusted by 50+ <br /> Regional Partners",
+        "social_proof": "Trusted by 50+ <br /> Local Partners",
         "bento": {
             "certified": {
                 "title": "Certified Excellence",
@@ -17,13 +17,13 @@
                 "label": "Supply Latency"
             },
             "logic": {
-                "title": "Multi-Hub Logic",
-                "subtitle": "Egypt & UAE Synced"
+                "title": "Centralized Supply Logic",
+                "subtitle": "Secured Local Crop Flow"
             },
             "status": {
                 "label": "Real-time status",
-                "cairo": "Cairo Hub",
-                "dubai": "Dubai Hub",
+                "cairo": "Main Operations Hub",
+                "dubai": "Local Supply Section",
                 "active": "ACTIVE"
             }
         }
@@ -31,7 +31,7 @@
     "product_catalog": "Product Catalog",
     "product_intelligence": "Product Intelligence",
     "portfolio": "Portfolio",
-    "subtitle": "Every product category is treated as a technical supply asset with deep metadata and regional availability logic.",
+    "subtitle": "Every product category is treated as a technical supply asset with deep metadata and advanced local availability logic.",
     "explore_category": "Explore Category",
     "items": "Items",
     "categories": {
@@ -58,14 +58,14 @@
     },
     "inquiry": {
         "title": "Business Inquiry Hub",
-        "description": "Generate structured RFQs for regional logistics hubs with instant quote processing.",
+        "description": "Generate structured RFQs for our centralized logistics hub with instant quote processing.",
         "cta": "Open Inquiry Engine"
     },
     "seasonal": {
         "label": "Seasonal Availability",
         "title": "Seasonal Availability",
         "calendar": "Calendar",
-        "description": "We provide detailed availability data synced between Egypt and UAE production cycles, allowing procurement teams to secure supply for premium menus months in advance.",
+        "description": "We provide detailed availability data for Egypt's agricultural production cycles, allowing procurement teams to secure supply for premium menus months in advance.",
         "in_season_now": "In Season Now",
         "highlights": "Current Season Highlights",
         "peak": "{{season}} Peak",
@@ -73,8 +73,8 @@
         "regions_label": "Available Regions",
         "view_calendar": "View Full Calendar",
         "regions": {
-            "cairo": "Cairo",
-            "dubai": "Dubai"
+            "cairo": "Main Facility",
+            "dubai": "Supply Division"
         },
         "seasons": {
             "spring": "Spring",
@@ -109,7 +109,7 @@
     },
     "operations": {
         "logistics_intelligence": "Logistics Intelligence",
-        "hub_sync": "Cairo & Dubai Hubs Sync",
+        "hub_sync": "Unified Operations Hub Efficiency",
         "supply_precision": "Supply Precision",
         "target_temp": "Target Temp Range",
         "cold_chain_asset": "Cold-Chain Asset",
@@ -182,7 +182,7 @@
             },
             "partners": {
                 "name": "Logistics Partners",
-                "description": "Bulk supply orchestration for regional food distribution hubs.",
+                "description": "Bulk supply orchestration for local food distribution hubs.",
                 "features": {
                     "bulk": "Bulk Logic",
                     "flow": "Port-to-Hub Flow",
@@ -204,11 +204,11 @@
         "partner_label": "Partner with UNITEDA",
         "title_prefix": "Architecting the Future",
         "title_highlight": "of Agricultural Supply",
-        "description": "Unlock 100% supply transparency and regional logistics synchronization for your enterprise.",
+        "description": "Unlock 100% supply transparency and integrated local logistics for your enterprise.",
         "features": {
             "sync": {
-                "label": "Multi-Hub Sync",
-                "sub": "Egypt & UAE Unified"
+                "label": "Unified Logistics Efficiency",
+                "sub": "Integrated Local Infrastructure"
             },
             "rfq": {
                 "label": "Live RFQ Logic",

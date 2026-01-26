@@ -16,6 +16,8 @@ const Seasonal = lazy(() => import("./pages/Seasonal"));
 const Contact = lazy(() => import("./pages/Contact"));
 const FeatureStandby = lazy(() => import("./pages/FeatureStandby"));
 const About = lazy(() => import("./pages/About"));
+const Privacy = lazy(() => import("./pages/Privacy"));
+const Terms = lazy(() => import("./pages/Terms"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const LoadingFallback = () => null;
@@ -46,15 +48,15 @@ const App = () => {
                   <Route path="/contact" element={<Contact />} />
                   <Route path="/standby" element={<FeatureStandby />} />
                   <Route path="/about" element={<About />} />
-                  <Route path="/quality" element={<FeatureStandby />} />
-                  <Route path="/network" element={<FeatureStandby />} />
-                  <Route path="/careers" element={<FeatureStandby />} />
-                  <Route path="/solutions" element={<FeatureStandby />} />
-                  <Route path="/programs" element={<FeatureStandby />} />
-                  <Route path="/portal" element={<FeatureStandby />} />
-                  <Route path="/faq" element={<FeatureStandby />} />
-                  <Route path="/privacy" element={<FeatureStandby />} />
-                  <Route path="/terms" element={<FeatureStandby />} />
+                  <Route path="/quality" element={<NotFound />} />
+                  <Route path="/network" element={<NotFound />} />
+                  <Route path="/careers" element={<NotFound />} />
+                  <Route path="/solutions" element={<NotFound />} />
+                  <Route path="/programs" element={<NotFound />} />
+                  <Route path="/portal" element={<NotFound />} />
+                  <Route path="/faq" element={<NotFound />} />
+                  <Route path="/privacy" element={<Privacy />} />
+                  <Route path="/terms" element={<Terms />} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </TranslationProvider>

@@ -147,11 +147,8 @@ export function HeroSection() {
                 <div className="w-3 h-3 rounded-full bg-green-500 animate-pulse" />
                 <span className="text-xs font-black uppercase tracking-widest text-uniteda-emerald-dark/40">{t('hero.bento.status.label')}</span>
               </div>
-              <p className="mt-2 text-sm font-bold text-uniteda-emerald-dark">
-                {t('hero.bento.status.cairo')}: <span className="text-uniteda-emerald font-black">{t('hero.bento.status.active')}</span>
-              </p>
               <p className="text-sm font-bold text-uniteda-emerald-dark">
-                {t('hero.bento.status.dubai')}: <span className="text-uniteda-emerald font-black">{t('hero.bento.status.active')}</span>
+                {t('hero.bento.status.cairo')}: <span className="text-uniteda-emerald font-black">{t('hero.bento.status.active')}</span>
               </p>
             </motion.div>
           </div>

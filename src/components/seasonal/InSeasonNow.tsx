@@ -8,13 +8,12 @@ interface SeasonalProduct {
     name: string;
     category: string;
     egypt: number[];
-    uae: number[];
     image?: string; // Optional image URL
 }
 
 interface InSeasonNowProps {
     products: SeasonalProduct[];
-    region: "egypt" | "uae" | "both";
+    region: "egypt";
     currentMonth: number;
 }
 
@@ -33,12 +32,9 @@ const getCategoryIcon = (category: string) => {
 
 export function InSeasonNow({ products, region, currentMonth }: InSeasonNowProps) {
     const { t } = useTranslation('pages');
-    // Get products at peak (value = 2) for current month
+    // Get products at peak (value = 2) for current month in Egypt
     const peakProducts = products.filter(product => {
-        if (region === "both") {
-            return product.egypt[currentMonth] === 2 || product.uae[currentMonth] === 2;
-        }
-        return product[region][currentMonth] === 2;
+        return product.egypt[currentMonth] === 2;
     }).slice(0, 4); // Limit to 4 products
 
     if (peakProducts.length === 0) {
@@ -65,9 +61,6 @@ export function InSeasonNow({ products, region, currentMonth }: InSeasonNowProps
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {peakProducts.map((product, index) => {
-                    const egyptPeak = product.egypt[currentMonth] === 2;
-                    const uaePeak = product.uae[currentMonth] === 2;
-
                     return (
                         <motion.div
                             key={product.name}
@@ -107,16 +100,9 @@ export function InSeasonNow({ products, region, currentMonth }: InSeasonNowProps
 
                             {/* Region badges */}
                             <div className="flex gap-2 mb-4">
-                                {egyptPeak && (
-                                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-accent/20 text-accent text-xs font-medium">
-                                        🇪🇬 {t('seasonal.controls.region.egypt')}
-                                    </span>
-                                )}
-                                {uaePeak && (
-                                    <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-accent/20 text-accent text-xs font-medium">
-                                        🇦🇪 {t('seasonal.controls.region.uae')}
-                                    </span>
-                                )}
+                                <span className="inline-flex items-center gap-1 px-2 py-1 rounded-md bg-accent/20 text-accent text-xs font-medium">
+                                    🇪🇬 {t('seasonal.controls.region.egypt')}
+                                </span>
                             </div>
 
                             {/* Quick action */}

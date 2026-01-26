@@ -30,6 +30,24 @@ export default function RFQPage() {
 
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [rfqData, setRfqData] = useState({
+    company: '',
+    businessType: '',
+    country: 'egypt',
+    city: '',
+    volume: '',
+    frequency: '',
+    requirements: '',
+    name: '',
+    position: '',
+    email: '',
+    phone: '',
+    _company_id_verification: '',
+  });
+
+  const handleDataChange = (field: string, value: string) => {
+    setRfqData(prev => ({ ...prev, [field]: value }));
+  };
 
   // Mapped options - Stabilized with useMemo
   const businessTypes = useMemo(() => [
@@ -94,11 +112,28 @@ export default function RFQPage() {
     }
 
     setIsSubmitting(true);
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    toast.success(t('rfq.form.success.title'), {
-      description: t('rfq.form.success.description'),
-    });
-    setIsSubmitting(false);
+    try {
+      const response = await fetch('/api/send-mail.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...rfqData,
+          categories: selectedCategories,
+          formType: 'rfq'
+        }),
+      });
+
+      if (!response.ok) throw new Error('Submission failed');
+
+      toast.success(t('rfq.form.success.title'), {
+        description: t('rfq.form.success.description'),
+      });
+      // Optionally reset form or redirect
+    } catch (err) {
+      toast.error('Submission failed. Please contact sales-team@united-ffv.com directly.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const slideVariants = {
@@ -231,6 +266,8 @@ export default function RFQPage() {
                           t={t}
                           isRTL={isRTL}
                           businessTypes={businessTypes}
+                          values={rfqData}
+                          onChange={handleDataChange}
                         />
                       )}
 
@@ -243,12 +280,16 @@ export default function RFQPage() {
                           handleCategoryToggle={handleCategoryToggle}
                           volumeRanges={volumeRanges}
                           frequencies={frequencies}
+                          values={rfqData}
+                          onChange={handleDataChange}
                         />
                       )}
 
                       {currentStep === 2 && (
                         <ContactInfoStep
                           t={t}
+                          values={rfqData}
+                          onChange={handleDataChange}
                         />
                       )}
                     </Suspense>

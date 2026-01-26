@@ -187,7 +187,6 @@ export default function ProductsPage() {
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
   const [searchQuery, setSearchQuery] = useState("");
   const deferredSearchQuery = useDeferredValue(searchQuery);
-  const [regionFilter, setRegionFilter] = useState("all");
   const [seasonFilter, setSeasonFilter] = useState("all");
 
   // Calculate real category counts from actual products
@@ -220,16 +219,12 @@ export default function ProductsPage() {
         productName.toLowerCase().includes(deferredSearchQuery.toLowerCase()) ||
         productOrigin.toLowerCase().includes(deferredSearchQuery.toLowerCase());
 
-      // Region filter
-      const matchesRegion = regionFilter === "all" ||
-        productOrigin.toLowerCase().includes(regionFilter.toLowerCase());
-
       // Season filter
       const matchesSeason = seasonFilter === "all" || product.season === seasonFilter;
 
-      return matchesCategory && matchesSearch && matchesRegion && matchesSeason;
+      return matchesCategory && matchesSearch && matchesSeason;
     });
-  }, [activeCategory, deferredSearchQuery, regionFilter, seasonFilter, t]);
+  }, [activeCategory, deferredSearchQuery, seasonFilter, t]);
 
   return (
     <Layout>
@@ -275,8 +270,8 @@ export default function ProductsPage() {
                   <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{t('products.header.stats.active_skus')}</span>
                 </div>
                 <div className="glass-panel px-6 py-4 rounded-3xl border border-black/5 flex flex-col items-start gap-1 bg-white/50">
-                  <span className="text-2xl font-black text-uniteda-gold">99.9%</span>
-                  <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{t('products.header.stats.global_sourcing')}</span>
+                  <span className="text-2xl font-black text-uniteda-gold">100%</span>
+                  <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Local Local Hub Efficiency</span>
                 </div>
               </div>
             </motion.div>
@@ -360,7 +355,7 @@ export default function ProductsPage() {
                       </span>
                     </div>
                     <span className="text-[10px] font-bold text-white/40 uppercase tracking-tighter">
-                      {t('products.ticker.sourced_via', { origin: item.origin })}
+                      Sourced via UNITED Local Network
                     </span>
                   </div>
                   <div className="h-4 w-px bg-white/10 ml-8" />
@@ -438,17 +433,6 @@ export default function ProductsPage() {
                     {t('products.filters.quick_filters_title')}
                   </h3>
                   <div className="space-y-4">
-                    <Select dir={isRTL ? "rtl" : "ltr"} value={regionFilter} onValueChange={setRegionFilter}>
-                      <SelectTrigger className="w-full rounded-xl border-black/5 bg-muted/30 hover:bg-muted/50 transition-colors font-medium">
-                        <SelectValue placeholder={t('products.filters.region.label')} />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="all">{t('products.filters.region.all')}</SelectItem>
-                        <SelectItem value="egypt">{t('products.filters.region.egypt')}</SelectItem>
-                        <SelectItem value="uae">{t('products.filters.region.uae')}</SelectItem>
-                        <SelectItem value="imported">{t('products.filters.region.imported') || "Imported"}</SelectItem>
-                      </SelectContent>
-                    </Select>
                     <Select dir={isRTL ? "rtl" : "ltr"} value={seasonFilter} onValueChange={setSeasonFilter}>
                       <SelectTrigger className="w-full rounded-xl border-black/5 bg-muted/30 hover:bg-muted/50 transition-colors font-medium">
                         <SelectValue placeholder={t('products.filters.season.label')} />
@@ -554,7 +538,6 @@ export default function ProductsPage() {
                       onClick={() => {
                         setActiveCategory("all");
                         setSearchQuery("");
-                        setRegionFilter("all");
                         setSeasonFilter("all");
                       }}
                     >

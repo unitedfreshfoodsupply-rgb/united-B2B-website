@@ -8,7 +8,6 @@ interface SeasonalProduct {
     name: string;
     category: string;
     egypt: number[];
-    uae: number[];
     image?: string; // Optional image URL
 }
 
@@ -58,7 +57,6 @@ export function ProductDetailModal({ product, isOpen, onClose, currentMonth }: P
     if (!product) return null;
 
     const egyptBest = getBestMonths(product.egypt);
-    const uaeBest = getBestMonths(product.uae);
 
     return (
         <Dialog open={isOpen} onOpenChange={onClose}>
@@ -96,16 +94,9 @@ export function ProductDetailModal({ product, isOpen, onClose, currentMonth }: P
                         <div className="p-4 rounded-xl bg-muted/50">
                             <div className="flex items-center gap-2 text-sm text-muted-foreground mb-1">
                                 <TrendingUp size={14} />
-                                <span>{t('seasonal.controls.region.egypt')} {t('seasonal.legend.peak')}</span>
+                                <span>Peak Ordering Window</span>
                             </div>
                             <p className="font-bold text-foreground">{egyptBest.length} {t('seasonal.modal.peak_months')}</p>
-                        </div>
-                        <div className="p-4 rounded-xl bg-muted/50">
-                            <div className="flex items-center gap-2 text-sm text-muted-foreground mb-1">
-                                <TrendingUp size={14} />
-                                <span>{t('seasonal.controls.region.uae')} {t('seasonal.legend.peak')}</span>
-                            </div>
-                            <p className="font-bold text-foreground">{uaeBest.length} {t('seasonal.modal.peak_months')}</p>
                         </div>
                         <div className="p-4 rounded-xl bg-muted/50">
                             <div className="flex items-center gap-2 text-sm text-muted-foreground mb-1">
@@ -113,16 +104,16 @@ export function ProductDetailModal({ product, isOpen, onClose, currentMonth }: P
                                 <span>{t('seasonal.modal.current_status')}</span>
                             </div>
                             <p className="font-bold text-foreground">
-                                {product.egypt[currentMonth] === 2 || product.uae[currentMonth] === 2 ? t('seasonal.legend.peak') :
-                                    product.egypt[currentMonth] === 1 || product.uae[currentMonth] === 1 ? t('seasonal.legend.available') : t('seasonal.legend.off_season')}
+                                {product.egypt[currentMonth] === 2 ? t('seasonal.legend.peak') :
+                                    product.egypt[currentMonth] === 1 ? t('seasonal.legend.available') : t('seasonal.legend.off_season')}
                             </p>
                         </div>
                         <div className="p-4 rounded-xl bg-muted/50">
                             <div className="flex items-center gap-2 text-sm text-muted-foreground mb-1">
                                 <MapPin size={14} />
-                                <span>{t('products.filters.region.label')}</span>
+                                <span>Region</span>
                             </div>
-                            <p className="font-bold text-foreground">{t('seasonal.controls.region.egypt')} & {t('seasonal.controls.region.uae')}</p>
+                            <p className="font-bold text-foreground">Egypt Operation</p>
                         </div>
                     </div>
 
@@ -132,17 +123,11 @@ export function ProductDetailModal({ product, isOpen, onClose, currentMonth }: P
                             <Calendar className="w-5 h-5 text-accent" />
                             {t('seasonal.modal.best_windows')}
                         </h3>
-                        <div className="grid md:grid-cols-2 gap-4">
+                        <div className="grid grid-cols-1 gap-4">
                             <div>
-                                <p className="text-sm font-medium text-muted-foreground mb-2">🇪🇬 {t('seasonal.controls.region.egypt')}</p>
+                                <p className="text-sm font-medium text-muted-foreground mb-2">Egyptian Harvest Schedule</p>
                                 <p className="font-bold text-foreground">
                                     {egyptBest.length > 0 ? egyptBest.join(", ") : t('seasonal.modal.limited_availability')}
-                                </p>
-                            </div>
-                            <div>
-                                <p className="text-sm font-medium text-muted-foreground mb-2">🇦🇪 {t('seasonal.controls.region.uae')}</p>
-                                <p className="font-bold text-foreground">
-                                    {uaeBest.length > 0 ? uaeBest.join(", ") : t('seasonal.modal.limited_availability')}
                                 </p>
                             </div>
                         </div>
@@ -154,30 +139,8 @@ export function ProductDetailModal({ product, isOpen, onClose, currentMonth }: P
 
                         {/* Egypt */}
                         <div className="mb-4">
-                            <p className="text-sm font-medium text-muted-foreground mb-2">🇪🇬 {t('seasonal.controls.region.egypt')}</p>
                             <div className="grid grid-cols-6 md:grid-cols-12 gap-2">
                                 {product.egypt.map((value, index) => (
-                                    <div key={index} className="text-center">
-                                        <div
-                                            className={`
-                        w-full aspect-square rounded-lg flex items-center justify-center text-xs font-bold mb-1
-                        ${getAvailabilityColor(value)}
-                        ${index === currentMonth ? "ring-2 ring-accent ring-offset-2" : ""}
-                      `}
-                                        >
-                                            {months[index].charAt(0)}
-                                        </div>
-                                        <span className="text-[10px] text-muted-foreground">{t(getAvailabilityLabelKey(value))}</span>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-
-                        {/* UAE */}
-                        <div>
-                            <p className="text-sm font-medium text-muted-foreground mb-2">🇦🇪 {t('seasonal.controls.region.uae')}</p>
-                            <div className="grid grid-cols-6 md:grid-cols-12 gap-2">
-                                {product.uae.map((value, index) => (
                                     <div key={index} className="text-center">
                                         <div
                                             className={`

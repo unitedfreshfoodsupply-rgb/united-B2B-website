@@ -150,10 +150,7 @@ export function SeasonalSection() {
                     <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-primary-foreground/40">{t('seasonal.regions_label')}</p>
                     <div className="flex flex-wrap gap-2 sm:gap-3">
                       <div className="flex items-center gap-2 px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-xl bg-primary-foreground/10 border border-primary-foreground/10 font-medium text-[10px] sm:text-xs uppercase">
-                        <span>🇪🇬</span> {t('seasonal.regions.cairo')}
-                      </div>
-                      <div className="flex items-center gap-2 px-2.5 py-1.5 sm:px-3 sm:py-1.5 rounded-xl bg-primary-foreground/10 border border-primary-foreground/10 font-medium text-[10px] sm:text-xs uppercase">
-                        <span>🇦🇪</span> {t('seasonal.regions.dubai')}
+                        <span>🇪🇬</span> Egypt HUB
                       </div>
                     </div>
                   </div>

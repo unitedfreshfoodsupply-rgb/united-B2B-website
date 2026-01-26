@@ -61,7 +61,7 @@ export function Header() {
           <Link to="/" className="flex items-center gap-2 group">
             <motion.div
               whileHover={{ rotate: 5, scale: 1.05 }}
-              className="w-10 h-10 rounded-xl bg-white flex items-center justify-center shadow-lg group-hover:shadow-uniteda-emerald/20 overflow-hidden"
+              className="w-10 h-10 flex items-center justify-center transition-transform duration-500"
             >
               <img src="/logo.webp" alt="Uniteda Logo" className="w-full h-full object-cover" width={40} height={40} />
             </motion.div>

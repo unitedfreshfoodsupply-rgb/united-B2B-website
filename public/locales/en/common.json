@@ -29,18 +29,18 @@
         }
     },
     "footer": {
-        "description": "Delivering premium fresh produce to hospitality and food service industries across Egypt and UAE with uncompromising quality and reliability.",
+        "description": "Delivering premium fresh produce to hospitality and food service industries within Egypt with uncompromising quality and reliability.",
         "brand_slogan": "Agricultural Supply",
         "pre_footer": {
             "label": "Grow with us",
             "title": "Bringing freshness to your business",
-            "description": "Partner with UNITED to access our premium supply chain network and elevate your produce standards with our world-class logistics.",
-            "cta": "Start Exporting"
+            "description": "Partner with UNITED to access our premium supply chain network and elevate your produce standards with our local logistics.",
+            "cta": "Start Partnership"
         },
         "columns": {
             "products": "Products",
             "company": "Company",
-            "resources": "Regional Offices"
+            "resources": "Main Office"
         },
         "links": {
             "products": {
@@ -69,15 +69,11 @@
             "egypt": {
                 "name": "Egypt Hub",
                 "address": "New Cairo HQ, Logistics Zone"
-            },
-            "uae": {
-                "name": "UAE Hub",
-                "address": "Business Bay, Dubai"
             }
         },
         "copyright": "© {{year}} UNITED Agricultural Supply. All rights reserved.",
         "privacy": "Privacy Policy",
         "terms": "Terms of Service",
-        "ops_status": "Operations Active Global"
+        "ops_status": "Operations Active Egypt"
     }
 }

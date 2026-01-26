@@ -1,14 +1,43 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Globe, ArrowRight, MessageSquare, Leaf } from "lucide-react";
+import { Mail, Phone, MapPin, Globe, ArrowRight, MessageSquare, Leaf, CheckCircle2 } from "lucide-react";
 import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
+import { Link } from "react-router-dom";
 
 export default function Contact() {
     const { t, i18n, isRTL } = useUnifiedTranslation();
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [submitted, setSubmitted] = useState(false);
+    const [error, setError] = useState<string | null>(null);
 
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setError(null);
+
+        const formData = new FormData(e.currentTarget);
+        const data = Object.fromEntries(formData.entries());
+
+        try {
+            const response = await fetch('/api/send-mail.php', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ...data, formType: 'contact' }),
+            });
+
+            if (!response.ok) throw new Error('Submission failed');
+
+            setSubmitted(true);
+        } catch (err) {
+            setError(t('contact.form.error_message') || 'Submission failed. Please contact support@united-ffv.com directly.');
+        } finally {
+            setIsSubmitting(false);
+        }
+    };
     return (
         <Layout>
             <section className="relative min-h-[90vh] flex items-center pt-20 sm:pt-24 lg:pt-32 pb-16 sm:pb-20 lg:pb-24 overflow-hidden bg-white">
@@ -43,9 +72,8 @@ export default function Contact() {
 
                             <div className="space-y-6 sm:space-y-8">
                                 {[
-                                    { icon: MapPin, title: t('contact.items.egypt.title'), detail: t('contact.items.egypt.detail'), infra: t('contact.items.egypt.infra') },
-                                    { icon: Globe, title: t('contact.items.uae.title'), detail: t('contact.items.uae.detail'), infra: t('contact.items.uae.infra') },
-                                    { icon: Mail, title: t('contact.items.email.title'), detail: t('contact.items.email.detail'), infra: t('contact.items.email.infra') },
+                                    { icon: MapPin, title: "Cairo Administrative HUB", detail: "New Cairo, Egypt", infra: "Local Operations Center" },
+                                    { icon: Mail, title: "Corporate Correspondence", detail: "support@united-ffv.com", infra: "Central Email Relay" },
                                 ].map((item, i) => (
                                     <motion.div
                                         key={item.title}
@@ -80,40 +108,71 @@ export default function Contact() {
                                 <span className="text-xs sm:text-sm font-black text-uniteda-emerald-dark uppercase tracking-widest">{t('contact.status')}</span>
                             </div>
 
-                            <form className="space-y-6">
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                                {/* Honeypot field */}
+                                <div className="hidden">
+                                    <input type="text" name="_company_id_verification" tabIndex={-1} autoComplete="off" />
+                                </div>
+
                                 <div className="grid sm:grid-cols-2 gap-4 sm:gap-6">
                                     <div className="space-y-3">
                                         <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('contact.form.entity_name')}</label>
-                                        <Input className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-white border-black/5 px-4 sm:px-6 font-medium focus:border-uniteda-emerald/40 transition-all" placeholder={t('contact.form.entity_placeholder')} />
+                                        <Input name="entityName" className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-white border-black/5 px-4 sm:px-6 font-medium focus:border-uniteda-emerald/40 transition-all" placeholder={t('contact.form.entity_placeholder')} required />
                                     </div>
                                     <div className="space-y-3">
                                         <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('contact.form.access_mail')}</label>
-                                        <Input type="email" className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-white border-black/5 px-4 sm:px-6 font-medium focus:border-uniteda-emerald/40 transition-all" placeholder={t('contact.form.mail_placeholder')} />
+                                        <Input name="email" type="email" className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-white border-black/5 px-4 sm:px-6 font-medium focus:border-uniteda-emerald/40 transition-all" placeholder={t('contact.form.mail_placeholder')} required />
                                     </div>
                                 </div>
 
                                 <div className="space-y-3">
                                     <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('contact.form.subject')}</label>
-                                    <Input className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-white border-black/5 px-4 sm:px-6 font-medium focus:border-uniteda-emerald/40 transition-all" placeholder={t('contact.form.subject_placeholder')} />
+                                    <Input name="subject" className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-white border-black/5 px-4 sm:px-6 font-medium focus:border-uniteda-emerald/40 transition-all" placeholder={t('contact.form.subject_placeholder')} required />
                                 </div>
 
                                 <div className="space-y-3">
                                     <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('contact.form.payload')}</label>
-                                    <Textarea className="min-h-[120px] sm:min-h-[150px] rounded-2xl sm:rounded-3xl bg-white border-black/5 p-4 sm:p-6 font-medium focus:border-uniteda-emerald/40 transition-all resize-none" placeholder={t('contact.form.payload_placeholder')} />
+                                    <Textarea name="payload" className="min-h-[120px] sm:min-h-[150px] rounded-2xl sm:rounded-3xl bg-white border-black/5 p-4 sm:p-6 font-medium focus:border-uniteda-emerald/40 transition-all resize-none" placeholder={t('contact.form.payload_placeholder')} required />
+                                </div>
+
+                                <div className="space-y-4">
+                                    <div className="space-y-3">
+                                        <label className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">Full Name</label>
+                                        <Input name="fullName" className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-white border-black/5 px-4 sm:px-6 font-medium focus:border-uniteda-emerald/40 transition-all" placeholder="Enter your full name" required />
+                                    </div>
                                 </div>
 
                                 <Button
+                                    type="submit"
                                     size="xl"
+                                    disabled={isSubmitting || submitted}
                                     className="w-full h-14 sm:h-16 lg:h-18 rounded-full bg-uniteda-emerald hover:bg-uniteda-emerald-dark text-white font-black text-base sm:text-lg lg:text-xl shadow-xl shadow-uniteda-emerald/20 transition-all hover:scale-105 active:scale-95 group"
                                 >
-                                    {t('contact.form.submit')}
-                                    <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 ms-3 group-hover:translate-x-2 rtl:group-hover:-translate-x-2 transition-transform rtl:rotate-180" />
+                                    {isSubmitting ? (
+                                        <span className="flex items-center gap-2">Processing <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" /></span>
+                                    ) : submitted ? (
+                                        <span className="flex items-center gap-2">Sent Successfully <CheckCircle2 className="w-5 h-5" /></span>
+                                    ) : (
+                                        <>
+                                            {t('contact.form.submit')}
+                                            <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 ms-3 group-hover:translate-x-2 rtl:group-hover:-translate-x-2 transition-transform rtl:rotate-180" />
+                                        </>
+                                    )}
                                 </Button>
+
+                                {error && (
+                                    <p className="p-4 rounded-xl bg-red-50 border border-red-100 text-red-600 text-xs font-bold text-center">
+                                        {error}
+                                    </p>
+                                )}
+                                <p className="mt-6 text-[10px] text-center text-muted-foreground/60 font-medium leading-relaxed">
+                                    By submitting this form, you agree to our <Link to="/terms" className="text-uniteda-emerald underline underline-offset-2">Terms of Service</Link> and <Link to="/privacy" className="text-uniteda-emerald underline underline-offset-2">Privacy Protocol</Link>.
+                                </p>
                             </form>
                         </motion.div>
                     </div>
                 </div>
             </section>
-        </Layout>
+        </Layout >
     );
 }

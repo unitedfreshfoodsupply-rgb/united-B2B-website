@@ -22,14 +22,10 @@ export function Footer() {
       { id: "operations", href: "/operations" },
       { id: "quality", href: "/quality" },
       { id: "network", href: "/network" },
-      { id: "careers", href: "/careers" },
     ],
     resources: [
       { id: "seasonal", href: "/seasonal" },
-      { id: "solutions", href: "/solutions" },
       { id: "delivery", href: "/programs" },
-      { id: "portal", href: "/portal" },
-      { id: "faq", href: "/faq" },
     ],
   };
 
@@ -39,12 +35,6 @@ export function Footer() {
       phone: "+20 10 2202 3344",
       email: "egypt@uniteda.com",
       flag: "🇪🇬"
-    },
-    {
-      id: "uae",
-      phone: "+971 4 454 2200",
-      email: "uae@uniteda.com",
-      flag: "🇦🇪"
     },
   ];
 
@@ -215,7 +205,7 @@ export function Footer() {
 
           <div className="flex items-center gap-3 px-6 py-3 rounded-full bg-white border border-black/5 shadow-sm">
             <div className="w-2 h-2 rounded-full bg-uniteda-emerald animate-pulse" />
-            <span className="text-[10px] font-black uppercase tracking-widest text-uniteda-emerald-dark">Operations Active Global</span>
+            <span className="text-[10px] font-black uppercase tracking-widest text-uniteda-emerald-dark">Operations Active Egypt</span>
           </div>
         </div>
       </div>

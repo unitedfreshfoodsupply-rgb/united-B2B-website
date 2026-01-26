@@ -20,6 +20,8 @@ interface SupplyRequirementsStepProps {
     handleCategoryToggle: (category: string) => void;
     volumeRanges: { value: string, label: string }[];
     frequencies: { value: string, label: string }[];
+    values: { volume: string; frequency: string; requirements: string };
+    onChange: (field: string, value: string) => void;
 }
 
 export const SupplyRequirementsStep: React.FC<SupplyRequirementsStepProps> = ({
@@ -29,7 +31,9 @@ export const SupplyRequirementsStep: React.FC<SupplyRequirementsStepProps> = ({
     selectedCategories,
     handleCategoryToggle,
     volumeRanges,
-    frequencies
+    frequencies,
+    values,
+    onChange
 }) => {
     return (
         <div className="p-10 md:p-14 rounded-[3.5rem] bg-white border border-black/5 shadow-2xl shadow-black/[0.02] text-start">
@@ -76,7 +80,7 @@ export const SupplyRequirementsStep: React.FC<SupplyRequirementsStepProps> = ({
                 <div className="grid sm:grid-cols-2 gap-x-4 sm:gap-x-6 md:gap-x-8 lg:gap-x-10 gap-y-6 sm:gap-y-8">
                     <div className="space-y-3">
                         <Label htmlFor="volume" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.volume.label')}</Label>
-                        <Select required dir={isRTL ? "rtl" : "ltr"}>
+                        <Select value={values.volume} onValueChange={(val) => onChange('volume', val)} required dir={isRTL ? "rtl" : "ltr"}>
                             <SelectTrigger className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-[#fcfcfc] border-black/5 px-4 sm:px-6 font-medium text-start">
                                 <SelectValue placeholder={t('rfq.form.fields.volume.placeholder')} />
                             </SelectTrigger>
@@ -89,7 +93,7 @@ export const SupplyRequirementsStep: React.FC<SupplyRequirementsStepProps> = ({
                     </div>
                     <div className="space-y-3">
                         <Label htmlFor="frequency" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.frequency.label')}</Label>
-                        <Select required dir={isRTL ? "rtl" : "ltr"}>
+                        <Select value={values.frequency} onValueChange={(val) => onChange('frequency', val)} required dir={isRTL ? "rtl" : "ltr"}>
                             <SelectTrigger className="h-12 sm:h-14 lg:h-16 rounded-xl sm:rounded-2xl bg-[#fcfcfc] border-black/5 px-4 sm:px-6 font-medium text-start">
                                 <SelectValue placeholder={t('rfq.form.fields.frequency.placeholder')} />
                             </SelectTrigger>
@@ -103,7 +107,7 @@ export const SupplyRequirementsStep: React.FC<SupplyRequirementsStepProps> = ({
                 </div>
                 <div className="space-y-3">
                     <Label htmlFor="requirements" className="text-[10px] font-black uppercase tracking-widest text-muted-foreground/60 ps-1">{t('rfq.form.fields.requirements.label')}</Label>
-                    <Textarea id="requirements" placeholder={t('rfq.form.fields.requirements.placeholder')} rows={4} className="rounded-2xl sm:rounded-3xl bg-[#fcfcfc] border-black/5 p-4 sm:p-6 font-medium resize-none" />
+                    <Textarea id="requirements" value={values.requirements} onChange={(e) => onChange('requirements', e.target.value)} placeholder={t('rfq.form.fields.requirements.placeholder')} rows={4} className="rounded-2xl sm:rounded-3xl bg-[#fcfcfc] border-black/5 p-4 sm:p-6 font-medium resize-none" />
                 </div>
             </div>
         </div>
