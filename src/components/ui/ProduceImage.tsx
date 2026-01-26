@@ -72,7 +72,7 @@ export const ProduceImage: React.FC<ProduceImageProps> = ({
                     !isPriority && "opacity-0"
                 )}
                 loading={isPriority ? "eager" : "lazy"}
-                fetchPriority={isPriority ? "high" : "auto"}
+                fetchpriority={isPriority ? "high" : "auto"}
                 decoding="async"
                 onLoad={(e) => {
                     (e.currentTarget as HTMLImageElement).classList.remove("opacity-0");

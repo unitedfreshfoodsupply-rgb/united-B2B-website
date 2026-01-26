@@ -64,7 +64,7 @@ export default function About() {
                             alt=""
                             width={1920}
                             height={1080}
-                            fetchPriority="high"
+                            fetchpriority="high"
                             decoding="sync"
                         />
                     </div>

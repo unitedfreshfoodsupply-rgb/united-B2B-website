@@ -305,7 +305,7 @@ export default function ProductsPage() {
                   src={productsHero}
                   alt="Premium Produce"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
-                  fetchPriority="high"
+                  fetchpriority="high"
                 />
 
                 {/* HUD Overlay */}
