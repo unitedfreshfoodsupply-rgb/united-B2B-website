@@ -148,6 +148,7 @@
             "peak": "PEAK",
             "imported": "IMPORTED",
             "sourced_via": "Sourced via {{origin}}",
+            "sourced_via_local": "Sourced via UNITED Local Network",
             "items": {}
         },
         "filters": {
@@ -194,6 +195,7 @@
                 "baby_leaf": "Baby Leaf",
                 "microgreen": "Microgreen"
             },
+            "market_price": "Market Price",
             "items": {
                 "imp_1": {
                     "name": "Premium Hass Avocado",
@@ -761,6 +763,13 @@
                     "origin": "Egypt",
                     "season": "Available",
                     "availability": "Year-round"
+                },
+                "veg_broad": {
+                    "name": "Fresh Broad Beans",
+                    "scientific_name": "Vicia faba",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Dec - Apr"
                 },
                 "veg_61": {
                     "name": "Imported Asparagus",
@@ -1420,6 +1429,55 @@
                     "season": "Seasonal",
                     "availability": "Oct - Dec"
                 },
+                "loc_41": {
+                    "name": "Clementine",
+                    "scientific_name": "Citrus × clementina",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Oct - Jan"
+                },
+                "loc_42": {
+                    "name": "Tangerine",
+                    "scientific_name": "Citrus tangerina",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Nov - Mar"
+                },
+                "loc_43": {
+                    "name": "Black Dates (Sandy)",
+                    "scientific_name": "Phoenix dactylifera",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Sep - Nov"
+                },
+                "loc_44": {
+                    "name": "Red Dates (Zaghloul)",
+                    "scientific_name": "Phoenix dactylifera",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Sep - Nov"
+                },
+                "loc_46": {
+                    "name": "Green Fig",
+                    "scientific_name": "Ficus carica",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Jul - Sep"
+                },
+                "loc_47": {
+                    "name": "Local Black Grapes",
+                    "scientific_name": "Vitis vinifera",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Jun - Sep"
+                },
+                "loc_48": {
+                    "name": "Crimson Grapes",
+                    "scientific_name": "Vitis vinifera",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Aug - Oct"
+                },
                 "loc_52": {
                     "name": "Mango Alphonso",
                     "scientific_name": "Mangifera indica 'Alphonso'",
@@ -1445,6 +1503,7 @@
         "controls": {
             "region": {
                 "egypt": "Egypt",
+                "egypt_ops": "Egypt Operations",
                 "uae": "UAE",
                 "both": "Both Regions"
             },
@@ -1482,7 +1541,11 @@
             "spring": "Spring",
             "summer": "Summer",
             "autumn": "Autumn",
-            "winter": "Winter"
+            "winter": "Winter",
+            "spring_range": "Mar - May",
+            "summer_range": "Jun - Aug",
+            "autumn_range": "Sep - Nov",
+            "winter_range": "Dec - Feb"
         },
         "table": {
             "egypt_title": "Egypt Availability Pattern",
@@ -1768,6 +1831,9 @@
             "success": {
                 "title": "Request Transmitted",
                 "description": "Our procurement team has received your signal. Expect an encrypted proposal shortly."
+            },
+            "error": {
+                "submission_failed": "Submission failed. Please contact {{email}} directly."
             }
         },
         "sidebar": {

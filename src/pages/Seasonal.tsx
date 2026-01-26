@@ -62,10 +62,10 @@ const getAvailabilityLabelKey = (value: number) => {
 };
 
 const seasons = [
-  { name: "seasonal.seasons.spring", icon: Leaf, months: "Mar - May", color: "text-green-500" },
-  { name: "seasonal.seasons.summer", icon: Sun, months: "Jun - Aug", color: "text-amber-500" },
-  { name: "seasonal.seasons.autumn", icon: Droplets, months: "Sep - Nov", color: "text-orange-500" },
-  { name: "seasonal.seasons.winter", icon: Snowflake, months: "Dec - Feb", color: "text-blue-500" },
+  { name: "seasonal.seasons.spring", icon: Leaf, months: "seasonal.seasons.spring_range", color: "text-green-500" },
+  { name: "seasonal.seasons.summer", icon: Sun, months: "seasonal.seasons.summer_range", color: "text-amber-500" },
+  { name: "seasonal.seasons.autumn", icon: Droplets, months: "seasonal.seasons.autumn_range", color: "text-orange-500" },
+  { name: "seasonal.seasons.winter", icon: Snowflake, months: "seasonal.seasons.winter_range", color: "text-blue-500" },
 ];
 
 type ViewMode = "grid" | "table";
@@ -264,7 +264,7 @@ export default function SeasonalPage() {
             {/* Region Indicator */}
             <div className="flex items-center gap-2 p-1 rounded-lg bg-muted w-full sm:w-auto order-1">
               <div className="px-4 py-2 rounded-md text-sm font-bold bg-uniteda-emerald text-white shadow-sm flex items-center gap-2">
-                <span>🇪🇬</span> Egypt Operations
+                <span>🇪🇬</span> {t('seasonal.controls.region.egypt_ops')}
               </div>
             </div>
 

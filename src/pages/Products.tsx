@@ -111,7 +111,7 @@ const ProductCard = memo(({ product, t, viewMode, index }: { product: any, t: an
               {t(`products.catalog.items.${product.key}.scientific_name`)}
             </span>
             <h3 className="font-display font-bold text-xl text-uniteda-emerald-dark group-hover:text-uniteda-emerald transition-colors leading-tight">
-              {t(`products.catalog.items.${product.key}.name`)}
+              {t(`products.catalog.items.${product.key}.name`, { defaultValue: product.key.replace(/_/g, ' ') })}
             </h3>
           </div>
           {viewMode === "list" && (
@@ -137,7 +137,7 @@ const ProductCard = memo(({ product, t, viewMode, index }: { product: any, t: an
             </div>
             <div className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground bg-muted/30 px-2 py-1 rounded-md">
               <TrendingUp className="w-3 h-3" />
-              {product.price}
+              {product.price === "Market Price" ? t('products.catalog.market_price') : product.price}
             </div>
           </div>
         )}
@@ -271,7 +271,7 @@ export default function ProductsPage() {
                 </div>
                 <div className="glass-panel px-6 py-4 rounded-3xl border border-black/5 flex flex-col items-start gap-1 bg-white/50">
                   <span className="text-2xl font-black text-uniteda-gold">100%</span>
-                  <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">Local Local Hub Efficiency</span>
+                  <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-widest">{t('about.impact.stats.satisfaction')}</span>
                 </div>
               </div>
             </motion.div>
@@ -355,7 +355,7 @@ export default function ProductsPage() {
                       </span>
                     </div>
                     <span className="text-[10px] font-bold text-white/40 uppercase tracking-tighter">
-                      Sourced via UNITED Local Network
+                      {t('products.ticker.sourced_via_local')}
                     </span>
                   </div>
                   <div className="h-4 w-px bg-white/10 ml-8" />

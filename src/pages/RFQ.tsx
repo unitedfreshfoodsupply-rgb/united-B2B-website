@@ -130,7 +130,7 @@ export default function RFQPage() {
       });
       // Optionally reset form or redirect
     } catch (err) {
-      toast.error('Submission failed. Please contact sales-team@united-ffv.com directly.');
+      toast.error(t('rfq.form.error.submission_failed', { email: 'sales-team@united-ffv.com' }));
     } finally {
       setIsSubmitting(false);
     }

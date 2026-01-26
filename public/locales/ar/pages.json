@@ -151,6 +151,7 @@
             "peak": "موسم الذروة",
             "imported": "مستورد",
             "sourced_via": "تم التوريد عبر {{origin}}",
+            "sourced_via_local": "تم التوريد عبر شبكة المتحدة المحلية",
             "items": {}
         },
         "filters": {
@@ -197,6 +198,7 @@
                 "baby_leaf": "أوراق صغيرة",
                 "microgreen": "نباتات دقيقة"
             },
+            "market_price": "سعر السوق",
             "items": {
                 "imp_1": {
                     "name": "أفوكادو هاس فاخر",
@@ -764,6 +766,13 @@
                     "origin": "مصر",
                     "season": "متاح",
                     "availability": "طوال العام"
+                },
+                "veg_broad": {
+                    "name": "فول أخضر بلدي",
+                    "scientific_name": "Vicia faba",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "ديسمبر - أبريل"
                 },
                 "veg_61": {
                     "name": "اسبراجوس مستورد",
@@ -1423,6 +1432,55 @@
                     "season": "موسمي",
                     "availability": "اكتوبر - ديسمبر"
                 },
+                "loc_41": {
+                    "name": "كلمنتينا",
+                    "scientific_name": "Citrus × clementina",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "أكتوبر - يناير"
+                },
+                "loc_42": {
+                    "name": "يوسفي (تانجرين)",
+                    "scientific_name": "Citrus tangerina",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "نوفمبر - مارس"
+                },
+                "loc_43": {
+                    "name": "بلح أسمر (رملي)",
+                    "scientific_name": "Phoenix dactylifera",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "سبتمبر - نوفمبر"
+                },
+                "loc_44": {
+                    "name": "بلح أحمر (زغلول)",
+                    "scientific_name": "Phoenix dactylifera",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "سبتمبر - نوفمبر"
+                },
+                "loc_46": {
+                    "name": "تين أخضر",
+                    "scientific_name": "Ficus carica",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "يوليو - سبتمبر"
+                },
+                "loc_47": {
+                    "name": "عنب أسود بلدي",
+                    "scientific_name": "Vitis vinifera",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "يونيو - سبتمبر"
+                },
+                "loc_48": {
+                    "name": "عنب كريمسون",
+                    "scientific_name": "Vitis vinifera",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "أغسطس - أكتوبر"
+                },
                 "loc_52": {
                     "name": "مانجو ألفونسو",
                     "scientific_name": "Mangifera indica 'Alphonso'",
@@ -1448,6 +1506,7 @@
         "controls": {
             "region": {
                 "egypt": "مصر",
+                "egypt_ops": "عمليات مصر",
                 "uae": "الإمارات",
                 "both": "كل المناطق"
             },
@@ -1485,7 +1544,11 @@
             "spring": "الربيع",
             "summer": "الصيف",
             "autumn": "الخريف",
-            "winter": "الشتاء"
+            "winter": "الشتاء",
+            "spring_range": "مارس - مايو",
+            "summer_range": "يونيو - أغسطس",
+            "autumn_range": "سبتمبر - نوفمبر",
+            "winter_range": "ديسمبر - فبراير"
         },
         "table": {
             "egypt_title": "نمط التوفر في مصر",
@@ -1771,6 +1834,9 @@
             "success": {
                 "title": "تم إرسال الطلب",
                 "description": "استقبل فريق المشتريات لدينا إشارتك. توقع عرضًا مشفرًا قريبًا."
+            },
+            "error": {
+                "submission_failed": "فشل الإرسال. يرجى التواصل مع {{email}} مباشرة."
             }
         },
         "sidebar": {
