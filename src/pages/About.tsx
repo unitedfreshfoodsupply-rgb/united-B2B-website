@@ -59,7 +59,7 @@ export default function About() {
                         <div className="absolute inset-0 bg-neutral-900/40 z-10" />
                         <div className="absolute inset-0 bg-gradient-to-b from-uniteda-emerald-dark/60 via-transparent to-white z-20" />
                         <img
-                            src="/assets/operations-fresh-hero-v2.webp"
+                            src="/assets/obour-hub-sorting.webp"
                             className="w-full h-full object-cover opacity-60"
                             alt=""
                             width={1920}

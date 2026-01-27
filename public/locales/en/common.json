@@ -24,13 +24,12 @@
             "fruits": "Fresh Fruits",
             "vegetables": "Fresh Vegetables",
             "herbs": "Herbs & Greens",
-            "microgreens": "Microgreens",
             "exotic": "Exotic Produce"
         }
     },
     "footer": {
-        "description": "Delivering premium fresh produce to hospitality and food service industries with operational precision and industrial-scale logistics.",
-        "brand_slogan": "Agricultural Supply Hub",
+        "description": "Operating since 2013, UNITED provides industrial-scale agricultural supply for Egypt's hospitality elite with institutional precision.",
+        "brand_slogan": "Institutional Supply Infrastructure",
         "pre_footer": {
             "label": "Grow with us",
             "title": "Bringing freshness to your business",
@@ -47,7 +46,6 @@
                 "fruits": "Fresh Fruits",
                 "vegetables": "Fresh Vegetables",
                 "herbs": "Herbs & Greens",
-                "microgreens": "Microgreens",
                 "exotic": "Exotic Produce"
             },
             "company": {
@@ -67,8 +65,8 @@
         },
         "regions": {
             "egypt": {
-                "name": "Egypt Hub",
-                "address": "New Cairo HQ, Logistics Zone"
+                "name": "Obour Logistics Hub",
+                "address": "Obour Industrial Area, Cairo, Egypt"
             }
         },
         "copyright": "© {{year}} UNITED Agricultural Supply. All rights reserved.",

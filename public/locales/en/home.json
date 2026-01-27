@@ -3,12 +3,13 @@
         "label": "Strategic Supply Network",
         "title_prefix": "Supplying The",
         "title_highlight": "Best",
-        "subtitle": "UNITED powers the digital supply infrastructure for the world's most elite hospitality brands."
+        "subtitle": "UNITED powers the digital supply operations for the world's most elite hospitality brands.",
+        "brand_slogan": "Institutional Supply Operations"
     },
     "hero": {
-        "label": "Industrial Supply Infrastructure",
+        "label": "Industrial Supply Operations",
         "title_prefix": "Professional Agricultural Supply",
-        "title_highlight": "Infrastructure",
+        "title_highlight": "Operations",
         "description": "Centralized logistics units and high-volume produce grading protocols designed for the Egyptian hospitality market.",
         "cta_primary": "Launch Inquiry Hub",
         "cta_secondary": "Audit Operational Assets",
@@ -28,7 +29,7 @@
             },
             "status": {
                 "label": "Operational Status",
-                "cairo": "Main Operations Hub",
+                "cairo": "Obour Logistics Hub",
                 "dubai": "Egypt Hub Active",
                 "active": "ACTIVE"
             }
@@ -53,10 +54,6 @@
             "name": "Herbs & Greens",
             "description": "Aromatic culinary essentials with premium freshness."
         },
-        "microgreens": {
-            "name": "Microgreens",
-            "description": "Nutrient-dense baby veg for premium plating and high-end gastronomy."
-        },
         "exotic": {
             "name": "Exotic & Specialty",
             "description": "Rare imports and unique varieties for discerning buyers."
@@ -79,8 +76,8 @@
         "regions_label": "Available Regions",
         "view_calendar": "View Full Calendar",
         "regions": {
-            "cairo": "Main Facility",
-            "dubai": "Supply Division"
+            "cairo": "Obour Hub",
+            "dubai": "Regional Dispatch"
         },
         "seasons": {
             "spring": "Spring",
@@ -91,7 +88,6 @@
         "products": {
             "strawberries": "Strawberries",
             "asparagus": "Asparagus",
-            "microgreens": "Microgreens",
             "peas": "Peas",
             "mangoes": "Premium Mangoes",
             "watermelon": "Watermelon",
@@ -120,15 +116,15 @@
         "target_temp": "Target Temp Range",
         "cold_chain_asset": "Cold-Chain Asset",
         "traceability_locked": "Traceability Locked",
-        "architecture_label": "Supply Chain Infrastructure",
-        "title_prefix": "Logistics Infrastructure for",
+        "architecture_label": "Supply Chain Operations",
+        "title_prefix": "Logistics Operations for",
         "title_highlight": "Shelf-Life Optimization",
-        "description": "We operate a closed-loop supply system that integrates farm-level sourcing with active cold-chain monitoring. Our infrastructure ensures every batch maintains its physical integrity from point-of-harvest to final dispatch.",
+        "description": "We operate a closed-loop supply system that integrates farm-level sourcing with active cold-chain monitoring. Our operations ensure every batch maintains its physical integrity from point-of-harvest to final dispatch.",
         "cta": "Audit Operational Assets",
         "items": {
             "ecosystem": {
                 "title": "Integrated Farm Sourcing",
-                "description": "Direct farm-to-hub infrastructure reducing mid-layer transit time."
+                "description": "Direct farm-to-hub operations reducing mid-layer transit time."
             },
             "grading": {
                 "title": "Standardized Batch Grading",
@@ -212,20 +208,18 @@
         "title_highlight": "Supply Partnership",
         "description": "Submit requirements to our Logistics Hub. Our technical team responds with a structured supply plan and quote processing within 48 hours.",
         "features": {
-            "sync": {
-                "label": "Unified Logistics Efficiency",
-                "sub": "Integrated Local Infrastructure"
-            },
-            "rfq": {
-                "label": "Inquiry Hub Logic",
-                "sub": "48h Response SLA"
-            },
-            "audit": {
-                "label": "Audit-Ready",
-                "sub": "Global Standards"
-            }
+            "label": "Unified Logistics Efficiency",
+            "sub": "Integrated Local Operations"
         },
-        "primary_btn": "Launch Inquiry Hub",
-        "secondary_btn": "Contact Technical Sales"
-    }
+        "rfq": {
+            "label": "Inquiry Hub Logic",
+            "sub": "48h Response SLA"
+        },
+        "audit": {
+            "label": "Audit-Ready",
+            "sub": "Global Standards"
+        }
+    },
+    "primary_btn": "Launch Inquiry Hub",
+    "secondary_btn": "Contact Technical Sales"
 }

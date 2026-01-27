@@ -396,7 +396,7 @@ export default function ProductsPage() {
                   src={productsHero}
                   alt="Premium Produce"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
-                  fetchPriority="high"
+                  fetchpriority="high"
                 />
                 <div className="absolute inset-0 p-8 flex flex-col justify-between pointer-events-none">
                   <div className="glass-panel p-4 rounded-2xl border-white/20 bg-white/10 backdrop-blur-md self-start">

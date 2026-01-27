@@ -35,7 +35,7 @@ export default function StoryChapter03() {
                         style={{ willChange: "transform, opacity" }}
                     >
                         <img
-                            src="/assets/products-hero.webp"
+                            src="/assets/obour-facility-exterior.webp"
                             className="w-full h-full object-cover opacity-60 grayscale"
                             alt=""
                             width={1280}

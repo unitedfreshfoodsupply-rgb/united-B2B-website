@@ -7,7 +7,6 @@ const partners = [
     { name: "Four Seasons", logo: "/images/partners/four-seasons.png" },
     { name: "Kempinski", logo: "/images/partners/kempinski.png" },
     { name: "Jaz Hotels", logo: "/images/partners/jaz.png" },
-    { name: "Emaar", logo: "/images/partners/emaar.png" },
     { name: "Steigenberger", logo: "/images/partners/steigenberger.png" },
 ];
 
@@ -15,16 +14,19 @@ export function PartnerSection() {
     const { t, isRTL } = useUnifiedTranslation();
 
     return (
-        <section className="relative py-28 sm:py-36 bg-white overflow-hidden border-y border-black/[0.03]">
+        <section className="relative py-32 sm:py-48 bg-white overflow-hidden border-y border-black/[0.03]">
+            {/* Soft Ambient Glows */}
+            <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-uniteda-emerald/5 rounded-full blur-[150px] -mr-96 -mt-96 pointer-events-none" />
+            <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-uniteda-gold/5 rounded-full blur-[120px] -ml-48 -mb-48 pointer-events-none" />
             {/* Smooth Animation Styles */}
             <style dangerouslySetInnerHTML={{
                 __html: `
                 @keyframes marquee {
                     0% { transform: translateX(0); }
-                    100% { transform: translateX(${isRTL ? '50%' : '-50%'}); }
+                    100% { transform: translateX(${isRTL ? '25%' : '-25%'}); }
                 }
                 .animate-marquee {
-                    animation: marquee 50s linear infinite;
+                    animation: marquee 35s linear infinite;
                 }
                 .pause-on-hover:hover .animate-marquee {
                     animation-play-state: paused;
@@ -74,28 +76,31 @@ export function PartnerSection() {
                     </motion.div>
                 </div>
 
-                {/* Marquee with improved masks */}
-                <div className="relative group/marquee px-4 -mx-4 sm:mx-0">
-                    <div className="absolute inset-y-0 left-0 w-32 md:w-96 bg-gradient-to-r from-white via-white/60 to-transparent z-10 pointer-events-none" />
-                    <div className="absolute inset-y-0 right-0 w-32 md:w-96 bg-gradient-to-l from-white via-white/60 to-transparent z-10 pointer-events-none" />
+                {/* Marquee with premium elevation */}
+                <div className="relative group/marquee px-4 -mx-4 sm:mx-0 py-12">
+                    {/* Industrial Fades */}
+                    <div className="absolute inset-y-0 left-0 w-32 md:w-80 bg-gradient-to-r from-white via-white to-transparent z-10 pointer-events-none" />
+                    <div className="absolute inset-y-0 right-0 w-32 md:w-80 bg-gradient-to-l from-white via-white to-transparent z-10 pointer-events-none" />
 
                     <div className="flex overflow-hidden cursor-pointer pause-on-hover">
-                        <div className={`flex gap-20 md:gap-40 items-center whitespace-nowrap py-14 animate-marquee ${isRTL ? 'flex-row-reverse' : 'flex-row'}`}>
-                            {[...partners, ...partners, ...partners].map((partner, i) => (
+                        <div className={`flex gap-12 md:gap-32 items-center whitespace-nowrap py-8 animate-marquee ${isRTL ? 'flex-row-reverse' : 'flex-row'}`}>
+                            {[...partners, ...partners, ...partners, ...partners].map((partner, i) => (
                                 <motion.div
                                     key={i}
-                                    whileHover={{ y: -10, scale: 1.15 }}
-                                    className="flex items-center justify-center grayscale contrast-125 opacity-30 hover:grayscale-0 hover:opacity-100 hover:contrast-100 transition-all duration-700 ease-[0.22,1,0.36,1]"
+                                    whileHover={{ y: -5, scale: 1.05 }}
+                                    className="relative flex items-center justify-center grayscale contrast-125 opacity-[0.65] hover:grayscale-0 hover:opacity-100 hover:contrast-100 transition-all duration-500 ease-out"
                                 >
-                                    <div className="h-12 md:h-20 w-44 md:w-64 flex items-center justify-center">
+                                    <div className="h-16 md:h-28 w-48 md:w-72 flex items-center justify-center px-8 py-6 rounded-2xl bg-[#fcfcfc] border border-black/[0.03] shadow-sm hover:shadow-xl hover:border-uniteda-gold/20 transition-all duration-500 group">
                                         <img
                                             src={partner.logo}
                                             alt={partner.name}
                                             width={192}
                                             height={56}
-                                            className="max-h-full max-w-full object-contain filter drop-shadow-md"
+                                            className="max-h-full max-w-full object-contain filter drop-shadow-sm brightness-[0.9] group-hover:brightness-100"
                                             loading="lazy"
                                         />
+                                        {/* Premium Subtle Indicator */}
+                                        <div className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-uniteda-gold/0 group-hover:bg-uniteda-gold/40 transition-all" />
                                     </div>
                                 </motion.div>
                             ))}

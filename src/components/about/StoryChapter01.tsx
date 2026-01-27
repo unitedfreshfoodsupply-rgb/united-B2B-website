@@ -48,7 +48,7 @@ export default function StoryChapter01({ isRTL }: { isRTL: boolean }) {
                             style={{ willChange: "transform, opacity" }}
                         >
                             <img
-                                src="/assets/microgreens.webp"
+                                src="/assets/hospitality-supply.webp"
                                 className="w-full h-full object-cover"
                                 alt=""
                                 width={800}

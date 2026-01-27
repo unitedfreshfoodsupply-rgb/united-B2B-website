@@ -18,8 +18,7 @@ import {
   PackageCheck,
   Container
 } from "lucide-react";
-import operationsFreshHero from "@/assets/operations-fresh-hero.webp";
-import microgreens from "@/assets/microgreens.webp";
+
 
 export default function OperationsPage() {
   const { t, i18n, isRTL } = useUnifiedTranslation();
@@ -112,7 +111,7 @@ export default function OperationsPage() {
             >
               <div className="relative aspect-square rounded-3xl sm:rounded-[4rem] lg:rounded-[5rem] border-8 sm:border-12 lg:border-[16px] border-white shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] overflow-hidden">
                 <img
-                  src={operationsFreshHero}
+                  src="/assets/obour-hub-sorting.webp"
                   alt="United Fresh Shipment"
                   className="w-full h-full object-cover"
                 />
@@ -332,7 +331,7 @@ export default function OperationsPage() {
               className="relative"
             >
               <div className="relative aspect-[4/5] rounded-3xl sm:rounded-[4rem] lg:rounded-[5rem] overflow-hidden border-8 sm:border-12 lg:border-[16px] border-white shadow-2xl">
-                <img src={microgreens} alt="Nature focus" className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700 hover:scale-105" />
+                <img src="/assets/technical-grading.webp" alt="Nature focus" className="w-full h-full object-cover grayscale-[20%] hover:grayscale-0 transition-all duration-700 hover:scale-105" />
                 <div className="absolute inset-0 bg-gradient-to-t from-uniteda-emerald-dark/80 via-transparent to-transparent" />
 
                 <div className="absolute bottom-6 sm:bottom-8 lg:bottom-12 left-6 sm:left-8 lg:left-12 right-6 sm:right-8 lg:right-12 text-white text-start">
