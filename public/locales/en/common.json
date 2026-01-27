@@ -24,6 +24,7 @@
             "fruits": "Fresh Fruits",
             "vegetables": "Fresh Vegetables",
             "herbs": "Herbs & Greens",
+            "microgreens": "Microgreens",
             "exotic": "Exotic Produce"
         }
     },
@@ -39,13 +40,14 @@
         "columns": {
             "products": "Products",
             "company": "Company",
-            "resources": "Main Office"
+            "resources": "Resources"
         },
         "links": {
             "products": {
                 "fruits": "Fresh Fruits",
                 "vegetables": "Fresh Vegetables",
                 "herbs": "Herbs & Greens",
+                "microgreens": "Microgreens",
                 "exotic": "Exotic Produce"
             },
             "company": {
@@ -66,7 +68,7 @@
         "regions": {
             "egypt": {
                 "name": "Obour Logistics Hub",
-                "address": "Obour Industrial Area, Cairo, Egypt"
+                "address": "Obour City – Plot 26 – Block H – Annexed Industrial Zone – Behind Obour Market – Cairo, Egypt"
             }
         },
         "copyright": "© {{year}} UNITED Agricultural Supply. All rights reserved.",

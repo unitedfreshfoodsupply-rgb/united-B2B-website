@@ -1,9 +1,77 @@
 {
+    "privacy": {
+        "badge": "Privacy Protocol",
+        "title": "Privacy",
+        "title_highlight": "Policy",
+        "description": "Your trust is our priority. Learn how UNITED protects your data and ensures secure business interactions.",
+        "sections": {
+            "collection": {
+                "title": "Data Collection & Usage",
+                "content": "UNITED is committed to protecting the privacy of our partners within the Egyptian market. We collect only the information necessary to facilitate local food supply procurement and business inquiries, specifically names, company details, contact information, and specific supply requirements provided via our RFQ and Contact forms."
+            },
+            "email": {
+                "title": "Email Handling",
+                "content": "Information submitted through our forms is transmitted directly to our sales and support teams via secure email protocols. We do not store this data in a public-facing database at this stage. Your data is used exclusively for professional communication regarding your specific requests."
+            },
+            "hosting": {
+                "title": "Hosting & Cookies",
+                "content": "Our platform is hosted on secure enterprise infrastructure. We use minimal cookies essential for site functionality and performance optimization. We do not use third-party tracking cookies for advertising purposes."
+            }
+        },
+        "contact": {
+            "title": "Contact Reference",
+            "description": "For any privacy-related inquiries or to request data deletion, please contact our administrative HUB:",
+            "company": "UNITED Food & Veggie Supply",
+            "address": "Obour City – Plot 26 – Block H – Cairo, Egypt"
+        }
+    },
+    "terms": {
+        "badge": "Institutional Framework",
+        "title": "Terms of",
+        "title_highlight": "Service",
+        "description": "Understanding our service framework ensures a smooth and professional partnership experience.",
+        "sections": {
+            "overview": {
+                "title": "Service Overview",
+                "content": "By accessing the UNITED platform, you agree to these terms. UNITED provides a high-efficiency procurement interface for professional food supply services, focusing on B2B agricultural supply chains within the Egyptian market."
+            },
+            "procurement": {
+                "title": "Procurement Requests",
+                "content": "All RFQs submitted via our platform constitute an invitation to treat and not a binding contract until formal procurement agreements are signed. UNITED reserves the right to verify business credentials before fulfilling supply requests."
+            },
+            "liability": {
+                "title": "Liability & Compliance",
+                "content": "UNITED operates in strict compliance with international food safety standards (HACCP, ISO 22000). While we strive for 100% platform availability and logistical accuracy, we are not liable for indirect losses resulting from site downtime or supply chain disruptions beyond our HUB control."
+            }
+        },
+        "identity": {
+            "title": "Business Identity",
+            "description": "UNITED is a registered enterprise specialized in Advanced Agricultural Supply. All branding, logic streams, and industrial designs on this site are the intellectual property of UNITED.",
+            "company": "UNITED Food & Veggie Supply HUB",
+            "headquarters": "Corporate Headquarters: Cairo, Egypt",
+            "license": "Procurement Licensing: EGY-2026-LOCAL"
+        }
+    },
     "contact": {
         "label": "Get In Touch",
         "title_prefix": "Let's Talk",
         "title_highlight": "Fresh Business",
         "description": "Reach out to our team to discuss your fresh produce needs. We're here to help you source the finest fruits and vegetables.",
+        "info": {
+            "address": {
+                "label": "Headquarters",
+                "title": "UNITED Food Distribution",
+                "detail": "Obour City – Plot 26 – Block H – Annexed Industrial Zone – Behind Obour Market – Cairo, Egypt"
+            },
+            "phone": {
+                "label": "Direct Line",
+                "title": "Sales Hotline"
+            },
+            "email": {
+                "label": "Email Support",
+                "title": "Corporate Correspondence"
+            }
+        },
         "items": {
             "egypt": {
                 "title": "Obour Logistics Hub",
@@ -169,7 +237,7 @@
                 "hotel": "Hotel Supplies",
                 "restaurant": "Restaurant",
                 "airline": "Airline Catering",
-                "retail": "Retail Retail"
+                "retail": "Modern Retail"
             }
         },
         "catalog": {

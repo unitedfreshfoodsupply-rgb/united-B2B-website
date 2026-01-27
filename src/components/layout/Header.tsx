@@ -188,6 +188,39 @@ export function Header() {
                   </Link>
                 ))}
                 <div className="pt-4 flex flex-col gap-3">
+                  {/* Mobile Language Switcher */}
+                  <div className="flex items-center justify-center gap-2 p-2 bg-muted/30 rounded-2xl border border-black/5">
+                    <Globe size={16} className="text-uniteda-emerald" />
+                    <div className="flex items-center gap-1 bg-white rounded-xl p-1">
+                      <button
+                        onClick={() => {
+                          i18n.changeLanguage('ar');
+                          document.documentElement.dir = 'rtl';
+                          document.documentElement.lang = 'ar';
+                        }}
+                        className={cn(
+                          "px-4 py-2 rounded-lg text-sm font-bold transition-all",
+                          isRTL ? "bg-uniteda-emerald text-white shadow-sm" : "text-muted-foreground hover:text-uniteda-emerald"
+                        )}
+                      >
+                        العربية
+                      </button>
+                      <button
+                        onClick={() => {
+                          i18n.changeLanguage('en');
+                          document.documentElement.dir = 'ltr';
+                          document.documentElement.lang = 'en';
+                        }}
+                        className={cn(
+                          "px-4 py-2 rounded-lg text-sm font-bold transition-all",
+                          !isRTL ? "bg-uniteda-emerald text-white shadow-sm" : "text-muted-foreground hover:text-uniteda-emerald"
+                        )}
+                      >
+                        English
+                      </button>
+                    </div>
+                  </div>
+
                   <Button variant="outline" className="rounded-2xl border-uniteda-emerald text-uniteda-emerald font-bold" asChild>
                     <Link to="/contact" onClick={() => setMobileMenuOpen(false)}>{t('header.cta.sales')}</Link>
                   </Button>

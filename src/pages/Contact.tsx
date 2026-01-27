@@ -72,8 +72,9 @@ export default function Contact() {
 
                             <div className="space-y-6 sm:space-y-8">
                                 {[
-                                    { icon: MapPin, title: "Cairo Administrative HUB", detail: "New Cairo, Egypt", infra: "Local Operations Center" },
-                                    { icon: Mail, title: "Corporate Correspondence", detail: "support@united-ffv.com", infra: "Central Email Relay" },
+                                    { icon: MapPin, title: t('contact.info.address.title'), detail: t('contact.info.address.detail'), infra: t('contact.info.address.label') },
+                                    { icon: Phone, title: t('contact.info.phone.title'), detail: "01008896683", infra: t('contact.info.phone.label') },
+                                    { icon: Mail, title: t('contact.info.email.title'), detail: "support@united-ffv.com", infra: t('contact.info.email.label') },
                                 ].map((item, i) => (
                                     <motion.div
                                         key={item.title}

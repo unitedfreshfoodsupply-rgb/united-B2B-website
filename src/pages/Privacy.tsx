@@ -1,73 +1,122 @@
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
-import { Shield, Lock, Eye, Mail } from "lucide-react";
+import { Shield, Lock, Eye, Mail, Leaf } from "lucide-react";
 
 export default function Privacy() {
-    const { t } = useUnifiedTranslation();
+    const { t, isRTL } = useUnifiedTranslation();
+
+    const sections = [
+        {
+            icon: Eye,
+            titleKey: "privacy.sections.collection.title",
+            contentKey: "privacy.sections.collection.content"
+        },
+        {
+            icon: Mail,
+            titleKey: "privacy.sections.email.title",
+            contentKey: "privacy.sections.email.content"
+        },
+        {
+            icon: Lock,
+            titleKey: "privacy.sections.hosting.title",
+            contentKey: "privacy.sections.hosting.content"
+        }
+    ];
 
     return (
         <Layout>
-            <section className="relative pt-32 pb-24 overflow-hidden bg-white">
+            {/* Hero Section */}
+            <section className="relative pt-32 pb-16 overflow-hidden bg-gradient-to-b from-uniteda-emerald-dark to-uniteda-emerald">
+                {/* Background Effects */}
+                <div className="absolute inset-0 neural-grid opacity-10" />
+                <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-uniteda-gold/10 rounded-full blur-[150px] -mr-48 -mt-48" />
+
                 <div className="container-wide relative z-10">
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
-                        className="max-w-4xl mx-auto"
+                        transition={{ duration: 0.8 }}
+                        className="max-w-4xl mx-auto text-center"
                     >
-                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-uniteda-emerald/5 border border-uniteda-emerald/10 text-uniteda-emerald mb-8">
-                            <Shield size={14} />
-                            <span className="text-xs font-bold tracking-widest uppercase">Privacy Protocol</span>
+                        <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 text-white mb-8">
+                            <Shield size={16} className="text-uniteda-gold" />
+                            <span className="text-xs font-bold tracking-[0.2em] uppercase">{t('privacy.badge')}</span>
                         </div>
 
-                        <h1 className="text-4xl sm:text-5xl md:text-6xl font-black text-uniteda-emerald-dark mb-8 tracking-tighter uppercase">
-                            Privacy <span className="text-uniteda-gold">Policy</span>
+                        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-white mb-6 tracking-tighter">
+                            {t('privacy.title')} <span className="text-uniteda-gold">{t('privacy.title_highlight')}</span>
                         </h1>
 
-                        <div className="prose prose-lg max-w-none text-muted-foreground font-medium space-y-12">
-                            <section>
-                                <h2 className="text-2xl font-black text-uniteda-emerald-dark flex items-center gap-3 mb-4 uppercase tracking-tight">
-                                    <Eye className="text-uniteda-gold" size={24} />
-                                    1. Data Collection & Usage
-                                </h2>
-                                <p>
-                                    UNITED is committed to protecting the privacy of our partners within the Egyptian market. We collect only the information necessary to facilitate local food supply procurement and business inquiries, specifically names, company details, contact information, and specific supply requirements provided via our RFQ and Contact forms.
-                                </p>
-                            </section>
-
-                            <section>
-                                <h2 className="text-2xl font-black text-uniteda-emerald-dark flex items-center gap-3 mb-4 uppercase tracking-tight">
-                                    <Mail className="text-uniteda-gold" size={24} />
-                                    2. Email Handling
-                                </h2>
-                                <p>
-                                    Information submitted through our forms is transmitted directly to our sales and support teams via secure email protocols. We do not store this data in a public-facing database at this stage. Your data is used exclusively for professional communication regarding your specific requests.
-                                </p>
-                            </section>
-
-                            <section>
-                                <h2 className="text-2xl font-black text-uniteda-emerald-dark flex items-center gap-3 mb-4 uppercase tracking-tight">
-                                    <Lock className="text-uniteda-gold" size={24} />
-                                    3. Hosting & Cookies
-                                </h2>
-                                <p>
-                                    Our platform is hosted on secure enterprise infrastructure. We use minimal cookies essential for site functionality and performance optimization. We do not use third-party tracking cookies for advertising purposes.
-                                </p>
-                            </section>
-
-                            <section className="p-8 rounded-3xl bg-uniteda-emerald/5 border border-uniteda-emerald/10 text-uniteda-emerald-dark">
-                                <h2 className="text-xl font-black mb-4 uppercase tracking-tight">Contact Reference</h2>
-                                <p className="text-sm font-bold opacity-70 mb-4">
-                                    For any privacy-related inquiries or to request data deletion, please contact our administrative HUB:
-                                </p>
-                                <div className="space-y-2 font-black uppercase tracking-widest text-xs">
-                                    <p>UNITED Food & Veggie Supply</p>
-                                    <p>Administrative HUB: Cairo, Egypt</p>
-                                    <p>support@united-ffv.com</p>
-                                </div>
-                            </section>
-                        </div>
+                        <p className="text-lg sm:text-xl text-white/70 font-medium max-w-2xl mx-auto">
+                            {t('privacy.description')}
+                        </p>
                     </motion.div>
+                </div>
+
+                {/* Wave Divider */}
+                <div className="absolute bottom-0 left-0 right-0">
+                    <svg viewBox="0 0 1440 100" className="w-full h-16 sm:h-24 fill-white">
+                        <path d="M0,50 C360,100 720,0 1080,50 C1260,75 1380,75 1440,50 L1440,100 L0,100 Z" />
+                    </svg>
+                </div>
+            </section>
+
+            {/* Content Section */}
+            <section className="relative py-16 sm:py-24 bg-white">
+                <div className="container-wide relative z-10">
+                    <div className="max-w-4xl mx-auto space-y-12">
+                        {sections.map((section, index) => (
+                            <motion.div
+                                key={index}
+                                initial={{ opacity: 0, y: 20 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: index * 0.1 }}
+                                className="group relative p-8 sm:p-10 rounded-[2rem] bg-gradient-to-br from-[#fafafa] to-white border border-black/5 hover:shadow-xl hover:shadow-uniteda-emerald/5 transition-all duration-500"
+                            >
+                                <div className="flex items-start gap-6">
+                                    <div className="w-14 h-14 rounded-2xl bg-uniteda-emerald/10 flex items-center justify-center shrink-0 group-hover:bg-uniteda-emerald group-hover:scale-110 transition-all duration-500">
+                                        <section.icon size={24} className="text-uniteda-emerald group-hover:text-white transition-colors" />
+                                    </div>
+                                    <div className="flex-1">
+                                        <h2 className="text-xl sm:text-2xl font-black text-uniteda-emerald-dark mb-4 tracking-tight">
+                                            {index + 1}. {t(section.titleKey)}
+                                        </h2>
+                                        <p className="text-muted-foreground font-medium leading-relaxed text-base sm:text-lg">
+                                            {t(section.contentKey)}
+                                        </p>
+                                    </div>
+                                </div>
+                            </motion.div>
+                        ))}
+
+                        {/* Contact Box */}
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            className="relative p-8 sm:p-12 rounded-[2.5rem] bg-uniteda-emerald-dark overflow-hidden"
+                        >
+                            <div className="absolute inset-0 neural-grid opacity-10" />
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-uniteda-gold/20 rounded-full blur-[80px] -mr-20 -mt-20" />
+
+                            <div className="relative z-10">
+                                <div className="flex items-center gap-3 mb-6">
+                                    <Leaf size={20} className="text-uniteda-gold" />
+                                    <h3 className="text-xl font-black text-white uppercase tracking-wide">{t('privacy.contact.title')}</h3>
+                                </div>
+                                <p className="text-white/60 font-medium mb-6">
+                                    {t('privacy.contact.description')}
+                                </p>
+                                <div className="space-y-3 text-white font-bold">
+                                    <p>{t('privacy.contact.company')}</p>
+                                    <p className="text-white/70">{t('privacy.contact.address')}</p>
+                                    <p className="text-uniteda-gold">support@united-ffv.com</p>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
                 </div>
             </section>
         </Layout>

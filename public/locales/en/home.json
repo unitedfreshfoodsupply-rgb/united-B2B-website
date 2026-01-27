@@ -54,6 +54,10 @@
             "name": "Herbs & Greens",
             "description": "Aromatic culinary essentials with premium freshness."
         },
+        "microgreens": {
+            "name": "Microgreens",
+            "description": "Short-cycle designer greens with high nutrient density and aesthetic value."
+        },
         "exotic": {
             "name": "Exotic & Specialty",
             "description": "Rare imports and unique varieties for discerning buyers."
@@ -88,6 +92,7 @@
         "products": {
             "strawberries": "Strawberries",
             "asparagus": "Asparagus",
+            "microgreens": "Microgreens",
             "peas": "Peas",
             "mangoes": "Premium Mangoes",
             "watermelon": "Watermelon",
@@ -208,18 +213,20 @@
         "title_highlight": "Supply Partnership",
         "description": "Submit requirements to our Logistics Hub. Our technical team responds with a structured supply plan and quote processing within 48 hours.",
         "features": {
-            "label": "Unified Logistics Efficiency",
-            "sub": "Integrated Local Operations"
+            "sync": {
+                "label": "Unified Logistics Efficiency",
+                "sub": "Integrated Local Operations"
+            },
+            "rfq": {
+                "label": "Inquiry Hub Logic",
+                "sub": "48h Response SLA"
+            },
+            "audit": {
+                "label": "Audit-Ready",
+                "sub": "Global Standards"
+            }
         },
-        "rfq": {
-            "label": "Inquiry Hub Logic",
-            "sub": "48h Response SLA"
-        },
-        "audit": {
-            "label": "Audit-Ready",
-            "sub": "Global Standards"
-        }
-    },
-    "primary_btn": "Launch Inquiry Hub",
-    "secondary_btn": "Contact Technical Sales"
+        "primary_btn": "Launch Inquiry Hub",
+        "secondary_btn": "Contact Technical Sales"
+    }
 }

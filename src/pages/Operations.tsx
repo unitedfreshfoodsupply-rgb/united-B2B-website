@@ -87,10 +87,14 @@ export default function OperationsPage() {
                 </Button>
 
                 <div className="flex items-center gap-4 sm:gap-6">
-                  <div className="flex -space-x-4 rtl:space-x-reverse">
-                    {[1, 2, 3].map((i) => (
-                      <div key={i} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-4 border-white bg-uniteda-emerald/10 flex items-center justify-center overflow-hidden grayscale hover:grayscale-0 transition-all">
-                        <img src={`https://i.pravatar.cc/150?u=${i + 10}`} alt="Partner" />
+                  <div className="flex -space-x-3 rtl:space-x-reverse">
+                    {[
+                      "/images/partners/four-seasons.png",
+                      "/images/partners/fairmont.png",
+                      "/images/partners/kempinski.png"
+                    ].map((logo, i) => (
+                      <div key={i} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-4 border-white bg-white flex items-center justify-center overflow-hidden shadow-md">
+                        <img src={logo} alt="Partner" className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
                       </div>
                     ))}
                   </div>
