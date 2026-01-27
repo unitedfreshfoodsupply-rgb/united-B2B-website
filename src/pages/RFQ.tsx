@@ -79,7 +79,6 @@ export default function RFQPage() {
     t('products.catalog.categories.fruits'),
     t('products.catalog.categories.vegetables'),
     t('products.catalog.categories.herbs'),
-    t('products.catalog.categories.microgreens'),
     t('products.catalog.categories.exotic'),
     t('products.catalog.categories.specialty'),
   ], [t]);
