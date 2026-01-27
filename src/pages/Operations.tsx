@@ -312,17 +312,26 @@ export default function OperationsPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.1 }}
-                    className="p-8 rounded-[3rem] bg-[#fcfcfc] border border-black/5 flex items-center gap-8 group hover:bg-white hover:shadow-2xl transition-all"
+                    className="p-8 rounded-[3rem] bg-[#fcfcfc] border border-black/5 flex items-center gap-8 group hover:bg-white hover:shadow-2xl transition-all relative overflow-hidden"
                   >
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-uniteda-emerald/5 flex flex-col items-center justify-center group-hover:bg-uniteda-emerald group-hover:text-white transition-all shrink-0">
-                      <Award size={28} />
-                      <span className="text-[8px] font-mono mt-1 opacity-40">{cert.id}</span>
+                    {/* Industrial background accent */}
+                    <div className="absolute top-0 right-0 w-24 h-24 bg-uniteda-emerald/5 rounded-full blur-3xl group-hover:bg-uniteda-emerald/10 transition-all opacity-0 group-hover:opacity-100" />
+
+                    <div className="w-20 h-20 sm:w-24 sm:h-24 p-2 flex items-center justify-center group-hover:scale-110 transition-all shrink-0 z-10">
+                      <img
+                        src={`/assets/certifications/${cert.id.toLowerCase().includes('haccp') ? 'haccp' : cert.id.toLowerCase().includes('iso') ? 'iso' : 'globalgap'}.webp`}
+                        alt={cert.name}
+                        className="w-full h-full object-contain filter drop-shadow-md"
+                      />
                     </div>
-                    <div>
+                    <div className="z-10 text-start">
                       <h4 className="text-xl sm:text-2xl font-black text-uniteda-emerald-dark tracking-tight mb-1">{cert.name}</h4>
                       <p className="text-xs font-bold text-muted-foreground uppercase tracking-widest">{cert.description}</p>
                     </div>
-                    <CheckCircle2 size={20} className="text-uniteda-emerald ms-auto" />
+                    <div className="ms-auto flex items-center gap-3 z-10">
+                      <span className="text-[10px] font-mono opacity-40 hidden sm:block uppercase tracking-tighter">{cert.id}</span>
+                      <CheckCircle2 size={24} className="text-uniteda-emerald" />
+                    </div>
                   </motion.div>
                 ))}
               </div>

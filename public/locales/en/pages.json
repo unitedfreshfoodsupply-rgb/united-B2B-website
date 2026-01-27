@@ -608,8 +608,8 @@
                     "availability": "Year-round"
                 },
                 "veg_29": {
-                    "name": "Green Bell Pepper",
-                    "scientific_name": "Capsicum annuum",
+                    "name": "Premium Red Tomatoes",
+                    "scientific_name": "Solanum lycopersicum",
                     "origin": "Egypt",
                     "season": "Available",
                     "availability": "Year-round"
@@ -720,8 +720,8 @@
                     "availability": "Year-round"
                 },
                 "veg_45": {
-                    "name": "Premium Red Tomatoes",
-                    "scientific_name": "Solanum lycopersicum",
+                    "name": "Fresh Red Pomegranate",
+                    "scientific_name": "Punica granatum",
                     "origin": "Egypt",
                     "season": "Available",
                     "availability": "Year-round"
