@@ -32,8 +32,8 @@ export function Footer() {
   const regions = [
     {
       id: "egypt",
-      phone: "+20 10 2202 3344",
-      email: "egypt@uniteda.com",
+      phone: "+20 100 889 6683",
+      email: "support@united-ffv.com",
       flag: "🇪🇬"
     },
   ];

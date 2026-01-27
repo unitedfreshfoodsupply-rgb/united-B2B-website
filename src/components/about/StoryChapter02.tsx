@@ -17,7 +17,7 @@ export default function StoryChapter02({ isRTL }: { isRTL: boolean }) {
                             style={{ willChange: "transform, opacity" }}
                         >
                             <img
-                                src="/assets/rfq-hero.webp"
+                                src="/assets/united-workforce.webp"
                                 className="w-full aspect-video object-cover rounded-[1.5rem] sm:rounded-[2.5rem] grayscale group-hover:grayscale-0 transition-all duration-1000"
                                 alt=""
                                 width={1280}

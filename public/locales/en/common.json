@@ -14,7 +14,7 @@
         },
         "cta": {
             "partner": "Partner with us",
-            "sales": "Talk to Sales",
+            "sales": "Technical Sales",
             "inquiry": "Inquiry Hub"
         },
         "brand": {
@@ -29,8 +29,8 @@
         }
     },
     "footer": {
-        "description": "Delivering premium fresh produce to hospitality and food service industries within Egypt with uncompromising quality and reliability.",
-        "brand_slogan": "Agricultural Supply",
+        "description": "Operating since 2013, UNITED provides industrial-scale agricultural supply for Egypt's hospitality elite with institutional precision.",
+        "brand_slogan": "Institutional Supply Infrastructure",
         "pre_footer": {
             "label": "Grow with us",
             "title": "Bringing freshness to your business",
@@ -40,7 +40,7 @@
         "columns": {
             "products": "Products",
             "company": "Company",
-            "resources": "Main Office"
+            "resources": "Resources"
         },
         "links": {
             "products": {
@@ -61,14 +61,14 @@
                 "seasonal": "Seasonal Calendar",
                 "solutions": "Industry Solutions",
                 "delivery": "Delivery Information",
-                "portal": "Partner Portal",
+                "portal": "Inquiry Hub",
                 "faq": "FAQ"
             }
         },
         "regions": {
             "egypt": {
-                "name": "Egypt Hub",
-                "address": "New Cairo HQ, Logistics Zone"
+                "name": "Obour Logistics Hub",
+                "address": "Obour City – Plot 26 – Block H – Annexed Industrial Zone – Behind Obour Market – Cairo, Egypt"
             }
         },
         "copyright": "© {{year}} UNITED Agricultural Supply. All rights reserved.",

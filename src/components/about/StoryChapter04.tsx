@@ -90,7 +90,7 @@ export default function StoryChapter04({ stats }: { stats: any[] }) {
                             >
                                 <div className="absolute inset-0 opacity-10 pointer-events-none transition-transform duration-[15s] group-hover:scale-110">
                                     <img
-                                        src="/assets/operations-fresh-hero-v2.webp"
+                                        src="/assets/obour-hub-sorting.webp"
                                         className="w-full h-full object-cover grayscale brightness-[2]"
                                         alt=""
                                         width={1920}

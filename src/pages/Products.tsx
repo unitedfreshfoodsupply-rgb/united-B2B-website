@@ -65,7 +65,6 @@ const CATEGORY_ICONS: Record<string, any> = {
   fruits: Apple,
   vegetables: Carrot,
   herbs: Leaf,
-  microgreens: Sprout,
   exotic: Cherry,
   specialty: CircleDot,
 };
@@ -266,7 +265,6 @@ export default function ProductsPage() {
   const [searchQuery, setSearchQuery] = useState("");
   const deferredSearchQuery = useDeferredValue(searchQuery);
   const [seasonFilter, setSeasonFilter] = useState("all");
-  const [regionFilter, setRegionFilter] = useState("all");
 
   // 1️⃣ Data Normalization Layer
   // Pre-computes localized search strings to avoid calling t() inside hot loops
@@ -282,7 +280,6 @@ export default function ProductsPage() {
   // Single-pass calculation for filtered list and category counts
   const { filteredProducts, categoryCounts } = useMemo(() => {
     const query = deferredSearchQuery.toLowerCase().trim();
-    const region = regionFilter.toLowerCase();
     const counts: Record<string, number> = { all: 0 };
 
     const filtered = normalizedProducts.filter(product => {
@@ -298,12 +295,10 @@ export default function ProductsPage() {
         product.searchName.includes(query) ||
         product.searchOrigin.includes(query);
 
-      const matchesRegion = region === "all" || product.searchOrigin.includes(region);
-
-      return matchesSearch && matchesRegion;
+      return matchesSearch;
     });
     return { filteredProducts: filtered, categoryCounts: counts };
-  }, [normalizedProducts, activeCategory, deferredSearchQuery, regionFilter, seasonFilter]);
+  }, [normalizedProducts, activeCategory, deferredSearchQuery, seasonFilter]);
 
   // 3️⃣ Component Stable References
   const categories = useMemo(() => [
@@ -311,7 +306,6 @@ export default function ProductsPage() {
     { id: "fruits", nameKey: "products.catalog.categories.fruits", icon: Apple },
     { id: "vegetables", nameKey: "products.catalog.categories.vegetables", icon: Carrot },
     { id: "herbs", nameKey: "products.catalog.categories.herbs", icon: Leaf },
-    { id: "microgreens", nameKey: "products.catalog.categories.microgreens", icon: Sprout },
     { id: "exotic", nameKey: "products.catalog.categories.exotic", icon: Cherry },
     { id: "specialty", nameKey: "products.catalog.categories.specialty", icon: CircleDot },
   ], []);
@@ -331,7 +325,6 @@ export default function ProductsPage() {
   const clearFilters = useCallback(() => {
     setActiveCategory("all");
     setSearchQuery("");
-    setRegionFilter("all");
     setSeasonFilter("all");
   }, []);
 
@@ -557,17 +550,6 @@ export default function ProductsPage() {
                         <SelectItem value="peak">{t('products.filters.season.peak')}</SelectItem>
                         <SelectItem value="available">{t('products.filters.season.available')}</SelectItem>
                         <SelectItem value="starting">{t('products.filters.season.starting')}</SelectItem>
-                      </SelectContent>
-                    </Select>
-
-                    <Select dir={isRTL ? "rtl" : "ltr"} value={regionFilter} onValueChange={setRegionFilter}>
-                      <SelectTrigger className="w-full rounded-xl border-black/5 bg-muted/30 hover:bg-muted/50 transition-colors font-medium">
-                        <SelectValue placeholder={t('seasonal.controls.region.all') || "All Regions"} />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="all">{t('seasonal.controls.region.all') || "All Regions"}</SelectItem>
-                        <SelectItem value="egypt">{t('seasonal.controls.region.egypt')}</SelectItem>
-                        <SelectItem value="imported">{t('products.ticker.imported')}</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>

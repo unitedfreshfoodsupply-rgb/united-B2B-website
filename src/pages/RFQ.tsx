@@ -17,7 +17,7 @@ import { Label } from "@/components/ui/label";
 import { ArrowRight, ArrowLeft, Building2, CheckCircle2, FileText, Clock, Truck, ShieldCheck, Globe2, Leaf, Box } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
-import rfqHero from "@/assets/rfq-hero.webp";
+// Using unified workforce image from public assets
 
 const BusinessInfoStep = lazy(() => import("@/components/rfq/BusinessInfoStep").then(m => ({ default: m.BusinessInfoStep })));
 const SupplyRequirementsStep = lazy(() => import("@/components/rfq/SupplyRequirementsStep").then(m => ({ default: m.SupplyRequirementsStep })));
@@ -80,7 +80,6 @@ export default function RFQPage() {
     t('products.catalog.categories.fruits'),
     t('products.catalog.categories.vegetables'),
     t('products.catalog.categories.herbs'),
-    t('products.catalog.categories.microgreens'),
     t('products.catalog.categories.exotic'),
     t('products.catalog.categories.specialty'),
   ], [t]);
@@ -233,7 +232,7 @@ export default function RFQPage() {
               className="relative w-full hidden md:block"
             >
               <div className="relative aspect-[4/3] rounded-2xl sm:rounded-3xl lg:rounded-[4rem] border-4 sm:border-8 lg:border-[12px] border-white shadow-[0_40px_100px_-20px_rgba(0,0,0,0.1)] overflow-hidden">
-                <img src={rfqHero} alt={t('rfq.header.image_alt')} className="w-full h-full object-cover" />
+                <img src="/assets/united-workforce.webp" alt={t('rfq.header.image_alt')} className="w-full h-full object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-uniteda-emerald-dark/40 via-transparent to-transparent pointer-events-none" />
               </div>
             </motion.div>

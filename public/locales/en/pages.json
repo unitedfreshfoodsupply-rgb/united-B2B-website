@@ -1,19 +1,87 @@
 {
+    "privacy": {
+        "badge": "Privacy Protocol",
+        "title": "Privacy",
+        "title_highlight": "Policy",
+        "description": "Your trust is our priority. Learn how UNITED protects your data and ensures secure business interactions.",
+        "sections": {
+            "collection": {
+                "title": "Data Collection & Usage",
+                "content": "UNITED is committed to protecting the privacy of our partners within the Egyptian market. We collect only the information necessary to facilitate local food supply procurement and business inquiries, specifically names, company details, contact information, and specific supply requirements provided via our RFQ and Contact forms."
+            },
+            "email": {
+                "title": "Email Handling",
+                "content": "Information submitted through our forms is transmitted directly to our sales and support teams via secure email protocols. We do not store this data in a public-facing database at this stage. Your data is used exclusively for professional communication regarding your specific requests."
+            },
+            "hosting": {
+                "title": "Hosting & Cookies",
+                "content": "Our platform is hosted on secure enterprise infrastructure. We use minimal cookies essential for site functionality and performance optimization. We do not use third-party tracking cookies for advertising purposes."
+            }
+        },
+        "contact": {
+            "title": "Contact Reference",
+            "description": "For any privacy-related inquiries or to request data deletion, please contact our administrative HUB:",
+            "company": "UNITED Food & Veggie Supply",
+            "address": "Obour City – Plot 26 – Block H – Cairo, Egypt"
+        }
+    },
+    "terms": {
+        "badge": "Institutional Framework",
+        "title": "Terms of",
+        "title_highlight": "Service",
+        "description": "Understanding our service framework ensures a smooth and professional partnership experience.",
+        "sections": {
+            "overview": {
+                "title": "Service Overview",
+                "content": "By accessing the UNITED platform, you agree to these terms. UNITED provides a high-efficiency procurement interface for professional food supply services, focusing on B2B agricultural supply chains within the Egyptian market."
+            },
+            "procurement": {
+                "title": "Procurement Requests",
+                "content": "All RFQs submitted via our platform constitute an invitation to treat and not a binding contract until formal procurement agreements are signed. UNITED reserves the right to verify business credentials before fulfilling supply requests."
+            },
+            "liability": {
+                "title": "Liability & Compliance",
+                "content": "UNITED operates in strict compliance with international food safety standards (HACCP, ISO 22000). While we strive for 100% platform availability and logistical accuracy, we are not liable for indirect losses resulting from site downtime or supply chain disruptions beyond our HUB control."
+            }
+        },
+        "identity": {
+            "title": "Business Identity",
+            "description": "UNITED is a registered enterprise specialized in Advanced Agricultural Supply. All branding, logic streams, and industrial designs on this site are the intellectual property of UNITED.",
+            "company": "UNITED Food & Veggie Supply HUB",
+            "headquarters": "Corporate Headquarters: Cairo, Egypt",
+            "license": "Procurement Licensing: EGY-2026-LOCAL"
+        }
+    },
     "contact": {
         "label": "Get In Touch",
         "title_prefix": "Let's Talk",
         "title_highlight": "Fresh Business",
         "description": "Reach out to our team to discuss your fresh produce needs. We're here to help you source the finest fruits and vegetables.",
-        "items": {
-            "egypt": {
-                "title": "Egypt Office",
-                "detail": "Cairo, Egypt",
-                "infra": "Main Location"
+        "info": {
+            "address": {
+                "label": "Headquarters",
+                "title": "UNITED Food Distribution",
+                "detail": "Obour City – Plot 26 – Block H – Annexed Industrial Zone – Behind Obour Market – Cairo, Egypt"
+            },
+            "phone": {
+                "label": "Direct Line",
+                "title": "Sales Hotline"
             },
             "email": {
-                "title": "Email Us",
-                "detail": "hello@uniteda.com",
-                "infra": "Quick Response"
+                "label": "Email Support",
+                "title": "Corporate Correspondence"
+            }
+        },
+        "items": {
+            "egypt": {
+                "title": "Obour Logistics Hub",
+                "detail": "Obour Industrial Area, Cairo",
+                "infra": "Central Dispatch"
+            },
+            "email": {
+                "title": "Direct Inquiry",
+                "detail": "hello@united-ffv.com",
+                "infra": "Procurement Support"
             }
         },
         "status": "We're here to help",
@@ -46,71 +114,71 @@
     },
     "about": {
         "hero": {
-            "label": "The Chapter of Uniteda",
-            "title": "A Story of <highlight>Freshness</highlight> <br /> and Global Scale",
-            "description": "Beyond shipping, we are the architects of a premium freshness journey. Explore the chapters that define our commitment to local agricultural excellence.",
-            "scroll": "Begin Scrolling"
+            "label": "Institutional Heritage",
+            "title": "A Decade of <highlight>Operational</highlight> <br /> Excellence",
+            "description": "Since 2013, UNITED has functioned as the institutional supply bridge between Egypt’s agricultural output and the global requirements of the hospitality sector.",
+            "scroll": "View Operations"
         },
         "story": {
             "chapter_01": {
-                "num": "01",
-                "label": "The Heritage",
-                "title": "Roots in Fertile Soil",
-                "content": "Our story begins in the heart of Egypt's agriculture. We learned early that quality isn't just a metric; it's a legacy. Every fruit and vegetable we move carries the weight of thousands of years of farming wisdom, brought into the modern era.",
+                "num": "2013",
+                "label": "The Foundation",
+                "title": "Institutional Roots",
+                "content": "Founded in 2013, UNITED was built to stabilize the fragmented local supply chain. We replaced volatility with precision, establishing a baseline for quality that meets the rigorous demands of enterprise procurement.",
                 "stats": {
                     "legacy": {
-                        "value": "1990+",
-                        "label": "Legacy Start"
+                        "value": "2013",
+                        "label": "Established"
                     },
                     "organic": {
-                        "value": "Organic",
-                        "label": "Organic Grade Certified"
+                        "value": "Certified",
+                        "label": "Compliance Standard"
                     }
                 },
-                "badge": "Soil to Customer Pipeline"
+                "badge": "Procurement Stability"
             },
             "chapter_02": {
-                "num": "02",
-                "label": "The Intelligence",
-                "title": "The Technical Pulse",
-                "content": "As we grew, so did our ambition. We realized that the shortest path from field to table isn't just a line; it's a sophisticated data stream. In this chapter, agriculture meets aero-logistics and cold-chain precision.",
+                "num": "114",
+                "label": "Human Infrastructure",
+                "title": "Specialized Workforce",
+                "content": "Our strength lies in our workforce of 114 specialized employees. From agronomists to cold-chain logistics experts, our team manages every tactical layer of the supply journey from our central logistics base.",
                 "features": {
-                    "precision": "Cold-Chain Precision",
-                    "telemetry": "Real-time Telemetry"
+                    "precision": "114+ Personnel",
+                    "telemetry": "Technical Team"
                 }
             },
             "chapter_03": {
-                "num": "03",
-                "label": "The Vision",
-                "title": "Witness the Motion",
-                "content": "See the journey through our lens. This is where strategy meets the open road, where the Egyptian harvest finds its global destination.",
-                "cta": "Watch Project: Uniteda",
-                "cinema_label": "Uniteda_Global_Cinema"
+                "num": "1200",
+                "label": "The Hub",
+                "title": "Obour Logistics Engine",
+                "content": "We operate from the Obour Industrial Area, managing a centralized 1200m² hub that serves as the engine for all regional dispatch. Our facility is engineered for high-frequency grading and consistency.",
+                "cta": "View Facility Specs",
+                "cinema_label": "UNITED_PHYSICAL_ASSETS"
             },
             "chapter_04": {
-                "num": "04",
-                "label": "The Horizon",
-                "title": "Defining the Future",
-                "content": "Uniteda is now a bridge. Between the farmer and the chef, we ensure the integrity of fresh produce with local precision.",
+                "num": "B2B",
+                "label": "Market Reach",
+                "title": "Hospitality Alignment",
+                "content": "UNITED is the preferred partner for the region’s hospitality elite. We secure supply chains for groups like Fairmont and Four Seasons with localized logistics precision.",
                 "strategy": {
-                    "label": "Local Growth Strategy",
-                    "detail": "Comprehensive Egypt Coverage"
+                    "label": "Hospitality Sourcing",
+                    "detail": "Elite Sector Focus"
                 }
             }
         },
         "impact": {
-            "title": "Egypt Operations Impact",
+            "title": "Institutional Verification",
             "stats": {
-                "countries": "Destinations Active",
+                "countries": "Regional Centers",
                 "growers": "Grower Partners",
-                "tonnage": "Export Volume",
-                "satisfaction": "Service Level"
+                "tonnage": "Annual Dispatch",
+                "satisfaction": "Fulfillment Rate"
             }
         },
         "cta": {
-            "title": "Start your <highlight>Chapter</highlight> <br /> with us",
-            "contact": "Contact Express",
-            "inventory": "Explore Inventory"
+            "title": "Initialize your <highlight>Sourcing</highlight> <br /> with UNITED",
+            "contact": "Technical Sales",
+            "inventory": "Explore Catalog"
         }
     },
     "feature_standby": {
@@ -131,15 +199,15 @@
     },
     "products": {
         "header": {
-            "badge": "Product Collection",
-            "title": "Premium",
-            "title_highlight": "Collection",
-            "description": "Explore our comprehensive portfolio of the finest Egyptian agricultural produce.",
+            "badge": "Project: Inventory",
+            "title": "Structured",
+            "title_highlight": "Asset Grading",
+            "description": "We manage a catalog of over 200 technical SKUs. Every product is documented with defined grading standards for institutional procurement.",
             "stats": {
-                "active_skus": "Active SKUs",
-                "global_sourcing": "Global Sourcing",
-                "quality_index": "Quality Index",
-                "live_track": "Live Origin Track"
+                "active_skus": "Technical SKUs",
+                "global_sourcing": "Asset Mix",
+                "quality_index": "Grading Index",
+                "live_track": "Batch Origin"
             }
         },
         "ticker": {
@@ -169,7 +237,7 @@
                 "hotel": "Hotel Supplies",
                 "restaurant": "Restaurant",
                 "airline": "Airline Catering",
-                "retail": "Retail Retail"
+                "retail": "Modern Retail"
             }
         },
         "catalog": {
@@ -178,13 +246,12 @@
             "no_results": "No Products Found",
             "no_results_description": "We couldn't find any products matching your search criteria. Try clearing your filters or using different keywords.",
             "categories": {
-                "all": "All Categories",
-                "fruits": "Fresh Fruits",
-                "vegetables": "Fresh Vegetables",
+                "all": "All Asset Classes",
+                "fruits": "Agricultural Fruits",
+                "vegetables": "Agricultural Vegetables",
                 "herbs": "Herbs & Greens",
-                "microgreens": "Microgreens",
-                "exotic": "Exotic Produce",
-                "specialty": "Specialty Items"
+                "exotic": "Specialty Produce",
+                "specialty": "Technical Items"
             },
             "grades": {
                 "premium": "Premium",
@@ -1502,21 +1569,21 @@
         },
         "controls": {
             "region": {
-                "egypt": "Egypt",
-                "egypt_ops": "Egypt Operations",
-                "uae": "UAE",
-                "both": "Both Regions"
+                "egypt": "Obour Hub",
+                "egypt_ops": "Central Operations",
+                "uae": "Import/Export",
+                "both": "Unified Logistics"
             },
             "view_mode": {
-                "grid": "Grid View",
-                "table": "Table View"
+                "grid": "Grid Layout",
+                "table": "Technical Table"
             },
             "buttons": {
-                "export": "Export Report",
+                "export": "Logistics Report",
                 "download": "Download PDF",
                 "request_access": "Request Access"
             },
-            "export_note": "Includes full seasonal analysis & forecasts"
+            "export_note": "Includes full seasonal analysis & logistical forecasts"
         },
         "legend": {
             "peak": "Peak Season",
@@ -1597,85 +1664,85 @@
     },
     "operations": {
         "hero": {
-            "status": "SOIL-TO-SHIPMENT LOGISTICS",
-            "terminal": "TERMINAL_01 // MAIN_FEED",
-            "infra_overview": "INFRASTRUCTURE OVERVIEW",
-            "title_prefix": "NATURE'S FINEST,",
-            "title_highlight": "DELIVERED FRESH",
-            "description": "We bridge the gap between Egypt's fertile lands and global tables through an unbreakable cold-chain network and precision logistics.",
-            "cta": "INITIALIZE PROCUREMENT",
-            "partners_label": "Global Partners",
-            "partners_sub": "Trusting Our Network",
-            "vessel_label": "Active Vessel",
-            "vessel_name": "North Mediterranean Hub",
-            "integrity_score": "Integrity Score"
+            "status": "OBOUR HUB // ACTIVE",
+            "terminal": "LOGISTICS_TERMINAL // 01",
+            "infra_overview": "INFRASTRUCTURE SPECIFICATIONS",
+            "title_prefix": "INDUSTRIAL-SCALE",
+            "title_highlight": "SUPPLY ARCHITECTURE",
+            "description": "Centrally operated from the Obour Industrial Area, UNITED manages a specialized infrastructure designed to maintain produce integrity across high-volume transit cycles.",
+            "cta": "VIEW LOGISTICS SPECS",
+            "partners_label": "Institutional Clients",
+            "partners_sub": "Hospitality Elite",
+            "vessel_label": "Operating Node",
+            "vessel_name": "Obour Logistics Hub",
+            "integrity_score": "Fulfillment Accuracy"
         },
         "stats": {
             "facility": {
-                "value": "24/7",
-                "label": "FACILITY UPTIME"
+                "value": "1200m²",
+                "label": "HUB CAPACITY"
             },
             "delivery": {
-                "value": "98.5%",
-                "label": "ON-TIME DELIVERY"
+                "value": "99.2%",
+                "label": "PROCUREMENT ACCURACY"
             },
             "varieties": {
-                "value": "150+",
-                "label": "PRODUCE VARIETIES"
+                "value": "200+",
+                "label": "GRADED SKUs"
             },
             "monitoring": {
-                "value": "100%",
-                "label": "COLD-CHAIN SECURE"
+                "value": "ACTIVE",
+                "label": "COLD-CHAIN PROTOCOL"
             }
         },
         "anatomy": {
             "label": "OPERATIONAL ARCHITECTURE",
-            "title_prefix": "UNBREAKABLE",
-            "title_highlight": "COLD-CHAIN ARCHITECTURE",
-            "description": "From the moment of harvest to the final delivery vector, we maintain peak freshness through a integrated network of thermal monitoring and smart routing.",
+            "title_prefix": "THE OBOUR",
+            "title_highlight": "LOGISTICS ENGINE",
+            "description": "Our central hub integrates industrial-scale grading zones with high-frequency dispatch protocols, optimized for hospitality supply chains.",
             "layer1": {
                 "id": "SYS_01",
-                "title": "Harvest Optimization",
-                "description": "Direct collaboration with source farms ensures only export-grade produce enters our network at peak maturity.",
-                "stage": "Stage 01: SOURCE",
+                "title": "Integrated Sourcing",
+                "description": "Direct farm-to-hub operations reducing mid-layer transit time and ensuring batch uniformity.",
+                "stage": "Stage 01: INTAKE",
                 "tags": [
                     "GLOBAL G.A.P",
-                    "SOURCE_DIRECT",
-                    "QUALITY_GATE"
+                    "FARM_DIRECT",
+                    "INTAKE_HUB"
                 ]
             },
             "layer2": {
                 "id": "SYS_02",
-                "title": "Cold-Chain Excellence",
-                "description": "Unbroken thermal integrity from harvest to destination. Real-time monitoring ensures zero quality degradation across maritime and aerial cargo vectors.",
-                "monitoring": "TEMP_CHECK",
-                "flow": "OPTIMAL",
+                "title": "Cold-Chain Integrity",
+                "description": "Unbroken thermal parameters from our specialized cooling units in Obour to the final destination point.",
+                "monitoring": "THERMAL_CONTROL",
+                "flow": "INTEGRATED",
                 "stats": {
-                    "on_time": "98.5% On-Time",
-                    "secured": "Secured Cargo"
+                    "on_time": "99% Fulfillment",
+                    "secured": "Asset Monitored"
                 }
             },
             "layer3": {
                 "id": "SYS_03",
-                "title": "Precision Screening",
-                "description": "Every SKU is manually inspected by our quality assurance specialists to ensure perfect grading compliance.",
+                "title": "Industrial Grading",
+                "description": "Every SKU is graded by technical specialists to ensure consistency in size, Brix levels, and visual compliance for elite menus.",
                 "tests": {
-                    "color": "Color Check",
+                    "color": "Color Specs",
                     "brix": "Brix Level",
-                    "sizing": "Sizing",
-                    "texture": "Texture",
-                    "residue": "Residue Test",
-                    "hydration": "Hydration",
-                    "skin": "Skin Integrity",
+                    "sizing": "Technical Sizing",
+                    "texture": "Asset Density",
+                    "residue": "Purity Audit",
+                    "hydration": "Turgidity",
+                    "skin": "Surface Integrity",
                     "ethylene": "Ethylene Control"
                 }
             },
             "layer4": {
                 "id": "SYS_04",
-                "title": "Intelligent Logistics",
-                "description": "Smart routing algorithms optimizing fleet deployment and delivery windows across global shipping lanes.",
-                "vessel": "Active Vessel",
-                "route_matrix": "Access Route Matrix"
+                "title": "Hospitality Dispatch",
+                "description": "Daily fleet deployment connecting our central hub to major hospitality centers across Egypt.",
+                "vessel": "Hub Dispatch",
+                "route_matrix": "Logistics Mapping"
             }
         },
         "compliance": {
@@ -1705,30 +1772,30 @@
             }
         },
         "partnerships": {
-            "label": "ENABLING GLOBAL COMMERCE",
-            "title_prefix": "PARTNER WITH",
-            "title_highlight": "THE SOURCE.",
-            "description": "Initialize a strategic supply partnership and leverage our infrastructure to scale your institutional requirements.",
-            "cta_primary": "START INQUIRY",
-            "cta_secondary": "CONTACT OPS",
+            "label": "INSTITUTIONAL SUPPLY PARTNERS",
+            "title_prefix": "INITIALIZE",
+            "title_highlight": "PROCUREMENT.",
+            "description": "Secure your supply continuity by integrating with our Obour logistics infrastructure.",
+            "cta_primary": "START PROTOCOL",
+            "cta_secondary": "CONTACT HUB",
             "footer": {
-                "system": "GLOBAL NETWORK: ACTIVE",
-                "shipped": "4,200+ Tons Shipped",
-                "recall": "Zero Recall Policy",
+                "system": "OBOUR HUB: ACTIVE",
+                "shipped": "Established 2013",
+                "recall": "Industrial Standards",
                 "access": "SYSTEM_ACCESS: INSTITUTIONAL"
             }
         }
     },
     "rfq": {
         "header": {
-            "badge": "Procurement Portal",
-            "title": "Request for Quote",
-            "description": "Initialize a procurement request for your organization. Our team will structure a custom supply proposal based on your specifications.",
-            "image_alt": "Procurement",
-            "response_time_value": "24H",
-            "response_time_label": "Max Response",
+            "badge": "Institutional Protocol",
+            "title": "Procurement Plan Initialization",
+            "description": "Initialize a professional supply plan for your organization. Our technical hub team will structure a custom proposal based on your volume and compliance specifications.",
+            "image_alt": "UNITED_PROCUREMENT",
+            "response_time_value": "48H",
+            "response_time_label": "SLA Response",
             "quality_value": "100%",
-            "quality_label": "Quality Secure"
+            "quality_label": "Asset Integrity"
         },
         "form": {
             "sections": {
@@ -1823,14 +1890,14 @@
             "authorization_note": "By submitting this request, you authorize UNITED to structure a formal procurement proposal. Data is processed under secure institutional protocols.",
             "back_button": "Step Back",
             "submit": {
-                "button": "Orbit Request",
-                "submitting": "Transmitting...",
-                "continue": "Continue Payload",
+                "button": "Submit Request",
+                "submitting": "Processing...",
+                "continue": "Continue",
                 "note": "Response time estimate: < 24h"
             },
             "success": {
-                "title": "Request Transmitted",
-                "description": "Our procurement team has received your signal. Expect an encrypted proposal shortly."
+                "title": "Request Submitted",
+                "description": "Our procurement team has received your requirements. Expect a formal supply proposal shortly."
             },
             "error": {
                 "submission_failed": "Submission failed. Please contact {{email}} directly."
@@ -1840,23 +1907,53 @@
             "process": {
                 "title": "Procurement Protocol",
                 "steps": [
-                    "Submit requirements via secure form",
-                    "Receive custom proposal within 24h",
-                    "Account activation & logistics setup"
+                    "Submit requirements via Hub initialization form",
+                    "Receive structured supply proposal within 48h",
+                    "Logistics setup & account activation"
                 ]
             },
             "phases": {
                 "phase_label": "Phase 0{{phase}}"
             },
             "support": {
-                "title": "Support Uplink",
-                "description": "Immediate institutional support is available for complex supply requirements."
+                "title": "Technical Sourcing Support",
+                "description": "Institutional consultation is available for complex industrial supply cycles."
             },
             "contact": {
-                "title": "Direct Uplink",
-                "description": "For urgent enterprise requirements or custom integrations, utilize direct lines."
+                "title": "Direct Hub Line",
+                "description": "For urgent enterprise requirements or specific fleet integrations, utilize our direct directives."
             },
-            "certifications": "Quality Certifications"
+            "certifications": "Compliance Standards"
+        }
+    },
+    "meta": {
+        "home": {
+            "title": "UNITED: Industrial Agricultural Supply Hub Egypt",
+            "description": "Established 2013. Operating the primary industrial-scale produce supply hub in Obour. Serving elite hospitality and procurement sectors across Egypt."
+        },
+        "about": {
+            "title": "About UNITED | A Decade of Institutional Supply Heritage",
+            "description": "Learn about our 10-year legacy, our 114 specialized personnel, and the Obour industrial infrastructure that powers Egypt's hospitality supply chain."
+        },
+        "operations": {
+            "title": "Industrial Logistics Hub | UNITED Operations",
+            "description": "Explore the 1200m² Obour Industrial facility. Technical grading, cold-chain integrity, and high-frequency dispatch for institutional hospitality."
+        },
+        "products": {
+            "title": "Technical Produce Catalog | Graded Agricultural Assets",
+            "description": "Browse over 200 technical SKUs. Industrial-grade agricultural assets with verified grading standards and full batch traceability."
+        },
+        "seasonal": {
+            "title": "Seasonal Sourcing Calendar | Predictive Supply Data",
+            "description": "Plan menu cycles with verified availability windows. Historic yielding data and current forecast models for Egyptian agricultural production."
+        },
+        "rfq": {
+            "title": "Initialize Procurement Protocol | UNITED Hub",
+            "description": "Start a professional supply plan. Submit requirements to our logistics hub for a structured proposal and institutional quote processing."
+        },
+        "contact": {
+            "title": "Technical Support & Hub Directives | Contact UNITED",
+            "description": "Direct operations support from our Obour Hub. Connect with our technical sales and logistics teams for hospitality supply requirements."
         }
     }
 }
