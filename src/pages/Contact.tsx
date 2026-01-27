@@ -4,9 +4,10 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Phone, MapPin, Globe, ArrowRight, MessageSquare, Leaf, CheckCircle2 } from "lucide-react";
+import { Mail, MapPin, ArrowRight, MessageSquare, CheckCircle2 } from "lucide-react";
 import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
 import { Link } from "react-router-dom";
+import emailjs from '@emailjs/browser';
 
 export default function Contact() {
     const { t, i18n, isRTL } = useUnifiedTranslation();
@@ -19,20 +20,22 @@ export default function Contact() {
         setIsSubmitting(true);
         setError(null);
 
-        const formData = new FormData(e.currentTarget);
-        const data = Object.fromEntries(formData.entries());
+        // Get values from .env or use placeholders for development
+        const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_default";
+        const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_default";
+        const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "YOUR_PUBLIC_KEY";
 
         try {
-            const response = await fetch('/api/send-mail.php', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ ...data, formType: 'contact' }),
-            });
-
-            if (!response.ok) throw new Error('Submission failed');
+            await emailjs.sendForm(
+                serviceId,
+                templateId,
+                e.currentTarget,
+                publicKey
+            );
 
             setSubmitted(true);
         } catch (err) {
+            console.error('EmailJS Error:', err);
             setError(t('contact.form.error_message') || 'Submission failed. Please contact support@united-ffv.com directly.');
         } finally {
             setIsSubmitting(false);

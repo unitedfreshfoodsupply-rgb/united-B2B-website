@@ -22,6 +22,7 @@ import rfqHero from "@/assets/rfq-hero.webp";
 const BusinessInfoStep = lazy(() => import("@/components/rfq/BusinessInfoStep").then(m => ({ default: m.BusinessInfoStep })));
 const SupplyRequirementsStep = lazy(() => import("@/components/rfq/SupplyRequirementsStep").then(m => ({ default: m.SupplyRequirementsStep })));
 const ContactInfoStep = lazy(() => import("@/components/rfq/ContactInfoStep").then(m => ({ default: m.ContactInfoStep })));
+import emailjs from '@emailjs/browser';
 
 export default function RFQPage() {
   const { t, i18n, isRTL } = useUnifiedTranslation();
@@ -112,24 +113,47 @@ export default function RFQPage() {
     }
 
     setIsSubmitting(true);
-    try {
-      const response = await fetch('/api/send-mail.php', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...rfqData,
-          categories: selectedCategories,
-          formType: 'rfq'
-        }),
-      });
 
-      if (!response.ok) throw new Error('Submission failed');
+    // Get values from .env or use placeholders for development
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_default";
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_rfq_default";
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "YOUR_PUBLIC_KEY";
+
+    try {
+      await emailjs.send(
+        serviceId,
+        templateId,
+        {
+          ...rfqData,
+          categories: selectedCategories.join(", "),
+          subject: `New RFQ: ${rfqData.company}`,
+          to_email: "yasserfarghal33@gmail.com" // Request by user for testing
+        },
+        publicKey
+      );
 
       toast.success(t('rfq.form.success.title'), {
         description: t('rfq.form.success.description'),
       });
-      // Optionally reset form or redirect
+      // Reset form indicating success
+      setCurrentStep(0);
+      setRfqData({
+        company: '',
+        businessType: '',
+        country: 'egypt',
+        city: '',
+        volume: '',
+        frequency: '',
+        requirements: '',
+        name: '',
+        position: '',
+        email: '',
+        phone: '',
+        _company_id_verification: '',
+      });
+      setSelectedCategories([]);
     } catch (err) {
+      console.error('EmailJS Error:', err);
       toast.error(t('rfq.form.error.submission_failed', { email: 'sales-team@united-ffv.com' }));
     } finally {
       setIsSubmitting(false);
