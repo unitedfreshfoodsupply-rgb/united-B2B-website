@@ -3,41 +3,41 @@
         "label": "Strategic Supply Network",
         "title_prefix": "Supplying The",
         "title_highlight": "Best",
-        "subtitle": "UNITEDA powers the digital supply infrastructure for the world's most elite hospitality brands."
+        "subtitle": "UNITED powers the digital supply infrastructure for the world's most elite hospitality brands."
     },
     "hero": {
-        "label": "Next-Gen Supply Intelligence",
-        "title_prefix": "The DNA of",
-        "title_highlight": "Premium Supply",
-        "description": "UNITEDA bridges the gap between traditional agriculture and the high-demand requirements of modern hospitality through a data-driven supply infrastructure.",
+        "label": "Industrial Supply Infrastructure",
+        "title_prefix": "Professional Agricultural Supply",
+        "title_highlight": "Infrastructure",
+        "description": "Centralized logistics units and high-volume produce grading protocols designed for the Egyptian hospitality market.",
         "cta_primary": "Launch Inquiry Hub",
-        "cta_secondary": "Explore Assets",
-        "social_proof": "Trusted by 50+ <br /> Local Partners",
+        "cta_secondary": "Audit Operational Assets",
+        "social_proof": "Trusted by 50+ <br /> Regional Partners",
         "bento": {
             "certified": {
                 "title": "Certified Excellence",
                 "subtitle": "Full traceability for every batch"
             },
             "latency": {
-                "value": "0.05%",
-                "label": "Supply Latency"
+                "value": "99.8%",
+                "label": "Integrity Score"
             },
             "logic": {
                 "title": "Centralized Supply Logic",
                 "subtitle": "Secured Local Crop Flow"
             },
             "status": {
-                "label": "Real-time status",
+                "label": "Operational Status",
                 "cairo": "Main Operations Hub",
-                "dubai": "Local Supply Section",
+                "dubai": "Egypt Hub Active",
                 "active": "ACTIVE"
             }
         }
     },
-    "product_catalog": "Product Catalog",
+    "product_catalog": "Structured Agricultural Grading",
     "product_intelligence": "Product Intelligence",
     "portfolio": "Portfolio",
-    "subtitle": "Every product category is treated as a technical supply asset with deep metadata and advanced local availability logic.",
+    "subtitle": "Every category in our catalog is managed as a technical supply asset. We provide detailed metadata for every SKU, ensuring that procurement teams receive produce graded specifically for their menu requirements.",
     "explore_category": "Explore Category",
     "items": "Items",
     "categories": {
@@ -64,14 +64,14 @@
     },
     "inquiry": {
         "title": "Business Inquiry Hub",
-        "description": "Generate structured RFQs for our centralized logistics hub with instant quote processing.",
-        "cta": "Open Inquiry Engine"
+        "description": "Generate structured RFQs for our centralized logistics hub with professional quote processing.",
+        "cta": "Launch Inquiry Hub"
     },
     "seasonal": {
         "label": "Seasonal Availability",
         "title": "Seasonal Availability",
         "calendar": "Calendar",
-        "description": "We provide detailed availability data for Egypt's agricultural production cycles, allowing procurement teams to secure supply for premium menus months in advance.",
+        "description": "Bridge the gap in supply continuity. Our seasonal data allows procurement teams to secure volume and plan menu cycles months in advance based on Egypt’s actual agricultural production windows.",
         "in_season_now": "In Season Now",
         "highlights": "Current Season Highlights",
         "peak": "{{season}} Peak",
@@ -120,23 +120,23 @@
         "target_temp": "Target Temp Range",
         "cold_chain_asset": "Cold-Chain Asset",
         "traceability_locked": "Traceability Locked",
-        "architecture_label": "Supply Chain Architecture",
-        "title_prefix": "Operations as",
-        "title_highlight": "Infrastructure",
-        "description": "We don't just deliver products; we manage a sophisticated logistics engine designed to ensure 100% freshness from the moment of harvest.",
-        "cta": "Technical Architecture",
+        "architecture_label": "Supply Chain Infrastructure",
+        "title_prefix": "Logistics Infrastructure for",
+        "title_highlight": "Shelf-Life Optimization",
+        "description": "We operate a closed-loop supply system that integrates farm-level sourcing with active cold-chain monitoring. Our infrastructure ensures every batch maintains its physical integrity from point-of-harvest to final dispatch.",
+        "cta": "Audit Operational Assets",
         "items": {
             "ecosystem": {
-                "title": "Eco-System Sourcing",
-                "description": "Direct farm-to-hub infrastructure with zero mid-layer friction."
+                "title": "Integrated Farm Sourcing",
+                "description": "Direct farm-to-hub infrastructure reducing mid-layer transit time."
             },
             "grading": {
-                "title": "Precision Grading",
-                "description": "Multi-parameter quality checks for size, Brix, and visual consistency."
+                "title": "Standardized Batch Grading",
+                "description": "Physical quality gates for size, visual uniformity, and Brix levels."
             },
             "cold_chain": {
-                "title": "Active Cold-Chain",
-                "description": "Real-time temperature monitoring from harvest to final delivery."
+                "title": "Active Fleet Monitoring",
+                "description": "Continuous thermal tracking across all refrigerated units and storage zones."
             },
             "compliance": {
                 "title": "Compliance Core",
@@ -145,14 +145,14 @@
         }
     },
     "industry": {
-        "label": "Vertical Market Intelligence",
-        "title_prefix": "Tailored Industry",
-        "title_highlight": "Solutions",
-        "description": "We operate across six specialized sectors, delivering data-driven supply logic tailored to the unique technical requirements of each vertical.",
+        "label": "Sector-Specific Sourcing Protocols",
+        "title_prefix": "Sector-Specific",
+        "title_highlight": "Sourcing Protocols",
+        "description": "Industrial-scale hospitality requires different logistical tolerances than retail or aviation. We deliver specialized supply protocols tailored to the compliance cycles and volume requirements of your vertical market.",
         "sectors": {
             "hospitality": {
                 "name": "Hospitality & Resorts",
-                "description": "Multi-tier supply for enterprise-scale hotel chains with 24/7 reliability.",
+                "description": "Volume consistency and 24/7 delivery reliability.",
                 "features": {
                     "scale": "Scale Consistency",
                     "grading": "Custom Grading",
@@ -170,7 +170,7 @@
             },
             "aviation": {
                 "name": "Aviation Logistics",
-                "description": "Hyper-compliant supply for inflight services with strict traceability.",
+                "description": "Hyper-compliant supply chain with full batch traceability.",
                 "features": {
                     "haccp": "HACCP Core",
                     "logistics": "Logistics Precision",
@@ -179,7 +179,7 @@
             },
             "retail": {
                 "name": "Modern Retail",
-                "description": "Shelf-ready produce with optimized packaging for premium supermarkets.",
+                "description": "Shelf-ready agricultural assets with industrial packaging standards.",
                 "features": {
                     "b2b": "B2B Integration",
                     "shelf_life": "Shelf-Life Data",
@@ -207,17 +207,17 @@
         }
     },
     "cta": {
-        "partner_label": "Partner with UNITEDA",
-        "title_prefix": "Architecting the Future",
-        "title_highlight": "of Agricultural Supply",
-        "description": "Unlock 100% supply transparency and integrated local logistics for your enterprise.",
+        "partner_label": "Partner with UNITED",
+        "title_prefix": "Initialize a Professional",
+        "title_highlight": "Supply Partnership",
+        "description": "Submit requirements to our Logistics Hub. Our technical team responds with a structured supply plan and quote processing within 48 hours.",
         "features": {
             "sync": {
                 "label": "Unified Logistics Efficiency",
                 "sub": "Integrated Local Infrastructure"
             },
             "rfq": {
-                "label": "Live RFQ Logic",
+                "label": "Inquiry Hub Logic",
                 "sub": "48h Response SLA"
             },
             "audit": {
@@ -225,7 +225,7 @@
                 "sub": "Global Standards"
             }
         },
-        "primary_btn": "Launch Inquiry Engine",
-        "secondary_btn": "Contact Enterprise Sales"
+        "primary_btn": "Launch Inquiry Hub",
+        "secondary_btn": "Contact Technical Sales"
     }
 }

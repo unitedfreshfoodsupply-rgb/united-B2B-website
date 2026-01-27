@@ -14,7 +14,7 @@
         },
         "cta": {
             "partner": "Partner with us",
-            "sales": "Talk to Sales",
+            "sales": "Technical Sales",
             "inquiry": "Inquiry Hub"
         },
         "brand": {
@@ -29,8 +29,8 @@
         }
     },
     "footer": {
-        "description": "Delivering premium fresh produce to hospitality and food service industries within Egypt with uncompromising quality and reliability.",
-        "brand_slogan": "Agricultural Supply",
+        "description": "Delivering premium fresh produce to hospitality and food service industries with operational precision and industrial-scale logistics.",
+        "brand_slogan": "Agricultural Supply Hub",
         "pre_footer": {
             "label": "Grow with us",
             "title": "Bringing freshness to your business",
@@ -61,7 +61,7 @@
                 "seasonal": "Seasonal Calendar",
                 "solutions": "Industry Solutions",
                 "delivery": "Delivery Information",
-                "portal": "Partner Portal",
+                "portal": "Inquiry Hub",
                 "faq": "FAQ"
             }
         },

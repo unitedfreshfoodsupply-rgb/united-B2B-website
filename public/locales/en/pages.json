@@ -1709,7 +1709,7 @@
             "title_prefix": "PARTNER WITH",
             "title_highlight": "THE SOURCE.",
             "description": "Initialize a strategic supply partnership and leverage our infrastructure to scale your institutional requirements.",
-            "cta_primary": "START INQUIRY",
+            "cta_primary": "LAUNCH INQUIRY",
             "cta_secondary": "CONTACT OPS",
             "footer": {
                 "system": "GLOBAL NETWORK: ACTIVE",
@@ -1823,14 +1823,14 @@
             "authorization_note": "By submitting this request, you authorize UNITED to structure a formal procurement proposal. Data is processed under secure institutional protocols.",
             "back_button": "Step Back",
             "submit": {
-                "button": "Orbit Request",
-                "submitting": "Transmitting...",
-                "continue": "Continue Payload",
+                "button": "Submit Request",
+                "submitting": "Processing...",
+                "continue": "Continue",
                 "note": "Response time estimate: < 24h"
             },
             "success": {
-                "title": "Request Transmitted",
-                "description": "Our procurement team has received your signal. Expect an encrypted proposal shortly."
+                "title": "Request Submitted",
+                "description": "Our procurement team has received your requirements. Expect a formal supply proposal shortly."
             },
             "error": {
                 "submission_failed": "Submission failed. Please contact {{email}} directly."
@@ -1849,12 +1849,12 @@
                 "phase_label": "Phase 0{{phase}}"
             },
             "support": {
-                "title": "Support Uplink",
-                "description": "Immediate institutional support is available for complex supply requirements."
+                "title": "Technical Support",
+                "description": "Consultation is available for complex industrial supply requirements."
             },
             "contact": {
-                "title": "Direct Uplink",
-                "description": "For urgent enterprise requirements or custom integrations, utilize direct lines."
+                "title": "Direct Protocol",
+                "description": "For urgent enterprise requirements or specific integrations, utilize our direct lines."
             },
             "certifications": "Quality Certifications"
         }
