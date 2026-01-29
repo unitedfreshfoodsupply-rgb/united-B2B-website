@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { resend, validateHoneypot, createEmailTemplate, createPlainTextFallback } from './_utils';
 
 const rfqSchema = z.object({
@@ -17,7 +18,29 @@ const rfqSchema = z.object({
   _company_id_verification: z.string().optional(), // Honeypot
 });
 
-export default async function handler(req: any, res: any) {
+// CORS configuration - only allow requests from your domain
+const allowedOrigins = [
+  'https://united-ffv.com',
+  'https://www.united-ffv.com',
+  'http://localhost:8080', // For local development
+];
+
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+  const origin = req.headers.origin || '';
+
+  // Set CORS headers
+  if (allowedOrigins.includes(origin)) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  res.setHeader('Access-Control-Max-Age', '86400'); // 24 hours
+
+  // Handle preflight OPTIONS request
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }

@@ -4,42 +4,24 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, MapPin, ArrowRight, MessageSquare, CheckCircle2 } from "lucide-react";
+import { Mail, MapPin, ArrowRight, MessageSquare, CheckCircle2, Phone } from "lucide-react";
 import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
 import { Link } from "react-router-dom";
-import emailjs from '@emailjs/browser';
+import { useResend } from "@/hooks/use-resend";
 
 export default function Contact() {
     const { t, i18n, isRTL } = useUnifiedTranslation();
-    const [isSubmitting, setIsSubmitting] = useState(false);
-    const [submitted, setSubmitted] = useState(false);
-    const [error, setError] = useState<string | null>(null);
+    const { sendEmail, isSubmitting, submitted } = useResend();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        setIsSubmitting(true);
-        setError(null);
+        const formData = new FormData(e.currentTarget);
+        const data = Object.fromEntries(formData.entries());
 
-        // Get values from .env or use placeholders for development
-        const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_default";
-        const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_default";
-        const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "YOUR_PUBLIC_KEY";
-
-        try {
-            await emailjs.sendForm(
-                serviceId,
-                templateId,
-                e.currentTarget,
-                publicKey
-            );
-
-            setSubmitted(true);
-        } catch (err) {
-            console.error('EmailJS Error:', err);
-            setError(t('contact.form.error_message') || 'Submission failed. Please contact support@united-ffv.com directly.');
-        } finally {
-            setIsSubmitting(false);
-        }
+        await sendEmail(
+            { endpoint: '/api/contact' },
+            data
+        );
     };
     return (
         <Layout>
@@ -164,11 +146,6 @@ export default function Contact() {
                                     )}
                                 </Button>
 
-                                {error && (
-                                    <p className="p-4 rounded-xl bg-red-50 border border-red-100 text-red-600 text-xs font-bold text-center">
-                                        {error}
-                                    </p>
-                                )}
                                 <p className="mt-6 text-[10px] text-center text-muted-foreground/60 font-medium leading-relaxed">
                                     By submitting this form, you agree to our <Link to="/terms" className="text-uniteda-emerald underline underline-offset-2">Terms of Service</Link> and <Link to="/privacy" className="text-uniteda-emerald underline underline-offset-2">Privacy Protocol</Link>.
                                 </p>
