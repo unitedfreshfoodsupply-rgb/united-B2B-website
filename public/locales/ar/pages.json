@@ -611,8 +611,8 @@
                     "availability": "طوال العام"
                 },
                 "veg_29": {
-                    "name": "فلفل اخضر رومى",
-                    "scientific_name": "Capsicum annuum",
+                    "name": "طماطم حمراء فاخرة",
+                    "scientific_name": "Solanum lycopersicum",
                     "origin": "مصر",
                     "season": "متاح",
                     "availability": "طوال العام"
@@ -723,8 +723,8 @@
                     "availability": "طوال العام"
                 },
                 "veg_45": {
-                    "name": "طماطم حمراء فاخرة",
-                    "scientific_name": "Solanum lycopersicum",
+                    "name": "رمان أحمر طازج",
+                    "scientific_name": "Punica granatum",
                     "origin": "مصر",
                     "season": "متاح",
                     "availability": "طوال العام"
