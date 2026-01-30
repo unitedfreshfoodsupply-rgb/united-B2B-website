@@ -118,25 +118,27 @@ This ensures client-side routing works correctly.
 ### Step 2: Add Resend DNS Records
 Login to your [Resend Dashboard](https://resend.com/domains) and copy the verification records. Add them to Hostinger:
 
-#### SPF Record
-- **Type**: TXT
-- **Name**: @ (or leave empty)
-- **Value**: `v=spf1 include:_spf.resend.com ~all`
-- **TTL**: 3600
+#### 1. DKIM Record (Critical for sending)
+- **Type**: `TXT`
+- **Name**: `resend._domainkey`
+- **Value**: `p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC+yj8GQSLCFyjx+tvlWPJ08LtTQ0HzqN+ZIjZiWddHlK6qcOWKCqfXGDmFM/1tHfE2Lza7BcQk43e+rDzltqHPvvfpU7UDsJBLqkuYGx+cTXszVSMmCTJujI4uKRqfJ/KWDeaDi4EFZ9JEEuQOuo9cTiD+0p3zcx7qGvh07WpiLQIDAQAB`
+- **TTL**: `3600` (أو تلقائي)
 
-#### DKIM Records (3 records)
-Resend will provide 3 CNAME records. Add each one:
-- **Type**: CNAME
-- **Name**: (provided by Resend, e.g., `resend._domainkey`)
-- **Value**: (provided by Resend)
-- **TTL**: 3600
+#### 2. SPF Records (For authentication)
+أضف السجلين التاليين:
 
-#### MX Record (Optional - only if using Resend for receiving emails)
-- **Type**: MX
-- **Name**: @ (or leave empty)
-- **Value**: (provided by Resend)
-- **Priority**: 10
-- **TTL**: 3600
+**النوع TXT:**
+- **Type**: `TXT`
+- **Name**: `send`
+- **Value**: `v=spf1 include:amazonses.com ~all`
+- **TTL**: `3600`
+
+**النوع MX:**
+- **Type**: `MX`
+- **Name**: `send`
+- **Value**: `feedback-smtp.eu-west-1.amazonses.com`
+- **Priority**: `10`
+- **TTL**: `3600`
 
 ### Step 3: Verify Domain
 1. After adding all DNS records, wait 5-10 minutes for propagation
