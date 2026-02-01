@@ -18,7 +18,15 @@ export const useResend = () => {
             // Get API base URL from environment variable
             // In production, this should be your Vercel deployment URL
             const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || '';
-            const apiUrl = apiBaseUrl ? `${apiBaseUrl}${options.endpoint}` : options.endpoint;
+            let endpoint = options.endpoint;
+
+            // If we are using the local PHP bridge on Hostinger (indicated by a relative /api path or no URL),
+            // and we aren't using Vercel, append .php to the endpoint.
+            if (!apiBaseUrl.includes('vercel.app')) {
+                endpoint = `${endpoint}.php`;
+            }
+
+            const apiUrl = apiBaseUrl ? `${apiBaseUrl}${endpoint}` : endpoint;
 
             const response = await fetch(apiUrl, {
                 method: 'POST',

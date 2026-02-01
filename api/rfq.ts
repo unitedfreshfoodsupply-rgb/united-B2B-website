@@ -3,73 +3,72 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { resend, validateHoneypot, createEmailTemplate, createPlainTextFallback } from './_utils';
 
 const rfqSchema = z.object({
-  company: z.string().min(2),
-  businessType: z.string().min(2),
-  country: z.string().optional(),
-  city: z.string().min(2),
-  volume: z.string().min(2),
-  frequency: z.string().min(2),
-  requirements: z.string().optional(),
-  name: z.string().min(2),
-  position: z.string().min(2),
-  email: z.string().email(),
-  phone: z.string().min(8),
-  categories: z.array(z.string()).optional(),
-  _company_id_verification: z.string().optional(), // Honeypot
+    company: z.string().min(2),
+    businessType: z.string().min(2),
+    country: z.string().optional(),
+    city: z.string().min(2),
+    volume: z.string().min(2),
+    frequency: z.string().min(2),
+    requirements: z.string().optional(),
+    name: z.string().min(2),
+    position: z.string().min(2),
+    email: z.string().email(),
+    phone: z.string().min(8),
+    categories: z.array(z.string()).optional(),
+    _company_id_verification: z.string().optional(), // Honeypot
 });
 
-// CORS configuration - only allow requests from your domain
-const allowedOrigins = [
-  'https://united-ffv.com',
-  'https://www.united-ffv.com',
-  'http://localhost:8080', // For local development
-];
-
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  const origin = req.headers.origin || '';
+    // 1. SET MANDATORY CORS HEADERS IMMEDIATELY
+    const origin = req.headers.origin || '';
+    const allowedOrigins = [
+        'https://united-ffv.com',
+        'https://www.united-ffv.com',
+        'http://localhost:8080'
+    ];
 
-  // SET CORS HEADERS IMMEDIATELY
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
-  res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
+    if (allowedOrigins.includes(origin.replace(/\/$/, ''))) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    } else {
+        res.setHeader('Access-Control-Allow-Origin', allowedOrigins[0]);
+    }
 
-  // HANDLE PREFLIGHT
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+    res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization');
 
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
+    // 2. Handle Preflight
+    if (req.method === 'OPTIONS') {
+        return res.status(200).end();
+    }
 
-  try {
-    const data = req.body;
+    if (req.method !== 'POST') {
+        return res.status(405).json({ error: 'Method not allowed' });
+    }
 
-    // 1. Honeypot Check
-    validateHoneypot(data);
+    try {
+        const data = req.body;
+        validateHoneypot(data);
 
-    // 2. Schema Validation
-    const validatedData = rfqSchema.parse(data);
+        const validatedData = rfqSchema.parse(data);
 
-    // 3. Dispatch Email
-    const { data: emailResponse, error } = await resend.emails.send({
-      from: 'UNITED Supply HUB <system@united-ffv.com>',
-      to: ['sales-team@united-ffv.com'],
-      subject: `New RFQ: ${validatedData.company}`,
-      html: createEmailTemplate('New Request For Quotation', validatedData),
-      text: createPlainTextFallback('New Request For Quotation', validatedData),
-      replyTo: validatedData.email,
-    });
+        const { data: emailResponse, error } = await resend.emails.send({
+            from: 'UNITED Supply HUB <system@united-ffv.com>',
+            to: ['sales-team@united-ffv.com'],
+            subject: `New RFQ: ${validatedData.company}`,
+            html: createEmailTemplate('New Request For Quotation', validatedData),
+            text: createPlainTextFallback('New Request For Quotation', validatedData),
+            replyTo: validatedData.email,
+        });
 
-    if (error) throw error;
+        if (error) throw error;
 
-    return res.status(200).json({ success: true, message: 'RFQ submitted successfully' });
-  } catch (error: any) {
-    console.error('RFQ Submission Error:', error);
-    return res.status(400).json({
-      error: error.message || 'Validation failed',
-      details: error instanceof z.ZodError ? error.errors : undefined
-    });
-  }
+        return res.status(200).json({ success: true, message: 'RFQ submitted successfully' });
+    } catch (error: any) {
+        console.error('RFQ API Error:', error);
+        return res.status(error instanceof z.ZodError ? 400 : 500).json({
+            error: error.message || 'Server error',
+            details: error instanceof z.ZodError ? error.errors : undefined
+        });
+    }
 }

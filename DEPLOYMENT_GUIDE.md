@@ -1,8 +1,14 @@
 # Hybrid Deployment Guide: Vercel + Hostinger
 
-This guide explains how to deploy your application using a hybrid architecture:
-- **Backend (API)**: Vercel Serverless Functions (free tier)
-- **Frontend (Static)**: Hostinger Premium
+## Deployment Strategies
+
+We support two primary ways to handle the email backend:
+
+1.  **Hostinger + Vercel (Hybrid)**: Frontend on Hostinger, Backend on Vercel (Original setup).
+    This guide explains how to deploy your application using a hybrid architecture:
+    - **Backend (API)**: Vercel Serverless Functions (free tier)
+    - **Frontend (Static)**: Hostinger Premium
+2.  **Hostinger Only (PHP Bridge)**: Standard PHP hosting using Resend (New setup in `resend-hostinger-php`).
 
 ---
 
