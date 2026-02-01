@@ -28,16 +28,13 @@ const allowedOrigins = [
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   const origin = req.headers.origin || '';
 
-  // Set CORS headers
-  const normalizedOrigin = origin.replace(/\/$/, '');
-  if (allowedOrigins.includes(normalizedOrigin) || !origin) {
-    res.setHeader('Access-Control-Allow-Origin', origin || '*');
-  }
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  res.setHeader('Access-Control-Max-Age', '86400'); // 24 hours
+  // SET CORS HEADERS IMMEDIATELY
+  res.setHeader('Access-Control-Allow-Credentials', 'true');
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+  res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
 
-  // Handle preflight OPTIONS request
+  // HANDLE PREFLIGHT
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }

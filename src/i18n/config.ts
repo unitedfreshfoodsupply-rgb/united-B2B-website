@@ -19,9 +19,12 @@ i18n
             loadPath: '/locales/{{lng}}/{{ns}}.json',
         },
         load: 'languageOnly',
+        nonExplicitSupportedLngs: true,
+        supportedLngs: ['en', 'ar'],
         detection: {
             order: ['localStorage', 'navigator'],
             caches: ['localStorage'],
+            lookupLocalStorage: 'i18nextLng',
         },
     });
 
