@@ -29,41 +29,53 @@ if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
 
 /**
  * Sends an email via Resend API
+ * Using file_get_contents instead of curl for better Hostinger compatibility
  */
 function send_resend_email($api_key, $payload) {
     if (empty($api_key)) {
         return ['error' => 'Missing Resend API Key'];
     }
 
-    $ch = curl_init('https://api.resend.com/emails');
-    
     $json_payload = json_encode($payload);
     
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    curl_setopt($ch, CURLOPT_POST, true);
-    curl_setopt($ch, CURLOPT_POSTFIELDS, $json_payload);
-    curl_setopt($ch, CURLOPT_HTTPHEADER, [
-        'Authorization: Bearer ' . $api_key,
-        'Content-Type: application/json'
-    ]);
-
-    $response = curl_exec($ch);
-    $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+    $options = [
+        'http' => [
+            'method' => 'POST',
+            'header' => [
+                'Authorization: Bearer ' . $api_key,
+                'Content-Type: application/json',
+            ],
+            'content' => $json_payload,
+            'timeout' => 30,
+            'ignore_errors' => true, // Get response even on error codes
+        ]
+    ];
     
-    if (curl_errno($ch)) {
-        $error_msg = curl_error($ch);
-        curl_close($ch);
-        return ['error' => 'Curl Error: ' . $error_msg];
+    $context = stream_context_create($options);
+    $response = @file_get_contents('https://api.resend.com/emails', false, $context);
+    
+    if ($response === false) {
+        $error = error_get_last();
+        return ['error' => 'Connection Error: ' . ($error['message'] ?? 'Unable to reach Resend API')];
     }
     
-    curl_close($ch);
+    // Extract HTTP response code
+    $http_code = 500;
+    if (isset($http_response_header)) {
+        foreach ($http_response_header as $header) {
+            if (preg_match('/^HTTP\/\d\.\d\s+(\d+)/', $header, $matches)) {
+                $http_code = (int)$matches[1];
+                break;
+            }
+        }
+    }
     
     $result = json_decode($response, true);
     
     if ($http_code >= 200 && $http_code < 300) {
         return ['success' => true, 'data' => $result];
     } else {
-        return ['error' => $result['message'] ?? 'Resend API error', 'code' => $http_code];
+        return ['error' => $result['message'] ?? 'Resend API error', 'code' => $http_code, 'raw_response' => $response];
     }
 }
 
