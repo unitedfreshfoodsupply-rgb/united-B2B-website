@@ -42,7 +42,7 @@ $html_body = "
 ";
 
 $resend_payload = [
-    'from' => 'UNITED Supply HUB <system@united-ffv.com>',
+    'from' => 'UNITED Sales Team <sales-team@united-ffv.com>',
     'to' => ['sales-team@united-ffv.com'],
     'subject' => "New RFQ: $company",
     'html' => $html_body,

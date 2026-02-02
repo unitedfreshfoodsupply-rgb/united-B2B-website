@@ -49,7 +49,7 @@ $html_body = "
 ";
 
 $resend_payload = [
-    'from' => 'UNITED Support <system@united-ffv.com>',
+    'from' => 'UNITED Support <support@united-ffv.com>',
     'to' => ['support@united-ffv.com'],
     'subject' => "Support Inquiry: $subject",
     'html' => $html_body,
