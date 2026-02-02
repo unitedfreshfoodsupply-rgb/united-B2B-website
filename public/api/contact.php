@@ -12,11 +12,17 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // Get JSON input
 $input = file_get_contents('php://input');
+// DEBUG: Log the raw input to a file on Hostinger
+// error_log("Raw Input: " . $input); 
+
 $data = json_decode($input, true);
 
 if (!$data) {
     http_response_code(400);
-    echo json_encode(['error' => 'Invalid JSON input']);
+    echo json_encode([
+        'error' => 'Invalid JSON input',
+        'received' => substrate($input, 0, 100) // Show a bit of what was received
+    ]);
     exit();
 }
 
