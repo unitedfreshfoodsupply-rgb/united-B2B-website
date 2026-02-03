@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { toast } from 'sonner';
 import { useUnifiedTranslation } from './use-unified-translation';
-import { sendEmail as sendEmailJS, EmailData } from '@/lib/email';
+import { sendEmail as sendEmailJS, EmailData, EMAILJS_RFQ_CONFIG } from '@/lib/email';
 
 interface EmailOptions {
     onSuccess?: () => void;
@@ -24,8 +24,18 @@ export const useResend = () => {
                 return true;
             }
 
-            // 2. Send via EmailJS
-            const result = await sendEmailJS(data);
+            // 2. Select Configuration (Default vs RFQ)
+            let configOverride = undefined;
+            if (options.endpoint === '/api/rfq' && EMAILJS_RFQ_CONFIG.SERVICE_ID) {
+                configOverride = {
+                    serviceId: EMAILJS_RFQ_CONFIG.SERVICE_ID,
+                    templateId: EMAILJS_RFQ_CONFIG.TEMPLATE_ID,
+                    publicKey: EMAILJS_RFQ_CONFIG.PUBLIC_KEY,
+                };
+            }
+
+            // 3. Send via EmailJS
+            const result = await sendEmailJS(data, configOverride);
 
             if (!result.success) {
                 throw new Error('Failed to send message via EmailJS');
