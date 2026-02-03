@@ -23,10 +23,10 @@ export function PartnerSection() {
                 __html: `
                 @keyframes marquee {
                     0% { transform: translateX(0); }
-                    100% { transform: translateX(${isRTL ? '25%' : '-25%'}); }
+                    100% { transform: translateX(${isRTL ? '50%' : '-50%'}); }
                 }
                 .animate-marquee {
-                    animation: marquee 35s linear infinite;
+                    animation: marquee 50s linear infinite;
                 }
                 .pause-on-hover:hover .animate-marquee {
                     animation-play-state: paused;
@@ -82,25 +82,41 @@ export function PartnerSection() {
                     <div className="absolute inset-y-0 left-0 w-32 md:w-80 bg-gradient-to-r from-white via-white to-transparent z-10 pointer-events-none" />
                     <div className="absolute inset-y-0 right-0 w-32 md:w-80 bg-gradient-to-l from-white via-white to-transparent z-10 pointer-events-none" />
 
-                    <div className="flex overflow-hidden cursor-pointer pause-on-hover">
-                        <div className={`flex gap-12 md:gap-32 items-center whitespace-nowrap py-8 animate-marquee ${isRTL ? 'flex-row-reverse' : 'flex-row'}`}>
+                    <div className="flex overflow-hidden cursor-pointer pause-on-hover py-8">
+                        <div className={`flex gap-16 md:gap-24 items-center whitespace-nowrap animate-marquee ${isRTL ? 'flex-row-reverse' : 'flex-row'}`}>
                             {[...partners, ...partners, ...partners, ...partners].map((partner, i) => (
                                 <motion.div
                                     key={i}
-                                    whileHover={{ y: -5, scale: 1.05 }}
-                                    className="relative flex items-center justify-center grayscale contrast-125 opacity-[0.65] hover:grayscale-0 hover:opacity-100 hover:contrast-100 transition-all duration-500 ease-out"
+                                    whileHover={{ y: -8, scale: 1.02 }}
+                                    className="relative flex items-center justify-center transition-all duration-500 ease-out"
                                 >
-                                    <div className="h-16 md:h-28 w-48 md:w-72 flex items-center justify-center px-8 py-6 rounded-2xl bg-[#fcfcfc] border border-black/[0.03] shadow-sm hover:shadow-xl hover:border-uniteda-gold/20 transition-all duration-500 group">
-                                        <img
-                                            src={partner.logo}
-                                            alt={partner.name}
-                                            width={192}
-                                            height={56}
-                                            className="max-h-full max-w-full object-contain filter drop-shadow-sm brightness-[0.9] group-hover:brightness-100"
-                                            loading="lazy"
-                                        />
-                                        {/* Premium Subtle Indicator */}
-                                        <div className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-uniteda-gold/0 group-hover:bg-uniteda-gold/40 transition-all" />
+                                    <div className="group relative h-40 md:h-52 w-64 md:w-80 flex flex-col items-center justify-center p-8 rounded-[2.5rem] glass-panel border border-white/20 shadow-2xl hover:shadow-uniteda-emerald/10 hover:border-uniteda-emerald/30 transition-all duration-700">
+                                        {/* Status Header Overlay */}
+                                        <div className="absolute top-6 left-8 right-8 flex justify-between items-center opacity-40 group-hover:opacity-100 transition-opacity duration-500">
+                                            <div className="flex items-center gap-1.5">
+                                                <div className="w-1 h-1 rounded-full bg-uniteda-emerald" />
+                                                <span className="text-[7px] font-black uppercase tracking-[0.2em] text-uniteda-emerald-dark">Active Partner</span>
+                                            </div>
+                                            <span className="text-[7px] font-mono text-uniteda-emerald-dark/60">SYS_V3</span>
+                                        </div>
+
+                                        <div className="relative z-10 w-full h-full flex items-center justify-center mt-4">
+                                            <img
+                                                src={partner.logo}
+                                                alt={partner.name}
+                                                className="max-h-[60%] max-w-[80%] object-contain filter drop-shadow-md grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                                                loading="lazy"
+                                            />
+                                        </div>
+
+                                        {/* HUD Corner Accents */}
+                                        <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-uniteda-gold/20 rounded-tr-xl group-hover:border-uniteda-gold transition-colors" />
+                                        <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-uniteda-gold/20 rounded-bl-xl group-hover:border-uniteda-gold transition-colors" />
+
+                                        {/* Bottom Label */}
+                                        <div className="absolute bottom-6 left-8 right-8 text-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
+                                            <span className="text-[8px] font-black text-uniteda-emerald-dark uppercase tracking-[0.3em]">Institutional Verification</span>
+                                        </div>
                                     </div>
                                 </motion.div>
                             ))}

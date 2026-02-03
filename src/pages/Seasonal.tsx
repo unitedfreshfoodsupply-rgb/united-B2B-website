@@ -1,6 +1,7 @@
 import { useState, useMemo, memo, useDeferredValue, lazy } from "react";
 import React from "react";
 import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
+import { usePageTitle } from "@/hooks/use-page-title";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Link } from "react-router-dom";
@@ -100,6 +101,7 @@ MatrixRow.displayName = "MatrixRow";
 
 export default function SeasonalPage() {
   const { t, i18n, isRTL } = useUnifiedTranslation();
+  usePageTitle('meta.seasonal.title');
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [selectedRegion, setSelectedRegion] = useState<Region>("egypt");
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);

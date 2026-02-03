@@ -5,10 +5,13 @@ import { Layout } from "@/components/layout/Layout";
 import { Button } from "@/components/ui/button";
 import { Leaf, ArrowLeft, Home, Sprout } from "lucide-react";
 import { useTranslation, Trans } from "react-i18next";
+import { usePageTitle } from "@/hooks/use-page-title";
+import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
 
 export default function NotFound() {
   const location = useLocation();
-  const { t } = useTranslation('pages');
+  const { t } = useUnifiedTranslation();
+  usePageTitle('meta.not_found.title');
 
   useEffect(() => {
     console.error("404 Error: Access violation at pathway:", location.pathname);

@@ -32,6 +32,7 @@ import { vegetableProducts } from "@/data/vegetable-products";
 import { herbProducts } from "@/data/herb-products";
 import { localFruitProducts } from "@/data/local-fruit-products";
 import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
+import { usePageTitle } from "@/hooks/use-page-title";
 import { ProduceImage } from "@/components/ui/ProduceImage";
 import { LazySection } from "@/components/ui/LazySection";
 
@@ -258,6 +259,7 @@ VirtuosoItem.displayName = "VirtuosoItem";
 
 export default function ProductsPage() {
   const { t, isRTL } = useUnifiedTranslation();
+  usePageTitle('meta.products.title');
 
   // States
   const [activeCategory, setActiveCategory] = useState("all");

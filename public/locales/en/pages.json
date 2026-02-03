@@ -1954,6 +1954,18 @@
         "contact": {
             "title": "Technical Support & Hub Directives | Contact UNITED",
             "description": "Direct operations support from our Obour Hub. Connect with our technical sales and logistics teams for hospitality supply requirements."
+        },
+        "not_found": {
+            "title": "Protocol Null | Page Not Found",
+            "description": "The requested resource could not be located within the UNITED supply infrastructure."
+        },
+        "privacy": {
+            "title": "Privacy Protocol | Data Security Standards",
+            "description": "Details on how UNITED protects your corporate data and ensures secure procurement interactions."
+        },
+        "terms": {
+            "title": "Terms of Service | Institutional Framework",
+            "description": "Legal and operational framework for partnering with the UNITED supply network."
         }
     }
 }

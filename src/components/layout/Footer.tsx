@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Linkedin, Instagram, ArrowUpRight, Mail, Leaf } from "lucide-react";
+import { MapPin, Phone, Linkedin, Instagram, Facebook, ArrowUpRight, Mail, Leaf } from "lucide-react";
 import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
@@ -104,12 +104,15 @@ export function Footer() {
 
             <div className="flex gap-4">
               {[
+                { icon: Facebook, href: "https://www.facebook.com/profile.php?id=61587570560424", name: "Facebook" },
+                { icon: Instagram, href: "https://www.instagram.com/unitedfreshfoodsupply/", name: "Instagram" },
                 { icon: Linkedin, href: "#", name: "LinkedIn" },
-                { icon: Instagram, href: "#", name: "Instagram" },
               ].map((social, i) => (
                 <a
                   key={i}
                   href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-12 h-12 rounded-2xl bg-[#fafafa] border border-black/5 flex items-center justify-center text-uniteda-emerald hover:bg-uniteda-emerald hover:text-white shadow-sm transition-all duration-500 hover:scale-110 active:scale-90"
                   aria-label={social.name}
                 >

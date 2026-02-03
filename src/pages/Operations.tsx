@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
 import { Layout } from "@/components/layout/Layout";
+import { usePageTitle } from "@/hooks/use-page-title";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import {
@@ -22,6 +23,7 @@ import {
 
 export default function OperationsPage() {
   const { t, i18n, isRTL } = useUnifiedTranslation();
+  usePageTitle('meta.operations.title');
 
   const certifications = [
     { name: t('operations.certifications.haccp.name'), description: t('operations.certifications.haccp.description'), id: "CERT_HACCP" },

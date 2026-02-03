@@ -2,9 +2,11 @@ import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
 import { Shield, Lock, Eye, Mail, Leaf } from "lucide-react";
+import { usePageTitle } from "@/hooks/use-page-title";
 
 export default function Privacy() {
     const { t, isRTL } = useUnifiedTranslation();
+    usePageTitle('meta.privacy.title');
 
     const sections = [
         {

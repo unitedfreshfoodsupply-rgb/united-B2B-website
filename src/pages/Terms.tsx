@@ -2,9 +2,11 @@ import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
 import { Scale, FileText, Globe, AlertCircle, Building2 } from "lucide-react";
+import { usePageTitle } from "@/hooks/use-page-title";
 
 export default function Terms() {
     const { t, isRTL } = useUnifiedTranslation();
+    usePageTitle('meta.terms.title');
 
     const sections = [
         {
