@@ -1,80 +1,41 @@
-# Hybrid Deployment Guide: Vercel + Hostinger
+# Deployment Guide: EmailJS + Hostinger
 
-## Deployment Strategies
+## Deployment Strategy
 
-We support two primary ways to handle the email backend:
+We use a client-side email architecture using **EmailJS**. This allows for reliable email sending directly from the browser without needing a dedicated backend or PHP bridge.
 
-1.  **Hostinger + Vercel (Hybrid)**: Frontend on Hostinger, Backend on Vercel (Original setup).
-    This guide explains how to deploy your application using a hybrid architecture:
-    - **Backend (API)**: Vercel Serverless Functions (free tier)
-    - **Frontend (Static)**: Hostinger Premium
-2.  **Hostinger Only (PHP Bridge)**: Standard PHP hosting using Resend (New setup in `resend-hostinger-php`).
+### Benefits
+- **Zero Backend**: No need for Vercel or PHP maintenance.
+- **Reliable**: Professional email delivery via SMTP.
+- **Secure**: Public keys are safe for frontend use when restricted by service.
 
 ---
 
-## Part 1: Deploy Backend to Vercel
+## Part 1: Configure EmailJS
 
-### Step 1: Prepare Your Vercel Account
-1. Go to [vercel.com](https://vercel.com) and sign up/login
-2. Install Vercel CLI (optional but recommended):
-   ```bash
-   npm install -g vercel
-   ```
+### Step 1: Create Account
+1. Sign up at [EmailJS.com](https://www.emailjs.com/)
+2. Add your Email Service (Gmail or Hostinger SMTP recommended).
 
-### Step 2: Deploy API Functions
-You have two options:
+### Step 2: Create Template
+Create a template and use variables matching your code (e.g., `{{name}}`, `{{email}}`, `{{company}}`, `{{subject}}`, `{{message}}`).
 
-#### Option A: Using Vercel CLI (Recommended)
-```bash
-# Login to Vercel
-vercel login
-
-# Deploy from project root
-vercel
-
-# Follow the prompts:
-# - Set up and deploy? Yes
-# - Which scope? Your account
-# - Link to existing project? No
-# - Project name? uniteda-supply-hub-api (or your choice)
-# - Directory? ./ (project root)
-# - Override settings? No
-```
-
-#### Option B: Using Vercel Dashboard
-1. Go to [vercel.com/new](https://vercel.com/new)
-2. Import your Git repository (GitHub/GitLab/Bitbucket)
-3. Configure project:
-   - **Framework Preset**: Other
-   - **Root Directory**: `./`
-   - **Build Command**: Leave empty
-   - **Output Directory**: Leave empty
-
-### Step 3: Configure Environment Variables
-1. In Vercel Dashboard, go to your project → **Settings** → **Environment Variables**
-2. Add the following:
-   - **Key**: `RESEND_API_KEY`
-   - **Value**: `REDACTED_RESEND_API_KEY`
-   - **Environment**: Production, Preview, Development (select all)
-3. Click **Save**
-
-### Step 4: Get Your API URL
-After deployment, Vercel will provide a URL like:
-```
-https://uniteda-supply-hub-api.vercel.app
-```
-**Save this URL** - you'll need it for the frontend configuration.
+### Step 3: Get API Keys
+- **Service ID**: From Email Services page.
+- **Template ID**: From Email Templates page.
+- **Public Key**: From Account -> API Keys page.
 
 ---
 
 ## Part 2: Deploy Frontend to Hostinger
 
-### Step 1: Update Environment Variable
+### Step 1: Update Environment Variables
 Create a `.env.production` file in your project root:
 ```env
-VITE_API_BASE_URL=https://your-vercel-project.vercel.app
+VITE_EMAILJS_SERVICE_ID=your_service_id
+VITE_EMAILJS_TEMPLATE_ID=your_template_id
+VITE_EMAILJS_PUBLIC_KEY=your_public_key
 ```
-Replace `your-vercel-project` with your actual Vercel deployment URL from Part 1, Step 4.
 
 ### Step 2: Build the Frontend
 ```bash
@@ -85,22 +46,11 @@ This creates a `dist/` folder with your static files.
 ### Step 3: Upload to Hostinger
 1. Login to **Hostinger hPanel**
 2. Go to **Files** → **File Manager**
-3. Navigate to `public_html` (or your domain's root directory)
-4. **Delete** any existing files in `public_html` (backup first if needed)
-5. **Upload** all contents from the `dist/` folder:
-   - You can use the Upload button in File Manager
-   - Or use FTP (FileZilla) for faster uploads
-6. Ensure the file structure looks like:
-   ```
-   public_html/
-   ├── index.html
-   ├── assets/
-   ├── images/
-   └── ... (other files from dist/)
-   ```
+3. Navigate to `public_html`
+4. **Upload** all contents from the `dist/` folder.
 
 ### Step 4: Configure .htaccess for React Router
-Create a `.htaccess` file in `public_html` with the following content:
+Create a `.htaccess` file in `public_html`:
 ```apache
 <IfModule mod_rewrite.c>
   RewriteEngine On
@@ -111,7 +61,6 @@ Create a `.htaccess` file in `public_html` with the following content:
   RewriteRule . /index.html [L]
 </IfModule>
 ```
-This ensures client-side routing works correctly.
 
 ---
 

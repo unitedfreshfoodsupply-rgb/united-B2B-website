@@ -16,11 +16,23 @@ export default function Contact() {
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
-        const data = Object.fromEntries(formData.entries());
+        const rawData = Object.fromEntries(formData.entries());
+
+        // Map fields to match EmailJS template variables from the guide
+        const mappedData = {
+            name: String(rawData.fullName || ''),
+            email: String(rawData.email || ''),
+            company: String(rawData.entityName || ''),
+            subject: String(rawData.subject || ''),
+            title: String(rawData.subject || ''), // Added title to match your template
+            message: String(rawData.payload || ''),
+            source: 'Contact Page',
+            _company_id_verification: String(rawData._company_id_verification || ''),
+        };
 
         await sendEmail(
             { endpoint: '/api/contact' },
-            data
+            mappedData
         );
     };
     return (
