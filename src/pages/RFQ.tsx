@@ -117,7 +117,13 @@ export default function RFQPage() {
       { endpoint: '/api/rfq' },
       {
         ...rfqData,
-        categories: selectedCategories,
+        name: rfqData.name || 'Anonymous',
+        email: rfqData.email || 'No email provided',
+        company: rfqData.company || 'Not provided',
+        title: `New Quote Request: ${rfqData.company || 'Unknown'}`, // Added title
+        message: rfqData.requirements || 'No specific requirements provided.',
+        categories: selectedCategories.join(', '),
+        source: 'RFQ Page Form',
       }
     );
 

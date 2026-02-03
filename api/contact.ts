@@ -3,68 +3,72 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { resend, validateHoneypot, createEmailTemplate, createPlainTextFallback } from './_utils';
 
 const contactSchema = z.object({
-  fullName: z.string().min(2),
-  entityName: z.string().min(2),
-  email: z.string().email(),
-  subject: z.string().min(3),
-  payload: z.string().min(10),
-  _company_id_verification: z.string().optional(), // Honeypot
+    fullName: z.string().min(2),
+    entityName: z.string().min(2),
+    email: z.string().email(),
+    subject: z.string().min(3),
+    payload: z.string().min(10),
+    _company_id_verification: z.string().optional(), // Honeypot
 });
 
-// CORS configuration - only allow requests from your domain
-const allowedOrigins = [
-  'https://united-ffv.com',
-  'https://www.united-ffv.com',
-  'http://localhost:8080', // For local development
-];
-
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  const origin = req.headers.origin || '';
+    // 1. SET MANDATORY CORS HEADERS IMMEDIATELY (Serverless First)
+    const origin = req.headers.origin || '';
+    const allowedOrigins = [
+        'https://united-ffv.com',
+        'https://www.united-ffv.com',
+        'http://localhost:8080'
+    ];
 
-  // Set CORS headers
-  if (allowedOrigins.includes(origin)) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  }
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
-  res.setHeader('Access-Control-Max-Age', '86400'); // 24 hours
+    // Strict Origin Matching to allow Credentials if needed
+    if (allowedOrigins.includes(origin.replace(/\/$/, ''))) {
+        res.setHeader('Access-Control-Allow-Origin', origin);
+    } else {
+        // Fallback for non-matching but allowing preflight to pass if safe
+        res.setHeader('Access-Control-Allow-Origin', allowedOrigins[0]);
+    }
 
-  // Handle preflight OPTIONS request
-  if (req.method === 'OPTIONS') {
-    return res.status(200).end();
-  }
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT');
+    res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version, Authorization');
 
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
+    // 2. CRITICAL: Handle Preflight OPTIONS request
+    if (req.method === 'OPTIONS') {
+        return res.status(200).end();
+    }
 
-  try {
-    const data = req.body;
+    // 3. ENFORCE POST ONLY
+    if (req.method !== 'POST') {
+        return res.status(405).json({ error: 'Method not allowed' });
+    }
 
-    // 1. Honeypot Check
-    validateHoneypot(data);
+    try {
+        const data = req.body;
 
-    // 2. Schema Validation
-    const validatedData = contactSchema.parse(data);
+        // Honeypot Check
+        validateHoneypot(data);
 
-    // 3. Dispatch Email
-    const { data: emailResponse, error } = await resend.emails.send({
-      from: 'UNITED Support <system@united-ffv.com>',
-      to: ['support@united-ffv.com'],
-      subject: `Support Inquiry: ${validatedData.subject}`,
-      html: createEmailTemplate('Brand Inquiry / Support', validatedData),
-      text: createPlainTextFallback('Brand Inquiry / Support', validatedData),
-      replyTo: validatedData.email,
-    });
+        // Schema Validation
+        const validatedData = contactSchema.parse(data);
 
-    if (error) throw error;
+        // Dispatch Email via Resend
+        const { data: emailResponse, error } = await resend.emails.send({
+            from: 'UNITED Support <system@united-ffv.com>',
+            to: ['support@united-ffv.com'],
+            subject: `Support Inquiry: ${validatedData.subject}`,
+            html: createEmailTemplate('Brand Inquiry / Support', validatedData),
+            text: createPlainTextFallback('Brand Inquiry / Support', validatedData),
+            replyTo: validatedData.email,
+        });
 
-    return res.status(200).json({ success: true, message: 'Message sent successfully' });
-  } catch (error: any) {
-    console.error('Contact Submission Error:', error);
-    return res.status(400).json({
-      error: error.message || 'Validation failed',
-      details: error instanceof z.ZodError ? error.errors : undefined
-    });
-  }
+        if (error) throw error;
+
+        return res.status(200).json({ success: true, message: 'Message sent successfully' });
+    } catch (error: any) {
+        console.error('Contact API Error:', error);
+        return res.status(error instanceof z.ZodError ? 400 : 500).json({
+            error: error.message || 'Server error',
+            details: error instanceof z.ZodError ? error.errors : undefined
+        });
+    }
 }

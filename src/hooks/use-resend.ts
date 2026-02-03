@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import { toast } from 'sonner';
 import { useUnifiedTranslation } from './use-unified-translation';
+import { sendEmail as sendEmailJS, EmailData } from '@/lib/email';
 
-interface ResendOptions {
-    endpoint: string;
+interface EmailOptions {
     onSuccess?: () => void;
+    // We keep endpoint for compatibility but it's not used by EmailJS directly
+    endpoint?: string;
 }
 
 export const useResend = () => {
@@ -12,26 +14,21 @@ export const useResend = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitted, setSubmitted] = useState(false);
 
-    const sendEmail = async (options: ResendOptions, data: any) => {
+    const sendEmail = async (options: EmailOptions, data: EmailData) => {
         setIsSubmitting(true);
         try {
-            // Get API base URL from environment variable
-            // In production, this should be your Vercel deployment URL
-            const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || '';
-            const apiUrl = apiBaseUrl ? `${apiBaseUrl}${options.endpoint}` : options.endpoint;
+            // 1. Honeypot check for spam
+            if (data._company_id_verification) {
+                console.warn('Spam detected via honeypot');
+                setSubmitted(true); // Pretend success to the bot
+                return true;
+            }
 
-            const response = await fetch(apiUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data),
-            });
+            // 2. Send via EmailJS
+            const result = await sendEmailJS(data);
 
-            const result = await response.json();
-
-            if (!response.ok) {
-                throw new Error(result.error || 'Failed to send message');
+            if (!result.success) {
+                throw new Error('Failed to send message via EmailJS');
             }
 
             setSubmitted(true);
@@ -39,7 +36,7 @@ export const useResend = () => {
             options.onSuccess?.();
             return true;
         } catch (error: any) {
-            console.error('Resend Error:', error);
+            console.error('Email Error:', error);
             toast.error(error.message || t('contact.form.error_message') || 'Failed to send message.');
             return false;
         } finally {
