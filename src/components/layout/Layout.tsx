@@ -1,7 +1,7 @@
 import { ReactNode } from "react";
 import { Header } from "./Header";
 import { Footer } from "./Footer";
-import { WhatsAppFloat } from "@/components/ui/WhatsAppFloat";
+import { FloatingSocials } from "@/components/ui/FloatingSocials";
 
 interface LayoutProps {
   children: ReactNode;
@@ -15,7 +15,7 @@ export function Layout({ children }: LayoutProps) {
         {children}
       </main>
       <Footer />
-      <WhatsAppFloat />
+      <FloatingSocials />
     </div>
   );
 }

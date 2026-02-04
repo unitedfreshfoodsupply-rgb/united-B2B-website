@@ -23,9 +23,11 @@ const BusinessInfoStep = lazy(() => import("@/components/rfq/BusinessInfoStep").
 const SupplyRequirementsStep = lazy(() => import("@/components/rfq/SupplyRequirementsStep").then(m => ({ default: m.SupplyRequirementsStep })));
 const ContactInfoStep = lazy(() => import("@/components/rfq/ContactInfoStep").then(m => ({ default: m.ContactInfoStep })));
 import { useResend } from "@/hooks/use-resend";
+import { usePageTitle } from "@/hooks/use-page-title";
 
 export default function RFQPage() {
   const { t, i18n, isRTL } = useUnifiedTranslation();
+  usePageTitle('meta.rfq.title');
   const [currentStep, setCurrentStep] = useState(0);
   const [direction, setDirection] = useState(0); // 1 for forward, -1 for backward
 

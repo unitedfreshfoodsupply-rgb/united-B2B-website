@@ -8,6 +8,7 @@ import {
     ArrowDown, Navigation
 } from "lucide-react";
 import { LazySection } from "@/components/ui/LazySection";
+import { usePageTitle } from "@/hooks/use-page-title";
 
 /**
  * Isolated Progress Bar to prevent page-level reflows on scroll
@@ -32,6 +33,7 @@ ScrollProgress.displayName = "ScrollProgress";
 
 export default function About() {
     const { t, i18n, isRTL } = useUnifiedTranslation();
+    usePageTitle('meta.about.title');
     const containerRef = useRef<HTMLDivElement>(null);
     const [isLoaded, setIsLoaded] = useState(false);
 

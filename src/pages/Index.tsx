@@ -1,8 +1,12 @@
 import { Layout } from "@/components/layout/Layout";
 import { HeroSection } from "@/components/home/HeroSection";
 import { LazySection } from "@/components/ui/LazySection";
+import { usePageTitle } from "@/hooks/use-page-title";
+import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
 
 const Index = () => {
+  const { t } = useUnifiedTranslation();
+  usePageTitle('meta.home.title');
   return (
     <Layout>
       <HeroSection />

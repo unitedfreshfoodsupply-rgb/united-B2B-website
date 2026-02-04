@@ -8,9 +8,11 @@ import { Mail, MapPin, ArrowRight, MessageSquare, CheckCircle2, Phone } from "lu
 import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
 import { Link } from "react-router-dom";
 import { useResend } from "@/hooks/use-resend";
+import { usePageTitle } from "@/hooks/use-page-title";
 
 export default function Contact() {
     const { t, i18n, isRTL } = useUnifiedTranslation();
+    usePageTitle('meta.contact.title');
     const { sendEmail, isSubmitting, submitted } = useResend();
 
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
