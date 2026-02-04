@@ -24,8 +24,9 @@ export default function Contact() {
             email: String(rawData.email || ''),
             company: String(rawData.entityName || ''),
             subject: String(rawData.subject || ''),
-            title: String(rawData.subject || ''), // Added title to match your template
+            title: String(rawData.subject || ''),
             message: String(rawData.payload || ''),
+            time: new Date().toLocaleString(),
             source: 'Contact Page',
             _company_id_verification: String(rawData._company_id_verification || ''),
         };

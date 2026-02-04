@@ -111,6 +111,11 @@ export default function RFQPage() {
       return;
     }
 
+    // Resolve readable labels for the email
+    const businessTypeLabel = businessTypes.find(b => b.value === rfqData.businessType)?.label || rfqData.businessType;
+    const volumeLabel = volumeRanges.find(v => v.value === rfqData.volume)?.label || rfqData.volume;
+    const frequencyLabel = frequencies.find(f => f.value === rfqData.frequency)?.label || rfqData.frequency;
+
     const success = await sendEmail(
       { endpoint: '/api/rfq' },
       {
@@ -118,9 +123,13 @@ export default function RFQPage() {
         name: rfqData.name || 'Anonymous',
         email: rfqData.email || 'No email provided',
         company: rfqData.company || 'Not provided',
-        title: `New Quote Request: ${rfqData.company || 'Unknown'}`, // Added title
+        businessType: businessTypeLabel,
+        volume: volumeLabel,
+        frequency: frequencyLabel,
+        title: `New Quote Request: ${rfqData.company || 'Unknown'}`,
         message: rfqData.requirements || 'No specific requirements provided.',
         categories: selectedCategories.join(', '),
+        time: new Date().toLocaleString(),
         source: 'RFQ Page Form',
       }
     );
