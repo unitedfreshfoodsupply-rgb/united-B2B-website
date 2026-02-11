@@ -168,24 +168,27 @@ export default function SeasonalPage() {
   };
 
   const handleExport = React.useCallback(() => {
-    // Generate CSV Headers
-    const headers = [
+    // Generate CSV Headers with quoting for safety
+    const headerCols = [
       t('seasonal.table.columns.product'),
       t('seasonal.table.columns.category'),
       ...months
-    ].join(',');
+    ];
+    const headers = headerCols.map(h => `"${h.replace(/"/g, '""')}"`).join(',');
 
-    // Generate CSV Rows
+    // Generate CSV Rows with strict quoting
     const rows = filteredProducts.map(p => {
-      const name = t(`products.catalog.items.${p.key}.name`).replace(/,/g, ''); // Remove commas to prevent CSV break
-      const category = t(`products.catalog.categories.${p.category.toLowerCase()}`).replace(/,/g, '');
-      return [name, category, ...p.egypt].join(',');
+      const name = t(`products.catalog.items.${p.key}.name`);
+      const category = t(`products.catalog.categories.${p.category.toLowerCase()}`);
+      const values = [name, category, ...p.egypt];
+      return values.map(v => `"${String(v).replace(/"/g, '""')}"`).join(',');
     });
 
-    const csvContent = [headers, ...rows].join('\n');
+    // Excel prefers \r\n and 'sep=,' helps with regional settings
+    const csvContent = `sep=,\r\n${headers}\r\n${rows.join('\r\n')}`;
 
     // Create and trigger download
-    const blob = new Blob([`\ufeff${csvContent}`], { type: 'text/csv;charset=utf-8;' }); // \ufeff for Excel UTF-8 support
+    const blob = new Blob([`\ufeff${csvContent}`], { type: 'text/csv;charset=utf-8;' });
     const url = URL.createObjectURL(blob);
     const link = document.createElement('a');
     const fileName = `Uniteda_Seasonal_Catalog_${months[currentMonth]}_${new Date().getFullYear()}.csv`;
