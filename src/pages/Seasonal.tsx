@@ -167,6 +167,38 @@ export default function SeasonalPage() {
     setShowModal(true);
   };
 
+  const handleExport = React.useCallback(() => {
+    // Generate CSV Headers
+    const headers = [
+      t('seasonal.table.columns.product'),
+      t('seasonal.table.columns.category'),
+      ...months
+    ].join(',');
+
+    // Generate CSV Rows
+    const rows = filteredProducts.map(p => {
+      const name = t(`products.catalog.items.${p.key}.name`).replace(/,/g, ''); // Remove commas to prevent CSV break
+      const category = t(`products.catalog.categories.${p.category.toLowerCase()}`).replace(/,/g, '');
+      return [name, category, ...p.egypt].join(',');
+    });
+
+    const csvContent = [headers, ...rows].join('\n');
+
+    // Create and trigger download
+    const blob = new Blob([`\ufeff${csvContent}`], { type: 'text/csv;charset=utf-8;' }); // \ufeff for Excel UTF-8 support
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    const fileName = `Uniteda_Seasonal_Catalog_${months[currentMonth]}_${new Date().getFullYear()}.csv`;
+
+    link.setAttribute('href', url);
+    link.setAttribute('download', fileName);
+    link.style.visibility = 'hidden';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }, [filteredProducts, t, months, currentMonth]);
+
   const categories = [
     { id: "fruits", label: t('products.catalog.categories.fruits') },
     { id: "vegetables", label: t('products.catalog.categories.vegetables') },
@@ -256,7 +288,10 @@ export default function SeasonalPage() {
                     <p className="text-xs text-muted-foreground">{t('seasonal.controls.buttons.download')}</p>
                   </div>
                 </div>
-                <Button className="w-full rounded-xl bg-accent hover:bg-accent/90 text-accent-foreground font-bold shadow-lg shadow-accent/20">
+                <Button
+                  onClick={handleExport}
+                  className="w-full rounded-xl bg-accent hover:bg-accent/90 text-accent-foreground font-bold shadow-lg shadow-accent/20"
+                >
                   <Download size={16} className="mr-2" />
                   {t('seasonal.controls.buttons.export')}
                 </Button>
