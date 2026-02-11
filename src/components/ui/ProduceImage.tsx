@@ -27,6 +27,7 @@ export const ProduceImage: React.FC<ProduceImageProps> = ({
     height,
     ...props
 }) => {
+    const [isLoaded, setIsLoaded] = React.useState(false);
     // If it's an Unsplash image, we can use their dynamic resizing API
     const isUnsplash = src.includes("images.unsplash.com");
 
@@ -53,6 +54,7 @@ export const ProduceImage: React.FC<ProduceImageProps> = ({
         auto: "",
     };
 
+
     return (
         <div className={cn(
             "overflow-hidden bg-muted/20 relative",
@@ -66,15 +68,20 @@ export const ProduceImage: React.FC<ProduceImageProps> = ({
                 alt={alt}
                 width={width}
                 height={height}
+                onLoad={() => setIsLoaded(true)}
                 className={cn(
-                    "w-full h-full transition-opacity duration-300",
-                    objectFit === "cover" ? "object-cover" : "object-contain"
+                    "w-full h-full transition-opacity duration-500 ease-in-out",
+                    objectFit === "cover" ? "object-cover" : "object-contain",
+                    isLoaded ? "opacity-100" : "opacity-0"
                 )}
                 loading={isPriority ? "eager" : "lazy"}
-                fetchPriority={isPriority ? "high" : "auto"}
+                {...(isPriority ? { fetchpriority: "high" } : { fetchpriority: "auto" })}
                 decoding="async"
                 {...props}
             />
+            {!isLoaded && (
+                <div className="absolute inset-0 bg-muted/10" />
+            )}
         </div>
     );
 };

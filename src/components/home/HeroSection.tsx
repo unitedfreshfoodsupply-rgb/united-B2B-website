@@ -102,10 +102,7 @@ export const HeroSection = React.memo(function HeroSection() {
           {/* Right Column: Visual Bento */}
           <div className="relative hidden lg:block">
             <div className="grid grid-cols-2 gap-4">
-              <motion.div
-                initial={{ opacity: 1, scale: 0.95, y: 0 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                transition={{ duration: 1, delay: 0 }}
+              <div
                 className="col-span-2 h-[200px] sm:h-[250px] lg:h-[300px] rounded-[2rem] sm:rounded-[2.5rem] bg-uniteda-emerald overflow-hidden relative group"
               >
                 <ProduceImage
@@ -123,34 +120,26 @@ export const HeroSection = React.memo(function HeroSection() {
                   <h3 className="text-3xl font-bold text-white tracking-tight">{t('hero.bento.certified.title')}</h3>
                   <p className="text-white/80 font-medium">{t('hero.bento.certified.subtitle')}</p>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1, delay: 0.4 }}
+              <div
                 className="h-[160px] sm:h-[180px] lg:h-[200px] rounded-[1.5rem] sm:rounded-[2rem] glass-panel p-6 sm:p-8 flex flex-col justify-center gap-2"
               >
                 <div className="text-4xl font-black text-uniteda-emerald tracking-tighter">{t('hero.bento.latency.value')}</div>
                 <p className="text-sm font-bold text-uniteda-emerald-dark/60 uppercase tracking-widest">{t('hero.bento.latency.label')}</p>
-              </motion.div>
+              </div>
 
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1, delay: 0.6 }}
+              <div
                 className="h-[160px] sm:h-[180px] lg:h-[200px] rounded-[1.5rem] sm:rounded-[2rem] bg-uniteda-gold p-6 sm:p-8 flex flex-col justify-center gap-2 text-white shadow-xl shadow-uniteda-gold/20"
               >
                 <Globe className="w-8 h-8 mb-2" />
                 <div className="text-2xl font-bold tracking-tight">{t('hero.bento.logic.title')}</div>
                 <p className="text-white/80 text-sm font-medium">{t('hero.bento.logic.subtitle')}</p>
-              </motion.div>
+              </div>
             </div>
 
             {/* Floating Status Card */}
-            <motion.div
-              animate={{ y: [0, -10, 0] }}
-              transition={{ repeat: Infinity, duration: 4, ease: "easeInOut" }}
+            <div
               className="absolute -bottom-6 -right-6 rtl:right-auto rtl:-left-6 glass-panel rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-2xl border border-white/40 max-w-[200px] sm:max-w-[240px] hidden md:block"
             >
               <div className="flex items-center gap-4">
@@ -160,7 +149,7 @@ export const HeroSection = React.memo(function HeroSection() {
               <p className="text-sm font-bold text-uniteda-emerald-dark">
                 {t('hero.bento.status.cairo')}: <span className="text-uniteda-emerald font-black">{t('hero.bento.status.active')}</span>
               </p>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>

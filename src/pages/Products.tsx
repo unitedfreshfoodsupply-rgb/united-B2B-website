@@ -53,6 +53,12 @@ interface Product {
 interface NormalizedProduct extends Product {
   searchName: string;
   searchOrigin: string;
+  displayName: string;
+  displayScientificName: string;
+  displayOrigin: string;
+  displayMarketPrice: string;
+  displaySeason: string;
+  displayCTA: string;
 }
 
 // --- Constants & Data ---
@@ -81,66 +87,45 @@ const CATEGORY_ICONS: Record<string, any> = {
  * - GPU-safe transforms
  */
 // Animation variants outside component to avoid per-render-object allocation
-const cardVariants = {
-  initial: { opacity: 0, y: 15 },
-  animate: { opacity: 1, y: 0 },
-  exit: { opacity: 0, scale: 0.98 }
-};
-
 const ProductCard = memo(({
   product,
-  t,
   viewMode,
   index,
   onSelect
 }: {
-  product: Product;
-  t: (key: string, params?: any) => string;
+  product: NormalizedProduct;
   viewMode: "grid" | "list";
   index: number;
   onSelect: (product: Product) => void;
 }) => {
   const isPriority = index < 6;
-  const productName = t(`products.catalog.items.${product.key}.name`);
-  const scientificName = t(`products.catalog.items.${product.key}.scientific_name`);
-  const origin = t(`products.catalog.items.${product.key}.origin`);
+  const productName = product.displayName;
+  const scientificName = product.displayScientificName;
+  const origin = product.displayOrigin;
   const seasonType = product.season;
 
-  const CardContainer = isPriority ? motion.div : "div";
-
   return (
-    <CardContainer
-      {...(isPriority ? {
-        variants: cardVariants,
-        initial: "initial",
-        animate: "animate",
-        exit: "exit",
-        transition: {
-          duration: 0.25,
-          delay: index * 0.04,
-          ease: "easeOut"
-        }
-      } : {})}
+    <div
       className={cn(
-        "group relative bg-white border border-black/5 rounded-[2rem] overflow-hidden hover:border-uniteda-emerald/30 transition-all duration-500",
-        viewMode === "grid" ? "hover:shadow-xl hover:shadow-uniteda-emerald/5" : "flex items-center p-4 gap-6 hover:translate-x-2"
+        "group relative bg-white border border-black/5 rounded-[2rem] overflow-hidden hover:border-uniteda-emerald/20 transition-all duration-300 flex flex-col h-full",
+        viewMode === "grid" ? "hover:shadow-lg hover:shadow-uniteda-emerald/5" : "flex-row items-center p-4 gap-6 hover:translate-x-1"
       )}
-      style={{ willChange: isPriority ? "transform, opacity" : "auto" }}
+      style={{ contain: 'layout' }}
     >
       {/* Image Area */}
       <div className={cn(
-        "relative bg-[#f8f8f8] group-hover:bg-[#f0fdf4] transition-colors duration-500 flex items-center justify-center overflow-hidden",
+        "relative bg-[#f8f8f8] group-hover:bg-[#f3fcf6] transition-colors duration-300 flex items-center justify-center overflow-hidden",
         viewMode === "list" ? "w-24 h-24 rounded-2xl shrink-0" : "aspect-square w-full"
       )}>
         {product.image.length > 2 ? (
           <ProduceImage
             src={product.image}
             alt={productName}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
             isPriority={isPriority}
           />
         ) : (
-          <div className="text-6xl group-hover:scale-110 transition-transform duration-500 drop-shadow-xl select-none">
+          <div className="text-6xl group-hover:scale-105 transition-transform duration-500 drop-shadow-xl select-none">
             {product.image}
           </div>
         )}
@@ -148,8 +133,8 @@ const ProductCard = memo(({
         {viewMode === "grid" && (
           <div className="absolute top-4 right-4 flex flex-col gap-2 items-end">
             {product.grades.slice(0, 1).map((grade) => (
-              <span key={grade} className="px-3 py-1 rounded-full bg-white/95 backdrop-blur-sm shadow-sm text-[10px] font-bold uppercase tracking-wider text-uniteda-emerald-dark border border-black/5">
-                {t(`products.catalog.grades.${grade}`)}
+              <span key={grade} className="px-3 py-1 rounded-full bg-white/95 shadow-sm text-[10px] font-bold uppercase tracking-wider text-uniteda-emerald-dark border border-black/5">
+                {grade}
               </span>
             ))}
           </div>
@@ -167,7 +152,7 @@ const ProductCard = memo(({
               {scientificName}
             </span>
             <h3 className="font-display font-bold text-xl text-uniteda-emerald-dark group-hover:text-uniteda-emerald transition-colors leading-tight">
-              {t(`products.catalog.items.${product.key}.name`, { defaultValue: product.key.replace(/_/g, ' ') })}
+              {productName}
             </h3>
           </div>
           {viewMode === "list" && (
@@ -177,7 +162,7 @@ const ProductCard = memo(({
                 seasonType === "starting" ? "bg-amber-100 text-amber-700" :
                   "bg-slate-100 text-slate-600"
             )}>
-              {t(`products.filters.season.${seasonType}`)}
+              {product.displaySeason}
             </span>
           )}
         </div>
@@ -190,7 +175,7 @@ const ProductCard = memo(({
             </div>
             <div className="flex items-center gap-1.5 text-xs font-semibold text-muted-foreground bg-muted/30 px-2 py-1 rounded-md">
               <TrendingUp className="w-3 h-3" />
-              {product.price === "Market Price" ? t('products.catalog.market_price') : product.price}
+              {product.displayMarketPrice}
             </div>
           </div>
         )}
@@ -206,12 +191,12 @@ const ProductCard = memo(({
                 seasonType === "starting" ? "bg-amber-50 text-amber-600 border border-amber-100" :
                   "bg-slate-50 text-slate-500 border border-slate-100"
             )}>
-              <span className={cn("w-1.5 h-1.5 rounded-full animate-pulse",
+              <span className={cn("w-1.5 h-1.5 rounded-full",
                 seasonType === "peak" ? "bg-emerald-500" :
                   seasonType === "starting" ? "bg-amber-500" :
                     "bg-slate-400"
               )} />
-              {t(`products.filters.season.${seasonType}`)}
+              {product.displaySeason}
             </span>
           )}
 
@@ -229,13 +214,13 @@ const ProductCard = memo(({
               <ArrowRight size={14} className="rtl:rotate-180" />
             ) : (
               <span className="flex items-center gap-2">
-                {t('hero.cta_secondary')} <ArrowRight size={14} className="rtl:rotate-180" />
+                {product.displayCTA} <ArrowRight size={14} className="rtl:rotate-180" />
               </span>
             )}
           </Button>
         </div>
       </div>
-    </CardContainer>
+    </div>
   );
 }, (prev, next) => (
   prev.product.id === next.product.id &&
@@ -247,13 +232,13 @@ const ProductCard = memo(({
 ProductCard.displayName = "ProductCard";
 
 // Virtuoso stable components to prevent unnecessary remounts
-const VirtuosoList = forwardRef<HTMLDivElement, { children?: React.ReactNode, viewMode: "grid" | "list" }>(({ children, viewMode, ...props }, ref) => (
+const VirtuosoList = forwardRef<HTMLDivElement, { children?: React.ReactNode, context?: { viewMode: "grid" | "list" } }>(({ children, context, ...props }, ref) => (
   <div
     {...props}
     ref={ref}
     className={cn(
       "grid gap-6",
-      viewMode === "grid" ? "sm:grid-cols-2 xl:grid-cols-3" : "grid-cols-1"
+      context?.viewMode === "grid" ? "sm:grid-cols-2 xl:grid-cols-3" : "grid-cols-1"
     )}
   >
     {children}
@@ -261,8 +246,12 @@ const VirtuosoList = forwardRef<HTMLDivElement, { children?: React.ReactNode, vi
 ));
 VirtuosoList.displayName = "VirtuosoList";
 
-const VirtuosoItem = ({ children, ...props }: any) => (
-  <div {...props} className="h-full min-h-[350px]">
+const VirtuosoItem = ({ children, context, ...props }: any) => (
+  <div
+    {...props}
+    className={cn("h-full", context?.viewMode === "grid" ? "h-[600px]" : "h-[140px]")}
+    style={{ contain: 'layout size' }}
+  >
     {children}
   </div>
 );
@@ -277,29 +266,35 @@ const Ticker = memo(({ items, isRTL, t }: { items: any[], isRTL: boolean, t: any
   if (items.length === 0) return null;
 
   return (
-    <div className="relative mt-12 bg-uniteda-emerald-dark py-6 overflow-hidden border-y border-uniteda-emerald/20">
+    <div className="relative mt-12 bg-uniteda-emerald-dark py-6 overflow-hidden border-y border-uniteda-emerald/20 isolate">
+      <style dangerouslySetInnerHTML={{
+        __html: `
+        @keyframes ticker-scroll {
+          0% { transform: translate3d(0, 0, 0); }
+          100% { transform: translate3d(${isRTL ? '50%' : '-50%'}, 0, 0); }
+        }
+        .animate-ticker {
+          animation: ticker-scroll 60s linear infinite;
+          will-change: transform;
+          backface-visibility: hidden;
+        }
+        .ticker-pause:hover .animate-ticker {
+          animation-play-state: paused;
+        }
+      `}} />
       <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-uniteda-emerald-dark to-transparent z-10 pointer-events-none" />
       <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-uniteda-emerald-dark to-transparent z-10 pointer-events-none" />
 
-      <div className="flex whitespace-nowrap overflow-hidden">
-        <motion.div
-          animate={{ x: isRTL ? ["0%", "50%"] : ["0%", "-50%"] }}
-          transition={{
-            repeat: Infinity,
-            duration: 80,
-            ease: "linear",
-          }}
-          className="flex items-center gap-12 px-6"
-          style={{
-            willChange: "transform",
-            width: "max-content",
-            // Optimization: Stop animation when out of view
-            animationPlayState: "paused"
-          }}
-          whileInView={{ animationPlayState: "running" }}
+      <div className="flex whitespace-nowrap overflow-hidden ticker-pause">
+        <div
+          className={cn(
+            "flex items-center gap-12 px-6 animate-ticker",
+            isRTL ? "flex-row-reverse" : "flex-row"
+          )}
+          style={{ width: "max-content" }}
         >
           {/* Double the items to allow seamless infinite scroll */}
-          {[...items, ...items].map((item, i) => (
+          {[...items, ...items, ...items].map((item, i) => (
             <div key={`${item.key}-${i}`} className="flex items-center gap-4 text-white group cursor-default flex-shrink-0">
               <div className="w-10 h-10 rounded-full bg-uniteda-emerald/20 flex items-center justify-center group-hover:bg-uniteda-emerald transition-colors">
                 <item.icon size={18} className="text-uniteda-gold" />
@@ -323,7 +318,7 @@ const Ticker = memo(({ items, isRTL, t }: { items: any[], isRTL: boolean, t: any
               <div className="h-4 w-px bg-white/10 ml-8" />
             </div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </div>
   );
@@ -366,11 +361,18 @@ export default function ProductsPage() {
 
   // 1️⃣ Data Normalization Layer
   // Pre-computes localized search strings to avoid calling t() inside hot loops
-  const normalizedProducts = useMemo(() => {
+  const normalizedProducts: NormalizedProduct[] = useMemo(() => {
     return ALL_PRODUCTS.map(p => ({
       ...p,
       searchName: t(`products.catalog.items.${p.key}.name`).toLowerCase(),
       searchOrigin: t(`products.catalog.items.${p.key}.origin`).toLowerCase(),
+      displayName: t(`products.catalog.items.${p.key}.name`, { defaultValue: p.key.replace(/_/g, ' ') }),
+      displayScientificName: t(`products.catalog.items.${p.key}.scientific_name`),
+      displayOrigin: t(`products.catalog.items.${p.key}.origin`),
+      displayMarketPrice: p.price === "Market Price" ? t('products.catalog.market_price') : p.price,
+      displaySeason: t(`products.filters.season.${p.season}`),
+      displayCTA: t('hero.cta_secondary'),
+      grades: p.grades.map(g => t(`products.catalog.grades.${g}`))
     }));
   }, [t]);
 
@@ -431,20 +433,20 @@ export default function ProductsPage() {
     setSeasonFilter("all");
   }, []);
 
-  // Virtuoso components factory to inject props safely
+  // Virtuoso components factory - stabilized by moving out context-dependent logic
   const VirtuosoComponents = useMemo(() => ({
-    List: forwardRef<HTMLDivElement, any>((props, ref) => (
-      <VirtuosoList {...props} ref={ref} viewMode={viewMode} />
-    )),
+    List: VirtuosoList,
     Item: VirtuosoItem
-  }), [viewMode]);
+  }), []);
+
+  const virtuosoContext = useMemo(() => ({ viewMode }), [viewMode]);
 
   return (
     <Layout>
       {/* Hero Section */}
-      <section className="relative pt-32 pb-0 overflow-hidden bg-[#fafafa]">
-        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-uniteda-emerald/5 rounded-full blur-[120px] -mr-96 -mt-96 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-uniteda-gold/5 rounded-full blur-[100px] -ml-48 -mb-48 pointer-events-none" />
+      <section className="relative pt-32 pb-0 overflow-hidden bg-[#fafafa] isolate">
+        <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-uniteda-emerald/5 rounded-full blur-[80px] -mr-96 -mt-96 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-uniteda-gold/5 rounded-full blur-[60px] -ml-48 -mb-48 pointer-events-none" />
 
         <div className="container-wide relative z-10 lg:pb-24">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -488,13 +490,13 @@ export default function ProductsPage() {
             </motion.div>
 
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, rotate: -2 }}
+              initial={{ opacity: 0, scale: 0.98, rotate: -1 }}
               animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              transition={{ duration: 1 }}
+              transition={{ duration: 0.8 }}
               className="relative aspect-square w-full hidden lg:block"
             >
-              <div className="absolute inset-0 bg-gradient-to-tr from-uniteda-emerald/20 to-transparent rounded-[3rem] blur-2xl" />
-              <div className="relative h-full w-full rounded-[3.5rem] border-8 border-white shadow-2xl overflow-hidden group">
+              <div className="absolute inset-0 bg-gradient-to-tr from-uniteda-emerald/10 to-transparent rounded-[3rem] blur-xl" />
+              <div className="relative h-full w-full rounded-[3.5rem] border-8 border-white shadow-xl overflow-hidden group">
                 <img
                   src={productsHero}
                   alt="Premium Produce"
@@ -534,7 +536,7 @@ export default function ProductsPage() {
       </section>
 
       {/* Main Content */}
-      <section className="section-padding bg-white min-h-screen">
+      <section className="section-padding bg-white min-h-screen isolate">
         <div className="container-wide">
           <div className="grid lg:grid-cols-12 gap-12">
 
@@ -655,20 +657,22 @@ export default function ProductsPage() {
                 </div>
               </motion.div>
 
-              <div className="min-h-[600px] relative" style={{ contain: 'paint' }}>
+              <div
+                className="h-[75vh] min-h-[600px] relative rounded-3xl overflow-hidden border border-black/5 bg-[#fafafa]/30 overscroll-contain"
+                style={{ contain: 'content', overscrollBehaviorY: 'contain' }}
+              >
                 {filteredProducts.length > 0 ? (
                   <VirtuosoGrid
-                    useWindowScroll
-                    overscan={18}
-                    increaseViewportBy={400}
+                    overscan={12}
+                    increaseViewportBy={800}
                     data={filteredProducts}
+                    context={virtuosoContext}
                     computeItemKey={(index, product) => product.id}
                     components={VirtuosoComponents}
                     itemContent={(index, product) => (
                       <ProductCard
                         key={product.id}
                         product={product}
-                        t={t}
                         viewMode={viewMode}
                         index={index}
                         onSelect={handleSelectProduct}

@@ -85,10 +85,9 @@ export function PartnerSection() {
                     <div className="flex overflow-hidden cursor-pointer pause-on-hover py-8">
                         <div className={`flex gap-16 md:gap-24 items-center whitespace-nowrap animate-marquee ${isRTL ? 'flex-row-reverse' : 'flex-row'}`}>
                             {[...partners, ...partners, ...partners, ...partners].map((partner, i) => (
-                                <motion.div
+                                <div
                                     key={i}
-                                    whileHover={{ y: -8, scale: 1.02 }}
-                                    className="relative flex items-center justify-center transition-all duration-500 ease-out"
+                                    className="relative flex items-center justify-center transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.02]"
                                 >
                                     <div className="group relative h-40 md:h-52 w-64 md:w-80 flex flex-col items-center justify-center p-8 rounded-[2.5rem] glass-panel border border-white/20 shadow-2xl hover:shadow-uniteda-emerald/10 hover:border-uniteda-emerald/30 transition-all duration-700">
                                         {/* Status Header Overlay */}
@@ -117,7 +116,7 @@ export function PartnerSection() {
                                             <span className="text-[8px] font-black text-uniteda-emerald-dark uppercase tracking-[0.3em]">{t('partners.card_verification')}</span>
                                         </div>
                                     </div>
-                                </motion.div>
+                                </div>
                             ))}
                         </div>
                     </div>
