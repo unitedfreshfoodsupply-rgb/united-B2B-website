@@ -108,7 +108,7 @@ const ProductCard = memo(({
     <div
       className={cn(
         "group relative bg-white border border-black/5 rounded-[2rem] overflow-hidden hover:border-uniteda-emerald/20 transition-all duration-300 flex flex-col h-full",
-        viewMode === "grid" ? "hover:shadow-lg hover:shadow-uniteda-emerald/5" : "flex-row items-center p-4 gap-6 hover:translate-x-1"
+        viewMode === "grid" ? "hover:shadow-lg hover:shadow-uniteda-emerald/10" : "flex-row items-center p-4 gap-6 hover:shadow-md"
       )}
       style={{ contain: 'layout' }}
     >
@@ -249,7 +249,7 @@ VirtuosoList.displayName = "VirtuosoList";
 const VirtuosoItem = ({ children, context, ...props }: any) => (
   <div
     {...props}
-    className={cn("h-full", context?.viewMode === "grid" ? "h-[600px]" : "h-[140px]")}
+    className={cn("h-full", context?.viewMode === "grid" ? "h-[480px]" : "h-[120px]")}
     style={{ contain: 'layout size' }}
   >
     {children}
