@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LazyMotion, domAnimation } from "framer-motion";
 import { TranslationProvider } from "@/hooks/use-unified-translation";
+import { ScrollToTop } from "@/components/layout/ScrollToTop";
 
 // Route-based code splitting
 const Index = lazy(() => import("./pages/Index"));
@@ -37,6 +38,7 @@ const App = () => {
         <Sonner />
         <LazyMotion features={domAnimation}>
           <BrowserRouter future={{ v7_startTransition: true, v7_relativeSplatPath: true }}>
+            <ScrollToTop />
             <Suspense fallback={<LoadingFallback />}>
               <TranslationProvider>
                 <Routes>

@@ -4,12 +4,27 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Apple, Carrot, Leaf, Sprout, Cherry, Info } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { sampleProducts } from "@/data/all-products";
+
+// Calculate category counts from actual product data
+const getCategoryCounts = () => {
+  const counts: Record<string, number> = {};
+
+  sampleProducts.forEach(product => {
+    const category = product.category;
+    counts[category] = (counts[category] || 0) + 1;
+  });
+
+  return counts;
+};
+
+const categoryCounts = getCategoryCounts();
 
 const categories = [
   {
     id: "fruits",
     icon: Apple,
-    count: 45,
+    count: categoryCounts.fruits || 0,
     size: "large",
     color: "bg-orange-500/10 text-orange-600",
     image: "https://images.unsplash.com/photo-1610832958506-aa56368176cf?w=800&auto=format&fit=crop&q=60",
@@ -17,31 +32,24 @@ const categories = [
   {
     id: "vegetables",
     icon: Carrot,
-    count: 62,
+    count: categoryCounts.vegetables || 0,
     size: "small",
     color: "bg-green-500/10 text-green-600",
   },
   {
     id: "herbs",
     icon: Leaf,
-    count: 28,
+    count: categoryCounts.herbs || 0,
     size: "small",
     color: "bg-emerald-500/10 text-emerald-600",
   },
   {
-    id: "microgreens",
-    icon: Sprout,
-    count: 18,
-    size: "medium",
-    color: "bg-lime-500/10 text-lime-600",
-    image: "https://images.unsplash.com/photo-1622383563227-04401ab4e5ea?w=800&auto=format&fit=crop&q=60",
-  },
-  {
     id: "exotic",
     icon: Cherry,
-    count: 34,
-    size: "small",
+    count: categoryCounts.exotic || 0,
+    size: "medium",
     color: "bg-rose-500/10 text-rose-600",
+    image: "https://images.unsplash.com/photo-1528821128474-27f9e78e574b?w=800&auto=format&fit=crop&q=60",
   },
 ];
 

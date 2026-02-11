@@ -14,7 +14,6 @@ export function Footer() {
       { id: "fruits", href: "/products?category=fruits" },
       { id: "vegetables", href: "/products?category=vegetables" },
       { id: "herbs", href: "/products?category=herbs" },
-      { id: "microgreens", href: "/products?category=microgreens" },
       { id: "exotic", href: "/products?category=exotic" },
     ],
     company: [
@@ -41,9 +40,9 @@ export function Footer() {
   return (
     <footer className="relative bg-white text-foreground border-t border-black/5 overflow-hidden">
       {/* Organic Background Elements */}
-      <div className="absolute inset-0 z-0 pointer-events-none opacity-40">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-uniteda-emerald/5 rounded-full blur-[120px] -mr-48 -mt-48" />
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-uniteda-gold/5 rounded-full blur-[100px] -ml-24 -mb-24" />
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-uniteda-emerald/5 rounded-full blur-[80px] -mr-48 -mt-48" />
+        <div className="absolute bottom-0 left-0 w-[300px] h-[300px] bg-uniteda-gold/5 rounded-full blur-[60px] -ml-24 -mb-24" />
       </div>
 
       {/* Pre-Footer: CTA Section */}

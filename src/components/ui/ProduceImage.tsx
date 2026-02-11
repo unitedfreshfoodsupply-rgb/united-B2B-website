@@ -67,16 +67,12 @@ export const ProduceImage: React.FC<ProduceImageProps> = ({
                 width={width}
                 height={height}
                 className={cn(
-                    "w-full h-full transition-opacity duration-500",
-                    objectFit === "cover" ? "object-cover" : "object-contain",
-                    !isPriority && "opacity-0"
+                    "w-full h-full transition-opacity duration-300",
+                    objectFit === "cover" ? "object-cover" : "object-contain"
                 )}
                 loading={isPriority ? "eager" : "lazy"}
-                fetchpriority={isPriority ? "high" : "auto"}
+                fetchPriority={isPriority ? "high" : "auto"}
                 decoding="async"
-                onLoad={(e) => {
-                    (e.currentTarget as HTMLImageElement).classList.remove("opacity-0");
-                }}
                 {...props}
             />
         </div>

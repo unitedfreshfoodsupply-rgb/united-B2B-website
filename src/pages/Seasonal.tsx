@@ -1,10 +1,10 @@
-import { useState, useMemo, memo, useDeferredValue, lazy } from "react";
+import { useState, useMemo, memo, useDeferredValue, lazy, useEffect } from "react";
 import React from "react";
 import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
 import { usePageTitle } from "@/hooks/use-page-title";
 import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
-import { Link } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Sun, Droplets, Snowflake, Leaf, Info, Grid3x3, Table2, Download, Calendar, Search } from "lucide-react";
 import { ProductCard } from "@/components/seasonal/ProductCard";
@@ -102,13 +102,23 @@ MatrixRow.displayName = "MatrixRow";
 export default function SeasonalPage() {
   const { t, i18n, isRTL } = useUnifiedTranslation();
   usePageTitle('meta.seasonal.title');
+  const [searchParams] = useSearchParams();
   const [viewMode, setViewMode] = useState<ViewMode>("grid");
   const [selectedRegion, setSelectedRegion] = useState<Region>("egypt");
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
-  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(searchParams.get('category'));
+  const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || "");
   const deferredSearchQuery = useDeferredValue(searchQuery);
   const [showModal, setShowModal] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<any>(null);
+
+  // Sync state with URL parameters
+  useEffect(() => {
+    const category = searchParams.get('category');
+    if (category) setSelectedCategory(category);
+
+    const search = searchParams.get('search');
+    if (search !== null) setSearchQuery(search);
+  }, [searchParams]);
 
   const months = t('seasonal.months', { returnObjects: true }) as string[];
 

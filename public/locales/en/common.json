@@ -24,7 +24,6 @@
             "fruits": "Fresh Fruits",
             "vegetables": "Fresh Vegetables",
             "herbs": "Herbs & Greens",
-            "microgreens": "Microgreens",
             "exotic": "Exotic Produce"
         }
     },
@@ -47,7 +46,6 @@
                 "fruits": "Fresh Fruits",
                 "vegetables": "Fresh Vegetables",
                 "herbs": "Herbs & Greens",
-                "microgreens": "Microgreens",
                 "exotic": "Exotic Produce"
             },
             "company": {

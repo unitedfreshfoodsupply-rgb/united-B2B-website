@@ -27,7 +27,6 @@ export function Header() {
         { name: t('header.products_dropdown.fruits'), href: "/products?category=fruits" },
         { name: t('header.products_dropdown.vegetables'), href: "/products?category=vegetables" },
         { name: t('header.products_dropdown.herbs'), href: "/products?category=herbs" },
-        { name: t('header.products_dropdown.microgreens'), href: "/products?category=microgreens" },
         { name: t('header.products_dropdown.exotic'), href: "/products?category=exotic" },
       ]
     },

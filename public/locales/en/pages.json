@@ -214,6 +214,7 @@
             "new": "NEW",
             "premium": "PREMIUM",
             "peak": "PEAK",
+            "available": "AVAILABLE",
             "imported": "IMPORTED",
             "sourced_via": "Sourced via {{origin}}",
             "sourced_via_local": "Sourced via UNITED Local Network",
@@ -259,8 +260,7 @@
                 "export": "Export Grade",
                 "hydroponic": "Hydroponic",
                 "organic": "Organic",
-                "baby_leaf": "Baby Leaf",
-                "microgreen": "Microgreen"
+                "baby_leaf": "Baby Leaf"
             },
             "market_price": "Market Price",
             "items": {

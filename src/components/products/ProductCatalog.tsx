@@ -320,7 +320,6 @@ export const ProductCatalog = ({ t, isRTL }: { t: any, isRTL: boolean }) => {
         { id: "fruits", nameKey: "products.catalog.categories.fruits", icon: Apple },
         { id: "vegetables", nameKey: "products.catalog.categories.vegetables", icon: Carrot },
         { id: "herbs", nameKey: "products.catalog.categories.herbs", icon: Leaf },
-        { id: "microgreens", nameKey: "products.catalog.categories.microgreens", icon: Sprout },
         { id: "exotic", nameKey: "products.catalog.categories.exotic", icon: Cherry },
         { id: "specialty", nameKey: "products.catalog.categories.specialty", icon: CircleDot },
     ], []);

@@ -217,6 +217,7 @@
             "new": "جديد",
             "premium": "مميز",
             "peak": "موسم الذروة",
+            "available": "متوفر الآن",
             "imported": "مستورد",
             "sourced_via": "تم التوريد عبر {{origin}}",
             "sourced_via_local": "تم التوريد عبر شبكة المتحدة المحلية",
@@ -262,8 +263,7 @@
                 "export": "درجة تصدير",
                 "hydroponic": "زراعة مائية",
                 "organic": "عضوي",
-                "baby_leaf": "أوراق صغيرة",
-                "microgreen": "نباتات دقيقة"
+                "baby_leaf": "أوراق صغيرة"
             },
             "market_price": "سعر السوق",
             "items": {

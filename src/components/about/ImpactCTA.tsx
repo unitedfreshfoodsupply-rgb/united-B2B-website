@@ -7,9 +7,9 @@ import { Link } from "react-router-dom";
 export default function ImpactCTA({ isRTL }: { isRTL: boolean }) {
     const { t } = useTranslation('pages');
     return (
-        <section className="py-24 sm:py-32 lg:py-48 relative overflow-hidden">
+        <section className="py-16 sm:py-32 lg:py-48 relative overflow-hidden">
             <div className="container-wide">
-                <div className="relative min-h-[600px] lg:min-h-[800px] rounded-[3rem] sm:rounded-[5rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.5)] group">
+                <div className="relative min-h-[500px] sm:min-h-[600px] lg:min-h-[800px] rounded-[2.5rem] sm:rounded-[5rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.5)] group">
                     {/* Cinematic Background Layer */}
                     <div
                         className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-transform duration-[20s] ease-out group-hover:scale-110"
@@ -47,7 +47,7 @@ export default function ImpactCTA({ isRTL }: { isRTL: boolean }) {
                     </div>
 
                     {/* Content Layer */}
-                    <div className="relative z-30 h-full p-10 sm:p-20 lg:p-32 flex flex-col justify-center max-w-4xl">
+                    <div className="relative z-30 h-full px-6 py-16 sm:p-20 lg:p-32 flex flex-col justify-center max-w-4xl">
                         <motion.div
                             initial={{ opacity: 0, x: isRTL ? 40 : -40 }}
                             whileInView={{ opacity: 1, x: 0 }}
@@ -58,7 +58,7 @@ export default function ImpactCTA({ isRTL }: { isRTL: boolean }) {
                                 {t('about.impact.title')}
                             </span>
 
-                            <h2 className="text-5xl sm:text-6xl lg:text-9xl font-black text-white uppercase tracking-tighter mb-10 leading-[0.85]">
+                            <h2 className="text-4xl sm:text-6xl lg:text-9xl font-black text-white uppercase tracking-tighter mb-8 sm:mb-10 leading-[0.9] sm:leading-[0.85]">
                                 <Trans
                                     t={t}
                                     i18nKey="about.cta.title"
@@ -72,22 +72,22 @@ export default function ImpactCTA({ isRTL }: { isRTL: boolean }) {
                                 />
                             </h2>
 
-                            <div className="flex flex-col sm:flex-row gap-6 items-start mt-6">
-                                <Button size="xl" className="group relative overflow-hidden h-20 px-12 rounded-2xl bg-uniteda-gold hover:bg-uniteda-gold-dark text-white font-black text-xl uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-[0_20px_50px_rgba(182,152,90,0.3)]" asChild>
-                                    <Link to="/contact" className="flex items-center gap-4 relative z-10">
+                            <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-stretch sm:items-start mt-6 w-full sm:w-auto">
+                                <Button size="xl" className="group relative overflow-hidden h-16 sm:h-20 px-8 sm:px-12 rounded-2xl bg-uniteda-gold hover:bg-uniteda-gold-dark text-white font-black text-lg sm:text-xl uppercase tracking-widest transition-all hover:scale-105 active:scale-95 shadow-[0_20px_50px_rgba(182,152,90,0.3)]" asChild>
+                                    <Link to="/contact" className="flex items-center justify-center gap-4 relative z-10 w-full h-full">
                                         {t('about.cta.contact')}
                                         {isRTL ? (
-                                            <ChevronLeft className="w-6 h-6 group-hover:-translate-x-2 transition-transform duration-300" />
+                                            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 group-hover:-translate-x-2 transition-transform duration-300" />
                                         ) : (
-                                            <ChevronRight className="w-6 h-6 group-hover:translate-x-2 transition-transform duration-300" />
+                                            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 group-hover:translate-x-2 transition-transform duration-300" />
                                         )}
                                         {/* Light Sweep Effect */}
                                         <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-in-out" />
                                     </Link>
                                 </Button>
 
-                                <Button size="xl" variant="outline" className="h-20 px-12 rounded-2xl border-white/20 text-white font-black text-xl uppercase tracking-widest hover:bg-white/10 backdrop-blur-md transition-all" asChild>
-                                    <Link to="/products">{t('about.cta.inventory')}</Link>
+                                <Button size="xl" variant="outline" className="h-16 sm:h-20 px-8 sm:px-12 rounded-2xl border-white/20 text-white font-black text-lg sm:text-xl uppercase tracking-widest hover:bg-white/10 backdrop-blur-md transition-all" asChild>
+                                    <Link to="/products" className="flex items-center justify-center w-full h-full">{t('about.cta.inventory')}</Link>
                                 </Button>
                             </div>
                         </motion.div>

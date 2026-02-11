@@ -24,6 +24,7 @@ import {
   TrendingUp,
   Sparkles
 } from "lucide-react";
+import { Link, useSearchParams } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { VirtuosoGrid } from "react-virtuoso";
 import productsHero from "@/assets/products-hero.webp";
@@ -35,6 +36,7 @@ import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
 import { usePageTitle } from "@/hooks/use-page-title";
 import { ProduceImage } from "@/components/ui/ProduceImage";
 import { LazySection } from "@/components/ui/LazySection";
+import { ProductCatalogModal } from "@/components/products/ProductCatalogModal";
 
 // --- Types ---
 interface Product {
@@ -78,16 +80,25 @@ const CATEGORY_ICONS: Record<string, any> = {
  * - Optimized animations
  * - GPU-safe transforms
  */
+// Animation variants outside component to avoid per-render-object allocation
+const cardVariants = {
+  initial: { opacity: 0, y: 15 },
+  animate: { opacity: 1, y: 0 },
+  exit: { opacity: 0, scale: 0.98 }
+};
+
 const ProductCard = memo(({
   product,
   t,
   viewMode,
-  index
+  index,
+  onSelect
 }: {
   product: Product;
   t: (key: string, params?: any) => string;
   viewMode: "grid" | "list";
-  index: number
+  index: number;
+  onSelect: (product: Product) => void;
 }) => {
   const isPriority = index < 6;
   const productName = t(`products.catalog.items.${product.key}.name`);
@@ -95,29 +106,26 @@ const ProductCard = memo(({
   const origin = t(`products.catalog.items.${product.key}.origin`);
   const seasonType = product.season;
 
-  // Animation variants to avoid per-render-object allocation
-  const variants = {
-    initial: { opacity: 0, y: 15 },
-    animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, scale: 0.95 }
-  };
+  const CardContainer = isPriority ? motion.div : "div";
 
   return (
-    <motion.div
-      variants={variants}
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      transition={{
-        duration: 0.3,
-        delay: isPriority ? index * 0.04 : 0,
-        ease: [0.23, 1, 0.32, 1] // Custom ease for smoother feel
-      }}
+    <CardContainer
+      {...(isPriority ? {
+        variants: cardVariants,
+        initial: "initial",
+        animate: "animate",
+        exit: "exit",
+        transition: {
+          duration: 0.25,
+          delay: index * 0.04,
+          ease: "easeOut"
+        }
+      } : {})}
       className={cn(
         "group relative bg-white border border-black/5 rounded-[2rem] overflow-hidden hover:border-uniteda-emerald/30 transition-all duration-500",
         viewMode === "grid" ? "hover:shadow-xl hover:shadow-uniteda-emerald/5" : "flex items-center p-4 gap-6 hover:translate-x-2"
       )}
-      style={{ willChange: "transform, opacity" }}
+      style={{ willChange: isPriority ? "transform, opacity" : "auto" }}
     >
       {/* Image Area */}
       <div className={cn(
@@ -207,12 +215,16 @@ const ProductCard = memo(({
             </span>
           )}
 
-          <Button size="sm" className={cn(
-            "rounded-full font-bold transition-all",
-            viewMode === "grid"
-              ? "w-8 h-8 p-0 bg-transparent text-uniteda-emerald border border-uniteda-emerald/20 hover:bg-uniteda-emerald hover:text-white"
-              : "px-6 bg-uniteda-emerald text-white hover:bg-uniteda-emerald-dark"
-          )}>
+          <Button
+            size="sm"
+            onClick={() => onSelect(product)}
+            className={cn(
+              "rounded-full font-bold transition-all",
+              viewMode === "grid"
+                ? "w-8 h-8 p-0 bg-transparent text-uniteda-emerald border border-uniteda-emerald/20 hover:bg-uniteda-emerald hover:text-white"
+                : "px-6 bg-uniteda-emerald text-white hover:bg-uniteda-emerald-dark"
+            )}
+          >
             {viewMode === "grid" ? (
               <ArrowRight size={14} className="rtl:rotate-180" />
             ) : (
@@ -223,12 +235,13 @@ const ProductCard = memo(({
           </Button>
         </div>
       </div>
-    </motion.div>
+    </CardContainer>
   );
 }, (prev, next) => (
   prev.product.id === next.product.id &&
   prev.viewMode === next.viewMode &&
-  prev.index === next.index
+  prev.index === next.index &&
+  prev.onSelect === next.onSelect
 ));
 
 ProductCard.displayName = "ProductCard";
@@ -249,24 +262,107 @@ const VirtuosoList = forwardRef<HTMLDivElement, { children?: React.ReactNode, vi
 VirtuosoList.displayName = "VirtuosoList";
 
 const VirtuosoItem = ({ children, ...props }: any) => (
-  <div {...props} className="h-full">
+  <div {...props} className="h-full min-h-[350px]">
     {children}
   </div>
 );
 VirtuosoItem.displayName = "VirtuosoItem";
+
+/**
+ * Ticker: Optimized auto-scrolling banner.
+ * - Memoized to prevent re-renders when catalog filters change.
+ * - Strictly calculated animation values for seamless looping.
+ */
+const Ticker = memo(({ items, isRTL, t }: { items: any[], isRTL: boolean, t: any }) => {
+  if (items.length === 0) return null;
+
+  return (
+    <div className="relative mt-12 bg-uniteda-emerald-dark py-6 overflow-hidden border-y border-uniteda-emerald/20">
+      <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-uniteda-emerald-dark to-transparent z-10 pointer-events-none" />
+      <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-uniteda-emerald-dark to-transparent z-10 pointer-events-none" />
+
+      <div className="flex whitespace-nowrap overflow-hidden">
+        <motion.div
+          animate={{ x: isRTL ? ["0%", "50%"] : ["0%", "-50%"] }}
+          transition={{
+            repeat: Infinity,
+            duration: 80,
+            ease: "linear",
+          }}
+          className="flex items-center gap-12 px-6"
+          style={{
+            willChange: "transform",
+            width: "max-content",
+            // Optimization: Stop animation when out of view
+            animationPlayState: "paused"
+          }}
+          whileInView={{ animationPlayState: "running" }}
+        >
+          {/* Double the items to allow seamless infinite scroll */}
+          {[...items, ...items].map((item, i) => (
+            <div key={`${item.key}-${i}`} className="flex items-center gap-4 text-white group cursor-default flex-shrink-0">
+              <div className="w-10 h-10 rounded-full bg-uniteda-emerald/20 flex items-center justify-center group-hover:bg-uniteda-emerald transition-colors">
+                <item.icon size={18} className="text-uniteda-gold" />
+              </div>
+              <div className="flex flex-col">
+                <div className="flex items-center gap-2">
+                  <span className="text-sm font-black uppercase tracking-widest whitespace-nowrap">
+                    {t(`products.catalog.items.${item.key}.name`)}
+                  </span>
+                  <span className={cn(
+                    "text-[8px] font-black px-1.5 py-0.5 rounded",
+                    item.tagKey === "peak" ? "bg-uniteda-gold text-white" : "bg-uniteda-emerald/40 text-white/90"
+                  )}>
+                    {t(`products.ticker.${item.tagKey}`)}
+                  </span>
+                </div>
+                <span className="text-[10px] font-bold text-white/40 uppercase tracking-tighter">
+                  {t('products.ticker.sourced_via_local')}
+                </span>
+              </div>
+              <div className="h-4 w-px bg-white/10 ml-8" />
+            </div>
+          ))}
+        </motion.div>
+      </div>
+    </div>
+  );
+});
+Ticker.displayName = "Ticker";
 
 // --- Main Page ---
 
 export default function ProductsPage() {
   const { t, isRTL } = useUnifiedTranslation();
   usePageTitle('meta.products.title');
+  const [searchParams] = useSearchParams();
 
   // States
-  const [activeCategory, setActiveCategory] = useState("all");
+  const [activeCategory, setActiveCategory] = useState(searchParams.get('category') || "all");
   const [viewMode, setViewMode] = useState<"grid" | "list">("grid");
-  const [searchQuery, setSearchQuery] = useState("");
+  const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || "");
   const deferredSearchQuery = useDeferredValue(searchQuery);
   const [seasonFilter, setSeasonFilter] = useState("all");
+  const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleSelectProduct = useCallback((product: Product) => {
+    setSelectedProduct(product);
+    setIsModalOpen(true);
+  }, []);
+
+  // Sync state with URL parameters if they change while the component is mounted
+  useEffect(() => {
+    const category = searchParams.get('category');
+    if (category) {
+      setActiveCategory(category);
+    }
+
+    const search = searchParams.get('search');
+    if (search !== null) {
+      setSearchQuery(search);
+    }
+  }, [searchParams]);
 
   // 1️⃣ Data Normalization Layer
   // Pre-computes localized search strings to avoid calling t() inside hot loops
@@ -313,15 +409,20 @@ export default function ProductsPage() {
   ], []);
 
   const tickerItems = useMemo(() => {
-    return ALL_PRODUCTS
-      .filter(p => p.season === "peak")
-      .slice(0, 15)
-      .map(p => ({
-        key: p.key,
-        icon: CATEGORY_ICONS[p.category] || CircleDot,
-        tagKey: "peak",
-        origin: p.origin
-      }));
+    // Select items for the ticker with a fallback strategy:
+    // 1. Prefer "peak" items
+    // 2. Pad with "available" items if needed to ensure the ticker is populated
+    const peakItems = ALL_PRODUCTS.filter(p => p.season === "peak");
+    const availableItems = ALL_PRODUCTS.filter(p => p.season === "available");
+
+    const combined = [...peakItems, ...availableItems].slice(0, 15);
+
+    return combined.map(p => ({
+      key: p.key,
+      icon: CATEGORY_ICONS[p.category] || CircleDot,
+      tagKey: p.season === "peak" ? "peak" : "available",
+      origin: p.origin
+    }));
   }, []);
 
   const clearFilters = useCallback(() => {
@@ -398,7 +499,7 @@ export default function ProductsPage() {
                   src={productsHero}
                   alt="Premium Produce"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
-                  fetchpriority="high"
+                  fetchPriority="high"
                 />
                 <div className="absolute inset-0 p-8 flex flex-col justify-between pointer-events-none">
                   <div className="glass-panel p-4 rounded-2xl border-white/20 bg-white/10 backdrop-blur-md self-start">
@@ -429,51 +530,7 @@ export default function ProductsPage() {
           </div>
         </div>
 
-        <LazySection
-          minHeight="100px"
-          importFunc={() => Promise.resolve({
-            default: () => (
-              <div className="relative mt-12 bg-uniteda-emerald-dark py-6 overflow-hidden border-y border-uniteda-emerald/20">
-                <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-uniteda-emerald-dark to-transparent z-10 pointer-events-none" />
-                <div className="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-uniteda-emerald-dark to-transparent z-10 pointer-events-none" />
-
-                <div className="flex whitespace-nowrap overflow-hidden">
-                  <motion.div
-                    animate={{ x: isRTL ? ["0%", "100%"] : ["0%", "-100%"] }}
-                    transition={{ repeat: Infinity, duration: 120, ease: "linear" }}
-                    className="flex items-center gap-12 px-6"
-                    style={{ willChange: "transform" }}
-                  >
-                    {[...tickerItems, ...tickerItems].map((item, i) => (
-                      <div key={i} className="flex items-center gap-4 text-white group cursor-default flex-shrink-0">
-                        <div className="w-10 h-10 rounded-full bg-uniteda-emerald/20 flex items-center justify-center group-hover:bg-uniteda-emerald transition-colors">
-                          <item.icon size={18} className="text-uniteda-gold" />
-                        </div>
-                        <div className="flex flex-col">
-                          <div className="flex items-center gap-2">
-                            <span className="text-sm font-black uppercase tracking-widest whitespace-nowrap">
-                              {t(`products.catalog.items.${item.key}.name`)}
-                            </span>
-                            <span className={cn(
-                              "text-[8px] font-black px-1.5 py-0.5 rounded",
-                              item.tagKey === "new" ? "bg-uniteda-emerald text-white" : "bg-uniteda-gold text-white"
-                            )}>
-                              {t(`products.ticker.${item.tagKey}`)}
-                            </span>
-                          </div>
-                          <span className="text-[10px] font-bold text-white/40 uppercase tracking-tighter">
-                            {t('products.ticker.sourced_via_local')}
-                          </span>
-                        </div>
-                        <div className="h-4 w-px bg-white/10 ml-8" />
-                      </div>
-                    ))}
-                  </motion.div>
-                </div>
-              </div>
-            )
-          })}
-        />
+        <Ticker items={tickerItems} isRTL={isRTL} t={t} />
       </section>
 
       {/* Main Content */}
@@ -598,60 +655,54 @@ export default function ProductsPage() {
                 </div>
               </motion.div>
 
-              {/* Catalog List */}
-              <div className="min-h-[600px] relative">
-                <AnimatePresence mode="popLayout">
-                  {filteredProducts.length > 0 ? (
-                    <motion.div
-                      key="content"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      transition={{ duration: 0.2 }}
-                    >
-                      <VirtuosoGrid
-                        useWindowScroll
-                        overscan={12} // Adjusted for better performance/smoothness balance
-                        data={filteredProducts}
-                        components={VirtuosoComponents}
-                        itemContent={(index, product) => (
-                          <ProductCard
-                            key={product.id}
-                            product={product}
-                            t={t}
-                            viewMode={viewMode}
-                            index={index}
-                          />
-                        )}
+              <div className="min-h-[600px] relative" style={{ contain: 'paint' }}>
+                {filteredProducts.length > 0 ? (
+                  <VirtuosoGrid
+                    useWindowScroll
+                    overscan={18}
+                    increaseViewportBy={400}
+                    data={filteredProducts}
+                    computeItemKey={(index, product) => product.id}
+                    components={VirtuosoComponents}
+                    itemContent={(index, product) => (
+                      <ProductCard
+                        key={product.id}
+                        product={product}
+                        t={t}
+                        viewMode={viewMode}
+                        index={index}
+                        onSelect={handleSelectProduct}
                       />
-                    </motion.div>
-                  ) : (
-                    <motion.div
-                      key="empty"
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      className="flex flex-col items-center justify-center py-24 text-center"
+                    )}
+                  />
+                ) : (
+                  <div className="flex flex-col items-center justify-center py-24 text-center">
+                    <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
+                      <Search className="w-8 h-8 text-muted-foreground" />
+                    </div>
+                    <h3 className="text-xl font-bold text-uniteda-emerald-dark mb-2">{t('products.catalog.no_results')}</h3>
+                    <p className="text-muted-foreground">{t('products.catalog.no_results_description')}</p>
+                    <Button
+                      variant="ghost"
+                      className="mt-4 text-uniteda-emerald font-bold"
+                      onClick={clearFilters}
                     >
-                      <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
-                        <Search className="w-8 h-8 text-muted-foreground" />
-                      </div>
-                      <h3 className="text-xl font-bold text-uniteda-emerald-dark mb-2">{t('products.catalog.no_results')}</h3>
-                      <p className="text-muted-foreground">{t('products.catalog.no_results_description')}</p>
-                      <Button
-                        variant="ghost"
-                        className="mt-4 text-uniteda-emerald font-bold"
-                        onClick={clearFilters}
-                      >
-                        {t('products.filters.clear_all')}
-                      </Button>
-                    </motion.div>
-                  )}
-                </AnimatePresence>
+                      {t('products.filters.clear_all')}
+                    </Button>
+                  </div>
+                )}
               </div>
             </div>
           </div>
         </div>
       </section>
+
+      <ProductCatalogModal
+        product={selectedProduct}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        t={t}
+      />
     </Layout>
   );
 }

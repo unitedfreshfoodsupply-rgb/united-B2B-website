@@ -95,9 +95,8 @@ export function PartnerSection() {
                                         <div className="absolute top-6 left-8 right-8 flex justify-between items-center opacity-40 group-hover:opacity-100 transition-opacity duration-500">
                                             <div className="flex items-center gap-1.5">
                                                 <div className="w-1 h-1 rounded-full bg-uniteda-emerald" />
-                                                <span className="text-[7px] font-black uppercase tracking-[0.2em] text-uniteda-emerald-dark">Active Partner</span>
+                                                <span className="text-[7px] font-black uppercase tracking-[0.2em] text-uniteda-emerald-dark">{t('partners.card_status')}</span>
                                             </div>
-                                            <span className="text-[7px] font-mono text-uniteda-emerald-dark/60">SYS_V3</span>
                                         </div>
 
                                         <div className="relative z-10 w-full h-full flex items-center justify-center mt-4">
@@ -115,7 +114,7 @@ export function PartnerSection() {
 
                                         {/* Bottom Label */}
                                         <div className="absolute bottom-6 left-8 right-8 text-center opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-500">
-                                            <span className="text-[8px] font-black text-uniteda-emerald-dark uppercase tracking-[0.3em]">Institutional Verification</span>
+                                            <span className="text-[8px] font-black text-uniteda-emerald-dark uppercase tracking-[0.3em]">{t('partners.card_verification')}</span>
                                         </div>
                                     </div>
                                 </motion.div>

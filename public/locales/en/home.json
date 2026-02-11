@@ -4,7 +4,9 @@
         "title_prefix": "Supplying The",
         "title_highlight": "Best",
         "subtitle": "UNITED powers the digital supply operations for the world's most elite hospitality brands.",
-        "brand_slogan": "Institutional Supply Operations"
+        "brand_slogan": "Institutional Supply Operations",
+        "card_status": "Active Partner",
+        "card_verification": "Institutional Verification"
     },
     "hero": {
         "label": "Industrial Supply Operations",
@@ -54,10 +56,6 @@
             "name": "Herbs & Greens",
             "description": "Aromatic culinary essentials with premium freshness."
         },
-        "microgreens": {
-            "name": "Microgreens",
-            "description": "Short-cycle designer greens with high nutrient density and aesthetic value."
-        },
         "exotic": {
             "name": "Exotic & Specialty",
             "description": "Rare imports and unique varieties for discerning buyers."
@@ -92,8 +90,8 @@
         "products": {
             "strawberries": "Strawberries",
             "asparagus": "Asparagus",
-            "microgreens": "Microgreens",
             "peas": "Peas",
+            "artichoke": "Artichoke",
             "mangoes": "Premium Mangoes",
             "watermelon": "Watermelon",
             "tomatoes": "Vine Tomatoes",
