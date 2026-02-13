@@ -204,22 +204,15 @@ export default function OperationsPage() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="lg:col-span-4 p-12 rounded-[4rem] bg-[#f8fcf8] border border-uniteda-emerald/10 group hover:shadow-2xl transition-all duration-500 overflow-hidden relative"
+              className="lg:col-span-4 p-12 rounded-[4rem] bg-[#f8fcf8] border border-uniteda-emerald/10 hover:shadow-2xl transition-all duration-500 overflow-hidden relative"
             >
-              <div className="relative z-10 flex flex-col h-full justify-between">
+              <div className="relative z-10 flex flex-col h-full">
                 <div className="text-start">
                   <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-uniteda-emerald text-white flex items-center justify-center mb-6 sm:mb-8 lg:mb-10 shadow-lg shadow-uniteda-emerald/20">
                     <Leaf size={32} />
                   </div>
                   <h3 className="text-2xl sm:text-3xl font-black text-uniteda-emerald-dark mb-4 sm:mb-6 leading-tight">{t('operations.anatomy.layer1.title')}</h3>
-                  <p className="text-muted-foreground text-base sm:text-lg leading-relaxed mb-6 sm:mb-8">{t('operations.anatomy.layer1.description')}</p>
-                </div>
-                <div className="flex items-center gap-3">
-                  <div className="flex flex-col gap-1 text-start">
-                    <span className="text-[10px] font-black text-uniteda-emerald uppercase tracking-widest">{t('operations.anatomy.layer1.tags.0')}</span>
-                    <span className="text-xs font-bold text-uniteda-emerald-dark/60">{t('operations.anatomy.layer1.stage')}</span>
-                  </div>
-                  <ArrowRight size={20} className="text-uniteda-emerald ms-auto rtl:rotate-180" />
+                  <p className="text-muted-foreground text-base sm:text-lg leading-relaxed">{t('operations.anatomy.layer1.description')}</p>
                 </div>
               </div>
               <div className="absolute bottom-0 right-0 rtl:left-0 rtl:right-auto w-48 h-48 bg-uniteda-emerald/5 rounded-full translate-x-12 rtl:-translate-x-12 rtl:translate-x-0 translate-y-12 blur-2xl" />
@@ -249,17 +242,7 @@ export default function OperationsPage() {
                   <div className="px-6 py-3 rounded-2xl bg-white/5 border border-white/10 text-xs font-black uppercase tracking-widest text-white/40">{t('operations.anatomy.layer2.stats.secured')}</div>
                 </div>
               </div>
-              <div className="w-full md:w-64 shrink-0 flex flex-col gap-4">
-                {[1, 2, 3].map(i => (
-                  <div key={i} className="p-5 rounded-3xl bg-white/10 border border-white/5 flex items-center justify-between group-hover:bg-white/20 transition-all">
-                    <div className="flex items-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-uniteda-emerald animate-pulse" />
-                      <span className="text-[10px] font-black uppercase tracking-widest">{t('operations.anatomy.layer4.vessel')} {i}</span>
-                    </div>
-                    <ArrowRight size={14} className="text-uniteda-gold rtl:rotate-180" />
-                  </div>
-                ))}
-              </div>
+
             </motion.div>
 
             {/* Box 3: Quality Gate (Horizontal Large) */}
