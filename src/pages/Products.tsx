@@ -37,6 +37,7 @@ import { usePageTitle } from "@/hooks/use-page-title";
 import { ProduceImage } from "@/components/ui/ProduceImage";
 import { LazySection } from "@/components/ui/LazySection";
 import { ProductCatalogModal } from "@/components/products/ProductCatalogModal";
+import { getSeasonalData } from "@/data/seasonal-map";
 
 // --- Types ---
 interface Product {
@@ -362,18 +363,28 @@ export default function ProductsPage() {
   // 1️⃣ Data Normalization Layer
   // Pre-computes localized search strings to avoid calling t() inside hot loops
   const normalizedProducts: NormalizedProduct[] = useMemo(() => {
-    return ALL_PRODUCTS.map(p => ({
-      ...p,
-      searchName: t(`products.catalog.items.${p.key}.name`).toLowerCase(),
-      searchOrigin: t(`products.catalog.items.${p.key}.origin`).toLowerCase(),
-      displayName: t(`products.catalog.items.${p.key}.name`, { defaultValue: p.key.replace(/_/g, ' ') }),
-      displayScientificName: t(`products.catalog.items.${p.key}.scientific_name`),
-      displayOrigin: t(`products.catalog.items.${p.key}.origin`),
-      displayMarketPrice: p.price === "Market Price" ? t('products.catalog.market_price') : p.price,
-      displaySeason: t(`products.filters.season.${p.season}`),
-      displayCTA: t('hero.cta_secondary'),
-      grades: p.grades.map(g => t(`products.catalog.grades.${g}`))
-    }));
+    const currentMonth = new Date().getMonth();
+
+    return ALL_PRODUCTS.map(p => {
+      // Logic Pass: Dynamic Seasonality Override
+      const seasonalArr = getSeasonalData(p.key);
+      const status = seasonalArr[currentMonth];
+      const dynamicSeason = status === 2 ? "peak" : status === 1 ? "available" : "off_season";
+
+      return {
+        ...p,
+        season: dynamicSeason, // Override static property with live data
+        searchName: t(`products.catalog.items.${p.key}.name`).toLowerCase(),
+        searchOrigin: t(`products.catalog.items.${p.key}.origin`).toLowerCase(),
+        displayName: t(`products.catalog.items.${p.key}.name`, { defaultValue: p.key.replace(/_/g, ' ') }),
+        displayScientificName: t(`products.catalog.items.${p.key}.scientific_name`),
+        displayOrigin: t(`products.catalog.items.${p.key}.origin`),
+        displayMarketPrice: p.price === "Market Price" ? t('products.catalog.market_price') : p.price,
+        displaySeason: t(`products.filters.season.${dynamicSeason}`),
+        displayCTA: t('hero.cta_secondary'),
+        grades: p.grades.map(g => t(`products.catalog.grades.${g}`))
+      };
+    });
   }, [t]);
 
   // 2️⃣ Optimized Selector Logic

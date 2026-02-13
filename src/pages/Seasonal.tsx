@@ -15,6 +15,8 @@ import { importedProducts } from "@/data/imported-products";
 import { vegetableProducts } from "@/data/vegetable-products";
 import { herbProducts } from "@/data/herb-products";
 import { localFruitProducts } from "@/data/local-fruit-products";
+import { ChevronDown, FileJson, FileSpreadsheet } from "lucide-react";
+import { getSeasonalData } from "@/data/seasonal-map";
 import { Input } from "@/components/ui/input";
 
 
@@ -23,31 +25,6 @@ const currentMonth = new Date().getMonth();
 const monthMap: Record<string, number> = {
   Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
   Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11
-};
-
-const parseAvailabilityString = (str: string): number[] => {
-  if (!str) return Array(12).fill(0);
-  if (str === "Year-round" || str === "Available" || str === "طوال العام") return Array(12).fill(1);
-  if (str === "Summer" || str === "صيفي") return [0, 0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0];
-
-  const parts = str.split(" - ").map(s => s.trim());
-  if (parts.length === 2) {
-    const startIndex = monthMap[parts[0]];
-    const endIndex = monthMap[parts[1]];
-
-    if (startIndex !== undefined && endIndex !== undefined) {
-      const arr = Array(12).fill(0);
-      if (startIndex <= endIndex) {
-        for (let i = startIndex; i <= endIndex; i++) arr[i] = 1;
-      } else {
-        for (let i = startIndex; i < 12; i++) arr[i] = 1;
-        for (let i = 0; i <= endIndex; i++) arr[i] = 1;
-      }
-      return arr;
-    }
-  }
-
-  return Array(12).fill(1);
 };
 
 const getAvailabilityColor = (value: number) => {
@@ -122,6 +99,8 @@ export default function SeasonalPage() {
 
   const months = t('seasonal.months', { returnObjects: true }) as string[];
 
+  const currentMonth = new Date().getMonth();
+
   // Merge full catalog data
   const allProducts = useMemo(() => {
     const catalogBase = [
@@ -133,21 +112,15 @@ export default function SeasonalPage() {
 
     // Map these to seasonal format
     return catalogBase.map(p => {
-      const availabilityStr = t(`products.catalog.items.${p.key}.availability`);
-      const dynamicArr = parseAvailabilityString(availabilityStr);
-
-      // Check if we have a manually tuned entry for this product (preserving peak info)
-      const manualEntry = [
-        { name: "mangoes", key: "loc_5", egypt: [0, 0, 0, 0, 1, 2, 2, 2, 1, 0, 0, 0] },
-        { name: "pomegranates", key: "loc_3", egypt: [0, 0, 0, 0, 0, 0, 0, 1, 2, 2, 1, 0] },
-        { name: "asparagus", key: "veg_1", egypt: [0, 1, 2, 2, 1, 0, 0, 0, 0, 0, 0, 0] },
-        { name: "strawberries", key: "loc_1", egypt: [1, 2, 2, 1, 0, 0, 0, 0, 0, 0, 2, 2] }
-      ].find(m => m.key === p.key || m.name === p.key);
+      const dynamicArr = getSeasonalData(p.key);
 
       return {
         ...p,
-        name: p.key,
-        egypt: manualEntry ? manualEntry.egypt : dynamicArr,
+        name: t(`products.catalog.items.${p.key}.name`),
+        scientificName: t(`products.catalog.items.${p.key}.scientific_name`),
+        origin: t(`products.catalog.items.${p.key}.origin`),
+        grades: p.grades.map(g => t(`products.catalog.grades.${g}`)),
+        egypt: dynamicArr,
       };
     });
   }, [t]);
@@ -409,12 +382,11 @@ export default function SeasonalPage() {
                 </span>
               </div>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
-                {filteredProducts.map((product, index) => (
+                {filteredProducts.map((product) => (
                   <ProductCard
                     key={product.key}
                     product={{
                       ...product,
-                      name: t(`products.catalog.items.${product.key}.name`),
                       category: t(`products.catalog.categories.${product.category.toLowerCase()}`)
                     }}
                     region={selectedRegion}

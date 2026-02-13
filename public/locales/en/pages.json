@@ -230,7 +230,8 @@
                 "all": "All Seasons",
                 "peak": "Peak Season",
                 "available": "Available",
-                "starting": "Just Starting"
+                "starting": "Just Starting",
+                "off_season": "Currently Off-Season"
             },
             "industry": {
                 "label": "Industry",
