@@ -468,15 +468,7 @@ export default function ProductsPage() {
               className="space-y-8"
             >
               <div className="text-start">
-                <motion.span
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                  className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-uniteda-emerald/5 border border-uniteda-emerald/10 text-uniteda-emerald text-sm font-bold mb-6"
-                >
-                  <Sparkles size={14} className="animate-pulse" />
-                  {t('products.header.badge')}
-                </motion.span>
+
                 <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-uniteda-emerald-dark mb-6 tracking-tight leading-[0.9] uppercase">
                   {t('products.header.title')}
                   <span className="block text-transparent bg-clip-text bg-gradient-to-r from-uniteda-emerald via-uniteda-emerald to-uniteda-gold">

@@ -1768,8 +1768,8 @@
                 "description": "Food Safety Management"
             },
             "globalgap": {
-                "name": "Global G.A.P",
-                "description": "Good Agricultural Practices"
+                "name": "NFSA Certified",
+                "description": "National Food Safety Authority"
             }
         },
         "partnerships": {
@@ -1929,7 +1929,7 @@
     },
     "meta": {
         "home": {
-            "title": "UNITED: Industrial Agricultural Supply Hub Egypt",
+            "title": "UNITED: Advanced Agricultural Supply Hub Egypt",
             "description": "Established 2013. Operating the primary industrial-scale produce supply hub in Obour. Serving elite hospitality and procurement sectors across Egypt."
         },
         "about": {
@@ -1937,12 +1937,12 @@
             "description": "Learn about our 10-year legacy, our 114 specialized personnel, and the Obour industrial infrastructure that powers Egypt's hospitality supply chain."
         },
         "operations": {
-            "title": "Industrial Logistics Hub | UNITED Operations",
+            "title": "Operations Logistics Hub | UNITED",
             "description": "Explore the 1200m² Obour Industrial facility. Technical grading, cold-chain integrity, and high-frequency dispatch for institutional hospitality."
         },
         "products": {
             "title": "Technical Produce Catalog | Graded Agricultural Assets",
-            "description": "Browse over 200 technical SKUs. Industrial-grade agricultural assets with verified grading standards and full batch traceability."
+            "description": "Browse over 200 technical SKUs. Professional-grade agricultural assets with verified grading standards and full batch traceability."
         },
         "seasonal": {
             "title": "Seasonal Sourcing Calendar | Predictive Supply Data",

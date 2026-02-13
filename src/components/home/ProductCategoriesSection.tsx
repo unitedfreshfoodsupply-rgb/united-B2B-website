@@ -69,10 +69,7 @@ export function ProductCategoriesSection() {
             transition={{ duration: 0.5 }}
             className="max-w-2xl"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider mb-4 border border-primary/20">
-              <div className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              {t('product_catalog')}
-            </div>
+
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-primary tracking-tight leading-[1.1]">
               {t('product_intelligence')}
               <br />

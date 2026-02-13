@@ -201,10 +201,6 @@ export default function SeasonalPage() {
             >
               {/* Badge with current month */}
               <div className="flex flex-wrap items-center gap-3 mb-4 sm:mb-6">
-                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-bold border border-primary/20">
-                  <Calendar size={14} />
-                  {t('seasonal.header.badge')}
-                </span>
                 <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 text-accent text-xs font-medium">
                   <div className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
                   {months[currentMonth]} {new Date().getFullYear()}

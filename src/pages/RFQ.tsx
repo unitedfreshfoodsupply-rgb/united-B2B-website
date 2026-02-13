@@ -190,17 +190,6 @@ export default function RFQPage() {
               className="space-y-6 sm:space-y-8 lg:space-y-10"
             >
               <div className="text-start">
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                  className="flex items-center gap-3 mb-6 sm:mb-8"
-                >
-                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-uniteda-gold/10 border border-uniteda-gold/20 text-uniteda-emerald-dark text-[11px] font-black uppercase tracking-[0.2em]">
-                    <ShieldCheck size={14} className="text-uniteda-emerald" />
-                    {t('rfq.header.badge')}
-                  </span>
-                </motion.div>
 
                 <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-uniteda-emerald-dark mb-6 sm:mb-8 tracking-tighter leading-[0.9] uppercase">
                   {t('rfq.header.title')}

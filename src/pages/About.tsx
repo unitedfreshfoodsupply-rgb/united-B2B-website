@@ -46,8 +46,8 @@ export default function About() {
     const stats = useMemo(() => [
         { id: 'countries', value: '12+', icon: Globe, label: t('about.impact.stats.countries') },
         { id: 'growers', value: '450+', icon: Users, label: t('about.impact.stats.growers') },
-        { id: 'tonnage', value: '15k', icon: BarChart3, label: t('about.impact.stats.tonnage') },
-        { id: 'satisfaction', value: '98%', icon: Navigation, label: t('about.impact.stats.satisfaction') },
+        { id: 'tonnage', value: '4k', icon: BarChart3, label: t('about.impact.stats.tonnage') },
+        { id: 'satisfaction', value: '99%', icon: Navigation, label: t('about.impact.stats.satisfaction') },
     ], [t]);
 
     return (

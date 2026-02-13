@@ -28,7 +28,7 @@ export default function OperationsPage() {
   const certifications = [
     { name: t('operations.certifications.haccp.name'), description: t('operations.certifications.haccp.description'), id: "CERT_HACCP" },
     { name: t('operations.certifications.iso.name'), description: t('operations.certifications.iso.description'), id: "ISO_22000" },
-    { name: t('operations.certifications.globalgap.name'), description: t('operations.certifications.globalgap.description'), id: "GAP_PLATINUM" },
+    { name: t('operations.certifications.globalgap.name'), description: t('operations.certifications.globalgap.description'), id: "NFSA" },
   ];
 
   const operationalStats = [
@@ -56,18 +56,6 @@ export default function OperationsPage() {
               className="space-y-6 sm:space-y-8 lg:space-y-10"
             >
               <div className="text-start">
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                  className="flex items-center gap-3 mb-6 sm:mb-8"
-                >
-                  <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-uniteda-emerald/5 border border-uniteda-emerald/10 text-uniteda-emerald text-[11px] font-black uppercase tracking-[0.2em]">
-                    <Sprout size={14} className="animate-bounce" />
-                    {t('operations.hero.status')}
-                  </span>
-                </motion.div>
-
                 <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black text-uniteda-emerald-dark mb-6 sm:mb-8 tracking-tighter leading-[0.9] uppercase">
                   {t('operations.hero.title_prefix')} <br />
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-uniteda-emerald to-uniteda-gold">

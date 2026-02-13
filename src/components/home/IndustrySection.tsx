@@ -42,13 +42,7 @@ export function IndustrySection() {
       <div className="container-wide">
         {/* Section Header */}
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-20 space-y-4">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            className="px-4 py-1.5 rounded-full bg-uniteda-emerald/5 text-uniteda-emerald text-[10px] font-black uppercase tracking-[0.2em] border border-uniteda-emerald/10"
-          >
-            {t('industry.label')}
-          </motion.div>
+
           <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-black text-uniteda-emerald-dark tracking-tighter leading-none">
             {t('industry.title_prefix')} <br />
             <span className="text-uniteda-gold">{t('industry.title_highlight')}</span>

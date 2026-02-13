@@ -37,17 +37,6 @@ export function PartnerSection() {
                 {/* Massive Hero Header */}
                 <div className="grid lg:grid-cols-12 gap-12 sm:gap-16 items-start mb-24 sm:mb-32">
                     <div className="lg:col-span-8">
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            viewport={{ once: true }}
-                            className="flex items-center gap-3 px-4 py-2 rounded-full bg-uniteda-emerald/5 border border-uniteda-emerald/10 mb-8 w-fit"
-                        >
-                            <div className="w-2 h-2 rounded-full bg-uniteda-gold animate-ping" />
-                            <span className="text-uniteda-emerald text-[10px] sm:text-xs font-black uppercase tracking-[0.4em] sm:tracking-[0.6em] whitespace-nowrap">
-                                {t('partners.label')}
-                            </span>
-                        </motion.div>
 
                         <motion.h2
                             initial={{ opacity: 0, y: 30 }}

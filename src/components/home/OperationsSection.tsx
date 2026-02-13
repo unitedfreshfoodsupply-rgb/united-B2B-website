@@ -109,9 +109,6 @@ export function OperationsSection() {
             className="space-y-10 order-1 lg:order-2"
           >
             <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-uniteda-emerald/5 text-uniteda-emerald text-[10px] font-black uppercase tracking-widest mb-6 border border-uniteda-emerald/10">
-                {t('operations.architecture_label')}
-              </div>
               <h2 className="text-4xl sm:text-5xl md:text-6xl font-black text-uniteda-emerald-dark tracking-tighter leading-[0.9]">
                 {t('operations.title_prefix')} <br />
                 <span className="text-uniteda-gold">{t('operations.title_highlight')}</span>

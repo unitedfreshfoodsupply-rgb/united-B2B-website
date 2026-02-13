@@ -87,10 +87,6 @@ export function SeasonalSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 text-accent text-[10px] sm:text-xs font-bold uppercase tracking-wider mb-4 sm:mb-6 border border-accent/20">
-              <Calendar size={12} />
-              {t('seasonal.label')}
-            </div>
 
             <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter mb-6 sm:mb-8 leading-[0.9]">
               {t('seasonal.title')} <br />
