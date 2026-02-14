@@ -41,5 +41,15 @@ export const herbProducts: ProductEntry[] = [
         image: "/images/products/herbs-greens/fresh-basil.png",
         grades: ["premium"],
         price: "Market Price"
+    },
+    {
+        id: "herb_rocket",
+        key: "herb_rocket",
+        category: "herbs",
+        origin: "egypt",
+        season: "available",
+        image: "/images/products/herbs-greens/rocket-leaves.png",
+        grades: ["premium"],
+        price: "Market Price"
     }
 ];

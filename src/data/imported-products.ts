@@ -142,6 +142,26 @@ export const importedProducts: ImportedProduct[] = [
         price: "Market Price"
     },
     {
+        id: "imp_african_pear",
+        key: "imp_african_pear",
+        category: "fruits",
+        origin: "imported",
+        season: "available",
+        image: "/images/products/imported/african-pear.png",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "imp_spanish_pear",
+        key: "imp_spanish_pear",
+        category: "fruits",
+        origin: "imported",
+        season: "available",
+        image: "/images/products/imported/spanish-pear.png",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
         id: "imp_14",
         key: "imp_14",
         category: "specialty",

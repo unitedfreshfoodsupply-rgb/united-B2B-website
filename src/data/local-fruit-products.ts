@@ -171,5 +171,95 @@ export const localFruitProducts: ProductEntry[] = [
         image: "/images/products/local-fruits/local-mango.png",
         grades: ["premium"],
         price: "Market Price"
+    },
+    {
+        id: "loc_cantaloupe",
+        key: "loc_cantaloupe",
+        category: "fruits",
+        origin: "egypt",
+        season: "available",
+        image: "/images/products/local-fruits/cantaloupe.png",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "loc_egyptian_mango",
+        key: "loc_egyptian_mango",
+        category: "fruits",
+        origin: "egypt",
+        season: "available",
+        image: "/images/products/local-fruits/egyptian-mango.png",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "loc_fresh_fig",
+        key: "loc_fresh_fig",
+        category: "fruits",
+        origin: "egypt",
+        season: "available",
+        image: "/images/products/local-fruits/fresh-fig.png",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "loc_guava",
+        key: "loc_guava",
+        category: "fruits",
+        origin: "egypt",
+        season: "available",
+        image: "/images/products/local-fruits/guava.png",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "loc_pear",
+        key: "loc_pear",
+        category: "fruits",
+        origin: "egypt",
+        season: "available",
+        image: "/images/products/local-fruits/local-pear.png",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "loc_mandarin_premium",
+        key: "loc_mandarin_premium",
+        category: "fruits",
+        origin: "egypt",
+        season: "available",
+        image: "/images/products/local-fruits/mandarin.png",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "loc_persimmon",
+        key: "loc_persimmon",
+        category: "fruits",
+        origin: "egypt",
+        season: "available",
+        image: "/images/products/local-fruits/persimmon.png",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "loc_plum",
+        key: "loc_plum",
+        category: "fruits",
+        origin: "egypt",
+        season: "available",
+        image: "/images/products/local-fruits/plum.png",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "loc_watermelon",
+        key: "loc_watermelon",
+        category: "fruits",
+        origin: "egypt",
+        season: "available",
+        image: "/images/products/local-fruits/watermelon.png",
+        grades: ["premium"],
+        price: "Market Price"
     }
 ];

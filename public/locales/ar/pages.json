@@ -257,7 +257,8 @@
                 "greens": "خضروات ورقية",
                 "exotic": "أصناف تايلاندية",
                 "specialty": "أصناف خاصة",
-                "salads": "سلطات جاهزة"
+                "salads": "سلطات جاهزة",
+                "flowers": "زهور صالحة للأكل"
             },
             "grades": {
                 "premium": "ممتاز",
@@ -1556,6 +1557,153 @@
                     "origin": "مصر",
                     "season": "موسم الذروة",
                     "availability": "مايو - يوليو"
+                },
+                "loc_cantaloupe": {
+                    "name": "كانتالوب محلي",
+                    "scientific_name": "Cucumis melo",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "أبريل - أغسطس"
+                },
+                "loc_egyptian_mango": {
+                    "name": "مانجو مصري",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "يوليو - أكتوبر"
+                },
+                "loc_fresh_fig": {
+                    "name": "تين طازج",
+                    "scientific_name": "Ficus carica",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "يوليو - سبتمبر"
+                },
+                "loc_guava": {
+                    "name": "جوافة محلي",
+                    "scientific_name": "Psidium guajava",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "أكتوبر - يناير"
+                },
+                "loc_pear": {
+                    "name": "كمثرى محلي",
+                    "scientific_name": "Pyrus communis",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "أغسطس - أكتوبر"
+                },
+                "loc_mandarin_premium": {
+                    "name": "يوسفي (فاخر)",
+                    "scientific_name": "Citrus reticulata",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "ديسمبر - مارس"
+                },
+                "loc_persimmon": {
+                    "name": "كاكا",
+                    "scientific_name": "Diospyros kaki",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "سبتمبر - ديسمبر"
+                },
+                "loc_plum": {
+                    "name": "برقوق طازج",
+                    "scientific_name": "Prunus domestica",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "يونيو - سبتمبر"
+                },
+                "loc_watermelon": {
+                    "name": "بطيخ حلو",
+                    "scientific_name": "Citrullus lanatus",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "مايو - سبتمبر"
+                },
+                "imp_african_pear": {
+                    "name": "كمثرى أفريقي",
+                    "scientific_name": "Dacryodes edulis",
+                    "origin": "مستورد",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "imp_spanish_pear": {
+                    "name": "كمثرى إسباني",
+                    "scientific_name": "Pyrus communis",
+                    "origin": "مستورد",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_rocket": {
+                    "name": "جرجير بري",
+                    "scientific_name": "Diplotaxis tenuifolia",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_green_lettuce": {
+                    "name": "خس أخضر",
+                    "scientific_name": "Lactuca sativa",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_head_lettuce": {
+                    "name": "خس كابوتشا",
+                    "scientific_name": "Lactuca sativa",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_lollo_bionda": {
+                    "name": "خس لولو بيوندا",
+                    "scientific_name": "Lactuca sativa var. crispa",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_lollo_rosso": {
+                    "name": "خس لولو روسو",
+                    "scientific_name": "Lactuca sativa var. crispa",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_oakleaf": {
+                    "name": "خس أوكليف",
+                    "scientific_name": "Lactuca sativa",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "herb_red_lettuce_var": {
+                    "name": "خس أحمر",
+                    "scientific_name": "Lactuca sativa",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
+                "veg_red_endive": {
+                    "name": "إنديف أحمر",
+                    "scientific_name": "Cichorium endivia",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "نوفمبر - مارس"
+                },
+                "veg_white_endive": {
+                    "name": "إنديف أبيض",
+                    "scientific_name": "Cichorium endivia",
+                    "origin": "مصر",
+                    "season": "موسمي",
+                    "availability": "نوفمبر - مارس"
+                },
+                "flw_edible_flowers": {
+                    "name": "زهور صالحة للأكل فاخرة",
+                    "scientific_name": "Viola tricolor",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
                 }
             }
         }

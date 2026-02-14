@@ -255,7 +255,8 @@
                 "greens": "Fresh Greens",
                 "exotic": "Exotic Selection",
                 "specialty": "Specialty Items",
-                "salads": "Ready Salads"
+                "salads": "Ready Salads",
+                "flowers": "Edible Flowers"
             },
             "grades": {
                 "premium": "Premium",
@@ -1564,6 +1565,153 @@
                     "origin": "Egypt",
                     "season": "Peak Season",
                     "availability": "May - Jul"
+                },
+                "loc_cantaloupe": {
+                    "name": "Local Cantaloupe",
+                    "scientific_name": "Cucumis melo",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Apr - Aug"
+                },
+                "loc_egyptian_mango": {
+                    "name": "Egyptian Mango",
+                    "scientific_name": "Mangifera indica",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Jul - Oct"
+                },
+                "loc_fresh_fig": {
+                    "name": "Fresh Fig",
+                    "scientific_name": "Ficus carica",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Jul - Sep"
+                },
+                "loc_guava": {
+                    "name": "Local Guava",
+                    "scientific_name": "Psidium guajava",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Oct - Jan"
+                },
+                "loc_pear": {
+                    "name": "Local Pear",
+                    "scientific_name": "Pyrus communis",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Aug - Oct"
+                },
+                "loc_mandarin_premium": {
+                    "name": "Mandarin (Premium)",
+                    "scientific_name": "Citrus reticulata",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Dec - Mar"
+                },
+                "loc_persimmon": {
+                    "name": "Persimmon",
+                    "scientific_name": "Diospyros kaki",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Sep - Dec"
+                },
+                "loc_plum": {
+                    "name": "Fresh Plum",
+                    "scientific_name": "Prunus domestica",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Jun - Sep"
+                },
+                "loc_watermelon": {
+                    "name": "Sweet Watermelon",
+                    "scientific_name": "Citrullus lanatus",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "May - Sep"
+                },
+                "imp_african_pear": {
+                    "name": "African Pear",
+                    "scientific_name": "Dacryodes edulis",
+                    "origin": "Imported",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "imp_spanish_pear": {
+                    "name": "Spanish Pear",
+                    "scientific_name": "Pyrus communis",
+                    "origin": "Imported",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_rocket": {
+                    "name": "Wild Rocket",
+                    "scientific_name": "Diplotaxis tenuifolia",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_green_lettuce": {
+                    "name": "Green Lettuce",
+                    "scientific_name": "Lactuca sativa",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_head_lettuce": {
+                    "name": "Head Lettuce",
+                    "scientific_name": "Lactuca sativa",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_lollo_bionda": {
+                    "name": "Lollo Bionda Lettuce",
+                    "scientific_name": "Lactuca sativa var. crispa",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_lollo_rosso": {
+                    "name": "Lollo Rosso Lettuce",
+                    "scientific_name": "Lactuca sativa var. crispa",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_oakleaf": {
+                    "name": "Oakleaf Lettuce",
+                    "scientific_name": "Lactuca sativa",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "herb_red_lettuce_var": {
+                    "name": "Red Lettuce",
+                    "scientific_name": "Lactuca sativa",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
+                },
+                "veg_red_endive": {
+                    "name": "Red Endive",
+                    "scientific_name": "Cichorium endivia",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Nov - Mar"
+                },
+                "veg_white_endive": {
+                    "name": "White Endive",
+                    "scientific_name": "Cichorium endivia",
+                    "origin": "Egypt",
+                    "season": "Seasonal",
+                    "availability": "Nov - Mar"
+                },
+                "flw_edible_flowers": {
+                    "name": "Premium Edible Flowers",
+                    "scientific_name": "Viola tricolor",
+                    "origin": "Egypt",
+                    "season": "Available",
+                    "availability": "Year-round"
                 }
             }
         }

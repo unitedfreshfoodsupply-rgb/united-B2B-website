@@ -210,5 +210,25 @@ export const vegetableProducts: ProductEntry[] = [
         image: "/images/products/vegetables/tomatoes.png",
         grades: ["premium"],
         price: "Market Price"
+    },
+    {
+        id: "veg_red_endive",
+        key: "veg_red_endive",
+        category: "specialty",
+        origin: "egypt",
+        season: "available",
+        image: "/images/products/vegetables/red-endive.png",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "veg_white_endive",
+        key: "veg_white_endive",
+        category: "specialty",
+        origin: "egypt",
+        season: "available",
+        image: "/images/products/vegetables/white-endive.png",
+        grades: ["premium"],
+        price: "Market Price"
     }
 ];
