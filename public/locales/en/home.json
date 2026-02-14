@@ -53,12 +53,20 @@
             "description": "Root varieties and seasonal greens with cold-chain tracking."
         },
         "herbs": {
-            "name": "Herbs & Greens",
-            "description": "Aromatic culinary essentials with premium freshness."
+            "name": "Culinary Herbs",
+            "description": "Premium culinary herbs including basil, thyme, and rosemary with maximum essential oil content."
+        },
+        "greens": {
+            "name": "Fresh Greens",
+            "description": "Fresh lettuce varieties, celery, and fennel harvested daily for crisp texture."
         },
         "exotic": {
-            "name": "Exotic & Specialty",
-            "description": "Rare imports and unique varieties for discerning buyers."
+            "name": "Exotic Selection",
+            "description": "Global imports and rare local varieties for elite kitchens."
+        },
+        "salads": {
+            "name": "Ready Salads",
+            "description": "Washed, trimmed, and ready-to-use premium salad mixes with maximum shelf life."
         }
     },
     "inquiry": {

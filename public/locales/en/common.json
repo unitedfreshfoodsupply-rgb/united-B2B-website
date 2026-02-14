@@ -23,8 +23,10 @@
         "products_dropdown": {
             "fruits": "Fresh Fruits",
             "vegetables": "Fresh Vegetables",
-            "herbs": "Herbs & Greens",
-            "exotic": "Exotic Produce"
+            "herbs": "Culinary Herbs",
+            "greens": "Fresh Greens",
+            "exotic": "Exotic Selection",
+            "salads": "Ready Salads"
         }
     },
     "footer": {
@@ -45,8 +47,10 @@
             "products": {
                 "fruits": "Fresh Fruits",
                 "vegetables": "Fresh Vegetables",
-                "herbs": "Herbs & Greens",
-                "exotic": "Exotic Produce"
+                "herbs": "Culinary Herbs",
+                "greens": "Fresh Greens",
+                "exotic": "Exotic Selection",
+                "salads": "Ready Salads"
             },
             "company": {
                 "about": "About Us",

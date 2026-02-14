@@ -13,20 +13,23 @@ export const TranslationProvider: React.FC<{ children: ReactNode; namespace?: st
     children,
     namespace = "common"
 }) => {
-    // Load all namespaces. order: common first for Layout, then pages and home for fallback.
     const { t, i18n } = useTranslation(["common", "pages", "home"]);
     const isRTL = i18n.dir() === "rtl";
+    const [bundleVersion, setBundleVersion] = React.useState(0);
+
+    // Watch for bundle loads to force re-render when background loading completes
+    React.useEffect(() => {
+        const handleLoaded = () => setBundleVersion(prev => prev + 1);
+        i18n.on('loaded', handleLoaded);
+        return () => i18n.off('loaded', handleLoaded);
+    }, [i18n]);
 
     // Use a memoized context value
     const value = useMemo(() => ({
-        // The 't' provided by useTranslation(["ns1", "ns2"]) already handles fallbacks in order.
-        // We wrap it to ensure it can handle keys that might explicitly include a namespace.
-        // The 't' provided by useTranslation(["ns1", "ns2"]) already handles fallbacks in order
-        // if fallbackNS is configured in i18next or if we pass them here.
         t: (key: string, options?: any) => t(key, { ...options, ns: ["common", "pages", "home"] }),
         i18n,
         isRTL
-    }), [t, i18n, isRTL]);
+    }), [t, i18n, isRTL, bundleVersion]);
 
     return (
         <TranslationContext.Provider value={value}>

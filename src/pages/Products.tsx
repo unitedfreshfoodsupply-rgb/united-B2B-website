@@ -22,7 +22,8 @@ import {
   CircleDot,
   ArrowRight,
   TrendingUp,
-  Sparkles
+  Sparkles,
+  Salad
 } from "lucide-react";
 import { Link, useSearchParams } from "react-router-dom";
 import { cn } from "@/lib/utils";
@@ -32,6 +33,8 @@ import { importedProducts } from "@/data/imported-products";
 import { vegetableProducts } from "@/data/vegetable-products";
 import { herbProducts } from "@/data/herb-products";
 import { localFruitProducts } from "@/data/local-fruit-products";
+import { saladProducts } from "@/data/salad-products";
+import { leafyGreensProducts } from "@/data/leafy-greens-products";
 import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
 import { usePageTitle } from "@/hooks/use-page-title";
 import { ProduceImage } from "@/components/ui/ProduceImage";
@@ -67,7 +70,9 @@ const ALL_PRODUCTS: Product[] = [
   ...importedProducts,
   ...vegetableProducts,
   ...herbProducts,
-  ...localFruitProducts
+  ...localFruitProducts,
+  ...saladProducts,
+  ...leafyGreensProducts
 ];
 
 const CATEGORY_ICONS: Record<string, any> = {
@@ -77,6 +82,8 @@ const CATEGORY_ICONS: Record<string, any> = {
   herbs: Leaf,
   exotic: Cherry,
   specialty: CircleDot,
+  salads: Salad,
+  greens: Sprout,
 };
 
 // --- Sub-components ---
@@ -329,7 +336,7 @@ Ticker.displayName = "Ticker";
 // --- Main Page ---
 
 export default function ProductsPage() {
-  const { t, isRTL } = useUnifiedTranslation();
+  const { t, i18n, isRTL } = useUnifiedTranslation();
   usePageTitle('meta.products.title');
   const [searchParams] = useSearchParams();
 
@@ -385,7 +392,7 @@ export default function ProductsPage() {
         grades: p.grades.map(g => t(`products.catalog.grades.${g}`))
       };
     });
-  }, [t]);
+  }, [t, i18n.language]);
 
   // 2️⃣ Optimized Selector Logic
   // Single-pass calculation for filtered list and category counts
@@ -417,8 +424,10 @@ export default function ProductsPage() {
     { id: "fruits", nameKey: "products.catalog.categories.fruits", icon: Apple },
     { id: "vegetables", nameKey: "products.catalog.categories.vegetables", icon: Carrot },
     { id: "herbs", nameKey: "products.catalog.categories.herbs", icon: Leaf },
+    { id: "greens", nameKey: "products.catalog.categories.greens", icon: Sprout },
     { id: "exotic", nameKey: "products.catalog.categories.exotic", icon: Cherry },
     { id: "specialty", nameKey: "products.catalog.categories.specialty", icon: CircleDot },
+    { id: "salads", nameKey: "products.catalog.categories.salads", icon: Salad },
   ], []);
 
   const tickerItems = useMemo(() => {

@@ -15,6 +15,8 @@ import { importedProducts } from "@/data/imported-products";
 import { vegetableProducts } from "@/data/vegetable-products";
 import { herbProducts } from "@/data/herb-products";
 import { localFruitProducts } from "@/data/local-fruit-products";
+import { saladProducts } from "@/data/salad-products";
+import { leafyGreensProducts } from "@/data/leafy-greens-products";
 import { ChevronDown, FileJson, FileSpreadsheet } from "lucide-react";
 import { getSeasonalData } from "@/data/seasonal-map";
 import { Input } from "@/components/ui/input";
@@ -107,7 +109,9 @@ export default function SeasonalPage() {
       ...importedProducts,
       ...vegetableProducts,
       ...herbProducts,
-      ...localFruitProducts
+      ...localFruitProducts,
+      ...saladProducts,
+      ...leafyGreensProducts
     ];
 
     // Map these to seasonal format
@@ -123,7 +127,7 @@ export default function SeasonalPage() {
         egypt: dynamicArr,
       };
     });
-  }, [t]);
+  }, [t, i18n.language]);
 
   // Filter products
   const filteredProducts = useMemo(() => {
@@ -179,7 +183,9 @@ export default function SeasonalPage() {
     { id: "fruits", label: t('products.catalog.categories.fruits') },
     { id: "vegetables", label: t('products.catalog.categories.vegetables') },
     { id: "herbs", label: t('products.catalog.categories.herbs') },
+    { id: "greens", label: t('products.catalog.categories.greens') },
     { id: "exotic", label: t('products.catalog.categories.exotic') || "Exotic" },
+    { id: "salads", label: t('products.catalog.categories.salads') },
   ];
 
   return (

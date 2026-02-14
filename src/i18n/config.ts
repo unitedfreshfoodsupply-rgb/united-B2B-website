@@ -26,6 +26,11 @@ i18n
             caches: ['localStorage'],
             lookupLocalStorage: 'i18nextLng',
         },
+        react: {
+            useSuspense: false, // Ensure immediate re-render on load without suspending
+            bindI18n: 'languageChanged loaded',
+            bindI18nStore: 'added removed',
+        }
     });
 
 export default i18n;

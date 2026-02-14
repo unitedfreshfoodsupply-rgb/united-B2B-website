@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { ArrowRight, Apple, Carrot, Leaf, Sprout, Cherry, Info } from "lucide-react";
+import { ArrowRight, Apple, Carrot, Leaf, Sprout, Cherry, Info, Salad } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { sampleProducts } from "@/data/all-products";
@@ -50,6 +50,20 @@ const categories = [
     size: "medium",
     color: "bg-rose-500/10 text-rose-600",
     image: "https://images.unsplash.com/photo-1528821128474-27f9e78e574b?w=800&auto=format&fit=crop&q=60",
+  },
+  {
+    id: "greens",
+    icon: Sprout,
+    count: categoryCounts.greens || 0,
+    size: "small",
+    color: "bg-emerald-600/10 text-emerald-700",
+  },
+  {
+    id: "salads",
+    icon: Salad,
+    count: categoryCounts.salads || 0,
+    size: "small",
+    color: "bg-lime-500/10 text-lime-600",
   },
 ];
 

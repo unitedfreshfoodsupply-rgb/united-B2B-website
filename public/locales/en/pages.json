@@ -248,12 +248,14 @@
             "no_results": "No Products Found",
             "no_results_description": "We couldn't find any products matching your search criteria. Try clearing your filters or using different keywords.",
             "categories": {
-                "all": "All Asset Classes",
-                "fruits": "Agricultural Fruits",
-                "vegetables": "Agricultural Vegetables",
-                "herbs": "Herbs & Greens",
-                "exotic": "Specialty Produce",
-                "specialty": "Technical Items"
+                "all": "All Products",
+                "fruits": "Fresh Fruits",
+                "vegetables": "Fresh Vegetables",
+                "herbs": "Culinary Herbs",
+                "greens": "Fresh Greens",
+                "exotic": "Exotic Selection",
+                "specialty": "Specialty Items",
+                "salads": "Ready Salads"
             },
             "grades": {
                 "premium": "Premium",
@@ -271,6 +273,16 @@
                     "origin": "Imported",
                     "season": "Available",
                     "availability": "Year-round"
+                },
+                "salad_1": {
+                    "name": "Garden Mix Salad",
+                    "scientific_name": "Mixed Greens",
+                    "origin": "Egypt"
+                },
+                "salad_2": {
+                    "name": "Caesar Base Mix",
+                    "scientific_name": "Romaine Mix",
+                    "origin": "Egypt"
                 },
                 "imp_2": {
                     "name": "Fresh Blueberries",
