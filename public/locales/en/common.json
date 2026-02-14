@@ -26,7 +26,8 @@
             "herbs": "Culinary Herbs",
             "greens": "Fresh Greens",
             "exotic": "Exotic Selection",
-            "salads": "Ready Salads"
+            "salads": "Ready Salads",
+            "flowers": "Edible Flowers"
         }
     },
     "footer": {
@@ -50,7 +51,8 @@
                 "herbs": "Culinary Herbs",
                 "greens": "Fresh Greens",
                 "exotic": "Exotic Selection",
-                "salads": "Ready Salads"
+                "salads": "Ready Salads",
+                "flowers": "Edible Flowers"
             },
             "company": {
                 "about": "About Us",

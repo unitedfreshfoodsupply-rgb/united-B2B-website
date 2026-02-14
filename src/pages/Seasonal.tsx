@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import { Layout } from "@/components/layout/Layout";
 import { Link, useSearchParams } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sun, Droplets, Snowflake, Leaf, Info, Grid3x3, Table2, Download, Calendar, Search } from "lucide-react";
+import { ArrowRight, Sun, Droplets, Snowflake, Leaf, Info, Grid3x3, Table2, Download, Calendar, Search, Salad, Flower2 } from "lucide-react";
 import { ProductCard } from "@/components/seasonal/ProductCard";
 import { InSeasonNow } from "@/components/seasonal/InSeasonNow";
 const ProductDetailModal = lazy(() => import("@/components/seasonal/ProductDetailModal").then(m => ({ default: m.ProductDetailModal })));
@@ -17,6 +17,7 @@ import { herbProducts } from "@/data/herb-products";
 import { localFruitProducts } from "@/data/local-fruit-products";
 import { saladProducts } from "@/data/salad-products";
 import { leafyGreensProducts } from "@/data/leafy-greens-products";
+import { edibleFlowersProducts } from "@/data/edible-flowers-products";
 import { ChevronDown, FileJson, FileSpreadsheet } from "lucide-react";
 import { getSeasonalData } from "@/data/seasonal-map";
 import { Input } from "@/components/ui/input";
@@ -111,7 +112,8 @@ export default function SeasonalPage() {
       ...herbProducts,
       ...localFruitProducts,
       ...saladProducts,
-      ...leafyGreensProducts
+      ...leafyGreensProducts,
+      ...edibleFlowersProducts
     ];
 
     // Map these to seasonal format
@@ -186,6 +188,7 @@ export default function SeasonalPage() {
     { id: "greens", label: t('products.catalog.categories.greens') },
     { id: "exotic", label: t('products.catalog.categories.exotic') || "Exotic" },
     { id: "salads", label: t('products.catalog.categories.salads') },
+    { id: "flowers", label: t('products.catalog.categories.flowers') },
   ];
 
   return (

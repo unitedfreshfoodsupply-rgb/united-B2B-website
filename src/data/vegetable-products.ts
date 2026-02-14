@@ -1,13 +1,25 @@
 
+export interface ProductVariant {
+    id?: string;
+    growingMethod?: string;
+    sizeGrade?: string;
+    qualityTier?: string;
+    image?: string;
+    grades?: string[];
+}
+
 export interface ProductEntry {
     id: string;
     key: string;
     category: string;
+    subcategory?: string;
+    secondaryTags?: string[];
     origin: string;
     season: string;
     image: string;
     grades: string[];
     price: string;
+    variants?: ProductVariant[];
 }
 
 export const vegetableProducts: ProductEntry[] = [
@@ -214,7 +226,9 @@ export const vegetableProducts: ProductEntry[] = [
     {
         id: "veg_red_endive",
         key: "veg_red_endive",
-        category: "specialty",
+        category: "greens",
+        subcategory: "chicory",
+        secondaryTags: ["leafy", "salad", "specialty"],
         origin: "egypt",
         season: "available",
         image: "/images/products/vegetables/red-endive.png",
@@ -224,7 +238,9 @@ export const vegetableProducts: ProductEntry[] = [
     {
         id: "veg_white_endive",
         key: "veg_white_endive",
-        category: "specialty",
+        category: "greens",
+        subcategory: "chicory",
+        secondaryTags: ["leafy", "salad", "specialty"],
         origin: "egypt",
         season: "available",
         image: "/images/products/vegetables/white-endive.png",

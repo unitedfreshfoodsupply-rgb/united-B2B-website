@@ -49,11 +49,14 @@ interface Product {
   id: string;
   key: string;
   category: string;
+  subcategory?: string;
+  secondaryTags?: string[];
   origin: string;
   season: string;
   image: string;
   grades: string[];
   price: string;
+  variants?: any[];
 }
 
 interface NormalizedProduct extends Product {

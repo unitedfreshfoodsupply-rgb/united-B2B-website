@@ -14,7 +14,10 @@ export function Footer() {
       { id: "fruits", href: "/products?category=fruits" },
       { id: "vegetables", href: "/products?category=vegetables" },
       { id: "herbs", href: "/products?category=herbs" },
+      { id: "greens", href: "/products?category=greens" },
       { id: "exotic", href: "/products?category=exotic" },
+      { id: "salads", href: "/products?category=salads" },
+      { id: "flowers", href: "/products?category=flowers" },
     ],
     company: [
       { id: "about", href: "/about" },
