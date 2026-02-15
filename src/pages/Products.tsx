@@ -34,9 +34,7 @@ import { importedProducts } from "@/data/imported-products";
 import { vegetableProducts } from "@/data/vegetable-products";
 import { herbProducts } from "@/data/herb-products";
 import { localFruitProducts } from "@/data/local-fruit-products";
-import { saladProducts } from "@/data/salad-products";
 import { leafyGreensProducts } from "@/data/leafy-greens-products";
-import { edibleFlowersProducts } from "@/data/edible-flowers-products";
 import { useUnifiedTranslation } from "@/hooks/use-unified-translation";
 import { usePageTitle } from "@/hooks/use-page-title";
 import { ProduceImage } from "@/components/ui/ProduceImage";
@@ -76,9 +74,7 @@ const ALL_PRODUCTS: Product[] = [
   ...vegetableProducts,
   ...herbProducts,
   ...localFruitProducts,
-  ...saladProducts,
-  ...leafyGreensProducts,
-  ...edibleFlowersProducts
+  ...leafyGreensProducts
 ];
 
 const CATEGORY_ICONS: Record<string, any> = {
@@ -87,10 +83,7 @@ const CATEGORY_ICONS: Record<string, any> = {
   vegetables: Carrot,
   herbs: Leaf,
   exotic: Cherry,
-  specialty: CircleDot,
-  salads: Salad,
-  greens: Sprout,
-  flowers: Flower2
+  greens: Sprout
 };
 
 // --- Sub-components ---
@@ -106,12 +99,14 @@ const ProductCard = memo(({
   product,
   viewMode,
   index,
-  onSelect
+  onSelect,
+  language
 }: {
   product: NormalizedProduct;
   viewMode: "grid" | "list";
   index: number;
   onSelect: (product: Product) => void;
+  language: string;
 }) => {
   const isPriority = index < 6;
   const productName = product.displayName;
@@ -163,9 +158,11 @@ const ProductCard = memo(({
       )}>
         <div className="flex justify-between items-start mb-2">
           <div className="text-start">
-            <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-1 block">
-              {scientificName}
-            </span>
+            {language !== 'ar' && (
+              <span className="text-[10px] font-bold text-muted-foreground uppercase tracking-wider mb-1 block">
+                {scientificName}
+              </span>
+            )}
             <h3 className="font-display font-bold text-xl text-uniteda-emerald-dark group-hover:text-uniteda-emerald transition-colors leading-tight">
               {productName}
             </h3>
@@ -241,7 +238,8 @@ const ProductCard = memo(({
   prev.product.id === next.product.id &&
   prev.viewMode === next.viewMode &&
   prev.index === next.index &&
-  prev.onSelect === next.onSelect
+  prev.onSelect === next.onSelect &&
+  prev.language === next.language
 ));
 
 ProductCard.displayName = "ProductCard";
@@ -321,7 +319,9 @@ const Ticker = memo(({ items, isRTL, t }: { items: any[], isRTL: boolean, t: any
                   </span>
                   <span className={cn(
                     "text-[8px] font-black px-1.5 py-0.5 rounded",
-                    item.tagKey === "peak" ? "bg-uniteda-gold text-white" : "bg-uniteda-emerald/40 text-white/90"
+                    item.tagKey === "peak" ? "bg-uniteda-gold text-white" :
+                      item.tagKey === "starting" ? "bg-uniteda-emerald text-white" :
+                        "bg-uniteda-emerald/40 text-white/90"
                   )}>
                     {t(`products.ticker.${item.tagKey}`)}
                   </span>
@@ -353,6 +353,7 @@ export default function ProductsPage() {
   const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || "");
   const deferredSearchQuery = useDeferredValue(searchQuery);
   const [seasonFilter, setSeasonFilter] = useState("all");
+  const [originFilter, setOriginFilter] = useState("all");
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -378,12 +379,20 @@ export default function ProductsPage() {
   // Pre-computes localized search strings to avoid calling t() inside hot loops
   const normalizedProducts: NormalizedProduct[] = useMemo(() => {
     const currentMonth = new Date().getMonth();
+    const prevMonth = (currentMonth - 1 + 12) % 12;
 
     return ALL_PRODUCTS.map(p => {
       // Logic Pass: Dynamic Seasonality Override
       const seasonalArr = getSeasonalData(p.key);
       const status = seasonalArr[currentMonth];
-      const dynamicSeason = status === 2 ? "peak" : status === 1 ? "available" : "off_season";
+      const prevStatus = seasonalArr[prevMonth];
+
+      let dynamicSeason = "off_season";
+      if (status === 2) dynamicSeason = "peak";
+      else if (status === 1) {
+        // If it was off-season (0) last month and is available (1) now, it's starting
+        dynamicSeason = prevStatus === 0 ? "starting" : "available";
+      }
 
       return {
         ...p,
@@ -405,25 +414,45 @@ export default function ProductsPage() {
   // Single-pass calculation for filtered list and category counts
   const { filteredProducts, categoryCounts } = useMemo(() => {
     const query = deferredSearchQuery.toLowerCase().trim();
-    const counts: Record<string, number> = { all: 0 };
 
+    // First pass: Apply individual filters to get the total results
     const filtered = normalizedProducts.filter(product => {
-      // Calculate category counts globally (one pass)
-      counts[product.category] = (counts[product.category] || 0) + 1;
-      counts.all++;
-
-      // Apply Filters
-      if (activeCategory !== "all" && product.category !== activeCategory) return false;
-      if (seasonFilter !== "all" && product.season !== seasonFilter) return false;
-
+      // Search
       const matchesSearch = query === "" ||
         product.searchName.includes(query) ||
         product.searchOrigin.includes(query);
+      if (!matchesSearch) return false;
 
-      return matchesSearch;
+      // Season
+      if (seasonFilter !== "all" && product.season !== seasonFilter) return false;
+
+      // Origin
+      if (originFilter !== "all" && product.origin !== originFilter) return false;
+
+      // Category (for result display, but not for count calculation)
+      if (activeCategory !== "all" && product.category !== activeCategory) return false;
+
+      return true;
     });
+
+    // Second pass: Calculate counts for categories based on OTHER filters (Search, Season, Origin)
+    // This makes the counts reactive to what's currently available under those filters
+    const counts: Record<string, number> = { all: 0 };
+    normalizedProducts.forEach(product => {
+      const matchesSearch = query === "" ||
+        product.searchName.includes(query) ||
+        product.searchOrigin.includes(query);
+      const matchesSeason = seasonFilter === "all" || product.season === seasonFilter;
+      const matchesOrigin = originFilter === "all" || product.origin === originFilter;
+
+      if (matchesSearch && matchesSeason && matchesOrigin) {
+        counts[product.category] = (counts[product.category] || 0) + 1;
+        counts.all++;
+      }
+    });
+
     return { filteredProducts: filtered, categoryCounts: counts };
-  }, [normalizedProducts, activeCategory, deferredSearchQuery, seasonFilter]);
+  }, [normalizedProducts, activeCategory, deferredSearchQuery, seasonFilter, originFilter]);
 
   // 3️⃣ Component Stable References
   const categories = useMemo(() => [
@@ -433,32 +462,30 @@ export default function ProductsPage() {
     { id: "herbs", nameKey: "products.catalog.categories.herbs", icon: Leaf },
     { id: "greens", nameKey: "products.catalog.categories.greens", icon: Sprout },
     { id: "exotic", nameKey: "products.catalog.categories.exotic", icon: Cherry },
-    { id: "specialty", nameKey: "products.catalog.categories.specialty", icon: CircleDot },
-    { id: "salads", nameKey: "products.catalog.categories.salads", icon: Salad },
-    { id: "flowers", nameKey: "products.catalog.categories.flowers", icon: Flower2 },
   ], []);
 
   const tickerItems = useMemo(() => {
-    // Select items for the ticker with a fallback strategy:
+    // Select items for the ticker using normalized dynamic data:
     // 1. Prefer "peak" items
-    // 2. Pad with "available" items if needed to ensure the ticker is populated
-    const peakItems = ALL_PRODUCTS.filter(p => p.season === "peak");
-    const availableItems = ALL_PRODUCTS.filter(p => p.season === "available");
+    // 2. Pad with "available" or "starting" items
+    const peakItems = normalizedProducts.filter(p => p.season === "peak");
+    const availableItems = normalizedProducts.filter(p => p.season === "available" || p.season === "starting");
 
     const combined = [...peakItems, ...availableItems].slice(0, 15);
 
     return combined.map(p => ({
       key: p.key,
       icon: CATEGORY_ICONS[p.category] || CircleDot,
-      tagKey: p.season === "peak" ? "peak" : "available",
+      tagKey: p.season,
       origin: p.origin
     }));
-  }, []);
+  }, [normalizedProducts]);
 
   const clearFilters = useCallback(() => {
     setActiveCategory("all");
     setSearchQuery("");
     setSeasonFilter("all");
+    setOriginFilter("all");
   }, []);
 
   // Virtuoso components factory - stabilized by moving out context-dependent logic
@@ -521,7 +548,7 @@ export default function ProductsPage() {
                   src={productsHero}
                   alt="Premium Produce"
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
-                  fetchpriority="high"
+                  fetchPriority="high"
                 />
                 <div className="absolute inset-0 p-8 flex flex-col justify-between pointer-events-none">
                   <div className="glass-panel p-4 rounded-2xl border-white/20 bg-white/10 backdrop-blur-md self-start">
@@ -633,6 +660,17 @@ export default function ProductsPage() {
                         <SelectItem value="starting">{t('products.filters.season.starting')}</SelectItem>
                       </SelectContent>
                     </Select>
+
+                    <Select dir={isRTL ? "rtl" : "ltr"} value={originFilter} onValueChange={setOriginFilter}>
+                      <SelectTrigger className="w-full rounded-xl border-black/5 bg-muted/30 hover:bg-muted/50 transition-colors font-medium">
+                        <SelectValue placeholder={t('products.filters.origin.label', { defaultValue: isRTL ? 'المنشأ' : 'Origin' })} />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">{t('products.filters.origin.all', { defaultValue: isRTL ? 'كل المناشئ' : 'All Origins' })}</SelectItem>
+                        <SelectItem value="egypt">{t('products.filters.origin.local', { defaultValue: isRTL ? 'محلي (مصر)' : 'Local (Egypt)' })}</SelectItem>
+                        <SelectItem value="imported">{t('products.filters.origin.imported', { defaultValue: isRTL ? 'مستورد' : 'Imported' })}</SelectItem>
+                      </SelectContent>
+                    </Select>
                   </div>
                 </div>
               </div>
@@ -693,9 +731,10 @@ export default function ProductsPage() {
                       <ProductCard
                         key={product.id}
                         product={product}
-                        viewMode={viewMode}
+                        viewMode={virtuosoContext?.viewMode || "grid"}
                         index={index}
-                        onSelect={handleSelectProduct}
+                        onSelect={setSelectedProduct}
+                        language={i18n.language}
                       />
                     )}
                   />

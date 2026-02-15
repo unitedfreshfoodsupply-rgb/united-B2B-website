@@ -235,6 +235,12 @@
                 "available": "متاح",
                 "starting": "بداية الموسم"
             },
+            "origin": {
+                "label": "المنشأ",
+                "all": "كل المناشئ",
+                "local": "محلي (مصر)",
+                "imported": "مستورد"
+            },
             "industry": {
                 "label": "القطاع",
                 "all": "كل القطاعات",
@@ -255,10 +261,7 @@
                 "vegetables": "خضروات طازجة",
                 "herbs": "أعشاب للطهي",
                 "greens": "خضروات ورقية",
-                "exotic": "أصناف تايلاندية",
-                "specialty": "أصناف خاصة",
-                "salads": "سلطات جاهزة",
-                "flowers": "زهور صالحة للأكل"
+                "exotic": "أصناف تايلاندية"
             },
             "grades": {
                 "premium": "ممتاز",
@@ -725,9 +728,16 @@
                     "season": "متاح",
                     "availability": "طوال العام"
                 },
+                "veg_tomato": {
+                    "name": "طماطم حمراء فاخرة",
+                    "scientific_name": "Solanum lycopersicum",
+                    "origin": "مصر",
+                    "season": "متاح",
+                    "availability": "طوال العام"
+                },
                 "veg_45": {
-                    "name": "رمان أحمر طازج",
-                    "scientific_name": "Punica granatum",
+                    "name": "طماطم حمراء فاخرة",
+                    "scientific_name": "Solanum lycopersicum",
                     "origin": "مصر",
                     "season": "متاح",
                     "availability": "طوال العام"
@@ -1699,7 +1709,7 @@
                     "availability": "نوفمبر - مارس"
                 },
                 "flw_edible_flowers": {
-                    "name": "زهور صالحة للأكل فاخرة",
+                    "name": "ايديبيل فلاور (Viola)",
                     "scientific_name": "Viola tricolor",
                     "origin": "مصر",
                     "season": "متاح",

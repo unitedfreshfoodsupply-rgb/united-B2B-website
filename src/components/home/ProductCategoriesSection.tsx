@@ -58,20 +58,6 @@ const categories = [
     size: "small",
     color: "bg-emerald-600/10 text-emerald-700",
   },
-  {
-    id: "salads",
-    icon: Salad,
-    count: categoryCounts.salads || 0,
-    size: "small",
-    color: "bg-lime-500/10 text-lime-600",
-  },
-  {
-    id: "flowers",
-    icon: Flower2,
-    count: categoryCounts.flowers || 0,
-    size: "small",
-    color: "bg-fuchsia-500/10 text-fuchsia-600",
-  },
 ];
 
 import { ProduceImage } from "@/components/ui/ProduceImage";

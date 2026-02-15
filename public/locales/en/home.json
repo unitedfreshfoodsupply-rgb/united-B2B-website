@@ -61,16 +61,8 @@
             "description": "Fresh lettuce varieties, celery, and fennel harvested daily for crisp texture."
         },
         "exotic": {
-            "name": "Exotic Selection",
+            "name": "Thai Items",
             "description": "Global imports and rare local varieties for elite kitchens."
-        },
-        "salads": {
-            "name": "Ready Salads",
-            "description": "Washed, trimmed, and ready-to-use premium salad mixes with maximum shelf life."
-        },
-        "flowers": {
-            "name": "Edible Flowers",
-            "description": "Exotic edible blooms and decorative flowers for fine dining and garnish."
         }
     },
     "inquiry": {

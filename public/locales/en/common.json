@@ -25,9 +25,7 @@
             "vegetables": "Fresh Vegetables",
             "herbs": "Culinary Herbs",
             "greens": "Fresh Greens",
-            "exotic": "Exotic Selection",
-            "salads": "Ready Salads",
-            "flowers": "Edible Flowers"
+            "exotic": "Thai Items"
         }
     },
     "footer": {
@@ -50,9 +48,7 @@
                 "vegetables": "Fresh Vegetables",
                 "herbs": "Culinary Herbs",
                 "greens": "Fresh Greens",
-                "exotic": "Exotic Selection",
-                "salads": "Ready Salads",
-                "flowers": "Edible Flowers"
+                "exotic": "Thai Items"
             },
             "company": {
                 "about": "About Us",

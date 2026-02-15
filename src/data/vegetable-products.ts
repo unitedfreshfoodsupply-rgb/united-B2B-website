@@ -12,6 +12,7 @@ export interface ProductEntry {
     id: string;
     key: string;
     category: string;
+    primaryCategory?: string;
     subcategory?: string;
     secondaryTags?: string[];
     origin: string;
@@ -26,7 +27,7 @@ export const vegetableProducts: ProductEntry[] = [
     {
         id: "veg_1",
         key: "veg_1",
-        category: "specialty",
+        category: "vegetables",
         origin: "egypt",
         season: "available",
         image: "/images/products/vegetables/green-asparagus.webp",
@@ -36,7 +37,7 @@ export const vegetableProducts: ProductEntry[] = [
     {
         id: "veg_2",
         key: "veg_2",
-        category: "specialty",
+        category: "vegetables",
         origin: "egypt",
         season: "available",
         image: "/images/products/vegetables/white-asparagus.webp",
@@ -176,7 +177,7 @@ export const vegetableProducts: ProductEntry[] = [
     {
         id: "veg_60",
         key: "veg_60",
-        category: "specialty",
+        category: "vegetables",
         origin: "egypt",
         season: "available",
         image: "/images/products/vegetables/purple-asparagus.webp",
@@ -209,17 +210,27 @@ export const vegetableProducts: ProductEntry[] = [
         category: "vegetables",
         origin: "egypt",
         season: "available",
+        image: "/images/products/vegetables/tomato.png",
+        grades: ["premium"],
+        price: "Market Price"
+    },
+    {
+        id: "veg_57",
+        key: "veg_57",
+        category: "vegetables",
+        origin: "egypt",
+        season: "available",
         image: "/images/products/vegetables/green-bell-pepper.png",
         grades: ["premium"],
         price: "Market Price"
     },
     {
-        id: "veg_45",
-        key: "veg_45",
+        id: "veg_tomato",
+        key: "veg_tomato",
         category: "vegetables",
         origin: "egypt",
         season: "available",
-        image: "/images/products/vegetables/tomatoes.png",
+        image: "/images/products/vegetables/green-bell-pepper.png", // Real Tomato found here
         grades: ["premium"],
         price: "Market Price"
     },
@@ -228,7 +239,7 @@ export const vegetableProducts: ProductEntry[] = [
         key: "veg_red_endive",
         category: "greens",
         subcategory: "chicory",
-        secondaryTags: ["leafy", "salad", "specialty"],
+        secondaryTags: ["leafy", "salad"],
         origin: "egypt",
         season: "available",
         image: "/images/products/vegetables/red-endive.png",
@@ -240,7 +251,7 @@ export const vegetableProducts: ProductEntry[] = [
         key: "veg_white_endive",
         category: "greens",
         subcategory: "chicory",
-        secondaryTags: ["leafy", "salad", "specialty"],
+        secondaryTags: ["leafy", "salad"],
         origin: "egypt",
         season: "available",
         image: "/images/products/vegetables/white-endive.png",

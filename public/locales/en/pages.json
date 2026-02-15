@@ -233,6 +233,12 @@
                 "starting": "Just Starting",
                 "off_season": "Currently Off-Season"
             },
+            "origin": {
+                "label": "Origin",
+                "all": "All Origins",
+                "local": "Local (Egypt)",
+                "imported": "Imported"
+            },
             "industry": {
                 "label": "Industry",
                 "all": "All Industries",
@@ -253,10 +259,7 @@
                 "vegetables": "Fresh Vegetables",
                 "herbs": "Culinary Herbs",
                 "greens": "Fresh Greens",
-                "exotic": "Exotic Selection",
-                "specialty": "Specialty Items",
-                "salads": "Ready Salads",
-                "flowers": "Edible Flowers"
+                "exotic": "Thai Items"
             },
             "grades": {
                 "premium": "Premium",
@@ -274,16 +277,6 @@
                     "origin": "Imported",
                     "season": "Available",
                     "availability": "Year-round"
-                },
-                "salad_1": {
-                    "name": "Garden Mix Salad",
-                    "scientific_name": "Mixed Greens",
-                    "origin": "Egypt"
-                },
-                "salad_2": {
-                    "name": "Caesar Base Mix",
-                    "scientific_name": "Romaine Mix",
-                    "origin": "Egypt"
                 },
                 "imp_2": {
                     "name": "Fresh Blueberries",

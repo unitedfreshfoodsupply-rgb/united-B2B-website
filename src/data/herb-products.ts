@@ -2,7 +2,7 @@
 import { ProductEntry } from './vegetable-products';
 
 export const herbProducts: ProductEntry[] = [
-{
+    {
         id: "herb_8",
         key: "herb_8",
         category: "herbs",
@@ -14,7 +14,7 @@ export const herbProducts: ProductEntry[] = [
         image: "/images/products/herbs-greens/parsley.webp",
         grades: ["premium"],
         price: "Market Price"
-    },{
+    }, {
         id: "herb_19",
         key: "herb_19",
         category: "herbs",
@@ -26,7 +26,7 @@ export const herbProducts: ProductEntry[] = [
         image: "/images/products/herbs-greens/rosemary.webp",
         grades: ["premium"],
         price: "Market Price"
-    },{
+    }, {
         id: "herb_20",
         key: "herb_20",
         category: "herbs",
@@ -38,7 +38,7 @@ export const herbProducts: ProductEntry[] = [
         image: "/images/products/herbs-greens/thyme.webp",
         grades: ["premium"],
         price: "Market Price"
-    },{
+    }, {
         id: "herb_1",
         key: "herb_1",
         category: "herbs",
@@ -50,7 +50,7 @@ export const herbProducts: ProductEntry[] = [
         image: "/images/products/herbs-greens/fresh-basil.png",
         grades: ["premium"],
         price: "Market Price"
-    },{
+    }, {
         id: "herb_rocket",
         key: "herb_rocket",
         category: "greens",
@@ -60,6 +60,30 @@ export const herbProducts: ProductEntry[] = [
         origin: "egypt",
         season: "available",
         image: "/images/products/herbs-greens/rocket-leaves.png",
+        grades: ["premium"],
+        price: "Market Price"
+    }, {
+        id: "herb_mint",
+        key: "herb_7",
+        category: "herbs",
+        primaryCategory: "HERBS & AROMATICS",
+        subcategory: "Soft Herbs",
+        secondaryTags: ["Premium", "Local", "Salad"],
+        origin: "egypt",
+        season: "available",
+        image: "/images/products/herbs/mint.png",
+        grades: ["premium"],
+        price: "Market Price"
+    }, {
+        id: "flw_edible_flowers",
+        key: "flw_edible_flowers",
+        category: "herbs",
+        primaryCategory: "EDIBLE FLORAL ACCENTS",
+        subcategory: "Culinary Grade",
+        secondaryTags: ["Premium", "Local", "Salad"],
+        origin: "egypt",
+        season: "available",
+        image: "/images/products/edible-flowers/edible-flowers.png",
         grades: ["premium"],
         price: "Market Price"
     }

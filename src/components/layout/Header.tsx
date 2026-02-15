@@ -29,8 +29,6 @@ export function Header() {
         { name: t('header.products_dropdown.herbs'), href: "/products?category=herbs" },
         { name: t('header.products_dropdown.greens'), href: "/products?category=greens" },
         { name: t('header.products_dropdown.exotic'), href: "/products?category=exotic" },
-        { name: t('header.products_dropdown.salads'), href: "/products?category=salads" },
-        { name: t('header.products_dropdown.flowers'), href: "/products?category=flowers" },
       ]
     },
     { name: t('header.nav.seasonal'), href: "/seasonal" },
@@ -59,13 +57,13 @@ export function Header() {
           <Link to="/" className="flex items-center gap-2 group">
             <motion.div
               whileHover={{ rotate: 5, scale: 1.05 }}
-              className="w-10 h-10 flex items-center justify-center transition-transform duration-500"
+              className="w-14 h-14 flex items-center justify-center transition-transform duration-500"
             >
-              <img src="/logo.webp" alt="Uniteda Logo" className="w-full h-full object-cover" width={40} height={40} />
+              <img src="/logo.webp" alt="Uniteda Logo" className="w-full h-full object-cover" width={56} height={56} />
             </motion.div>
             <div className="flex flex-col">
-              <span className="font-bold text-xl text-uniteda-emerald-dark tracking-tight leading-none">{t('brand_short')}</span>
-              <span className="text-[9px] text-uniteda-gold font-semibold tracking-[0.2em] uppercase">{t('header.brand.slogan')}</span>
+              <span className="font-bold text-2xl text-uniteda-emerald-dark tracking-tight leading-none">{t('brand_short')}</span>
+              <span className="text-[10px] text-uniteda-gold font-semibold tracking-[0.2em] uppercase mt-1">{t('header.brand.slogan')}</span>
             </div>
           </Link>
 
